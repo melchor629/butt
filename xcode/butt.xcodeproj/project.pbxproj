@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C0CC7F81A49FAD60079F4B5 /* flac_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CC7F71A49FAD60079F4B5 /* flac_encode.cpp */; };
+		3C69A6BB189E7EDD001CBFBA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */; };
+		3C69A6BC189E7EDD001CBFBA /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C69A6B8189E7EDD001CBFBA /* AudioUnit.framework */; };
+		3C69A6BD189E7EDD001CBFBA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C69A6B9189E7EDD001CBFBA /* Cocoa.framework */; };
+		3C69A6BE189E7EDD001CBFBA /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C69A6BA189E7EDD001CBFBA /* CoreAudio.framework */; };
+		3C74136F1939241400211C26 /* opus_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C74136E1939241400211C26 /* opus_encode.cpp */; };
+		3CA2FA031912A9B8004CBD2C /* Fl_My_Native_File_Chooser.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2FA011912A9B8004CBD2C /* Fl_My_Native_File_Chooser.cxx */; };
+		3CA2FA041912A9B8004CBD2C /* Fl_My_Native_File_Chooser_MAC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2FA021912A9B8004CBD2C /* Fl_My_Native_File_Chooser_MAC.mm */; };
+		3CC6F2AD19083488001993B1 /* butt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F28019083487001993B1 /* butt.cpp */; };
+		3CC6F2AE19083488001993B1 /* cfg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F28219083487001993B1 /* cfg.cpp */; };
+		3CC6F2AF19083488001993B1 /* fl_callbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F28719083487001993B1 /* fl_callbacks.cpp */; };
+		3CC6F2B019083488001993B1 /* fl_funcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F28919083487001993B1 /* fl_funcs.cpp */; };
+		3CC6F2B119083488001993B1 /* Fl_ILM216.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F28B19083487001993B1 /* Fl_ILM216.cpp */; };
+		3CC6F2B219083488001993B1 /* flgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F28D19083487001993B1 /* flgui.cpp */; };
+		3CC6F2B319083488001993B1 /* icecast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F29119083487001993B1 /* icecast.cpp */; };
+		3CC6F2B419083488001993B1 /* lame_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F29319083487001993B1 /* lame_encode.cpp */; };
+		3CC6F2B519083488001993B1 /* parseconfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F29719083487001993B1 /* parseconfig.cpp */; };
+		3CC6F2B619083488001993B1 /* port_audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F29919083487001993B1 /* port_audio.cpp */; };
+		3CC6F2B719083488001993B1 /* ringbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F29B19083487001993B1 /* ringbuffer.cpp */; };
+		3CC6F2B819083488001993B1 /* shoutcast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F29D19083487001993B1 /* shoutcast.cpp */; };
+		3CC6F2B919083488001993B1 /* sockfuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F29F19083487001993B1 /* sockfuncs.cpp */; };
+		3CC6F2BA19083488001993B1 /* strfuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F2A119083487001993B1 /* strfuncs.cpp */; };
+		3CC6F2BB19083488001993B1 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F2A319083487001993B1 /* timer.cpp */; };
+		3CC6F2BC19083488001993B1 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F2A519083487001993B1 /* util.cpp */; };
+		3CC6F2BD19083488001993B1 /* vorbis_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F2A719083488001993B1 /* vorbis_encode.cpp */; };
+		3CC6F2BE19083488001993B1 /* vu_meter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F2A919083488001993B1 /* vu_meter.cpp */; };
+		3CC6F2BF19083488001993B1 /* wav_header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F2AB19083488001993B1 /* wav_header.cpp */; };
+		3CC899811926A7CE008A414B /* fl_timer_funcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C69A670189E7D73001CBFBA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3C0CC7F61A49FAD60079F4B5 /* flac_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flac_encode.h; path = ../src/flac_encode.h; sourceTree = "<group>"; };
+		3C0CC7F71A49FAD60079F4B5 /* flac_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flac_encode.cpp; path = ../src/flac_encode.cpp; sourceTree = "<group>"; };
+		3C69A672189E7D73001CBFBA /* butt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = butt; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3C69A6B8189E7EDD001CBFBA /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		3C69A6B9189E7EDD001CBFBA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3C69A6BA189E7EDD001CBFBA /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		3C69A6DC189E844E001CBFBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3C74136D1939241400211C26 /* opus_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = opus_encode.h; path = ../src/opus_encode.h; sourceTree = "<group>"; };
+		3C74136E1939241400211C26 /* opus_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = opus_encode.cpp; path = ../src/opus_encode.cpp; sourceTree = "<group>"; };
+		3CA2FA011912A9B8004CBD2C /* Fl_My_Native_File_Chooser.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_My_Native_File_Chooser.cxx; sourceTree = "<group>"; };
+		3CA2FA021912A9B8004CBD2C /* Fl_My_Native_File_Chooser_MAC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Fl_My_Native_File_Chooser_MAC.mm; sourceTree = "<group>"; };
+		3CA2FA051912A9CB004CBD2C /* Fl_My_Native_File_Chooser.H */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Fl_My_Native_File_Chooser.H; sourceTree = "<group>"; };
+		3CC6F28019083487001993B1 /* butt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = butt.cpp; path = ../src/butt.cpp; sourceTree = "<group>"; };
+		3CC6F28119083487001993B1 /* butt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = butt.h; path = ../src/butt.h; sourceTree = "<group>"; };
+		3CC6F28219083487001993B1 /* cfg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cfg.cpp; path = ../src/cfg.cpp; sourceTree = "<group>"; };
+		3CC6F28319083487001993B1 /* cfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cfg.h; path = ../src/cfg.h; sourceTree = "<group>"; };
+		3CC6F28619083487001993B1 /* Fl_My_Double_Window.H */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Fl_My_Double_Window.H; sourceTree = "<group>"; };
+		3CC6F28719083487001993B1 /* fl_callbacks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fl_callbacks.cpp; sourceTree = "<group>"; };
+		3CC6F28819083487001993B1 /* fl_callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fl_callbacks.h; sourceTree = "<group>"; };
+		3CC6F28919083487001993B1 /* fl_funcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fl_funcs.cpp; sourceTree = "<group>"; };
+		3CC6F28A19083487001993B1 /* fl_funcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fl_funcs.h; sourceTree = "<group>"; };
+		3CC6F28B19083487001993B1 /* Fl_ILM216.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_ILM216.cpp; sourceTree = "<group>"; };
+		3CC6F28C19083487001993B1 /* Fl_ILM216.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fl_ILM216.h; sourceTree = "<group>"; };
+		3CC6F28D19083487001993B1 /* flgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = flgui.cpp; sourceTree = "<group>"; };
+		3CC6F28E19083487001993B1 /* flgui.fl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flgui.fl; sourceTree = "<group>"; };
+		3CC6F28F19083487001993B1 /* flgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flgui.h; sourceTree = "<group>"; };
+		3CC6F29019083487001993B1 /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+		3CC6F29119083487001993B1 /* icecast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = icecast.cpp; path = ../src/icecast.cpp; sourceTree = "<group>"; };
+		3CC6F29219083487001993B1 /* icecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = icecast.h; path = ../src/icecast.h; sourceTree = "<group>"; };
+		3CC6F29319083487001993B1 /* lame_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lame_encode.cpp; path = ../src/lame_encode.cpp; sourceTree = "<group>"; };
+		3CC6F29419083487001993B1 /* lame_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lame_encode.h; path = ../src/lame_encode.h; sourceTree = "<group>"; };
+		3CC6F29519083487001993B1 /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.am; path = ../src/Makefile.am; sourceTree = "<group>"; };
+		3CC6F29619083487001993B1 /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.in; path = ../src/Makefile.in; sourceTree = "<group>"; };
+		3CC6F29719083487001993B1 /* parseconfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = parseconfig.cpp; path = ../src/parseconfig.cpp; sourceTree = "<group>"; };
+		3CC6F29819083487001993B1 /* parseconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parseconfig.h; path = ../src/parseconfig.h; sourceTree = "<group>"; };
+		3CC6F29919083487001993B1 /* port_audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = port_audio.cpp; path = ../src/port_audio.cpp; sourceTree = "<group>"; };
+		3CC6F29A19083487001993B1 /* port_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = port_audio.h; path = ../src/port_audio.h; sourceTree = "<group>"; };
+		3CC6F29B19083487001993B1 /* ringbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ringbuffer.cpp; path = ../src/ringbuffer.cpp; sourceTree = "<group>"; };
+		3CC6F29C19083487001993B1 /* ringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ringbuffer.h; path = ../src/ringbuffer.h; sourceTree = "<group>"; };
+		3CC6F29D19083487001993B1 /* shoutcast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shoutcast.cpp; path = ../src/shoutcast.cpp; sourceTree = "<group>"; };
+		3CC6F29E19083487001993B1 /* shoutcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shoutcast.h; path = ../src/shoutcast.h; sourceTree = "<group>"; };
+		3CC6F29F19083487001993B1 /* sockfuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sockfuncs.cpp; path = ../src/sockfuncs.cpp; sourceTree = "<group>"; };
+		3CC6F2A019083487001993B1 /* sockfuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sockfuncs.h; path = ../src/sockfuncs.h; sourceTree = "<group>"; };
+		3CC6F2A119083487001993B1 /* strfuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = strfuncs.cpp; path = ../src/strfuncs.cpp; sourceTree = "<group>"; };
+		3CC6F2A219083487001993B1 /* strfuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = strfuncs.h; path = ../src/strfuncs.h; sourceTree = "<group>"; };
+		3CC6F2A319083487001993B1 /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = timer.cpp; path = ../src/timer.cpp; sourceTree = "<group>"; };
+		3CC6F2A419083487001993B1 /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = timer.h; path = ../src/timer.h; sourceTree = "<group>"; };
+		3CC6F2A519083487001993B1 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util.cpp; path = ../src/util.cpp; sourceTree = "<group>"; };
+		3CC6F2A619083487001993B1 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util.h; path = ../src/util.h; sourceTree = "<group>"; };
+		3CC6F2A719083488001993B1 /* vorbis_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vorbis_encode.cpp; path = ../src/vorbis_encode.cpp; sourceTree = "<group>"; };
+		3CC6F2A819083488001993B1 /* vorbis_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vorbis_encode.h; path = ../src/vorbis_encode.h; sourceTree = "<group>"; };
+		3CC6F2A919083488001993B1 /* vu_meter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vu_meter.cpp; path = ../src/vu_meter.cpp; sourceTree = "<group>"; };
+		3CC6F2AA19083488001993B1 /* vu_meter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vu_meter.h; path = ../src/vu_meter.h; sourceTree = "<group>"; };
+		3CC6F2AB19083488001993B1 /* wav_header.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wav_header.cpp; path = ../src/wav_header.cpp; sourceTree = "<group>"; };
+		3CC6F2AC19083488001993B1 /* wav_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wav_header.h; path = ../src/wav_header.h; sourceTree = "<group>"; };
+		3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fl_timer_funcs.cpp; path = ../src/FLTK/fl_timer_funcs.cpp; sourceTree = "<group>"; };
+		3CC899801926A7CE008A414B /* fl_timer_funcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fl_timer_funcs.h; path = ../src/FLTK/fl_timer_funcs.h; sourceTree = "<group>"; };
+		3CD4B90B190E85C400035EA8 /* Fl_My_Value_Slider.H */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Fl_My_Value_Slider.H; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C69A66F189E7D73001CBFBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C69A6BB189E7EDD001CBFBA /* AudioToolbox.framework in Frameworks */,
+				3C69A6BC189E7EDD001CBFBA /* AudioUnit.framework in Frameworks */,
+				3C69A6BD189E7EDD001CBFBA /* Cocoa.framework in Frameworks */,
+				3C69A6BE189E7EDD001CBFBA /* CoreAudio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C69A669189E7D72001CBFBA = {
+			isa = PBXGroup;
+			children = (
+				3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */,
+				3C74136D1939241400211C26 /* opus_encode.h */,
+				3C74136E1939241400211C26 /* opus_encode.cpp */,
+				3CC899801926A7CE008A414B /* fl_timer_funcs.h */,
+				3CC6F28019083487001993B1 /* butt.cpp */,
+				3CC6F28119083487001993B1 /* butt.h */,
+				3C0CC7F61A49FAD60079F4B5 /* flac_encode.h */,
+				3C0CC7F71A49FAD60079F4B5 /* flac_encode.cpp */,
+				3CC6F28219083487001993B1 /* cfg.cpp */,
+				3CC6F28319083487001993B1 /* cfg.h */,
+				3CC6F28419083487001993B1 /* FLTK */,
+				3CC6F29119083487001993B1 /* icecast.cpp */,
+				3CC6F29219083487001993B1 /* icecast.h */,
+				3CC6F29319083487001993B1 /* lame_encode.cpp */,
+				3CC6F29419083487001993B1 /* lame_encode.h */,
+				3CC6F29519083487001993B1 /* Makefile.am */,
+				3CC6F29619083487001993B1 /* Makefile.in */,
+				3CC6F29719083487001993B1 /* parseconfig.cpp */,
+				3CC6F29819083487001993B1 /* parseconfig.h */,
+				3CC6F29919083487001993B1 /* port_audio.cpp */,
+				3CC6F29A19083487001993B1 /* port_audio.h */,
+				3CC6F29B19083487001993B1 /* ringbuffer.cpp */,
+				3CC6F29C19083487001993B1 /* ringbuffer.h */,
+				3CC6F29D19083487001993B1 /* shoutcast.cpp */,
+				3CC6F29E19083487001993B1 /* shoutcast.h */,
+				3CC6F29F19083487001993B1 /* sockfuncs.cpp */,
+				3CC6F2A019083487001993B1 /* sockfuncs.h */,
+				3CC6F2A119083487001993B1 /* strfuncs.cpp */,
+				3CC6F2A219083487001993B1 /* strfuncs.h */,
+				3CC6F2A319083487001993B1 /* timer.cpp */,
+				3CC6F2A419083487001993B1 /* timer.h */,
+				3CC6F2A519083487001993B1 /* util.cpp */,
+				3CC6F2A619083487001993B1 /* util.h */,
+				3CC6F2A719083488001993B1 /* vorbis_encode.cpp */,
+				3CC6F2A819083488001993B1 /* vorbis_encode.h */,
+				3CC6F2A919083488001993B1 /* vu_meter.cpp */,
+				3CC6F2AA19083488001993B1 /* vu_meter.h */,
+				3CC6F2AB19083488001993B1 /* wav_header.cpp */,
+				3CC6F2AC19083488001993B1 /* wav_header.h */,
+				3C69A6DC189E844E001CBFBA /* Foundation.framework */,
+				3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */,
+				3C69A6B8189E7EDD001CBFBA /* AudioUnit.framework */,
+				3C69A6B9189E7EDD001CBFBA /* Cocoa.framework */,
+				3C69A6BA189E7EDD001CBFBA /* CoreAudio.framework */,
+				3C69A673189E7D73001CBFBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3C69A673189E7D73001CBFBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C69A672189E7D73001CBFBA /* butt */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CC6F28419083487001993B1 /* FLTK */ = {
+			isa = PBXGroup;
+			children = (
+				3CA2FA011912A9B8004CBD2C /* Fl_My_Native_File_Chooser.cxx */,
+				3CA2FA021912A9B8004CBD2C /* Fl_My_Native_File_Chooser_MAC.mm */,
+				3CC6F28519083487001993B1 /* FL */,
+				3CC6F28719083487001993B1 /* fl_callbacks.cpp */,
+				3CC6F28819083487001993B1 /* fl_callbacks.h */,
+				3CC6F28919083487001993B1 /* fl_funcs.cpp */,
+				3CC6F28A19083487001993B1 /* fl_funcs.h */,
+				3CC6F28B19083487001993B1 /* Fl_ILM216.cpp */,
+				3CC6F28C19083487001993B1 /* Fl_ILM216.h */,
+				3CC6F28D19083487001993B1 /* flgui.cpp */,
+				3CC6F28E19083487001993B1 /* flgui.fl */,
+				3CC6F28F19083487001993B1 /* flgui.h */,
+				3CC6F29019083487001993B1 /* folder.png */,
+			);
+			name = FLTK;
+			path = ../src/FLTK;
+			sourceTree = "<group>";
+		};
+		3CC6F28519083487001993B1 /* FL */ = {
+			isa = PBXGroup;
+			children = (
+				3CA2FA051912A9CB004CBD2C /* Fl_My_Native_File_Chooser.H */,
+				3CD4B90B190E85C400035EA8 /* Fl_My_Value_Slider.H */,
+				3CC6F28619083487001993B1 /* Fl_My_Double_Window.H */,
+			);
+			path = FL;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3C69A671189E7D73001CBFBA /* butt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C69A67B189E7D73001CBFBA /* Build configuration list for PBXNativeTarget "butt" */;
+			buildPhases = (
+				3C69A66E189E7D73001CBFBA /* Sources */,
+				3C69A66F189E7D73001CBFBA /* Frameworks */,
+				3C69A670189E7D73001CBFBA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = butt;
+			productName = butt;
+			productReference = 3C69A672189E7D73001CBFBA /* butt */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C69A66A189E7D72001CBFBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Daniel Nöthen";
+			};
+			buildConfigurationList = 3C69A66D189E7D72001CBFBA /* Build configuration list for PBXProject "butt" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3C69A669189E7D72001CBFBA;
+			productRefGroup = 3C69A673189E7D73001CBFBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3C69A671189E7D73001CBFBA /* butt */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C69A66E189E7D73001CBFBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C74136F1939241400211C26 /* opus_encode.cpp in Sources */,
+				3CC6F2AE19083488001993B1 /* cfg.cpp in Sources */,
+				3CC6F2B019083488001993B1 /* fl_funcs.cpp in Sources */,
+				3CC6F2BE19083488001993B1 /* vu_meter.cpp in Sources */,
+				3CC6F2AD19083488001993B1 /* butt.cpp in Sources */,
+				3CC6F2B919083488001993B1 /* sockfuncs.cpp in Sources */,
+				3CC6F2B219083488001993B1 /* flgui.cpp in Sources */,
+				3CC6F2B819083488001993B1 /* shoutcast.cpp in Sources */,
+				3CC899811926A7CE008A414B /* fl_timer_funcs.cpp in Sources */,
+				3CC6F2B719083488001993B1 /* ringbuffer.cpp in Sources */,
+				3CC6F2BC19083488001993B1 /* util.cpp in Sources */,
+				3C0CC7F81A49FAD60079F4B5 /* flac_encode.cpp in Sources */,
+				3CC6F2BF19083488001993B1 /* wav_header.cpp in Sources */,
+				3CC6F2B419083488001993B1 /* lame_encode.cpp in Sources */,
+				3CC6F2B519083488001993B1 /* parseconfig.cpp in Sources */,
+				3CA2FA031912A9B8004CBD2C /* Fl_My_Native_File_Chooser.cxx in Sources */,
+				3CC6F2BA19083488001993B1 /* strfuncs.cpp in Sources */,
+				3CC6F2B119083488001993B1 /* Fl_ILM216.cpp in Sources */,
+				3CC6F2BB19083488001993B1 /* timer.cpp in Sources */,
+				3CC6F2B619083488001993B1 /* port_audio.cpp in Sources */,
+				3CC6F2AF19083488001993B1 /* fl_callbacks.cpp in Sources */,
+				3CA2FA041912A9B8004CBD2C /* Fl_My_Native_File_Chooser_MAC.mm in Sources */,
+				3CC6F2B319083488001993B1 /* icecast.cpp in Sources */,
+				3CC6F2BD19083488001993B1 /* vorbis_encode.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3C69A679189E7D73001CBFBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_DEADCODE_DEADSTORES = YES;
+				CLANG_ANALYZER_GCD = YES;
+				CLANG_ANALYZER_MEMORY_MANAGEMENT = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++98";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					..,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_LARGEFILE_SOURCE",
+					"-D_LARGEFILE64_SOURCE",
+					"-D_THREAD_SAFE",
+					"-D_REENTRANT",
+				);
+				OTHER_LDFLAGS = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = macosx10.10;
+			};
+			name = Debug;
+		};
+		3C69A67A189E7D73001CBFBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_DEADCODE_DEADSTORES = YES;
+				CLANG_ANALYZER_GCD = YES;
+				CLANG_ANALYZER_MEMORY_MANAGEMENT = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++98";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					..,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_LARGEFILE_SOURCE",
+					"-D_LARGEFILE64_SOURCE",
+					"-D_THREAD_SAFE",
+					"-D_REENTRANT",
+				);
+				OTHER_LDFLAGS = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = macosx10.10;
+			};
+			name = Release;
+		};
+		3C69A67C189E7D73001CBFBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				LIBRARY_SEARCH_PATHS = ./lib;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = ./include;
+			};
+			name = Debug;
+		};
+		3C69A67D189E7D73001CBFBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				LIBRARY_SEARCH_PATHS = ./lib;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "";
+				"OTHER_LDFLAGS[arch=*]" = (
+					./lib/libmp3lame.a,
+					./lib/libportaudio.a,
+					./lib/libfltk_gl.a,
+					./lib/libfltk_images.a,
+					./lib/libfltk.a,
+					./lib/libogg.a,
+					./lib/libvorbis.a,
+					./lib/libvorbisenc.a,
+					./lib/libsamplerate.a,
+					./lib/libopus.a,
+					"./lib/libFLAC-static.a",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = ./include;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C69A66D189E7D72001CBFBA /* Build configuration list for PBXProject "butt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C69A679189E7D73001CBFBA /* Debug */,
+				3C69A67A189E7D73001CBFBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C69A67B189E7D73001CBFBA /* Build configuration list for PBXNativeTarget "butt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C69A67C189E7D73001CBFBA /* Debug */,
+				3C69A67D189E7D73001CBFBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3C69A66A189E7D72001CBFBA /* Project object */;
+}

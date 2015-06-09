@@ -1,0 +1,8 @@
+This file contains the most importand news of butt 0.1.14
+* added FLAC support for recording 
+* added Opus support (thanks to oneman)
+* added logfile support (thanks to mikko)
+* fixed icecast and shoutcast meta data handling
+* removed possible memleaks
+
+Refer to ChangeLog for more details

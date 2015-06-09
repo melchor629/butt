@@ -1,0 +1,17 @@
+butt THANKS file
+
+butt has originally been written by Daniel Nöthen. Many people have further
+contributed to butt by reporting problems, suggesting various improvements,
+or submitting actual code. Thanks to all of you!
+
+Special thanks go to:
+Heinrich Unrau, for suggestion me the name "butt"
+Thomas Ziebura, for teaching me C
+Jorge Suárez de Lis, for creating ubuntu packages
+Dominik Durner, for creating a patch for icecast stream infos
+Subrat (ipapuna) Nayak, for creating the icon and releasing it under cc
+
+The devolopers of fltk, portaudio, mingw, vorbis, ogg and lame
+
+Drop me a mail in case I forgot to mention you ;-)
+

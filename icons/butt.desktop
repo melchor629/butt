@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=butt
+Comment=Broadcast Using This Tool
+GenericName=butt
+Keywords=Stream,Audio,Shoutcast,Icecast,Record
+Icon=butt
+Exec=butt 
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Sound
+StartupNotify=true
+

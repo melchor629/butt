@@ -1,0 +1,6 @@
+#include "winuser.h"
+#define IDI_ICON 101 
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "butt.manifest"
+IDI_ICON ICON DISCARDABLE "../icons/butt.ico"
+
+

@@ -1,0 +1,30 @@
+Installation:
+-------------
+OS X: 
+Mount the butt-<version>.dmg by double clicking and 
+drop the butt file to the Applications folder.
+
+WINDOWS: 
+Just run the butt-<version>-setup.exe as usual and go through the
+installer pages.
+The default installation path might be unusual, but this way it is possible to install
+butt without administration rights.
+
+UBUNTU:
+Butt depends on the following packages and their dependencies:
+portaudio19-dev, libvorbis-dev, libfltk1.3-dev, libmp3lame-dev
+
+Install the .deb package with
+dpkg --install butt_<version>-0ubuntu1_amd64.deb
+
+LINUX/MinGW: 
+First of all you need to have the following libraries installed on your system 
+fltk-1.3, portaudio, libmp3lame, libvorbis and libogg
+They are quite common and should be included in every linux distribution
+
+Then you can install butt from source as usual:
+1. tar -xzf butt-<version>.tar.gz
+2. cd butt-<version>
+3. ./configure
+4. make
+5. sudo make install

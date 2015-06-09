@@ -118,8 +118,8 @@ public:
 private:
   inline void cb_choice_cfg_act_icy_i(Fl_Choice*, void*);
   static void cb_choice_cfg_act_icy(Fl_Choice*, void*);
-  inline void cb_ADD_i(Fl_Button*, void*);
-  static void cb_ADD(Fl_Button*, void*);
+  inline void cb_A_i(Fl_Button*, void*);
+  static void cb_A(Fl_Button*, void*);
 public:
   Fl_Button *button_cfg_edit_icy;
 private:
@@ -137,12 +137,12 @@ private:
   static void cb_input_log_filename(Fl_Input*, void*);
   inline void cb__i(Fl_Button*, void*);
   static void cb_(Fl_Button*, void*);
-  inline void cb_Import_i(Fl_Button*, void*);
-  static void cb_Import(Fl_Button*, void*);
-  inline void cb_Save_i(Fl_Button*, void*);
-  static void cb_Save(Fl_Button*, void*);
-  inline void cb_Export_i(Fl_Button*, void*);
-  static void cb_Export(Fl_Button*, void*);
+  inline void cb_Importar_i(Fl_Button*, void*);
+  static void cb_Importar(Fl_Button*, void*);
+  inline void cb_Guardar_i(Fl_Button*, void*);
+  static void cb_Guardar(Fl_Button*, void*);
+  inline void cb_Exportar_i(Fl_Button*, void*);
+  static void cb_Exportar(Fl_Button*, void*);
 public:
   Fl_Choice *choice_cfg_dev;
 private:

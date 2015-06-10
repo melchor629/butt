@@ -105,8 +105,8 @@ int main(int argc, char *argv[])
 #endif 
 
 
-    snprintf(info_buf, sizeof(info_buf), "Starting %s\nWritten by Daniel Nöthen\n"
-    	"PayPal: bipak@gmx.net\n", PACKAGE_STRING);
+    snprintf(info_buf, sizeof(info_buf), "Iniciando %s\nWritten by Daniel Nöthen\n"
+    	"PayPal: bipak@gmx.net\nModificaciones por Melchor Garau Madrigal", PACKAGE_STRING);
     print_info(info_buf, 0);
 
 #ifdef _WIN32
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
     }
     else if(p == NULL)
     {
-        ALERT("No home-directory found");
+        ALERT("No se ha encontrado el directorio del usuario");
         return 1;
     }
     else
@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
     lame_rec.gfp = NULL;
     flac_rec.encoder = NULL;
 
-    snprintf(info_buf, sizeof(info_buf), "Reading config %s", cfg_path);
+    snprintf(info_buf, sizeof(info_buf), "Leyendo configuración de %s", cfg_path);
     print_info(info_buf, 0);
 
     if(snd_init() != 0)
@@ -161,15 +161,15 @@ int main(int argc, char *argv[])
 
     if(cfg_set_values(NULL) != 0)        //read config file and initialize config struct
     {
-        snprintf(info_buf, sizeof(info_buf), "Could not find config %s", cfg_path);
+        snprintf(info_buf, sizeof(info_buf), "No se ha podido encontrar la configuración %s", cfg_path);
         print_info(info_buf, 1);
 
         if(cfg_create_default())
         {
-            fl_alert("Could not create config %s\nbutt is going to close now", cfg_path);
+            fl_alert("No se ha podidio crear el archivo de configuración %s\nbutt se va ha cerrar ahora", cfg_path);
             return 1;
         }
-        sprintf(info_buf, "butt created a default config at\n%s\n",
+        sprintf(info_buf, "butt ha creado el archivo de configuración inicial en\n%s\n",
                 cfg_path );
 
         print_info(info_buf, 0);
@@ -186,13 +186,13 @@ int main(int argc, char *argv[])
     Fl::add_timeout(5, &display_rotate_timer);
 
     strcpy(lcd_buf, "idle");
-    PRINT_LCD(lcd_buf, strlen(lcd_buf), 0, 1);
+    PRINT_LCD(lcd_buf, (int) strlen(lcd_buf), 0, 1);
 
 	if(cfg.main.connect_at_startup)
 		button_connect_cb();
 
     snprintf(info_buf, sizeof(info_buf),
-            "butt %s started successfully", VERSION);
+            "butt %s iniciado perfectamente", VERSION);
     print_info(info_buf, 0);
 
     GUI_LOOP();

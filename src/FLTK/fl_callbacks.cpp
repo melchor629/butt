@@ -74,7 +74,7 @@ void *connect_thread(void *data)
         if(rv == 2) 
         {
             fl_g->lcd->clear();
-            fl_g->lcd->print((const uchar*)"idle", 5);
+            fl_g->lcd->print((const uchar*)"En espera", 5);
             break;
         }
         usleep(100000); // 100ms
@@ -151,12 +151,12 @@ void button_connect_cb(void)
     }
 
     if(cfg.srv[cfg.selected_srv]->type == SHOUTCAST)
-        snprintf(text_buf, sizeof(text_buf), "Connecting to %s:%u (%u) ...",
+        snprintf(text_buf, sizeof(text_buf), "Conectando a %s:%u (%u) ...",
             cfg.srv[cfg.selected_srv]->addr,
             cfg.srv[cfg.selected_srv]->port+1,
             cfg.srv[cfg.selected_srv]->port);
     else
-        snprintf(text_buf, sizeof(text_buf), "Connecting to %s:%u ...",
+        snprintf(text_buf, sizeof(text_buf), "Conectando a %s:%u ...",
             cfg.srv[cfg.selected_srv]->addr,
             cfg.srv[cfg.selected_srv]->port);
 
@@ -188,11 +188,11 @@ void button_connect_cb(void)
     if(!strcmp(cfg.audio.codec, "opus"))
         opus_enc_write_header(&opus_stream);
 
-    print_info("Connection established", 0);
+    print_info("Conexión establecida", 0);
     snprintf(text_buf, sizeof(text_buf),
-            "Settings:\n"
-            "Type:\t\t%s\n"
-            "Codec:\t\t%s\n"
+            "Ajustes:\n"
+            "Tipo:\t\t%s\n"
+            "Códec:\t\t%s\n"
             "Bitrate:\t%dkbps\n"
             "Samplerate:\t%dHz\n",
             cfg.srv[cfg.selected_srv]->type == SHOUTCAST ? "ShoutCast" : "IceCast",
@@ -202,8 +202,8 @@ void button_connect_cb(void)
             );
 
     if(cfg.srv[cfg.selected_srv]->type == ICECAST)
-        sprintf(text_buf, "%sMountpoint:\t%s\n"
-                "User:\t\t%s\n", text_buf,
+        sprintf(text_buf, "%sPunto de montaje:\t%s\n"
+                "Usuario:\t\t%s\n", text_buf,
                 cfg.srv[cfg.selected_srv]->mount,
                 cfg.srv[cfg.selected_srv]->usr);
 
@@ -258,7 +258,7 @@ void button_cfg_cb(void)
     if(fl_g->window_cfg->shown())
     {
         fl_g->window_cfg->hide();
-        fl_g->button_cfg->label("Settings@>");
+        fl_g->button_cfg->label("Ajustes@>");
         Fl::remove_timeout(&cfg_win_pos_timer);
     }
     else
@@ -280,7 +280,7 @@ void button_cfg_cb(void)
                                 fl_g->window_main->y());
 #endif
         fl_g->window_cfg->show();
-        fl_g->button_cfg->label("Settings@<");
+        fl_g->button_cfg->label("Ajustes@<");
 
         fill_cfg_widgets();
 
@@ -552,7 +552,7 @@ void button_disconnect_cb(void)
 
     if(recording)
     {
-        button = fl_choice("stop recording?", "Cancel", "Yes", "No");
+        button = fl_choice("¿Parar de grabar?", "Cancelar", "Si", "No");
         switch(button)
         {
             case 0:
@@ -562,7 +562,7 @@ void button_disconnect_cb(void)
                 snd_stop_rec();
                 Fl::remove_timeout(&display_info_timer);
                 fl_g->lcd->clear();
-                fl_g->lcd->print((const uchar*)"idle", 5);
+                fl_g->lcd->print((const uchar*)"En espera", 5);
                 fl_g->choice_rec_codec->activate();
                 
                 // The same happens in the recording_cb
@@ -583,7 +583,7 @@ void button_disconnect_cb(void)
     else
     {
         fl_g->lcd->clear();
-        fl_g->lcd->print((const uchar*)"idle", 5);
+        fl_g->lcd->print((const uchar*)"En espera", 5);
     }
 
     // We are not trying to connect anymore
@@ -622,7 +622,7 @@ void button_disconnect_cb(void)
             ic_disconnect();
     }
     else
-        print_info("Connecting canceled\n", 0);
+        print_info("Conexión cancelada\n", 0);
 
 }
 
@@ -648,7 +648,7 @@ void button_record_cb(void)
 
     if(recording)
     {
-        rc = fl_choice("stop recording?", "No", "Yes", NULL);
+        rc = fl_choice("¿Parar grabación?", "No", "Si", NULL);
         if(rc == 0)//if NO pressed
             return;
 
@@ -657,7 +657,7 @@ void button_record_cb(void)
         if(!connected)
         {
             fl_g->lcd->clear();
-            fl_g->lcd->print((const uchar*)"idle", 5);
+            fl_g->lcd->print((const uchar*)"En espera", 5);
             Fl::remove_timeout(&display_info_timer);
         }
         else
@@ -679,7 +679,7 @@ void button_record_cb(void)
 
     if(strlen(cfg.rec.filename) == 0)
     {
-        fl_alert("No recording filename specified");
+        fl_alert("No se ha especificado archivo donde grabar");
         return;
     }
 
@@ -855,7 +855,7 @@ void button_info_cb() //changed "Info" text to "More"
                                   fl_g->window_main->w(),
                                   fl_g->info_output->y() + 205);
         fl_g->info_output->show();
-        fl_g->button_info->label("Less @2<");
+        fl_g->button_info->label("Menos @2<");
         fl_g->info_visible = 1;
     }
     else
@@ -866,7 +866,7 @@ void button_info_cb() //changed "Info" text to "More"
                                   fl_g->window_main->w(),
                                   fl_g->info_output->y() - 30);
         fl_g->info_output->hide();
-        fl_g->button_info->label("More @2>");
+        fl_g->button_info->label("Más @2>");
         fl_g->info_visible = 0;
     }
 }
@@ -918,7 +918,7 @@ void button_cfg_edit_srv_cb(void)
 {
 
     char dummy[10];
-    int srv;
+    int srv = 0;
 
     if(cfg.main.num_of_srv < 1)
         return;
@@ -947,7 +947,7 @@ void button_cfg_edit_srv_cb(void)
         fl_g->input_add_srv_usr->deactivate();
         fl_g->radio_add_srv_shoutcast->setonly();
     }
-    else //if(cfg.srv[srv]->type == ICECAST)
+    else if(cfg.srv[srv]->type == ICECAST)
     {
         fl_g->input_add_srv_mount->value(cfg.srv[srv]->mount);
         fl_g->input_add_srv_mount->activate();
@@ -992,19 +992,19 @@ void button_cfg_song_go_cb(void)
 
     if(cfg.srv[cfg.selected_srv]->type == SHOUTCAST)
         xc_update_song = &sc_update_song;
-    else //if(cfg.srv[cfg.selected_srv]->type == ICECAST)
+    else if(cfg.srv[cfg.selected_srv]->type == ICECAST)
         xc_update_song = &ic_update_song;
 
     if(xc_update_song() == 0)
     {
         snprintf(text_buf, sizeof(text_buf),
-                "Updated songname to:\n%s\n",
+                "[Ahora] %s\n",
                 cfg.main.song);
 
         print_info(text_buf, 0);
     }
     else
-        print_info("Updating songname failed", 1);
+        print_info("Actualizar la canción actual falló", 1);
 
     // Set focus on the song input field and mark the whole text
     fl_g->input_cfg_song->take_focus();
@@ -1410,7 +1410,7 @@ void choice_cfg_edit_srv_cb(void)
 
 void choice_cfg_bitrate_cb(void)
 {
-    int rc;
+    //int rc;
     int old_br;
     int sel_br = 0;
     int br_list[] = { 8, 16, 24, 32, 40, 48, 56, 64, 80, 96,
@@ -1552,7 +1552,7 @@ void choice_rec_bitrate_cb(void)
         }
     }
 
-    snprintf(text_buf, sizeof(text_buf), "Record bitrate set to: %dk", cfg.rec.bitrate);
+    snprintf(text_buf, sizeof(text_buf), "Bitrate de grabacion a: %dk", cfg.rec.bitrate);
     print_info(text_buf, 0);
 
     unsaved_changes = 1;
@@ -2060,7 +2060,7 @@ void choice_rec_codec_mp3_cb(void)
     //the current selected codec
     test_file_extension();
 
-    print_info("Record codec set to mp3", 0);
+    print_info("Grabación ajustado a mp3", 0);
     fl_g->choice_rec_bitrate->activate();
     
 
@@ -2091,7 +2091,7 @@ void choice_rec_codec_ogg_cb(void)
     //the current selected codec
     test_file_extension();
 
-    print_info("Record codec set to ogg/vorbis", 0);
+    print_info("Grabación ajustado a ogg/vorbis", 0);
     fl_g->choice_rec_bitrate->activate();
 
     unsaved_changes = 1;
@@ -2121,7 +2121,7 @@ void choice_rec_codec_opus_cb(void)
     //the current selected codec
     test_file_extension();
 
-    print_info("Record codec set to opus", 0);
+    print_info("Grabación ajustado a opus", 0);
     fl_g->choice_rec_bitrate->activate();
 
     unsaved_changes = 1;
@@ -2152,7 +2152,7 @@ void choice_rec_codec_flac_cb(void)
     //the current selected codec
     test_file_extension();
 
-    print_info("Record codec set to flac", 0);
+    print_info("Grabación ajustado a flac", 0);
     fl_g->choice_rec_bitrate->deactivate();
 
     unsaved_changes = 1;
@@ -2170,7 +2170,7 @@ void choice_rec_codec_wav_cb(void)
     //the current selected codec
     test_file_extension();
 
-    print_info("Record codec set to wav", 0);
+    print_info("Grabación ajustado a wav", 0);
 
 
     unsaved_changes = 1;
@@ -2299,7 +2299,7 @@ void input_rec_filename_cb(void)
 
 void input_rec_folder_cb(void)
 {
-    int len = strlen(fl_g->input_rec_folder->value());
+    long len = strlen(fl_g->input_rec_folder->value());
 
     cfg.rec.folder = (char*)realloc(cfg.rec.folder, len +2);
 
@@ -2357,7 +2357,7 @@ void button_cfg_browse_songfile_cb(void)
 
 void input_cfg_song_file_cb(void)
 {
-    int len = strlen(fl_g->input_cfg_song_file->value());
+    long len = strlen(fl_g->input_cfg_song_file->value());
 
     cfg.main.song_path = (char*)realloc(cfg.main.song_path, len +1);
 

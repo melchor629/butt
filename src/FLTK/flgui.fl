@@ -207,7 +207,7 @@ class flgui {open
       label {butt settings}
       callback {window_cfg->hide();
 button_cfg->label("Settings@>");} open
-      xywh {847 175 295 384} type Double align 80
+      xywh {921 196 295 384} type Double align 80
       code0 {\#include "FL/Fl_My_Double_Window.H"}
       class Fl_My_Double_Window size_range {280 380 330 380} visible
     } {
@@ -219,61 +219,36 @@ button_cfg->label("Settings@>");} open
           xywh {0 20 300 450} when 6 hide
         } {
           Fl_Group {} {
-            label {Ajustes de servidor} open
-            xywh {15 55 265 85} box ENGRAVED_FRAME align 5
-          } {
-            Fl_Choice choice_cfg_act_icy {
-              label {Información del Streaming}
-              callback {choice_cfg_act_icy_cb();} open
-              xywh {25 83 250 20} down_box BORDER_BOX align 5
-            } {}
-            Fl_Button {} {
-              label {Añadir}
-              callback {button_cfg_add_icy_cb();}
-              tooltip {Add stream info} xywh {25 105 50 20} box ENGRAVED_BOX
-            }
-            Fl_Button button_cfg_edit_icy {
-              label Editar
-              callback {button_cfg_edit_icy_cb();}
-              tooltip {Edit stream info} xywh {127 105 43 20} box ENGRAVED_BOX
-            }
-            Fl_Button button_cfg_del_icy {
-              label Eliminar
-              callback {button_cfg_del_icy_cb();}
-              tooltip {Delete stream info} xywh {220 105 55 20} box ENGRAVED_BOX
-            }
-          }
-          Fl_Group {} {
             label {Archivo de log} open
-            xywh {15 167 265 35} box ENGRAVED_FRAME align 5
+            xywh {15 56 265 34} box ENGRAVED_FRAME align 5
           } {
             Fl_Input input_log_filename {
               callback {input_log_filename_cb();}
-              xywh {20 173 225 25} align 5
+              xywh {20 61 225 25} align 5
             }
             Fl_Button {} {
               callback {button_cfg_log_browse_cb();}
-              tooltip {Select log file} image {../xpm/folder.png} xywh {249 173 25 25} box ENGRAVED_BOX
+              tooltip {Select log file} image {../xpm/folder.png} xywh {249 61 25 25} box ENGRAVED_BOX
             }
           }
           Fl_Group {} {
             label {Configuración} open
-            xywh {15 255 265 50} box ENGRAVED_FRAME align 5
+            xywh {15 120 265 50} box ENGRAVED_FRAME align 5
           } {
             Fl_Button {} {
               label {Importar...}
               callback {button_cfg_import_cb();}
-              tooltip {Import settings from config file} xywh {20 265 70 28} box ENGRAVED_BOX hide
+              tooltip {Import settings from config file} xywh {20 130 70 28} box ENGRAVED_BOX hide
             }
             Fl_Button {} {
               label {&Guardar}
               callback {cfg_write_file(NULL);}
-              tooltip {Save settings} xywh {100 265 95 28} box ENGRAVED_BOX
+              tooltip {Save settings} xywh {100 130 95 28} box ENGRAVED_BOX
             }
             Fl_Button {} {
               label {Exportar...}
               callback {button_cfg_export_cb();}
-              tooltip {export settings} xywh {204 265 70 28} box ENGRAVED_BOX hide
+              tooltip {export settings} xywh {204 130 70 28} box ENGRAVED_BOX hide
             }
           }
         }
@@ -475,60 +450,85 @@ else
           }
         }
         Fl_Group {} {
-          label Stream open selected
-          xywh {0 19 300 450}
+          label Stream open
+          xywh {0 19 300 450} hide
         } {
           Fl_Group {} {
-            label {Cambiar nombre de canción con archivo} open
-            xywh {15 55 265 65} box ENGRAVED_FRAME align 5
+            label {Cambiar nombre de canción con archivo}
+            xywh {15 165 265 65} box ENGRAVED_FRAME align 5
           } {
             Fl_Input input_cfg_song_file {
               callback {input_cfg_song_file_cb();}
-              xywh {20 64 225 25} align 9
+              xywh {20 174 225 25} align 9
               code0 {this->input_cfg_song_file->maximum_size(500);}
             }
             Fl_Button button_songfile_browse {
               callback {button_cfg_browse_songfile_cb();}
-              image {../xpm/folder.png} xywh {250 64 25 25} box ENGRAVED_FRAME
+              image {../xpm/folder.png} xywh {250 174 25 25} box ENGRAVED_FRAME
             }
             Fl_Check_Button check_song_update_active {
               label Activar
               callback {check_song_update_active_cb();}
-              tooltip {Activate auto update from file} xywh {18 91 152 25} down_box DOWN_BOX
+              tooltip {Activate auto update from file} xywh {18 201 152 25} down_box DOWN_BOX
             }
           }
           Fl_Group {} {
-            label {Cambiar nombre de canción manualmente} open
-            xywh {15 149 265 40} box ENGRAVED_FRAME align 5
+            label {Cambiar nombre de canción manualmente}
+            xywh {15 259 265 40} box ENGRAVED_FRAME align 5
           } {
             Fl_Input input_cfg_song {
               callback {input_cfg_song_cb();}
-              xywh {20 157 225 25} align 5
+              xywh {20 267 225 25} align 5
               code0 {this->input_cfg_song->maximum_size(500);}
             }
             Fl_Button {} {
               label OK
               callback {button_cfg_song_go_cb();}
-              tooltip {Update Current Song} xywh {250 157 25 25} box ENGRAVED_BOX shortcut 0xff0d labelsize 12
+              tooltip {Update Current Song} xywh {250 267 25 25} box ENGRAVED_BOX shortcut 0xff0d labelsize 12
             }
           }
           Fl_Check_Button check_cfg_connect {
             label {Empezar streaming al inicio}
             callback {check_cfg_connect_cb();}
-            tooltip {Connect automatically to a server at startup} xywh {15 202 159 18} down_box DOWN_BOX
+            tooltip {Connect automatically to a server at startup} xywh {15 312 159 18} down_box DOWN_BOX
           }
           Fl_Text_Display {} {
             label {Recomendación de nombre de canción:}
-            xywh {15 240 265 25} box NO_BOX
+            xywh {15 350 265 25} box NO_BOX
           }
           Fl_Text_Display {} {
             label {TITULO – ARTISTA}
-            xywh {115 260 50 30} box NO_BOX labelfont 13 labelcolor 1
+            xywh {115 370 50 30} box NO_BOX labelfont 13 labelcolor 1
+          }
+          Fl_Group {} {
+            label {Ajustes de servidor}
+            xywh {15 55 265 85} box ENGRAVED_FRAME align 5
+          } {
+            Fl_Choice choice_cfg_act_icy {
+              label {Información del Streaming}
+              callback {choice_cfg_act_icy_cb();} open
+              xywh {25 83 250 20} down_box BORDER_BOX align 5
+            } {}
+            Fl_Button {} {
+              label {Añadir}
+              callback {button_cfg_add_icy_cb();}
+              tooltip {Add stream info} xywh {25 105 50 20} box ENGRAVED_BOX
+            }
+            Fl_Button button_cfg_edit_icy {
+              label Editar
+              callback {button_cfg_edit_icy_cb();}
+              tooltip {Edit stream info} xywh {127 105 43 20} box ENGRAVED_BOX
+            }
+            Fl_Button button_cfg_del_icy {
+              label Eliminar
+              callback {button_cfg_del_icy_cb();}
+              tooltip {Delete stream info} xywh {220 105 55 20} box ENGRAVED_BOX
+            }
           }
         }
         Fl_Group {} {
           label {Grabación} open
-          xywh {0 19 300 450} hide
+          xywh {0 19 300 450}
         } {
           Fl_Input input_rec_filename {
             label {Nombre de archivo de la grabación}
@@ -539,36 +539,68 @@ else
           Fl_Input input_rec_folder {
             label {Directorio de grabación}
             callback {input_rec_folder_cb();}
-            xywh {15 106 235 25} align 5
+            xywh {15 190 235 25} align 5
             code0 {this->input_rec_folder->maximum_size(500);}
           }
           Fl_Button button_rec_browse {
-            callback {button_rec_browse_cb();}
-            image {../xpm/folder.png} xywh {255 106 25 25} box ENGRAVED_BOX
+            callback {button_rec_browse_cb();} selected
+            image {../xpm/folder.png} xywh {255 190 25 25} box ENGRAVED_BOX
           }
           Fl_Group {} {
-            label {División del archivo} open
-            xywh {15 164 265 57} box ENGRAVED_FRAME align 5
+            label {División del archivo}
+            xywh {15 248 265 57} box ENGRAVED_FRAME align 5
           } {
             Fl_Value_Input input_rec_split_time {
               label Cada
               callback {input_rec_split_time_cb();}
-              xywh {60 171 40 19}
+              xywh {60 255 40 19}
             }
             Fl_Box text_rec_split_time {
               label minutos
-              xywh {105 172 50 16}
+              xywh {105 256 50 16}
             }
             Fl_Check_Button check_sync_to_full_hour {
               label {Sincronizar con cada hora}
               callback {check_sync_to_full_hour_cb();}
-              tooltip {Sync to full hour} xywh {20 196 124 15} down_box DOWN_BOX
+              tooltip {Sync to full hour} xywh {20 280 124 15} down_box DOWN_BOX
             }
           }
           Fl_Check_Button check_cfg_rec {
             label {Empezar a grabar cuando te conectes}
             callback {check_cfg_rec_cb();}
-            tooltip {Start recording when connected} xywh {15 246 265 15} down_box DOWN_BOX
+            tooltip {Start recording when connected} xywh {15 330 265 15} down_box DOWN_BOX
+          }
+          Fl_Text_Display {} {
+            label {%Y año}
+            xywh {20 120 70 10} box NO_BOX
+          }
+          Fl_Text_Display {} {
+            label {%m mes}
+            xywh {20 140 70 10} box NO_BOX
+          }
+          Fl_Text_Display {} {
+            label {%d día}
+            xywh {20 160 70 10} box NO_BOX
+          }
+          Fl_Text_Display {} {
+            label {%H hora}
+            xywh {95 120 70 10} box NO_BOX
+          }
+          Fl_Text_Display {} {
+            label {%M minuto}
+            xywh {95 140 70 10} box NO_BOX
+          }
+          Fl_Text_Display {} {
+            label {%S segundo}
+            xywh {95 160 70 10} box NO_BOX
+          }
+          Fl_Text_Display {} {
+            label {%i nº archivo}
+            xywh {185 120 70 10} box NO_BOX
+          }
+          Fl_Text_Display {} {
+            label {Tokens especiales del archivo}
+            xywh {110 100 70 10} box NO_BOX labelfont 1
           }
         }
         Fl_Group {} {
@@ -601,9 +633,9 @@ else
             tooltip {Stay always on top} xywh {15 178 175 20} down_box DOWN_BOX
           }
           Fl_Check_Button check_gui_lcd_auto {
-            label {Change LCD mode every 5 secs}
+            label {Cambiar modo del LCD cada 5s}
             callback {check_gui_lcd_auto_cb()}
-            tooltip {Change LCD mode every 5 seconds} xywh {15 198 230 27} down_box DOWN_BOX hide
+            tooltip {Change LCD mode every 5 seconds} xywh {15 198 230 27} down_box DOWN_BOX
           }
         }
       }

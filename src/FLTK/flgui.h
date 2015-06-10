@@ -17,8 +17,8 @@
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Text_Display.H>
 #include <FL/Fl_Tabs.H>
-#include <FL/Fl_Choice.H>
 #include <FL/Fl_Input.H>
+#include <FL/Fl_Choice.H>
 #include <FL/Fl_Value_Input.H>
 #include <FL/Fl_Check_Button.H>
 #include <FL/Fl_Double_Window.H>
@@ -114,23 +114,6 @@ private:
   static void cb_window_cfg(Fl_My_Double_Window*, void*);
 public:
   Fl_Tabs *Settings;
-  Fl_Choice *choice_cfg_act_icy;
-private:
-  inline void cb_choice_cfg_act_icy_i(Fl_Choice*, void*);
-  static void cb_choice_cfg_act_icy(Fl_Choice*, void*);
-  inline void cb_A_i(Fl_Button*, void*);
-  static void cb_A(Fl_Button*, void*);
-public:
-  Fl_Button *button_cfg_edit_icy;
-private:
-  inline void cb_button_cfg_edit_icy_i(Fl_Button*, void*);
-  static void cb_button_cfg_edit_icy(Fl_Button*, void*);
-public:
-  Fl_Button *button_cfg_del_icy;
-private:
-  inline void cb_button_cfg_del_icy_i(Fl_Button*, void*);
-  static void cb_button_cfg_del_icy(Fl_Button*, void*);
-public:
   Fl_Input *input_log_filename;
 private:
   inline void cb_input_log_filename_i(Fl_Input*, void*);
@@ -224,6 +207,23 @@ public:
 private:
   inline void cb_check_cfg_connect_i(Fl_Check_Button*, void*);
   static void cb_check_cfg_connect(Fl_Check_Button*, void*);
+public:
+  Fl_Choice *choice_cfg_act_icy;
+private:
+  inline void cb_choice_cfg_act_icy_i(Fl_Choice*, void*);
+  static void cb_choice_cfg_act_icy(Fl_Choice*, void*);
+  inline void cb_A_i(Fl_Button*, void*);
+  static void cb_A(Fl_Button*, void*);
+public:
+  Fl_Button *button_cfg_edit_icy;
+private:
+  inline void cb_button_cfg_edit_icy_i(Fl_Button*, void*);
+  static void cb_button_cfg_edit_icy(Fl_Button*, void*);
+public:
+  Fl_Button *button_cfg_del_icy;
+private:
+  inline void cb_button_cfg_del_icy_i(Fl_Button*, void*);
+  static void cb_button_cfg_del_icy(Fl_Button*, void*);
 public:
   Fl_Input *input_rec_filename;
 private:

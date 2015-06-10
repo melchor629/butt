@@ -380,34 +380,6 @@ void flgui::cb_window_cfg(Fl_My_Double_Window* o, void* v) {
   ((flgui*)(o->user_data()))->cb_window_cfg_i(o,v);
 }
 
-void flgui::cb_choice_cfg_act_icy_i(Fl_Choice*, void*) {
-  choice_cfg_act_icy_cb();
-}
-void flgui::cb_choice_cfg_act_icy(Fl_Choice* o, void* v) {
-  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_choice_cfg_act_icy_i(o,v);
-}
-
-void flgui::cb_A_i(Fl_Button*, void*) {
-  button_cfg_add_icy_cb();
-}
-void flgui::cb_A(Fl_Button* o, void* v) {
-  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_A_i(o,v);
-}
-
-void flgui::cb_button_cfg_edit_icy_i(Fl_Button*, void*) {
-  button_cfg_edit_icy_cb();
-}
-void flgui::cb_button_cfg_edit_icy(Fl_Button* o, void* v) {
-  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_button_cfg_edit_icy_i(o,v);
-}
-
-void flgui::cb_button_cfg_del_icy_i(Fl_Button*, void*) {
-  button_cfg_del_icy_cb();
-}
-void flgui::cb_button_cfg_del_icy(Fl_Button* o, void* v) {
-  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_button_cfg_del_icy_i(o,v);
-}
-
 void flgui::cb_input_log_filename_i(Fl_Input*, void*) {
   input_log_filename_cb();
 }
@@ -636,6 +608,34 @@ void flgui::cb_check_cfg_connect_i(Fl_Check_Button*, void*) {
 }
 void flgui::cb_check_cfg_connect(Fl_Check_Button* o, void* v) {
   ((flgui*)(o->parent()->parent()->parent()->user_data()))->cb_check_cfg_connect_i(o,v);
+}
+
+void flgui::cb_choice_cfg_act_icy_i(Fl_Choice*, void*) {
+  choice_cfg_act_icy_cb();
+}
+void flgui::cb_choice_cfg_act_icy(Fl_Choice* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_choice_cfg_act_icy_i(o,v);
+}
+
+void flgui::cb_A_i(Fl_Button*, void*) {
+  button_cfg_add_icy_cb();
+}
+void flgui::cb_A(Fl_Button* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_A_i(o,v);
+}
+
+void flgui::cb_button_cfg_edit_icy_i(Fl_Button*, void*) {
+  button_cfg_edit_icy_cb();
+}
+void flgui::cb_button_cfg_edit_icy(Fl_Button* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_button_cfg_edit_icy_i(o,v);
+}
+
+void flgui::cb_button_cfg_del_icy_i(Fl_Button*, void*) {
+  button_cfg_del_icy_cb();
+}
+void flgui::cb_button_cfg_del_icy(Fl_Button* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_button_cfg_del_icy_i(o,v);
 }
 
 void flgui::cb_input_rec_filename_i(Fl_Input*, void*) {
@@ -1054,60 +1054,35 @@ flgui::flgui() {
       { Fl_Group* o = new Fl_Group(0, 20, 300, 450, "Principal");
         o->when(FL_WHEN_RELEASE_ALWAYS);
         o->hide();
-        { Fl_Group* o = new Fl_Group(15, 55, 265, 85, "Ajustes de servidor");
+        { Fl_Group* o = new Fl_Group(15, 56, 265, 34, "Archivo de log");
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { choice_cfg_act_icy = new Fl_Choice(25, 83, 250, 20, "Informaci\303\263n del Streaming");
-            choice_cfg_act_icy->down_box(FL_BORDER_BOX);
-            choice_cfg_act_icy->callback((Fl_Callback*)cb_choice_cfg_act_icy);
-            choice_cfg_act_icy->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          } // Fl_Choice* choice_cfg_act_icy
-          { Fl_Button* o = new Fl_Button(25, 105, 50, 20, "A\303\261""adir");
-            o->tooltip("Add stream info");
-            o->box(FL_ENGRAVED_BOX);
-            o->callback((Fl_Callback*)cb_A);
-          } // Fl_Button* o
-          { button_cfg_edit_icy = new Fl_Button(127, 105, 43, 20, "Editar");
-            button_cfg_edit_icy->tooltip("Edit stream info");
-            button_cfg_edit_icy->box(FL_ENGRAVED_BOX);
-            button_cfg_edit_icy->callback((Fl_Callback*)cb_button_cfg_edit_icy);
-          } // Fl_Button* button_cfg_edit_icy
-          { button_cfg_del_icy = new Fl_Button(220, 105, 55, 20, "Eliminar");
-            button_cfg_del_icy->tooltip("Delete stream info");
-            button_cfg_del_icy->box(FL_ENGRAVED_BOX);
-            button_cfg_del_icy->callback((Fl_Callback*)cb_button_cfg_del_icy);
-          } // Fl_Button* button_cfg_del_icy
-          o->end();
-        } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(15, 167, 265, 35, "Archivo de log");
-          o->box(FL_ENGRAVED_FRAME);
-          o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_log_filename = new Fl_Input(20, 173, 225, 25);
+          { input_log_filename = new Fl_Input(20, 61, 225, 25);
             input_log_filename->callback((Fl_Callback*)cb_input_log_filename);
             input_log_filename->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           } // Fl_Input* input_log_filename
-          { Fl_Button* o = new Fl_Button(249, 173, 25, 25);
+          { Fl_Button* o = new Fl_Button(249, 61, 25, 25);
             o->tooltip("Select log file");
             o->box(FL_ENGRAVED_BOX);
             o->callback((Fl_Callback*)cb_);
           } // Fl_Button* o
           o->end();
         } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(15, 255, 265, 50, "Configuraci\303\263n");
+        { Fl_Group* o = new Fl_Group(15, 120, 265, 50, "Configuraci\303\263n");
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { Fl_Button* o = new Fl_Button(20, 265, 70, 28, "Importar...");
+          { Fl_Button* o = new Fl_Button(20, 130, 70, 28, "Importar...");
             o->tooltip("Import settings from config file");
             o->box(FL_ENGRAVED_BOX);
             o->callback((Fl_Callback*)cb_Importar);
             o->hide();
           } // Fl_Button* o
-          { Fl_Button* o = new Fl_Button(100, 265, 95, 28, "&Guardar");
+          { Fl_Button* o = new Fl_Button(100, 130, 95, 28, "&Guardar");
             o->tooltip("Save settings");
             o->box(FL_ENGRAVED_BOX);
             o->callback((Fl_Callback*)cb_Guardar);
           } // Fl_Button* o
-          { Fl_Button* o = new Fl_Button(204, 265, 70, 28, "Exportar...");
+          { Fl_Button* o = new Fl_Button(204, 130, 70, 28, "Exportar...");
             o->tooltip("export settings");
             o->box(FL_ENGRAVED_BOX);
             o->callback((Fl_Callback*)cb_Exportar);
@@ -1184,34 +1159,35 @@ flgui::flgui() {
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 300, 450, "Stream");
-        { Fl_Group* o = new Fl_Group(15, 55, 265, 65, "Cambiar nombre de canci\303\263n con archivo");
+        o->hide();
+        { Fl_Group* o = new Fl_Group(15, 165, 265, 65, "Cambiar nombre de canci\303\263n con archivo");
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_cfg_song_file = new Fl_Input(20, 64, 225, 25);
+          { input_cfg_song_file = new Fl_Input(20, 174, 225, 25);
             input_cfg_song_file->callback((Fl_Callback*)cb_input_cfg_song_file);
             input_cfg_song_file->align(Fl_Align(FL_ALIGN_TOP_RIGHT));
             this->input_cfg_song_file->maximum_size(500);
           } // Fl_Input* input_cfg_song_file
-          { button_songfile_browse = new Fl_Button(250, 64, 25, 25);
+          { button_songfile_browse = new Fl_Button(250, 174, 25, 25);
             button_songfile_browse->box(FL_ENGRAVED_FRAME);
             button_songfile_browse->callback((Fl_Callback*)cb_button_songfile_browse);
           } // Fl_Button* button_songfile_browse
-          { check_song_update_active = new Fl_Check_Button(18, 91, 152, 25, "Activar");
+          { check_song_update_active = new Fl_Check_Button(18, 201, 152, 25, "Activar");
             check_song_update_active->tooltip("Activate auto update from file");
             check_song_update_active->down_box(FL_DOWN_BOX);
             check_song_update_active->callback((Fl_Callback*)cb_check_song_update_active);
           } // Fl_Check_Button* check_song_update_active
           o->end();
         } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(15, 149, 265, 40, "Cambiar nombre de canci\303\263n manualmente");
+        { Fl_Group* o = new Fl_Group(15, 259, 265, 40, "Cambiar nombre de canci\303\263n manualmente");
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_cfg_song = new Fl_Input(20, 157, 225, 25);
+          { input_cfg_song = new Fl_Input(20, 267, 225, 25);
             input_cfg_song->callback((Fl_Callback*)cb_input_cfg_song);
             input_cfg_song->align(Fl_Align(FL_ALIGN_TOP_LEFT));
             this->input_cfg_song->maximum_size(500);
           } // Fl_Input* input_cfg_song
-          { Fl_Button* o = new Fl_Button(250, 157, 25, 25, "OK");
+          { Fl_Button* o = new Fl_Button(250, 267, 25, 25, "OK");
             o->tooltip("Update Current Song");
             o->box(FL_ENGRAVED_BOX);
             o->shortcut(0xff0d);
@@ -1220,58 +1196,107 @@ flgui::flgui() {
           } // Fl_Button* o
           o->end();
         } // Fl_Group* o
-        { check_cfg_connect = new Fl_Check_Button(15, 202, 159, 18, "Empezar streaming al inicio");
+        { check_cfg_connect = new Fl_Check_Button(15, 312, 159, 18, "Empezar streaming al inicio");
           check_cfg_connect->tooltip("Connect automatically to a server at startup");
           check_cfg_connect->down_box(FL_DOWN_BOX);
           check_cfg_connect->callback((Fl_Callback*)cb_check_cfg_connect);
         } // Fl_Check_Button* check_cfg_connect
-        { Fl_Text_Display* o = new Fl_Text_Display(15, 240, 265, 25, "Recomendaci\303\263n de nombre de canci\303\263n:");
+        { Fl_Text_Display* o = new Fl_Text_Display(15, 350, 265, 25, "Recomendaci\303\263n de nombre de canci\303\263n:");
           o->box(FL_NO_BOX);
         } // Fl_Text_Display* o
-        { Fl_Text_Display* o = new Fl_Text_Display(115, 260, 50, 30, "TITULO \342\200\223 ARTISTA");
+        { Fl_Text_Display* o = new Fl_Text_Display(115, 370, 50, 30, "TITULO \342\200\223 ARTISTA");
           o->box(FL_NO_BOX);
           o->labelfont(13);
           o->labelcolor((Fl_Color)1);
         } // Fl_Text_Display* o
+        { Fl_Group* o = new Fl_Group(15, 55, 265, 85, "Ajustes de servidor");
+          o->box(FL_ENGRAVED_FRAME);
+          o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
+          { choice_cfg_act_icy = new Fl_Choice(25, 83, 250, 20, "Informaci\303\263n del Streaming");
+            choice_cfg_act_icy->down_box(FL_BORDER_BOX);
+            choice_cfg_act_icy->callback((Fl_Callback*)cb_choice_cfg_act_icy);
+            choice_cfg_act_icy->align(Fl_Align(FL_ALIGN_TOP_LEFT));
+          } // Fl_Choice* choice_cfg_act_icy
+          { Fl_Button* o = new Fl_Button(25, 105, 50, 20, "A\303\261""adir");
+            o->tooltip("Add stream info");
+            o->box(FL_ENGRAVED_BOX);
+            o->callback((Fl_Callback*)cb_A);
+          } // Fl_Button* o
+          { button_cfg_edit_icy = new Fl_Button(127, 105, 43, 20, "Editar");
+            button_cfg_edit_icy->tooltip("Edit stream info");
+            button_cfg_edit_icy->box(FL_ENGRAVED_BOX);
+            button_cfg_edit_icy->callback((Fl_Callback*)cb_button_cfg_edit_icy);
+          } // Fl_Button* button_cfg_edit_icy
+          { button_cfg_del_icy = new Fl_Button(220, 105, 55, 20, "Eliminar");
+            button_cfg_del_icy->tooltip("Delete stream info");
+            button_cfg_del_icy->box(FL_ENGRAVED_BOX);
+            button_cfg_del_icy->callback((Fl_Callback*)cb_button_cfg_del_icy);
+          } // Fl_Button* button_cfg_del_icy
+          o->end();
+        } // Fl_Group* o
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 300, 450, "Grabaci\303\263n");
-        o->hide();
         { input_rec_filename = new Fl_Input(15, 55, 265, 25, "Nombre de archivo de la grabaci\303\263n");
           input_rec_filename->tooltip("Record Filename");
           input_rec_filename->callback((Fl_Callback*)cb_input_rec_filename);
           input_rec_filename->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           this->input_rec_filename->maximum_size(500);
         } // Fl_Input* input_rec_filename
-        { input_rec_folder = new Fl_Input(15, 106, 235, 25, "Directorio de grabaci\303\263n");
+        { input_rec_folder = new Fl_Input(15, 190, 235, 25, "Directorio de grabaci\303\263n");
           input_rec_folder->callback((Fl_Callback*)cb_input_rec_folder);
           input_rec_folder->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           this->input_rec_folder->maximum_size(500);
         } // Fl_Input* input_rec_folder
-        { button_rec_browse = new Fl_Button(255, 106, 25, 25);
+        { button_rec_browse = new Fl_Button(255, 190, 25, 25);
           button_rec_browse->box(FL_ENGRAVED_BOX);
           button_rec_browse->callback((Fl_Callback*)cb_button_rec_browse);
         } // Fl_Button* button_rec_browse
-        { Fl_Group* o = new Fl_Group(15, 164, 265, 57, "Divisi\303\263n del archivo");
+        { Fl_Group* o = new Fl_Group(15, 248, 265, 57, "Divisi\303\263n del archivo");
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_rec_split_time = new Fl_Value_Input(60, 171, 40, 19, "Cada");
+          { input_rec_split_time = new Fl_Value_Input(60, 255, 40, 19, "Cada");
             input_rec_split_time->callback((Fl_Callback*)cb_input_rec_split_time);
           } // Fl_Value_Input* input_rec_split_time
-          { text_rec_split_time = new Fl_Box(105, 172, 50, 16, "minutos");
+          { text_rec_split_time = new Fl_Box(105, 256, 50, 16, "minutos");
           } // Fl_Box* text_rec_split_time
-          { check_sync_to_full_hour = new Fl_Check_Button(20, 196, 124, 15, "Sincronizar con cada hora");
+          { check_sync_to_full_hour = new Fl_Check_Button(20, 280, 124, 15, "Sincronizar con cada hora");
             check_sync_to_full_hour->tooltip("Sync to full hour");
             check_sync_to_full_hour->down_box(FL_DOWN_BOX);
             check_sync_to_full_hour->callback((Fl_Callback*)cb_check_sync_to_full_hour);
           } // Fl_Check_Button* check_sync_to_full_hour
           o->end();
         } // Fl_Group* o
-        { check_cfg_rec = new Fl_Check_Button(15, 246, 265, 15, "Empezar a grabar cuando te conectes");
+        { check_cfg_rec = new Fl_Check_Button(15, 330, 265, 15, "Empezar a grabar cuando te conectes");
           check_cfg_rec->tooltip("Start recording when connected");
           check_cfg_rec->down_box(FL_DOWN_BOX);
           check_cfg_rec->callback((Fl_Callback*)cb_check_cfg_rec);
         } // Fl_Check_Button* check_cfg_rec
+        { Fl_Text_Display* o = new Fl_Text_Display(20, 120, 70, 10, "%Y a\303\261o");
+          o->box(FL_NO_BOX);
+        } // Fl_Text_Display* o
+        { Fl_Text_Display* o = new Fl_Text_Display(20, 140, 70, 10, "%m mes");
+          o->box(FL_NO_BOX);
+        } // Fl_Text_Display* o
+        { Fl_Text_Display* o = new Fl_Text_Display(20, 160, 70, 10, "%d d\303\255""a");
+          o->box(FL_NO_BOX);
+        } // Fl_Text_Display* o
+        { Fl_Text_Display* o = new Fl_Text_Display(95, 120, 70, 10, "%H hora");
+          o->box(FL_NO_BOX);
+        } // Fl_Text_Display* o
+        { Fl_Text_Display* o = new Fl_Text_Display(95, 140, 70, 10, "%M minuto");
+          o->box(FL_NO_BOX);
+        } // Fl_Text_Display* o
+        { Fl_Text_Display* o = new Fl_Text_Display(95, 160, 70, 10, "%S segundo");
+          o->box(FL_NO_BOX);
+        } // Fl_Text_Display* o
+        { Fl_Text_Display* o = new Fl_Text_Display(185, 120, 70, 10, "%i n\302\272 archivo");
+          o->box(FL_NO_BOX);
+        } // Fl_Text_Display* o
+        { Fl_Text_Display* o = new Fl_Text_Display(110, 100, 70, 10, "Tokens especiales del archivo");
+          o->box(FL_NO_BOX);
+          o->labelfont(1);
+        } // Fl_Text_Display* o
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 300, 450, "GUI");
@@ -1303,11 +1328,10 @@ flgui::flgui() {
           check_gui_ontop->down_box(FL_DOWN_BOX);
           check_gui_ontop->callback((Fl_Callback*)cb_check_gui_ontop);
         } // Fl_Check_Button* check_gui_ontop
-        { check_gui_lcd_auto = new Fl_Check_Button(15, 198, 230, 27, "Change LCD mode every 5 secs");
+        { check_gui_lcd_auto = new Fl_Check_Button(15, 198, 230, 27, "Cambiar modo del LCD cada 5s");
           check_gui_lcd_auto->tooltip("Change LCD mode every 5 seconds");
           check_gui_lcd_auto->down_box(FL_DOWN_BOX);
           check_gui_lcd_auto->callback((Fl_Callback*)cb_check_gui_lcd_auto);
-          check_gui_lcd_auto->hide();
         } // Fl_Check_Button* check_gui_lcd_auto
         o->end();
       } // Fl_Group* o

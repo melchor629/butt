@@ -59,30 +59,30 @@ void display_info_timer(void*)
 
     if(display_info == SENT_DATA)
     {
-        sprintf(lcd_text_buf, "stream sent\n%0.2lfMB",
+        sprintf(lcd_text_buf, "Enviado\n%0.2lfMB",
                 kbytes_sent / 1024);
-        print_lcd(lcd_text_buf, strlen(lcd_text_buf), 0, 1);
+        print_lcd(lcd_text_buf, (int) strlen(lcd_text_buf), 0, 1);
     }
 
     if(display_info == STREAM_TIME && timer_is_elapsed(&stream_timer))
     {
-        sprintf(lcd_text_buf, "stream time\n%s",
+        sprintf(lcd_text_buf, "Tiempo\n%s",
                 timer_get_time_str(&stream_timer));
-        print_lcd(lcd_text_buf, strlen(lcd_text_buf), 0, 1);
+        print_lcd(lcd_text_buf, (int) strlen(lcd_text_buf), 0, 1);
     }
 
     if(display_info == REC_TIME && timer_is_elapsed(&rec_timer))
     {
-        sprintf(lcd_text_buf, "record time\n%s",
+        sprintf(lcd_text_buf, "Tiempo grabando\n%s",
                 timer_get_time_str(&rec_timer));
-        print_lcd(lcd_text_buf, strlen(lcd_text_buf), 0, 1);
+        print_lcd(lcd_text_buf, (int) strlen(lcd_text_buf), 0, 1);
     }
 
     if(display_info == REC_DATA)
     {
-        sprintf(lcd_text_buf, "record size\n%0.2lfMB",
+        sprintf(lcd_text_buf, "Tamaño grabado\n%0.2lfMB",
                 kbytes_written / 1024);
-        print_lcd(lcd_text_buf, strlen(lcd_text_buf), 0, 1);
+        print_lcd(lcd_text_buf, (int) strlen(lcd_text_buf), 0, 1);
     }
 
     Fl::repeat_timeout(0.1, &display_info_timer);
@@ -130,7 +130,7 @@ void is_connected_timer(void*)
 {
     if(!connected)
     {
-        print_info("ERROR: Connection lost\nreconnecting...", 1);
+        print_info("ERROR: Conexión perdida\nReconectando...", 1);
         if(cfg.srv[cfg.selected_srv]->type == SHOUTCAST)
             sc_disconnect();
         else
@@ -189,8 +189,8 @@ void split_recording_timer(void *initial_call)
     ext = util_get_file_extension(cfg.rec.filename);
     if(ext == NULL)
     {
-        print_info("Could not find a file extension in current filename\n"
-                "Automatic file splitting is deactivated", 0);
+        print_info("No se ha podido detectar una extensión de archivo\n"
+                "Se ha desactivado la división del archivo", 0);
         free(path);
         return;
     }
@@ -204,9 +204,9 @@ void split_recording_timer(void *initial_call)
 
     if((next_fd = fl_fopen(path, "rb")) != NULL)
     {
-        print_info("Next file ", 0);
+        print_info("Siguiente archivo ", 0);
         print_info(path, 0);
-        print_info("already exists\nbutt keeps recording to current file", 0);
+        print_info(" ya existe\nbutt se mantendrá en el actual", 0);
         fclose(next_fd);
         free(path);
         return;
@@ -214,12 +214,12 @@ void split_recording_timer(void *initial_call)
 
     if((next_fd = fl_fopen(path, "wb")) == NULL)
     {
-        fl_alert("Could not open:\n%s", path);
+        fl_alert("No se ha podido abrir:\n%s", path);
         free(path);
         return;
     }
 
-    print_info("Recording to:", 0);
+    print_info("Grabando en: ", 0);
     print_info(path, 0);
 
     file_num++;
@@ -240,7 +240,7 @@ void split_recording_timer(void *initial_call)
 
 void songfile_timer(void*)
 {
-    int len;
+    long len;
     char song[501];
     char msg[100];
     float repeat_time = 1;
@@ -266,7 +266,7 @@ void songfile_timer(void*)
 
    if((cfg.main.song_fd = fl_fopen(cfg.main.song_path, "rb")) == NULL)
    {
-	   snprintf(msg, sizeof(msg), "Warning\nCould not open: %s.\nWill retry in 5 seconds", 
+	   snprintf(msg, sizeof(msg), "No se ha podido abrir: %s.\nSe reintentará en 5s", 
 					   cfg.main.song_path); 
 
        print_info(msg, 1);
@@ -283,9 +283,11 @@ void songfile_timer(void*)
        if(song[len-1] == '\n' || song[len-1] == '\r')
            song[len-1] = '\0';
 
-       cfg.main.song = (char*) realloc(cfg.main.song, strlen(song) +1);
-       strcpy(cfg.main.song, song);
-       button_cfg_song_go_cb();
+       if(cfg.main.song == NULL || strcmp(cfg.main.song, song)) {
+           cfg.main.song = (char*) realloc(cfg.main.song, strlen(song) +1);
+           strcpy(cfg.main.song, song);
+           button_cfg_song_go_cb();
+       }
    }
 
    fclose(cfg.main.song_fd);

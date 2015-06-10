@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
     Fl::add_timeout(0.01, &vu_meter_timer);
     Fl::add_timeout(5, &display_rotate_timer);
 
-    strcpy(lcd_buf, "idle");
+    strcpy(lcd_buf, "En espera");
     PRINT_LCD(lcd_buf, (int) strlen(lcd_buf), 0, 1);
 
 	if(cfg.main.connect_at_startup)

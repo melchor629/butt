@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BUTT.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>butt.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3C69A671189E7D73001CBFBA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4817DC021B29AD0F006523B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4817DC141B29AD0F006523B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

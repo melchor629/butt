@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C69A671189E7D73001CBFBA"
-               BuildableName = "butt"
+               BlueprintIdentifier = "4817DC021B29AD0F006523B8"
+               BuildableName = "butt.app"
                BlueprintName = "butt"
+               ReferencedContainer = "container:butt.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4817DC141B29AD0F006523B8"
+               BuildableName = "BUTTTests.xctest"
+               BlueprintName = "BUTTTests"
                ReferencedContainer = "container:butt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,12 +42,22 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4817DC141B29AD0F006523B8"
+               BuildableName = "BUTTTests.xctest"
+               BlueprintName = "BUTTTests"
+               ReferencedContainer = "container:butt.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3C69A671189E7D73001CBFBA"
-            BuildableName = "butt"
+            BlueprintIdentifier = "4817DC021B29AD0F006523B8"
+            BuildableName = "butt.app"
             BlueprintName = "butt"
             ReferencedContainer = "container:butt.xcodeproj">
          </BuildableReference>
@@ -52,8 +76,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3C69A671189E7D73001CBFBA"
-            BuildableName = "butt"
+            BlueprintIdentifier = "4817DC021B29AD0F006523B8"
+            BuildableName = "butt.app"
             BlueprintName = "butt"
             ReferencedContainer = "container:butt.xcodeproj">
          </BuildableReference>
@@ -71,8 +95,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3C69A671189E7D73001CBFBA"
-            BuildableName = "butt"
+            BlueprintIdentifier = "4817DC021B29AD0F006523B8"
+            BuildableName = "butt.app"
             BlueprintName = "butt"
             ReferencedContainer = "container:butt.xcodeproj">
          </BuildableReference>

@@ -35,24 +35,37 @@
 		3CC6F2BE19083488001993B1 /* vu_meter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F2A919083488001993B1 /* vu_meter.cpp */; };
 		3CC6F2BF19083488001993B1 /* wav_header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6F2AB19083488001993B1 /* wav_header.cpp */; };
 		3CC899811926A7CE008A414B /* fl_timer_funcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */; };
+		4817DC0D1B29AD0F006523B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4817DC0C1B29AD0F006523B8 /* Images.xcassets */; };
+		4817DC441B29AF80006523B8 /* butt-bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C69A672189E7D73001CBFBA /* butt-bin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4817DC231B29ADE6006523B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C69A66A189E7D72001CBFBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C69A671189E7D73001CBFBA;
+			remoteInfo = butt;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		3C69A670189E7D73001CBFBA /* CopyFiles */ = {
+		4817DC431B29AF77006523B8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 6;
 			files = (
+				4817DC441B29AF80006523B8 /* butt-bin in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3C0CC7F61A49FAD60079F4B5 /* flac_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flac_encode.h; path = ../src/flac_encode.h; sourceTree = "<group>"; };
 		3C0CC7F71A49FAD60079F4B5 /* flac_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flac_encode.cpp; path = ../src/flac_encode.cpp; sourceTree = "<group>"; };
-		3C69A672189E7D73001CBFBA /* butt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = butt; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C69A672189E7D73001CBFBA /* butt-bin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "butt-bin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3C69A6B8189E7EDD001CBFBA /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		3C69A6B9189E7EDD001CBFBA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -109,6 +122,25 @@
 		3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fl_timer_funcs.cpp; path = ../src/FLTK/fl_timer_funcs.cpp; sourceTree = "<group>"; };
 		3CC899801926A7CE008A414B /* fl_timer_funcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fl_timer_funcs.h; path = ../src/FLTK/fl_timer_funcs.h; sourceTree = "<group>"; };
 		3CD4B90B190E85C400035EA8 /* Fl_My_Value_Slider.H */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Fl_My_Value_Slider.H; sourceTree = "<group>"; };
+		4817DBE71B29AA5C006523B8 /* butt.desktop */ = {isa = PBXFileReference; lastKnownFileType = text; name = butt.desktop; path = ../icons/butt.desktop; sourceTree = "<group>"; };
+		4817DBE81B29AA5C006523B8 /* butt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = butt.icns; path = ../icons/butt.icns; sourceTree = "<group>"; };
+		4817DBE91B29AA5C006523B8 /* butt.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = butt.ico; path = ../icons/butt.ico; sourceTree = "<group>"; };
+		4817DBF91B29AA5C006523B8 /* icon_scalable.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = icon_scalable.svg; path = ../icons/icon_scalable.svg; sourceTree = "<group>"; };
+		4817DC031B29AD0F006523B8 /* BUTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BUTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4817DC061B29AD0F006523B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4817DC0C1B29AD0F006523B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4817DC251B29AE22006523B8 /* libFLAC-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libFLAC-static.a"; path = "lib/libFLAC-static.a"; sourceTree = "<group>"; };
+		4817DC261B29AE22006523B8 /* libfltk_forms.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_forms.a; path = lib/libfltk_forms.a; sourceTree = "<group>"; };
+		4817DC271B29AE22006523B8 /* libfltk_gl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_gl.a; path = lib/libfltk_gl.a; sourceTree = "<group>"; };
+		4817DC281B29AE22006523B8 /* libfltk_images.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk_images.a; path = lib/libfltk_images.a; sourceTree = "<group>"; };
+		4817DC291B29AE22006523B8 /* libfltk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk.a; path = lib/libfltk.a; sourceTree = "<group>"; };
+		4817DC2A1B29AE22006523B8 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmp3lame.a; path = lib/libmp3lame.a; sourceTree = "<group>"; };
+		4817DC2B1B29AE22006523B8 /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libogg.a; path = lib/libogg.a; sourceTree = "<group>"; };
+		4817DC2C1B29AE22006523B8 /* libopus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopus.a; path = lib/libopus.a; sourceTree = "<group>"; };
+		4817DC2D1B29AE22006523B8 /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportaudio.a; path = lib/libportaudio.a; sourceTree = "<group>"; };
+		4817DC2E1B29AE22006523B8 /* libsamplerate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsamplerate.a; path = lib/libsamplerate.a; sourceTree = "<group>"; };
+		4817DC2F1B29AE22006523B8 /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = lib/libvorbis.a; sourceTree = "<group>"; };
+		4817DC301B29AE22006523B8 /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisenc.a; path = lib/libvorbisenc.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,12 +155,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4817DC001B29AD0F006523B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		3C69A669189E7D72001CBFBA = {
 			isa = PBXGroup;
 			children = (
+				4817DC3D1B29AE30006523B8 /* libs */,
+				4817DBE61B29AA3C006523B8 /* images */,
 				3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */,
 				3C74136D1939241400211C26 /* opus_encode.h */,
 				3C74136E1939241400211C26 /* opus_encode.cpp */,
@@ -168,11 +209,7 @@
 				3CC6F2AA19083488001993B1 /* vu_meter.h */,
 				3CC6F2AB19083488001993B1 /* wav_header.cpp */,
 				3CC6F2AC19083488001993B1 /* wav_header.h */,
-				3C69A6DC189E844E001CBFBA /* Foundation.framework */,
-				3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */,
-				3C69A6B8189E7EDD001CBFBA /* AudioUnit.framework */,
-				3C69A6B9189E7EDD001CBFBA /* Cocoa.framework */,
-				3C69A6BA189E7EDD001CBFBA /* CoreAudio.framework */,
+				4817DC041B29AD0F006523B8 /* BUTT */,
 				3C69A673189E7D73001CBFBA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,7 +217,8 @@
 		3C69A673189E7D73001CBFBA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3C69A672189E7D73001CBFBA /* butt */,
+				3C69A672189E7D73001CBFBA /* butt-bin */,
+				4817DC031B29AD0F006523B8 /* BUTT.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,25 +254,96 @@
 			path = FL;
 			sourceTree = "<group>";
 		};
+		4817DBE61B29AA3C006523B8 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				4817DBE71B29AA5C006523B8 /* butt.desktop */,
+				4817DBE81B29AA5C006523B8 /* butt.icns */,
+				4817DBE91B29AA5C006523B8 /* butt.ico */,
+				4817DBF91B29AA5C006523B8 /* icon_scalable.svg */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		4817DC041B29AD0F006523B8 /* BUTT */ = {
+			isa = PBXGroup;
+			children = (
+				4817DC0C1B29AD0F006523B8 /* Images.xcassets */,
+				4817DC051B29AD0F006523B8 /* Supporting Files */,
+			);
+			path = BUTT;
+			sourceTree = "<group>";
+		};
+		4817DC051B29AD0F006523B8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4817DC061B29AD0F006523B8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4817DC3D1B29AE30006523B8 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				3C69A6DC189E844E001CBFBA /* Foundation.framework */,
+				3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */,
+				3C69A6B8189E7EDD001CBFBA /* AudioUnit.framework */,
+				3C69A6B9189E7EDD001CBFBA /* Cocoa.framework */,
+				3C69A6BA189E7EDD001CBFBA /* CoreAudio.framework */,
+				4817DC251B29AE22006523B8 /* libFLAC-static.a */,
+				4817DC261B29AE22006523B8 /* libfltk_forms.a */,
+				4817DC271B29AE22006523B8 /* libfltk_gl.a */,
+				4817DC281B29AE22006523B8 /* libfltk_images.a */,
+				4817DC291B29AE22006523B8 /* libfltk.a */,
+				4817DC2A1B29AE22006523B8 /* libmp3lame.a */,
+				4817DC2B1B29AE22006523B8 /* libogg.a */,
+				4817DC2C1B29AE22006523B8 /* libopus.a */,
+				4817DC2D1B29AE22006523B8 /* libportaudio.a */,
+				4817DC2E1B29AE22006523B8 /* libsamplerate.a */,
+				4817DC2F1B29AE22006523B8 /* libvorbis.a */,
+				4817DC301B29AE22006523B8 /* libvorbisenc.a */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3C69A671189E7D73001CBFBA /* butt */ = {
+		3C69A671189E7D73001CBFBA /* butt-bin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C69A67B189E7D73001CBFBA /* Build configuration list for PBXNativeTarget "butt" */;
+			buildConfigurationList = 3C69A67B189E7D73001CBFBA /* Build configuration list for PBXNativeTarget "butt-bin" */;
 			buildPhases = (
 				3C69A66E189E7D73001CBFBA /* Sources */,
 				3C69A66F189E7D73001CBFBA /* Frameworks */,
-				3C69A670189E7D73001CBFBA /* CopyFiles */,
+				4817DBFE1B29ACBB006523B8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = butt;
+			name = "butt-bin";
 			productName = butt;
-			productReference = 3C69A672189E7D73001CBFBA /* butt */;
+			productReference = 3C69A672189E7D73001CBFBA /* butt-bin */;
 			productType = "com.apple.product-type.tool";
+		};
+		4817DC021B29AD0F006523B8 /* butt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4817DC1D1B29AD0F006523B8 /* Build configuration list for PBXNativeTarget "butt" */;
+			buildPhases = (
+				4817DBFF1B29AD0F006523B8 /* Sources */,
+				4817DC001B29AD0F006523B8 /* Frameworks */,
+				4817DC011B29AD0F006523B8 /* Resources */,
+				4817DC431B29AF77006523B8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4817DC241B29ADE6006523B8 /* PBXTargetDependency */,
+			);
+			name = butt;
+			productName = BUTT;
+			productReference = 4817DC031B29AD0F006523B8 /* BUTT.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -244,6 +353,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Daniel Nöthen";
+				TargetAttributes = {
+					4817DC021B29AD0F006523B8 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
 			};
 			buildConfigurationList = 3C69A66D189E7D72001CBFBA /* Build configuration list for PBXProject "butt" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -251,16 +365,36 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 3C69A669189E7D72001CBFBA;
 			productRefGroup = 3C69A673189E7D73001CBFBA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3C69A671189E7D73001CBFBA /* butt */,
+				3C69A671189E7D73001CBFBA /* butt-bin */,
+				4817DC021B29AD0F006523B8 /* butt */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4817DBFE1B29ACBB006523B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4817DC011B29AD0F006523B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4817DC0D1B29AD0F006523B8 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C69A66E189E7D73001CBFBA /* Sources */ = {
@@ -294,7 +428,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4817DBFF1B29AD0F006523B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4817DC241B29ADE6006523B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C69A671189E7D73001CBFBA /* butt-bin */;
+			targetProxy = 4817DC231B29ADE6006523B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3C69A679189E7D73001CBFBA /* Debug */ = {
@@ -455,6 +604,90 @@
 			};
 			name = Release;
 		};
+		4817DC1E1B29AD0F006523B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = BUTT/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = (
+					"./lib/libFLAC-static.a",
+					./lib/libfltk_forms.a,
+					./lib/libfltk_gl.a,
+					./lib/libfltk_images.a,
+					./lib/libfltk.a,
+					./lib/libmp3lame.a,
+					./lib/libogg.a,
+					./lib/libopus.a,
+					./lib/libportaudio.a,
+					./lib/libsamplerate.a,
+					./lib/libvorbis.a,
+					./lib/libvorbisenc.a,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4817DC1F1B29AD0F006523B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = BUTT/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"./lib/libFLAC-static.a",
+					./lib/libfltk_forms.a,
+					./lib/libfltk_gl.a,
+					./lib/libfltk_images.a,
+					./lib/libfltk.a,
+					./lib/libmp3lame.a,
+					./lib/libogg.a,
+					./lib/libopus.a,
+					./lib/libportaudio.a,
+					./lib/libsamplerate.a,
+					./lib/libvorbis.a,
+					./lib/libvorbisenc.a,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -467,7 +700,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C69A67B189E7D73001CBFBA /* Build configuration list for PBXNativeTarget "butt" */ = {
+		3C69A67B189E7D73001CBFBA /* Build configuration list for PBXNativeTarget "butt-bin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C69A67C189E7D73001CBFBA /* Debug */,
@@ -475,6 +708,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4817DC1D1B29AD0F006523B8 /* Build configuration list for PBXNativeTarget "butt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4817DC1E1B29AD0F006523B8 /* Debug */,
+				4817DC1F1B29AD0F006523B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

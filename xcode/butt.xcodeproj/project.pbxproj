@@ -90,7 +90,6 @@
 		3CC6F28D19083487001993B1 /* flgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = flgui.cpp; sourceTree = "<group>"; };
 		3CC6F28E19083487001993B1 /* flgui.fl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flgui.fl; sourceTree = "<group>"; };
 		3CC6F28F19083487001993B1 /* flgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flgui.h; sourceTree = "<group>"; };
-		3CC6F29019083487001993B1 /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		3CC6F29119083487001993B1 /* icecast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = icecast.cpp; path = ../src/icecast.cpp; sourceTree = "<group>"; };
 		3CC6F29219083487001993B1 /* icecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = icecast.h; path = ../src/icecast.h; sourceTree = "<group>"; };
 		3CC6F29319083487001993B1 /* lame_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lame_encode.cpp; path = ../src/lame_encode.cpp; sourceTree = "<group>"; };
@@ -126,7 +125,7 @@
 		4817DBE81B29AA5C006523B8 /* butt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = butt.icns; path = ../icons/butt.icns; sourceTree = "<group>"; };
 		4817DBE91B29AA5C006523B8 /* butt.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = butt.ico; path = ../icons/butt.ico; sourceTree = "<group>"; };
 		4817DBF91B29AA5C006523B8 /* icon_scalable.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = icon_scalable.svg; path = ../icons/icon_scalable.svg; sourceTree = "<group>"; };
-		4817DC031B29AD0F006523B8 /* BUTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BUTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4817DC031B29AD0F006523B8 /* butt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = butt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4817DC061B29AD0F006523B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4817DC0C1B29AD0F006523B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4817DC251B29AE22006523B8 /* libFLAC-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libFLAC-static.a"; path = "lib/libFLAC-static.a"; sourceTree = "<group>"; };
@@ -218,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				3C69A672189E7D73001CBFBA /* butt-bin */,
-				4817DC031B29AD0F006523B8 /* BUTT.app */,
+				4817DC031B29AD0F006523B8 /* butt.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,7 +237,6 @@
 				3CC6F28D19083487001993B1 /* flgui.cpp */,
 				3CC6F28E19083487001993B1 /* flgui.fl */,
 				3CC6F28F19083487001993B1 /* flgui.h */,
-				3CC6F29019083487001993B1 /* folder.png */,
 			);
 			name = FLTK;
 			path = ../src/FLTK;
@@ -342,7 +340,7 @@
 			);
 			name = butt;
 			productName = BUTT;
-			productReference = 4817DC031B29AD0F006523B8 /* BUTT.app */;
+			productReference = 4817DC031B29AD0F006523B8 /* butt.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -716,6 +714,7 @@
 				4817DC1F1B29AD0F006523B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

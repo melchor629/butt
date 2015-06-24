@@ -74,7 +74,7 @@ void *connect_thread(void *data)
         if(rv == 2) 
         {
             fl_g->lcd->clear();
-            fl_g->lcd->print((const uchar*)"En espera", 5);
+            fl_g->lcd->print((const uchar*)"En espera", 9);
             break;
         }
         usleep(100000); // 100ms
@@ -562,7 +562,7 @@ void button_disconnect_cb(void)
                 snd_stop_rec();
                 Fl::remove_timeout(&display_info_timer);
                 fl_g->lcd->clear();
-                fl_g->lcd->print((const uchar*)"En espera", 5);
+                fl_g->lcd->print((const uchar*)"En espera", 9);
                 fl_g->choice_rec_codec->activate();
                 
                 // The same happens in the recording_cb
@@ -583,7 +583,7 @@ void button_disconnect_cb(void)
     else
     {
         fl_g->lcd->clear();
-        fl_g->lcd->print((const uchar*)"En espera", 5);
+        fl_g->lcd->print((const uchar*)"En espera", 9);
     }
 
     // We are not trying to connect anymore
@@ -657,7 +657,7 @@ void button_record_cb(void)
         if(!connected)
         {
             fl_g->lcd->clear();
-            fl_g->lcd->print((const uchar*)"En espera", 5);
+            fl_g->lcd->print((const uchar*)"En espera", 9);
             Fl::remove_timeout(&display_info_timer);
         }
         else

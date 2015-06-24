@@ -12,7 +12,7 @@ class flgui {open
   } {
     Fl_Window window_main {
       callback {window_main_close_cb();} open
-      xywh {400 181 430 380} type Double align 80 resizable
+      xywh {413 204 430 378} type Double color 55 align 80 resizable
       code0 {\#include "FL/Fl_My_Double_Window.H"}
       code1 {\#include <stdlib.h> 
 \#include "config.h"}
@@ -27,7 +27,7 @@ class flgui {open
         code1 {\#include "FL/Fl_My_Value_Slider.H"}
         class Fl_My_Value_Slider
       }
-      Fl_Group {} {open
+      Fl_Group {} {open selected
         private xywh {0 -1 430 164}
       } {
         Fl_Box lcd {
@@ -176,7 +176,7 @@ class flgui {open
         }
       }
       Fl_Text_Display info_output {
-        xywh {0 195 430 184} box EMBOSSED_BOX textfont 4 textsize 15 resizable
+        xywh {0 195 430 184} box EMBOSSED_BOX color 51 textfont 4 textsize 15
       }
       Fl_Button button_cfg {
         label {Ajustes@>}
@@ -207,7 +207,7 @@ class flgui {open
       label {butt settings}
       callback {window_cfg->hide();
 button_cfg->label("Settings@>");} open
-      xywh {921 196 295 384} type Double align 80
+      xywh {856 210 295 384} type Double color 48 align 80
       code0 {\#include "FL/Fl_My_Double_Window.H"}
       class Fl_My_Double_Window size_range {280 380 330 380} visible
     } {
@@ -451,7 +451,7 @@ else
         }
         Fl_Group {} {
           label Stream open
-          xywh {0 19 300 450} hide
+          xywh {0 19 300 450}
         } {
           Fl_Group {} {
             label {Cambiar nombre de canción con archivo}
@@ -528,7 +528,7 @@ else
         }
         Fl_Group {} {
           label {Grabación} open
-          xywh {0 19 300 450}
+          xywh {0 19 300 450} hide
         } {
           Fl_Input input_rec_filename {
             label {Nombre de archivo de la grabación}
@@ -543,7 +543,7 @@ else
             code0 {this->input_rec_folder->maximum_size(500);}
           }
           Fl_Button button_rec_browse {
-            callback {button_rec_browse_cb();} selected
+            callback {button_rec_browse_cb();}
             image {../xpm/folder.png} xywh {255 190 25 25} box ENGRAVED_BOX
           }
           Fl_Group {} {

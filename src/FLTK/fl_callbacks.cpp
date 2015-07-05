@@ -16,7 +16,9 @@
 #include <sys/stat.h>
 
 #include <errno.h>
+#define timespec other_timespec
 #include <unistd.h>
+#undef timespec
 #include <signal.h>
 #include <time.h>
 #include <pthread.h>

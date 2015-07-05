@@ -16,7 +16,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define timespec other_timespec
 #include <unistd.h>
+#undef timespec
 #include <math.h>
 
 #include <string.h>

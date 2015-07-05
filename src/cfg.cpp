@@ -565,12 +565,12 @@ int cfg_create_default(void)
     fprintf(cfg_fd, "This is a configuration file for butt (broadcast using this tool)\n\n");
     fprintf(cfg_fd, 
             "[main]\n"
-            "server =\n"
-            "icy =\n"
-            "num_of_srv = 0\n"
-            "num_of_icy = 0\n"
-            "srv_ent =\n"
-            "icy_ent =\n"
+            "server = Recaserver\n"
+            "icy = Default Stream\n"
+            "num_of_srv = 1\n"
+            "num_of_icy = 1\n"
+            "srv_ent = Recaserver\n"
+            "icy_ent = Default Stream\n"
             "song_path =\n"
             "song_update = 0\n"
             "log_file =\n"
@@ -594,11 +594,11 @@ int cfg_create_default(void)
             "samplerate = 44100\n"
             "bitrate = 192\n"
             "channel = 2\n"
-            "codec = mp3\n"
+            "codec = flac\n"
             "start_rec = 0\n"
             "sync_to_hour = 0\n"
             "split_time = 0\n"
-            "filename = rec_%%Y%%m%%d-%%H%%M%%S_%%i.mp3\n"
+            "filename = rec_%%Y%%m%%d-%%H%%M%%S_%%i.flac\n"
             "folder = %s\n\n", def_rec_folder
            );
 
@@ -608,6 +608,25 @@ int cfg_create_default(void)
             "ontop = 0\n"
             "lcd_auto = 0\n\n"
             );
+
+    //Servidor e Información de él por defecto
+    fprintf(cfg_fd,
+            "[Recaserver]\n"
+            "address = 91.121.156.27\n"
+            "port = 8000\n"
+            "password = Anakin007\n"
+            "type = 1\n"
+            "mount = stream\n"
+            "usr = source\n\n");
+    fprintf(cfg_fd,
+            "[Default Stream]\n"
+            "pub = 0\n"
+            "description =\n"
+            "genre =\n"
+            "url =\n"
+            "irc =\n"
+            "icq =\n"
+            "aim =\n\n");
 
     fclose(cfg_fd);
 

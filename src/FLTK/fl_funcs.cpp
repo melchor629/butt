@@ -52,20 +52,20 @@ void fill_cfg_widgets(void)
 
     fl_g->choice_cfg_dev->value(cfg.audio.dev_num);
 
-    //fl_g->choice_cfg_act_srv->clear();
-    //fl_g->choice_cfg_act_srv->redraw();
+    fl_g->choice_cfg_act_srv->clear();
+    fl_g->choice_cfg_act_srv->redraw();
     for(i = 0; i < cfg.main.num_of_srv; i++)
-        //fl_g->choice_cfg_act_srv->add(cfg.srv[i]->name);
+        fl_g->choice_cfg_act_srv->add(cfg.srv[i]->name);
 
     if(cfg.main.num_of_srv > 0)
     {
-        //fl_g->button_cfg_edit_srv->activate();
-        //fl_g->button_cfg_del_srv->activate();
+        fl_g->button_cfg_edit_srv->activate();
+        fl_g->button_cfg_del_srv->activate();
     }
     else
     {
-        //fl_g->button_cfg_edit_srv->deactivate();
-        //fl_g->button_cfg_del_srv->deactivate();
+        fl_g->button_cfg_edit_srv->deactivate();
+        fl_g->button_cfg_del_srv->deactivate();
     }
 
     fl_g->choice_cfg_act_icy->clear();
@@ -84,7 +84,7 @@ void fill_cfg_widgets(void)
         fl_g->button_cfg_del_icy->deactivate();
     }
 
-    //fl_g->choice_cfg_act_srv->value(cfg.selected_srv);
+    fl_g->choice_cfg_act_srv->value(cfg.selected_srv);
     fl_g->choice_cfg_act_icy->value(cfg.selected_icy);
 
 
@@ -92,12 +92,12 @@ void fill_cfg_widgets(void)
     fl_g->input_log_filename->value(cfg.main.log_file);
 
     //fill the audio (stream) section
-    //if(!strcmp(cfg.audio.codec, "mp3"))
-        //fl_g->choice_cfg_codec->value(CHOICE_MP3);
-    //else if(!strcmp(cfg.audio.codec, "ogg"))
-        //fl_g->choice_cfg_codec->value(CHOICE_OGG);
-    //else if(!strcmp(cfg.audio.codec, "opus"))
-        //fl_g->choice_cfg_codec->value(CHOICE_OPUS);
+    if(!strcmp(cfg.audio.codec, "mp3"))
+        fl_g->choice_cfg_codec->value(CHOICE_MP3);
+    else if(!strcmp(cfg.audio.codec, "ogg"))
+        fl_g->choice_cfg_codec->value(CHOICE_OGG);
+    else if(!strcmp(cfg.audio.codec, "opus"))
+        fl_g->choice_cfg_codec->value(CHOICE_OPUS);
 
 
     if(cfg.audio.channel == 1)
@@ -108,7 +108,7 @@ void fill_cfg_widgets(void)
     for(i = 0; bitrate[i] != 0; i++)
         if(cfg.audio.bitrate == bitrate[i])
         {
-            //fl_g->choice_cfg_bitrate->value(i);
+            fl_g->choice_cfg_bitrate->value(i);
             break;
         }
 
@@ -200,7 +200,7 @@ void update_samplerates(void)
     }
     if(i == 0)
     {
-        fl_g->choice_cfg_samplerate->add("dev. not supported");
+        fl_g->choice_cfg_samplerate->add(_("dev. not supported"));
         fl_g->choice_cfg_samplerate->value(0);
     }
 }
@@ -211,7 +211,7 @@ void print_info(const char* info, int info_type)
     char logtimestamp[21];
     char* infotxt;
     FILE *log_fd;
-    int len;
+    size_t len;
 
     time_t test;
     struct tm  *mytime;
@@ -272,12 +272,12 @@ void print_info(const char* info, int info_type)
     free(infotxt);
 }
 
-void print_lcd(const char *text, int len, int home, int clear)
+void print_lcd(const char *text, int home, int clear)
 {
     if(clear)
         fl_g->lcd->clear();
 
-    fl_g->lcd->print((const uchar*)text, len);
+    fl_g->lcd->print((const uchar*) text, (int) strlen(text));
 
     if(home)
         fl_g->lcd->cursor_pos(0);

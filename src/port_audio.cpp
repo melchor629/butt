@@ -16,7 +16,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef __APPLE__
 #define timespec other_timespec
+#endif
 #include <unistd.h>
 #undef timespec
 #include <math.h>
@@ -44,6 +46,7 @@
 #include "vu_meter.h"
 #include "flgui.h"
 #include "fl_funcs.h"
+#include "util.h"
 
 
 int pa_frames = 2048;
@@ -84,7 +87,7 @@ int snd_init(void)
     if((p_err = Pa_Initialize()) != paNoError)
     {
         snprintf(info_buf, sizeof(info_buf),
-				"PortAudio init failed:\n%s\n",
+				_("PortAudio init failed:\n%s\n"),
 				Pa_GetErrorText(p_err));
 
         ALERT(info_buf);
@@ -121,7 +124,7 @@ int snd_open_stream(void)
 
     if(cfg.audio.dev_count == 0)
     {
-        print_info("ERROR: no sound device with input channels found", 1);
+        print_info(_("ERROR: no sound device with input channels found"), 1);
         return 1;
     }
 
@@ -147,7 +150,7 @@ int snd_open_stream(void)
     pa_dev_info = Pa_GetDeviceInfo(pa_dev_id);
     if(pa_dev_info == NULL)
     {
-        snprintf(info_buf, 127, "Error getting device Info (%d)", pa_dev_id);
+        snprintf(info_buf, 127, _("Error getting device Info (%d)"), pa_dev_id);
         print_info(info_buf, 1);
         return 1;
     }
@@ -164,15 +167,15 @@ int snd_open_stream(void)
         if(pa_err == paInvalidSampleRate)
         {
             snprintf(info_buf, sizeof(info_buf),
-                    "Samplerate not supported: %dHz\n"
-                    "Using default samplerate: %dHz",
+                    _("Samplerate not supported: %dHz\n"
+                    "Using default samplerate: %dHz"),
                     samplerate, (int)pa_dev_info->defaultSampleRate);
             print_info(info_buf, 1);
 
             if(Pa_IsFormatSupported(&pa_params, NULL,
                pa_dev_info->defaultSampleRate) != paFormatIsSupported)
             {
-                print_info("FAILED", 1);
+                print_info(_("PA: Format not supported"), 1);
                 return 1;
             }
             else
@@ -184,7 +187,7 @@ int snd_open_stream(void)
         }
         else
         {
-            snprintf(info_buf, sizeof(info_buf), "PA: Format not supported: %s\n",
+            snprintf(info_buf, sizeof(info_buf), _("PA: Format not supported: %s\n"),
                     Pa_GetErrorText(pa_err));
             print_info(info_buf, 1);
             return 1;
@@ -197,7 +200,7 @@ int snd_open_stream(void)
 
     if(pa_err != paNoError)
     {
-        printf("error opening sound device: \n%s\n", Pa_GetErrorText(pa_err));
+        printf(_("error opening sound device: \n%s\n"), Pa_GetErrorText(pa_err));
         return 1;
     }
 
@@ -228,7 +231,7 @@ void snd_stop_stream(void)
     pthread_cond_destroy(&stream_cond);
 
 
-    print_info("user disconnected\n", 0);
+    print_info(_("user disconnected\n"), 0);
 }
 
 void *snd_stream_thread(void *data)
@@ -311,7 +314,6 @@ void *snd_stream_thread(void *data)
 
 void snd_start_rec(void)
 {
-    int error;
     next_file = 0;
 
     kbytes_written = 0;
@@ -322,7 +324,7 @@ void snd_start_rec(void)
 
     pthread_create(&rec_thread, NULL, snd_rec_thread, NULL);
 
-    print_info("recording to:", 0);
+    print_info(_("recording to:"), 0);
     print_info(cfg.rec.path, 0);
 }
 
@@ -337,7 +339,7 @@ void snd_stop_rec(void)
     pthread_mutex_destroy(&rec_mut);
     pthread_cond_destroy(&rec_cond);
 
-    print_info("recording stopped", 0);
+    print_info(_("recording stopped"), 0);
 }
 
 //The recording stuff runs in its own thread
@@ -345,13 +347,11 @@ void snd_stop_rec(void)
 //bandwidth is smaller than the selected streaming bitrate
 void* snd_rec_thread(void *data)
 {
-    int error;
     int rb_bytes_read;
     int bytes_to_read;
     int ogg_header_written;
     int opus_header_written;
     int enc_bytes_read;
-    char info_buf[256];
     
     char *enc_buf = (char*)malloc(rec_rb.size * sizeof(char)*10);
     char *audio_buf = (char*)malloc(rec_rb.size * sizeof(char)*10);
@@ -480,7 +480,6 @@ int snd_callback(const void *input,
                  void *userData)
 {
     int i;
-    int error;
     int samplerate_out;
     bool convert_stream = false;
     bool convert_record = false;
@@ -619,7 +618,7 @@ snd_dev_t **snd_get_devices(int *dev_count)
     devcount = Pa_GetDeviceCount();
     if(devcount < 0)
     {
-        snprintf(info_buf, sizeof(info_buf), "PaError: %s", Pa_GetErrorText(devcount));
+        snprintf(info_buf, sizeof(info_buf), _("PaError: %s"), Pa_GetErrorText(devcount));
         print_info(info_buf, 1);
     }
 
@@ -629,7 +628,7 @@ snd_dev_t **snd_get_devices(int *dev_count)
         p_di = Pa_GetDeviceInfo(i);
         if(p_di == NULL)
         {
-            snprintf(info_buf, sizeof(info_buf), "Error getting device Info (%d)", i);
+            snprintf(info_buf, sizeof(info_buf), _("Error getting device Info (%d)"), i);
             print_info(info_buf, 1);
             continue;
         }
@@ -710,7 +709,7 @@ void snd_reset_samplerate_conv(int rec_or_stream)
         srconv_state_stream = src_new(cfg.audio.resample_mode, cfg.audio.channel, &error);
         if (srconv_state_stream == NULL)
         {
-            print_info("ERROR: Could not initialize samplerate converter", 0);
+            print_info(_("ERROR: Could not initialize samplerate converter"), 0);
         }
     }
 
@@ -726,7 +725,7 @@ void snd_reset_samplerate_conv(int rec_or_stream)
         srconv_state_record = src_new(cfg.audio.resample_mode, cfg.audio.channel, &error);
         if (srconv_state_record == NULL)
         {
-            print_info("ERROR: Could not initialize samplerate converter", 0);
+            print_info(_("ERROR: Could not initialize samplerate converter"), 0);
         }
     }
 }

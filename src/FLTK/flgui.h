@@ -16,6 +16,7 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Text_Display.H>
+#include "util.h"
 #include <FL/Fl_Tabs.H>
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Choice.H>
@@ -127,12 +128,31 @@ private:
   inline void cb_Exportar_i(Fl_Button*, void*);
   static void cb_Exportar(Fl_Button*, void*);
 public:
+  Fl_Group *server_connexion_g;
+  Fl_Choice *choice_cfg_act_srv;
+private:
+  inline void cb_choice_cfg_act_srv_i(Fl_Choice*, void*);
+  static void cb_choice_cfg_act_srv(Fl_Choice*, void*);
+  inline void cb_ADD_i(Fl_Button*, void*);
+  static void cb_ADD(Fl_Button*, void*);
+public:
+  Fl_Button *button_cfg_edit_srv;
+private:
+  inline void cb_button_cfg_edit_srv_i(Fl_Button*, void*);
+  static void cb_button_cfg_edit_srv(Fl_Button*, void*);
+public:
+  Fl_Button *button_cfg_del_srv;
+private:
+  inline void cb_button_cfg_del_srv_i(Fl_Button*, void*);
+  static void cb_button_cfg_del_srv(Fl_Button*, void*);
+public:
   Fl_Choice *choice_cfg_dev;
 private:
   inline void cb_choice_cfg_dev_i(Fl_Choice*, void*);
   static void cb_choice_cfg_dev(Fl_Choice*, void*);
 public:
   Fl_Choice *choice_cfg_channel;
+  static unsigned char menu_choice_cfg_channel_i18n_done;
   static Fl_Menu_Item menu_choice_cfg_channel[];
 private:
   inline void cb_Stereo_i(Fl_Menu_*, void*);
@@ -146,6 +166,7 @@ private:
   static void cb_choice_cfg_samplerate(Fl_Choice*, void*);
 public:
   Fl_Choice *choice_rec_codec;
+  static unsigned char menu_choice_rec_codec_i18n_done;
   static Fl_Menu_Item menu_choice_rec_codec[];
 private:
   inline void cb_MP3_i(Fl_Menu_*, void*);
@@ -163,6 +184,7 @@ public:
 private:
   inline void cb_choice_rec_bitrate_i(Fl_Choice*, void*);
   static void cb_choice_rec_bitrate(Fl_Choice*, void*);
+  static unsigned char menu_choice_rec_bitrate_i18n_done;
   static Fl_Menu_Item menu_choice_rec_bitrate[];
 public:
   Fl_Button *button_advanced;
@@ -179,7 +201,27 @@ public:
 private:
   inline void cb_choice_cfg_resample_mode_i(Fl_Choice*, void*);
   static void cb_choice_cfg_resample_mode(Fl_Choice*, void*);
+  static unsigned char menu_choice_cfg_resample_mode_i18n_done;
   static Fl_Menu_Item menu_choice_cfg_resample_mode[];
+public:
+  Fl_Group *streaming_g;
+  Fl_Choice *choice_cfg_codec;
+  static unsigned char menu_choice_cfg_codec_i18n_done;
+  static Fl_Menu_Item menu_choice_cfg_codec[];
+private:
+  inline void cb_MP31_i(Fl_Menu_*, void*);
+  static void cb_MP31(Fl_Menu_*, void*);
+  inline void cb_OGG1_i(Fl_Menu_*, void*);
+  static void cb_OGG1(Fl_Menu_*, void*);
+  inline void cb_OPUS1_i(Fl_Menu_*, void*);
+  static void cb_OPUS1(Fl_Menu_*, void*);
+public:
+  Fl_Choice *choice_cfg_bitrate;
+private:
+  inline void cb_choice_cfg_bitrate_i(Fl_Choice*, void*);
+  static void cb_choice_cfg_bitrate(Fl_Choice*, void*);
+  static unsigned char menu_choice_cfg_bitrate_i18n_done;
+  static Fl_Menu_Item menu_choice_cfg_bitrate[];
 public:
   Fl_Input *input_cfg_song_file;
 private:
@@ -297,8 +339,8 @@ public:
 private:
   inline void cb_radio_add_srv_icecast_i(Fl_Round_Button*, void*);
   static void cb_radio_add_srv_icecast(Fl_Round_Button*, void*);
-  inline void cb_Cancel_i(Fl_Button*, void*);
-  static void cb_Cancel(Fl_Button*, void*);
+  inline void cb_Cancelar_i(Fl_Button*, void*);
+  static void cb_Cancelar(Fl_Button*, void*);
 public:
   Fl_Button *button_add_srv_add;
 private:
@@ -325,8 +367,8 @@ public:
   Fl_Input *input_add_icy_aim;
   Fl_Check_Button *check_add_icy_pub;
 private:
-  inline void cb_Cancel1_i(Fl_Button*, void*);
-  static void cb_Cancel1(Fl_Button*, void*);
+  inline void cb_Cancelar1_i(Fl_Button*, void*);
+  static void cb_Cancelar1(Fl_Button*, void*);
 public:
   Fl_Button *button_add_icy_add;
 private:

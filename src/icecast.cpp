@@ -68,7 +68,7 @@ int ic_connect(void)
                 case SOCK_ERR_CREATE:
                     if(!error_printed)
                     {
-                        print_info("\nConnect: Could not create network socket", 1);
+                        print_info(_("\nConnect: Could not create network socket"), 1);
                         error_printed = 1;
                     }
                     ret = 2;
@@ -76,7 +76,7 @@ int ic_connect(void)
                 case SOCK_ERR_RESOLVE:
                     if(!error_printed)
                     {
-                        print_info("\nConnect: Error resolving server address", 1);
+                        print_info(_("\nConnect: Error resolving server address"), 1);
                         error_printed = 1;
                     }
                     ret = 1;
@@ -209,7 +209,7 @@ int ic_connect(void)
             switch(retval)
             {
                 case 401:
-                    print_info("\nconnect: invalid user/password!\n", 1);
+                    print_info(_("\nconnect: invalid user/password!\n"), 1);
                     ic_disconnect();
                     return 2;
                     break;
@@ -238,7 +238,7 @@ int ic_connect(void)
             }
             else
             {
-                print_info("\nERROR: Opus is not supported by your\nIcecast server (>=1.4.0 required)!\n", 1);
+                print_info(_("\nERROR: Opus is not supported by your\nIcecast server (>=1.4.0 required)!\n"), 1);
                 ic_disconnect();
                 return 2;
             }
@@ -284,11 +284,11 @@ int ic_update_song(void)
         switch(web_socket)
         {
             case SOCK_ERR_CREATE:
-                print_info("\nupdate_song: could not create network socket", 1);
+                print_info(_("\nupdate_song: could not create network socket"), 1);
                 ret = 2;
                 break;
             case SOCK_ERR_RESOLVE:
-                print_info("\nupdate_song: error resolving server address", 1);
+                print_info(_("\nupdate_song: error resolving server address"), 1);
                 ret = 2;
                 break;
             case SOCK_TIMEOUT:

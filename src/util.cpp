@@ -18,6 +18,7 @@
 #include <stdlib.h>
 
 #include "util.h"
+#include <config.h>
 
 
 char *util_base64_enc(char *data)
@@ -88,4 +89,9 @@ float util_factor_to_db(float factor)
 float util_db_to_factor(float dB)
 {
     return pow(10, dB/20);
+}
+
+void util_set_visible(Fl_Widget* w) {
+    if(VISIBILITY)
+        w->show();
 }

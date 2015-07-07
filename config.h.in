@@ -15,6 +15,9 @@
 /* Define to 1 if you have the `FLAC' library (-lFLAC). */
 #undef HAVE_LIBFLAC
 
+/* Define to 1 if you have the `gettextpo' library (-lgettextpo). */
+#undef HAVE_LIBGETTEXTPO
+
 /* Define to 1 if you have the `mp3lame' library (-lmp3lame). */
 #undef HAVE_LIBMP3LAME
 
@@ -142,6 +145,9 @@
 
 /* Version number of package */
 #undef VERSION
+
+/* Stream conf visibility disabled */
+#undef VISIBILITY
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */

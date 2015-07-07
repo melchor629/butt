@@ -18,7 +18,7 @@
 
 #include <FL/fl_ask.H>
 
-#define PRINT_LCD(msg, len, home, clear) print_lcd(msg, len, home, clear)      //prints text to the LCD
+#define PRINT_LCD(msg, home, clear) print_lcd(msg, home, clear)      //prints text to the LCD
 #define GUI_LOOP() Fl::run();
 #define CHECK_EVENTS() Fl::check()
 #define ALERT(msg) fl_alert("%s", msg)
@@ -26,7 +26,15 @@
 void fill_cfg_widgets(void);
 void update_samplerates(void);
 void print_info(const char* info, int info_type);
-void print_lcd(const char *text, int len, int home, int clear);
+
+/**
+ * Print a string to the LCD widget.
+ * @param text String to print
+ * @param home Set cursor position to the start
+ * @param clear Clear the before content
+ */
+void print_lcd(const char *text, int home, int clear);
+
 void test_file_extension(void);
 void expand_string(char **str);
 void init_main_gui_and_audio(void);

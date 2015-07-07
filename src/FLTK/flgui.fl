@@ -1,5 +1,8 @@
 # data file for the Fltk User Interface Designer (fluid)
 version 1.0304 
+i18n_type 1 
+i18n_include <libintl.h> 
+i18n_function _ 
 header_name {.h} 
 code_name {.cpp}
 class flgui {open
@@ -12,7 +15,7 @@ class flgui {open
   } {
     Fl_Window window_main {
       callback {window_main_close_cb();} open
-      xywh {413 204 430 378} type Double color 55 align 80 resizable
+      xywh {345 179 430 378} type Double color 55 align 80 resizable
       code0 {\#include "FL/Fl_My_Double_Window.H"}
       code1 {\#include <stdlib.h> 
 \#include "config.h"}
@@ -27,7 +30,7 @@ class flgui {open
         code1 {\#include "FL/Fl_My_Value_Slider.H"}
         class Fl_My_Value_Slider
       }
-      Fl_Group {} {open selected
+      Fl_Group {} {open
         private xywh {0 -1 430 164}
       } {
         Fl_Box lcd {
@@ -41,22 +44,22 @@ class flgui {open
         Fl_Button button_connect {
           label {@> }
           callback {button_connect_cb();}
-          tooltip {Empezar streaming} xywh {102 121 30 30} box ENGRAVED_BOX down_box ENGRAVED_BOX shortcut 0x40063 color 48 selection_color 40 labelfont 1 labelcolor 7
+          tooltip {Empezar streaming} xywh {102 121 30 30} box ENGRAVED_BOX down_box ENGRAVED_BOX shortcut 0x40063 color 51 selection_color 43 labelfont 1 labelcolor 7
         }
         Fl_Button button_disconnect {
           label {@-3square}
           callback {button_disconnect_cb();}
-          private tooltip {Desconectar del servidor} xywh {62 121 30 30} box ENGRAVED_BOX down_box ENGRAVED_BOX shortcut 0x40064 color 48 selection_color 40 labelfont 1 labelcolor 7
+          private tooltip {Desconectar del servidor} xywh {62 121 30 30} box ENGRAVED_BOX down_box ENGRAVED_BOX shortcut 0x40064 color 51 selection_color 43 labelfont 1 labelcolor 7
         }
         Fl_Button button_record {
           label {@-3circle}
           callback {button_record_cb();}
-          private tooltip {Empezar/Parar de grabar} xywh {10 121 30 30} box ENGRAVED_BOX down_box ENGRAVED_BOX shortcut 0x40072 color 48 selection_color 40 labelfont 1 labelcolor 1
+          private tooltip {Empezar/Parar de grabar} xywh {10 121 30 30} box ENGRAVED_BOX down_box ENGRAVED_BOX shortcut 0x40072 color 51 selection_color 43 labelfont 1 labelcolor 1
         }
         Fl_Button button_info {
           label {Más @2<}
           callback {button_info_cb();}
-          tooltip {Mostrar/Ocultar panel de información} xywh {352 143 68 15} box ENGRAVED_BOX shortcut 0x40076 color 48 labelsize 10
+          tooltip {Mostrar/Ocultar panel de información} xywh {352 143 68 15} box ENGRAVED_BOX shortcut 0x40076 color 51 labelsize 10
         }
         Fl_Group LEDs_dark {
           tooltip {VU meter} xywh {171 115 149 39}
@@ -176,12 +179,12 @@ class flgui {open
         }
       }
       Fl_Text_Display info_output {
-        xywh {0 195 430 184} box EMBOSSED_BOX color 51 textfont 4 textsize 15
+        xywh {0 195 430 184} box EMBOSSED_BOX color 51 textfont 4 textsize 15 resizable
       }
       Fl_Button button_cfg {
         label {Ajustes@>}
         callback {button_cfg_cb();}
-        tooltip {Mostrar/Ocultar venata de ajustes} xywh {352 114 68 22} box ENGRAVED_BOX shortcut 0x40066 color 48 labelfont 1 labelsize 11
+        tooltip {Mostrar/Ocultar venata de ajustes} xywh {352 114 68 22} box ENGRAVED_BOX shortcut 0x40066 color 51 selection_color 48 labelfont 1 labelsize 11
       }
       Fl_Box VU_Text {
         image {../xpm/VU_text.png} xywh {169 128 154 17} labelfont 1 labelsize 10
@@ -207,8 +210,9 @@ class flgui {open
       label {butt settings}
       callback {window_cfg->hide();
 button_cfg->label("Settings@>");} open
-      xywh {856 210 295 384} type Double color 48 align 80
+      xywh {778 177 295 384} type Double color 48 align 80
       code0 {\#include "FL/Fl_My_Double_Window.H"}
+      code1 {\#include "util.h"}
       class Fl_My_Double_Window size_range {280 380 330 380} visible
     } {
       Fl_Tabs Settings {open
@@ -216,7 +220,7 @@ button_cfg->label("Settings@>");} open
       } {
         Fl_Group {} {
           label Principal open
-          xywh {0 20 300 450} when 6 hide
+          xywh {0 20 300 450} when 6
         } {
           Fl_Group {} {
             label {Archivo de log} open
@@ -249,6 +253,32 @@ button_cfg->label("Settings@>");} open
               label {Exportar...}
               callback {button_cfg_export_cb();}
               tooltip {export settings} xywh {204 130 70 28} box ENGRAVED_BOX hide
+            }
+          }
+          Fl_Group server_connexion_g {
+            label {Server connexion} open selected
+            xywh {15 198 260 75} box ENGRAVED_FRAME hide
+            code0 {util_set_visible(server_connexion_g);}
+          } {
+            Fl_Choice choice_cfg_act_srv {
+              label Server
+              callback {choice_cfg_act_srv_cb();} open
+              tooltip {Server to connect} xywh {20 219 250 20} down_box BORDER_BOX align 5
+            } {}
+            Fl_Button {} {
+              label ADD
+              callback {button_cfg_add_srv_cb();}
+              tooltip {Add server} xywh {20 241 70 24} box ENGRAVED_BOX
+            }
+            Fl_Button button_cfg_edit_srv {
+              label EDIT
+              callback {button_cfg_edit_srv_cb();}
+              tooltip {Edit selected server} xywh {110 241 70 24} box ENGRAVED_BOX
+            }
+            Fl_Button button_cfg_del_srv {
+              label DEL
+              callback {button_cfg_del_srv_cb();}
+              tooltip {Delete selected server} xywh {200 241 70 24} box ENGRAVED_BOX
             }
           }
         }
@@ -415,17 +445,17 @@ else
 	fl_g->button_advanced->label("Más...");
 
 }}
-            xywh {15 245 89 25} box ENGRAVED_BOX
+            xywh {15 320 95 20} box ENGRAVED_BOX
           }
           Fl_Value_Input input_cfg_buffer {
             label {Buffer (ms)}
             callback {input_cfg_buffer_cb(1);}
-            xywh {15 290 90 20} align 5 when 8 maximum 0 value 50 hide
+            xywh {15 355 90 20} align 5 when 8 maximum 0 value 50 hide
           }
           Fl_Choice choice_cfg_resample_mode {
             label {Calidad de remuestreo}
             callback {choice_cfg_resample_mode_cb();}
-            xywh {115 290 155 20} down_box BORDER_BOX align 5 hide
+            xywh {125 355 155 20} down_box BORDER_BOX align 5 hide
           } {
             MenuItem {} {
               label SINC_BEST
@@ -448,10 +478,110 @@ else
               xywh {40 40 31 20}
             }
           }
+          Fl_Group streaming_g {
+            label Streaming open
+            xywh {15 260 265 60} box ENGRAVED_FRAME align 5 hide
+            code0 {util_set_visible(streaming_g);}
+          } {
+            Fl_Choice choice_cfg_codec {
+              label Codec
+              tooltip {Select streaming codec} xywh {20 288 125 20} box ENGRAVED_BOX down_box BORDER_BOX align 5
+            } {
+              MenuItem {} {
+                label MP3
+                callback {choice_cfg_codec_mp3_cb();}
+                xywh {80 80 40 25}
+              }
+              MenuItem {} {
+                label {OGG/VORBIS}
+                callback {choice_cfg_codec_ogg_cb();}
+                xywh {70 70 40 25}
+              }
+              MenuItem {} {
+                label OPUS
+                callback {choice_cfg_codec_opus_cb();}
+                xywh {80 80 40 25}
+              }
+            }
+            Fl_Choice choice_cfg_bitrate {
+              label Bitrate
+              callback {choice_cfg_bitrate_cb();}
+              tooltip {Select streaming bitrate} xywh {160 288 115 20} box ENGRAVED_BOX down_box BORDER_BOX align 5
+            } {
+              MenuItem {} {
+                label 8k
+                xywh {60 60 40 25}
+              }
+              MenuItem {} {
+                label 16k
+                xywh {50 50 40 25}
+              }
+              MenuItem {} {
+                label 24k
+                xywh {60 60 40 25}
+              }
+              MenuItem {} {
+                label 32k
+                xywh {40 40 40 25}
+              }
+              MenuItem {} {
+                label 40k
+                xywh {50 50 40 25}
+              }
+              MenuItem {} {
+                label 48k
+                xywh {60 60 40 25}
+              }
+              MenuItem {} {
+                label 56k
+                xywh {70 70 40 25}
+              }
+              MenuItem {} {
+                label 64k
+                xywh {80 80 40 25}
+              }
+              MenuItem {} {
+                label 80k
+                xywh {90 90 40 25}
+              }
+              MenuItem {} {
+                label 96k
+                xywh {100 100 40 25}
+              }
+              MenuItem {} {
+                label 112k
+                xywh {40 40 40 25}
+              }
+              MenuItem {} {
+                label 128k
+                xywh {110 110 40 25}
+              }
+              MenuItem {} {
+                label 160k
+                xywh {120 120 40 25}
+              }
+              MenuItem {} {
+                label 192k
+                xywh {130 130 40 25}
+              }
+              MenuItem {} {
+                label 224k
+                xywh {140 140 40 25}
+              }
+              MenuItem {} {
+                label 256k
+                xywh {150 150 40 25}
+              }
+              MenuItem {} {
+                label 320k
+                xywh {160 160 40 25}
+              }
+            }
+          }
         }
         Fl_Group {} {
           label Stream open
-          xywh {0 19 300 450}
+          tooltip {Add stream info} xywh {0 19 300 450} hide
         } {
           Fl_Group {} {
             label {Cambiar nombre de canción con archivo}
@@ -512,7 +642,7 @@ else
             Fl_Button {} {
               label {Añadir}
               callback {button_cfg_add_icy_cb();}
-              tooltip {Add stream info} xywh {25 105 50 20} box ENGRAVED_BOX
+              xywh {25 105 50 20} box ENGRAVED_BOX
             }
             Fl_Button button_cfg_edit_icy {
               label Editar
@@ -562,13 +692,13 @@ else
             Fl_Check_Button check_sync_to_full_hour {
               label {Sincronizar con cada hora}
               callback {check_sync_to_full_hour_cb();}
-              tooltip {Sync to full hour} xywh {20 280 124 15} down_box DOWN_BOX
+              tooltip {Sincronizar con cada hora} xywh {20 280 124 15} down_box DOWN_BOX
             }
           }
           Fl_Check_Button check_cfg_rec {
             label {Empezar a grabar cuando te conectes}
             callback {check_cfg_rec_cb();}
-            tooltip {Start recording when connected} xywh {15 330 265 15} down_box DOWN_BOX
+            tooltip {Empezar a grabar cuando te conectes} xywh {15 330 265 15} down_box DOWN_BOX
           }
           Fl_Text_Display {} {
             label {%Y año}
@@ -625,41 +755,41 @@ else
           Fl_Check_Button check_gui_attach {
             label {Pegar esta ventana a la principal}
             callback {check_gui_attach_cb();}
-            tooltip {Attach this window to the butt window} xywh {15 153 245 22} down_box DOWN_BOX
+            tooltip {Pegar esta ventana a la principal} xywh {15 153 245 22} down_box DOWN_BOX
           }
           Fl_Check_Button check_gui_ontop {
             label {Ventana siempre encima}
             callback {check_gui_ontop_cb();}
-            tooltip {Stay always on top} xywh {15 178 175 20} down_box DOWN_BOX
+            tooltip {Ventana siempre encima} xywh {15 178 175 20} down_box DOWN_BOX
           }
           Fl_Check_Button check_gui_lcd_auto {
             label {Cambiar modo del LCD cada 5s}
             callback {check_gui_lcd_auto_cb()}
-            tooltip {Change LCD mode every 5 seconds} xywh {15 198 230 27} down_box DOWN_BOX
+            tooltip {Cambiar modo del LCD cada 5s} xywh {15 198 230 27} down_box DOWN_BOX
           }
         }
       }
     }
     Fl_Window window_add_srv {
-      label {Add server}
-      xywh {805 89 305 380} type Double hide modal
+      label {Añadir servidor}
+      xywh {1091 188 305 380} type Double modal visible
     } {
       Fl_Input input_add_srv_name {
-        label {Name:}
+        label {Nombre:}
         xywh {60 30 170 25} align 1
         code0 {this->input_add_srv_name->maximum_size(100);}
       }
       Fl_Input input_add_srv_addr {
-        label {Address:}
+        label {Dirección:}
         xywh {10 185 170 25} align 5
         code0 {this->input_add_srv_addr->maximum_size(100);}
       }
       Fl_Input input_add_srv_port {
-        label {Port:}
+        label {Puerto:}
         xywh {185 185 110 25} type Int align 5
       }
       Fl_Input input_add_srv_pwd {
-        label {Password:}
+        label {Contraseña:}
         xywh {10 230 170 25} type Secret align 5
         code0 {this->input_add_srv_pwd->maximum_size(100);}
       }
@@ -674,7 +804,7 @@ else
         code0 {this->input_add_srv_usr->maximum_size(100);}
       }
       Fl_Group {} {
-        label {Type:}
+        label {Tipo:}
         xywh {60 108 170 32} box ENGRAVED_BOX align 5
       } {
         Fl_Round_Button radio_add_srv_shoutcast {
@@ -689,7 +819,7 @@ else
         }
       }
       Fl_Button {} {
-        label {&Cancel}
+        label {&Cancelar}
         callback {button_add_srv_cancel_cb();}
         xywh {10 340 74 25} box ENGRAVED_BOX
       }
@@ -699,32 +829,32 @@ else
         xywh {224 340 74 25} box ENGRAVED_BOX
       }
       Fl_Button button_add_srv_save {
-        label {&Save}
+        label {&Guardar}
         callback {button_add_srv_save_cb();}
         xywh {224 340 74 25} box ENGRAVED_BOX
       }
       Fl_Button button_cfg_show_pw {
-        label {Show Password}
+        label {Mostrar contra…}
         callback {button_add_srv_show_pwd_cb();}
         tooltip {show/hide password} xywh {185 230 110 25} box ENGRAVED_BOX
       }
     }
     Fl_Window window_add_icy {
-      label {Add stream info} open
-      xywh {1111 87 305 380} type Double hide modal
+      label {Información del Streaming} open
+      xywh {1409 191 305 380} type Double modal visible
     } {
       Fl_Input input_add_icy_name {
-        label {Name:}
+        label {Nombre del streaming:}
         tooltip {The name of your new ICY-entrie} xywh {65 35 170 25} align 1
         code0 {this->input_add_icy_name->maximum_size(100);}
       }
       Fl_Input input_add_icy_desc {
-        label {Description:}
+        label {Descripción:}
         xywh {10 145 170 25} align 5
         code0 {this->input_add_icy_desc->maximum_size(100);}
       }
       Fl_Input input_add_icy_genre {
-        label {Genre:}
+        label {Género:}
         xywh {185 145 110 25} align 5
         code0 {this->input_add_icy_genre->maximum_size(100);}
       }
@@ -749,11 +879,11 @@ else
         code0 {this->input_add_icy_aim->maximum_size(100);}
       }
       Fl_Check_Button check_add_icy_pub {
-        label {Make server public}
+        label {Servidor público}
         xywh {10 270 166 20} down_box DOWN_BOX
       }
       Fl_Button {} {
-        label {&Cancel}
+        label {&Cancelar}
         callback {button_add_icy_cancel_cb();}
         xywh {10 340 74 25} box ENGRAVED_BOX
       }
@@ -763,7 +893,7 @@ else
         xywh {224 340 74 25} box ENGRAVED_BOX
       }
       Fl_Button button_add_icy_save {
-        label {&Save}
+        label {&Guardar}
         callback {button_add_icy_save_cb();}
         xywh {224 340 74 25} box ENGRAVED_BOX
       }

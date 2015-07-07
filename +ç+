@@ -1,3 +1,16 @@
+Version 0.1.16 (2015-07-07)
+---------------------------
+* added i18n using gettext
+* added ES, EN and CA locales (not fully translated)
+* recover some widgets I deleted before
+* toggle visibility of streaming options on configure time
+* removed length argument from print_lcd
+
+Version 0.1.15 (2015-06-11)
+---------------------------
+* changed aspect
+* added icon for folder (was missing)
+
 Version 0.1.14 (2014-12-27)
 ---------------------------
 * added FLAC support for recording 

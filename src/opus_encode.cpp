@@ -54,6 +54,8 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "util.h"
+
 typedef struct {
    unsigned char *data;
    int maxlen;
@@ -175,7 +177,7 @@ int opus_enc_init(opus_enc *opus)
 	opus->encoder = opus_encoder_create (opus->header->input_sample_rate, opus->channel, OPUS_APPLICATION_AUDIO, &err);
 	opus_encoder_ctl (opus->encoder, OPUS_SET_BITRATE(opus->bitrate));
 	if (opus->encoder == NULL) {
-		printf("Opus Encoder creation error: %s\n", opus_strerror (err));
+		printf(_("Opus Encoder creation error: %s\n"), opus_strerror (err));
 		return 1;
 	}
 	opus->last_bitrate = opus->bitrate;
@@ -256,7 +258,7 @@ int opus_enc_encode(opus_enc *opus, short *pcm_buf, char *enc_buf, int size)
         return 0;
 
 	if (opus->encoder == NULL) {
-		printf("Opus Encoder NULL wtf?\n");
+		printf("%s", _("Opus Encoder NULL wtf?\n"));
 		return 0;
 	}
 	

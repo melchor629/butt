@@ -47,7 +47,7 @@ int cfg_write_file(char *path)
     cfg_fd = fl_fopen(path, "wb");
     if(cfg_fd == NULL)
     {
-        snprintf(info_buf, sizeof(info_buf), "Could not write to file: %s", path);
+        snprintf(info_buf, sizeof(info_buf), _("Could not write to file: %s"), path);
         print_info(cfg_path, 1);
         return 1;
     }
@@ -338,7 +338,7 @@ int cfg_set_values(char *path)
     cfg.main.num_of_srv = cfg_get_int("main", "num_of_srv");
     if(cfg.main.num_of_srv == -1)
     {
-        fl_alert("error while parsing config. Illegal value (-1) for num_of_srv.\nbutt is going to close now");
+        fl_alert("%s", _("error while parsing config. Illegal value (-1) for num_of_srv.\nbutt is going to close now"));
         exit(1);
     }
     if(cfg.main.num_of_srv > 0)
@@ -346,14 +346,14 @@ int cfg_set_values(char *path)
         cfg.main.srv     = cfg_get_str("main", "server");
         if(cfg.main.srv == NULL)
         {
-            fl_alert("error while parsing config. Missing main/server entry.\nbutt is going to close now");
+            fl_alert("%s", _("error while parsing config. Missing main/server entry.\nbutt is going to close now"));
             exit(1);
         }
 
         cfg.main.srv_ent = cfg_get_str("main", "srv_ent");
         if(cfg.main.srv_ent == NULL)
         {
-            fl_alert("error while parsing config. Missing main/srv_ent entry.\nbutt is going to close now");
+            fl_alert("%s", _("error while parsing config. Missing main/srv_ent entry.\nbutt is going to close now"));
             exit(1);
         }
 
@@ -373,40 +373,40 @@ int cfg_set_values(char *path)
             cfg.srv[i]->addr = cfg_get_str(srv_ent, "address");
             if(cfg.srv[i]->addr == NULL)
             {
-                fl_alert("error while parsing config. Missing address entry for server \"%s\"."
-                        "\nbutt is going to close now", srv_ent);
+                fl_alert(_("error while parsing config. Missing address entry for server \"%s\"."
+                        "\nbutt is going to close now"), srv_ent);
                 exit(1);
             }
 
             cfg.srv[i]->port  = cfg_get_int(srv_ent, "port");
             if(cfg.srv[i]->port == -1)
             {
-                fl_alert("error while parsing config. Missing port entry for server \"%s\"."
-                        "\nbutt is going to close now", srv_ent);
+                fl_alert(_("error while parsing config. Missing port entry for server \"%s\"."
+                        "\nbutt is going to close now"), srv_ent);
                 exit(1);
             }
 
             cfg.srv[i]->pwd   = cfg_get_str(srv_ent, "password");
             if(cfg.srv[i]->pwd == NULL)
             {
-                fl_alert("error while parsing config. Missing password entry for server \"%s\"."
-                        "\nbutt is going to close now", srv_ent);
+                fl_alert(_("error while parsing config. Missing password entry for server \"%s\"."
+                        "\nbutt is going to close now"), srv_ent);
                 exit(1);
             }
 
             cfg.srv[i]->type  = cfg_get_int(srv_ent, "type");
             if(cfg.srv[i]->type == -1)
             {
-                fl_alert("error while parsing config. Missing type entry for server \"%s\"."
-                        "\nbutt is going to close now", srv_ent);
+                fl_alert(_("error while parsing config. Missing type entry for server \"%s\"."
+                        "\nbutt is going to close now"), srv_ent);
                 exit(1);
             }
 
             cfg.srv[i]->mount = cfg_get_str(srv_ent, "mount");
             if((cfg.srv[i]->mount == NULL) &&  (cfg.srv[i]->type == ICECAST))
             {
-                fl_alert("error while parsing config. Missing mount entry for server \"%s\"."
-                        "\nbutt is going to close now", srv_ent);
+                fl_alert(_("error while parsing config. Missing mount entry for server \"%s\"."
+                        "\nbutt is going to close now"), srv_ent);
                 exit(1);
             }
 
@@ -427,7 +427,7 @@ int cfg_set_values(char *path)
     cfg.main.num_of_icy = cfg_get_int("main", "num_of_icy");
     if(cfg.main.num_of_icy == -1)
     {
-        fl_alert("error while parsing config. Illegal value (-1) for num_of_icy.\nbutt is going to close now");
+        fl_alert("%s", _("error while parsing config. Illegal value (-1) for num_of_icy.\nbutt is going to close now"));
         exit(1);
     }
     
@@ -438,13 +438,13 @@ int cfg_set_values(char *path)
         cfg.main.icy     = cfg_get_str("main", "icy");
         if(cfg.main.icy == NULL)
         {
-            fl_alert("error while parsing config. Missing main/icy entry.\nbutt is going to close now");
+            fl_alert("%s", _("error while parsing config. Missing main/icy entry.\nbutt is going to close now"));
             exit(1);
         }
         cfg.main.icy_ent = cfg_get_str("main", "icy_ent");          //icy entries
         if(cfg.main.icy_ent == NULL)
         {
-            fl_alert("error while parsing config. Missing main/icy_ent entry.\nbutt is going to close now");
+            fl_alert("%s", _("error while parsing config. Missing main/icy_ent entry.\nbutt is going to close now"));
             exit(1);
         }
 
@@ -470,8 +470,8 @@ int cfg_set_values(char *path)
             cfg.icy[i]->pub   = cfg_get_str(icy_ent, "pub");
             if(cfg.icy[i]->pub == NULL)
             {
-                fl_alert("error while parsing config. Missing pub entry for icy \"%s\"."
-                        "\nbutt is going to close now", icy_ent);
+                fl_alert(_("error while parsing config. Missing pub entry for icy \"%s\"."
+                        "\nbutt is going to close now"), icy_ent);
                 exit(1);
             }
 

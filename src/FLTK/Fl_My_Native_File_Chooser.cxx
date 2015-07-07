@@ -31,7 +31,8 @@
 #include "Fl_My_Native_File_Chooser_FLTK.cxx"
 #endif
 
-const char *Fl_My_Native_File_Chooser::file_exists_message = "File exists. Are you sure you want to overwrite?";
+#include <libintl.h>
+const char *Fl_My_Native_File_Chooser::file_exists_message = gettext("File exists. Are you sure you want to overwrite?");
 
 //
 // End of "$Id: Fl_My_Native_File_Chooser.cxx 8864 2011-07-19 04:49:30Z greg.ercolano $".

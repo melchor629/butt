@@ -59,30 +59,30 @@ void display_info_timer(void*)
 
     if(display_info == SENT_DATA)
     {
-        sprintf(lcd_text_buf, "Enviado\n%0.2lfMB",
+        sprintf(lcd_text_buf, _("Enviado\n%0.2lfMB"),
                 kbytes_sent / 1024);
-        print_lcd(lcd_text_buf, (int) strlen(lcd_text_buf), 0, 1);
+        print_lcd(lcd_text_buf, 0, 1);
     }
 
     if(display_info == STREAM_TIME && timer_is_elapsed(&stream_timer))
     {
-        sprintf(lcd_text_buf, "Tiempo\n%s",
+        sprintf(lcd_text_buf, _("Tiempo\n%s"),
                 timer_get_time_str(&stream_timer));
-        print_lcd(lcd_text_buf, (int) strlen(lcd_text_buf), 0, 1);
+        print_lcd(lcd_text_buf, 0, 1);
     }
 
     if(display_info == REC_TIME && timer_is_elapsed(&rec_timer))
     {
-        sprintf(lcd_text_buf, "Tiempo grabando\n%s",
+        sprintf(lcd_text_buf, _("Tiempo grabando\n%s"),
                 timer_get_time_str(&rec_timer));
-        print_lcd(lcd_text_buf, (int) strlen(lcd_text_buf), 0, 1);
+        print_lcd(lcd_text_buf, 0, 1);
     }
 
     if(display_info == REC_DATA)
     {
-        sprintf(lcd_text_buf, "Tamaño grabado\n%0.2lfMB",
+        sprintf(lcd_text_buf, _("Tamaño grabado\n%0.2lfMB"),
                 kbytes_written / 1024);
-        print_lcd(lcd_text_buf, (int) strlen(lcd_text_buf), 0, 1);
+        print_lcd(lcd_text_buf, 0, 1);
     }
 
     Fl::repeat_timeout(0.1, &display_info_timer);
@@ -130,7 +130,7 @@ void is_connected_timer(void*)
 {
     if(!connected)
     {
-        print_info("ERROR: Conexión perdida\nReconectando...", 1);
+        print_info(_("ERROR: Conexión perdida\nReconectando..."), 1);
         if(cfg.srv[cfg.selected_srv]->type == SHOUTCAST)
             sc_disconnect();
         else
@@ -189,8 +189,8 @@ void split_recording_timer(void *initial_call)
     ext = util_get_file_extension(cfg.rec.filename);
     if(ext == NULL)
     {
-        print_info("No se ha podido detectar una extensión de archivo\n"
-                "Se ha desactivado la división del archivo", 0);
+        print_info(_("No se ha podido detectar una extensión de archivo\n"
+                "Se ha desactivado la división del archivo"), 0);
         free(path);
         return;
     }
@@ -204,9 +204,9 @@ void split_recording_timer(void *initial_call)
 
     if((next_fd = fl_fopen(path, "rb")) != NULL)
     {
-        print_info("Siguiente archivo ", 0);
+        print_info(_("Siguiente archivo "), 0);
         print_info(path, 0);
-        print_info(" ya existe\nbutt se mantendrá en el actual", 0);
+        print_info(_(" ya existe\nbutt se mantendrá en el actual"), 0);
         fclose(next_fd);
         free(path);
         return;
@@ -214,12 +214,12 @@ void split_recording_timer(void *initial_call)
 
     if((next_fd = fl_fopen(path, "wb")) == NULL)
     {
-        fl_alert("No se ha podido abrir:\n%s", path);
+        fl_alert(_("No se ha podido abrir:\n%s"), path);
         free(path);
         return;
     }
 
-    print_info("Grabando en: ", 0);
+    print_info(_("Grabando en: "), 0);
     print_info(path, 0);
 
     file_num++;
@@ -266,7 +266,7 @@ void songfile_timer(void*)
 
    if((cfg.main.song_fd = fl_fopen(cfg.main.song_path, "rb")) == NULL)
    {
-	   snprintf(msg, sizeof(msg), "No se ha podido abrir: %s.\nSe reintentará en 5s", 
+	   snprintf(msg, sizeof(msg), _("No se ha podido abrir: %s.\nSe reintentará en 5s"),
 					   cfg.main.song_path); 
 
        print_info(msg, 1);

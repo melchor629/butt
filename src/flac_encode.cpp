@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "flac_encode.h"
+#include "util.h"
 
 FLAC__uint64 g_bytes_written = 0;
 static void progress_callback(const FLAC__StreamEncoder *encoder, FLAC__uint64 bytes_written, FLAC__uint64 samples_written, unsigned frames_written, unsigned total_frames_estimate, void *client_data);
@@ -13,7 +14,7 @@ int flac_enc_init(flac_enc *flac)
    
     if((flac->encoder = FLAC__stream_encoder_new()) == NULL) 
     {
-        printf("ERROR: allocating encoder\n");
+        printf("%s", _("ERROR: allocating encoder\n"));
         return 1;
     }
 
@@ -36,7 +37,7 @@ int flac_enc_init_FILE(flac_enc *flac, FILE *fout)
     init_status = FLAC__stream_encoder_init_FILE(flac->encoder, fout, progress_callback, /*client_data=*/NULL);
     if(init_status != FLAC__STREAM_ENCODER_INIT_STATUS_OK) 
     {
-        fprintf(stderr, "ERROR: initializing encoder: %s\n", FLAC__StreamEncoderInitStatusString[init_status]);
+        fprintf(stderr, _("ERROR: initializing encoder: %s\n"), FLAC__StreamEncoderInitStatusString[init_status]);
         return 1;
     }
 

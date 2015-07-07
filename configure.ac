@@ -43,6 +43,9 @@ AC_CHECK_LIB([pthread], [pthread_create], [],
 AC_CHECK_LIB([samplerate], [src_new], [],
 		[AC_MSG_ERROR([**** Could not find samplerate     ****])]
 	    )
+AC_CHECK_LIB([gettextpo], [setlocale], [],
+		[AC_MSG_ERROR([**** Could not find gettextpo     ****])]
+		)
 
 AC_CHECK_HEADER([winsock2.h], 
 		[
@@ -80,6 +83,15 @@ AC_C_INLINE
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([gethostbyaddr gethostbyname memset pow select socket strchr strdup strpbrk strrchr strstr])
+
+# Adds visibility of streaming configuration
+AC_ARG_ENABLE([stream-conf], 
+	AS_HELP_STRING([--enable-stream-conf], [Enable stream configration visibility]))
+AS_IF([test "x%enable_stream-conf" = "xyes"], [
+	AC_DEFINE([VISIBILITY], [1], [Stream conf visibility enabled])
+], [
+	AC_DEFINE([VISIBILITY], [0], [Stream conf visibility disabled])
+])
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile])

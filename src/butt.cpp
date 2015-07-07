@@ -32,6 +32,12 @@
  #include <FL/Fl_File_Icon.H>
 #endif
 
+#if !defined(__APPLE__)
+#define LOCALEDIR "./Locale"
+#else
+#define LOCALEDIR "./butt.app/Contents/Resources/Locale"
+#endif
+
 #include "config.h"
 
 #include "cfg.h"
@@ -80,6 +86,12 @@ int main(int argc, char *argv[])
     char *p;
     char lcd_buf[33];
     char info_buf[256];
+    
+    //setenv("LANG", "en_GB", true);
+    //setenv("LANG", "ca", true);
+    setlocale(LC_ALL, "");
+    bindtextdomain("butt", LOCALEDIR);
+    textdomain("butt");
 
 #ifndef _WIN32
     signal(SIGPIPE, SIG_IGN); //ignore the SIGPIPE signal.
@@ -105,8 +117,8 @@ int main(int argc, char *argv[])
 #endif 
 
 
-    snprintf(info_buf, sizeof(info_buf), "Iniciando %s\nWritten by Daniel Nöthen\n"
-    	"PayPal: bipak@gmx.net\nModificaciones por Melchor Garau Madrigal", PACKAGE_STRING);
+    snprintf(info_buf, sizeof(info_buf), "%s %s\nWritten by Daniel Nöthen\n"
+    	"PayPal: bipak@gmx.net\nModifications by Melchor Garau Madrigal", _("Iniciando"), PACKAGE_STRING);
     print_info(info_buf, 0);
 
 #ifdef _WIN32
@@ -136,7 +148,7 @@ int main(int argc, char *argv[])
     }
     else if(p == NULL)
     {
-        ALERT("No se ha encontrado el directorio del usuario");
+        ALERT(gettext("No se ha encontrado el directorio del usuario"));
         return 1;
     }
     else
@@ -150,26 +162,26 @@ int main(int argc, char *argv[])
     lame_rec.gfp = NULL;
     flac_rec.encoder = NULL;
 
-    snprintf(info_buf, sizeof(info_buf), "Leyendo configuración de %s", cfg_path);
+    snprintf(info_buf, sizeof(info_buf), _("Leyendo configuración de %s"), cfg_path);
     print_info(info_buf, 0);
 
     if(snd_init() != 0)
     {
-        ALERT("PortAudio init failed\nbutt is going to close now");
+        ALERT(_("PortAudio init failed\nbutt is going to close now"));
         return 1;
     }
 
     if(cfg_set_values(NULL) != 0)        //read config file and initialize config struct
     {
-        snprintf(info_buf, sizeof(info_buf), "No se ha podido encontrar la configuración %s", cfg_path);
+        snprintf(info_buf, sizeof(info_buf), _("No se ha podido encontrar la configuración %s"), cfg_path);
         print_info(info_buf, 1);
 
         if(cfg_create_default())
         {
-            fl_alert("No se ha podidio crear el archivo de configuración %s\nbutt se va ha cerrar ahora", cfg_path);
+            fl_alert(_("No se ha podidio crear el archivo de configuración %s\nbutt se va ha cerrar ahora"), cfg_path);
             return 1;
         }
-        sprintf(info_buf, "butt ha creado el archivo de configuración inicial en\n%s\n",
+        sprintf(info_buf, _("butt ha creado el archivo de configuración inicial en\n%s\n"),
                 cfg_path );
 
         print_info(info_buf, 0);
@@ -185,14 +197,14 @@ int main(int argc, char *argv[])
     Fl::add_timeout(0.01, &vu_meter_timer);
     Fl::add_timeout(5, &display_rotate_timer);
 
-    strcpy(lcd_buf, "En espera");
-    PRINT_LCD(lcd_buf, (int) strlen(lcd_buf), 0, 1);
+    strcpy(lcd_buf, _("En espera"));
+    PRINT_LCD(lcd_buf, 0, 1);
 
 	if(cfg.main.connect_at_startup)
 		button_connect_cb();
 
     snprintf(info_buf, sizeof(info_buf),
-            "butt %s iniciado perfectamente", VERSION);
+            _("butt %s iniciado perfectamente"), VERSION);
     print_info(info_buf, 0);
 
     GUI_LOOP();

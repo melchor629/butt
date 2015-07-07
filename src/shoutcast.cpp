@@ -38,6 +38,7 @@
 #include "sockfuncs.h"
 #include "flgui.h"
 #include "fl_funcs.h"
+#include "util.h"
 
 void send_icy_header(char *key, char *val)
 {
@@ -73,7 +74,7 @@ int sc_connect(void)
             case SOCK_ERR_CREATE:
                 if(!error_printed)
                 {
-                    print_info("\nConnect: Could not create network socket", 1);
+                    print_info(_("\nConnect: Could not create network socket"), 1);
                     error_printed = 1;
                 }
                 ret = 2;
@@ -81,7 +82,7 @@ int sc_connect(void)
             case SOCK_ERR_RESOLVE:
                 if(!error_printed)
                 {
-                    print_info("\nConnect: Error resolving server address", 1);
+                    print_info(_("\nConnect: Error resolving server address"), 1);
                     error_printed = 1;
                 }
                 ret = 1;
@@ -151,7 +152,7 @@ int sc_connect(void)
     {
         if(strstr(recv_buf, "invalid password") != NULL)
         {
-            print_info("\nConnect: Invalid password!\n", 1);
+            print_info(_("\nConnect: Invalid password!\n"), 1);
             sc_disconnect();
             return 2;
         }
@@ -195,11 +196,11 @@ int sc_update_song(void)
         switch(web_socket)
         {
             case SOCK_ERR_CREATE:
-                print_info("\nUpdate song: Could not create network socket", 1);
+                print_info(_("\nUpdate song: Could not create network socket"), 1);
                 ret = 1;
                 break;
             case SOCK_ERR_RESOLVE:
-                print_info("\nUpdate song: Error resolving server address", 1);
+                print_info(_("\nUpdate song: Error resolving server address"), 1);
                 ret = 1;
                 break;
             case SOCK_TIMEOUT:

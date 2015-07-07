@@ -19,6 +19,7 @@
 #include "lame_encode.h"
 
 #include "fl_funcs.h"
+#include "util.h"
 
 
 int lame_enc_init(lame_enc *lame)
@@ -37,7 +38,7 @@ int lame_enc_init(lame_enc *lame)
     {
         printf("bitrate: %d\n", lame->bitrate);
         snprintf(info_buf, sizeof(info_buf),
-                "unable to init lame params %d", rc);
+                _("unable to init lame params %d"), rc);
 
         print_info(info_buf, 1);
         return 1;

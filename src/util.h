@@ -16,9 +16,15 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <libintl.h>
+#include <FL/Fl_Widget.H>
+
+#define _(a) static_cast<const char*>(gettext(a))
+
 char *util_base64_enc(char *data);
 char *util_get_file_extension(char *filename);
 float util_factor_to_db(float factor);
 float util_db_to_factor(float dB);
+void util_set_visible(Fl_Widget* w);
 
 #endif

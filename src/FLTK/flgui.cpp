@@ -1485,7 +1485,7 @@ flgui::flgui() {
             button_songfile_browse->image(image_folder);
             button_songfile_browse->callback((Fl_Callback*)cb_button_songfile_browse);
           } // Fl_Button* button_songfile_browse
-          { check_song_update_active = new Fl_Check_Button(18, 196, 152, 25, _("Activar"));
+          { check_song_update_active = new Fl_Check_Button(25, 196, 152, 25, _("Activar"));
             check_song_update_active->tooltip(_("Activate auto update from file"));
             check_song_update_active->down_box(FL_DOWN_BOX);
             check_song_update_active->callback((Fl_Callback*)cb_check_song_update_active);

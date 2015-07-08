@@ -301,6 +301,11 @@ exit:
 }
 
 void itunes_timer(void*) {
+    if(!itunes_timeout_running) {
+        Fl::remove_timeout(&itunes_timer);
+        return;
+    }
+    
 #if __APPLE__ && __MACH__
     const char* track = getCurrentTrackFromiTunes();
     if(track) {
@@ -311,9 +316,11 @@ void itunes_timer(void*) {
         }
         free((void*) track);
     } else {
-        cfg.main.song = (char*) realloc(cfg.main.song, 1);
-        strcpy(cfg.main.song, "");
-        button_cfg_song_go_cb();
+        if(strcmp(cfg.main.song, "")) {
+            cfg.main.song = (char*) realloc(cfg.main.song, 1);
+            strcpy(cfg.main.song, "");
+            button_cfg_song_go_cb();
+        }
     }
 #endif
     
@@ -321,6 +328,11 @@ void itunes_timer(void*) {
 }
 
 void spotify_timer(void*) {
+    if(!spotify_timeout_running) {
+        Fl::remove_timeout(&spotify_timer);
+        return;
+    }
+    
 #if __APPLE__ && __MACH__
     const char* track = getCurrentTrackFromSpotify();
     if(track) {
@@ -331,9 +343,11 @@ void spotify_timer(void*) {
         }
         free((void*) track);
     } else {
-        cfg.main.song = (char*) realloc(cfg.main.song, 1);
-        strcpy(cfg.main.song, "");
-        button_cfg_song_go_cb();
+        if(strcmp(cfg.main.song, "")) {
+            cfg.main.song = (char*) realloc(cfg.main.song, 1);
+            strcpy(cfg.main.song, "");
+            button_cfg_song_go_cb();
+        }
     }
 #endif
     

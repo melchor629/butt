@@ -2669,15 +2669,17 @@ void check_use_itunes_cb() {
     if(fl_g->use_spotify->value()) {
         fl_g->use_spotify->value(0);
         fl_g->use_spotify->redraw();
-        if(spotify_timeout_running)
+        if(spotify_timeout_running) {
             Fl::remove_timeout(&spotify_timer);
+            spotify_timeout_running = false;
+        }
         cfg.main.spotify_update = false;
     }
 
     if(fl_g->use_itunes->value()) {
         if(connected) {
-            Fl::add_timeout(0.1, &itunes_timer);
             itunes_timeout_running = true;
+            Fl::add_timeout(0.1, &itunes_timer);
         }
         cfg.main.itunes_update = true;
     } else {
@@ -2693,15 +2695,17 @@ void check_use_spotify_cb() {
     if(fl_g->use_itunes->value()) {
         fl_g->use_itunes->value(0);
         fl_g->use_itunes->redraw();
-        if(itunes_timeout_running)
+        if(itunes_timeout_running) {
             Fl::remove_timeout(&itunes_timer);
+            itunes_timeout_running = false;
+        }
         cfg.main.itunes_update = false;
     }
 
     if(fl_g->use_spotify->value()) {
         if(connected) {
+            spotify_timeout_running = true;
             Fl::add_timeout(0.1, &spotify_timer);
-            itunes_timeout_running = true;
         }
         cfg.main.spotify_update = true;
     } else {

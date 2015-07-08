@@ -599,7 +599,7 @@ else
             Fl_Check_Button check_song_update_active {
               label Activar
               callback {check_song_update_active_cb();} selected
-              tooltip {Activate auto update from file} xywh {18 196 152 25} down_box DOWN_BOX
+              tooltip {Activate auto update from file} xywh {25 196 152 25} down_box DOWN_BOX
             }
           }
           Fl_Group {} {

@@ -4,6 +4,7 @@
 AC_PREREQ([2.68])
 AC_INIT([butt], [0.2.16], [melchor9000@gmail.com])
 AM_INIT_AUTOMAKE([subdir-objects foreign])
+AC_CANONICAL_HOST
 
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
@@ -43,9 +44,22 @@ AC_CHECK_LIB([pthread], [pthread_create], [],
 AC_CHECK_LIB([samplerate], [src_new], [],
 		[AC_MSG_ERROR([**** Could not find samplerate     ****])]
 	    )
-AC_CHECK_LIB([gettextpo], [setlocale], [],
-		[AC_MSG_ERROR([**** Could not find gettextpo     ****])]
-		)
+
+## Using MinGW, gettext uses libintl, on others, uses libgettextpo
+case $host_os in
+	mingw*)
+		AC_CHECK_LIB([intl], [setlocale], [],
+			[AC_MSG_ERROR([**** Could not find intl     ****])]
+			)
+		;;
+
+	*)
+		AC_CHECK_LIB([gettextpo], [setlocale], [],
+			[AC_MSG_ERROR([**** Could not find gettextpo     ****])]
+			)
+		;;
+esac
+
 
 AC_CHECK_HEADER([winsock2.h], 
 		[

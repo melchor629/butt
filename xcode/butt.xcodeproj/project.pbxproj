@@ -37,6 +37,8 @@
 		3CC899811926A7CE008A414B /* fl_timer_funcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */; };
 		4817DC0D1B29AD0F006523B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4817DC0C1B29AD0F006523B8 /* Images.xcassets */; };
 		4817DC441B29AF80006523B8 /* butt-bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C69A672189E7D73001CBFBA /* butt-bin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */; };
+		48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */; };
 		48E01DE11B4BE45900449DFD /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E01DE01B4BE45900449DFD /* libiconv.dylib */; };
 		48E01DE71B4BF08400449DFD /* Locale in Resources */ = {isa = PBXBuildFile; fileRef = 48E01DE61B4BF08400449DFD /* Locale */; };
 /* End PBXBuildFile section */
@@ -142,6 +144,9 @@
 		4817DC2E1B29AE22006523B8 /* libsamplerate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsamplerate.a; path = lib/libsamplerate.a; sourceTree = "<group>"; };
 		4817DC2F1B29AE22006523B8 /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = lib/libvorbis.a; sourceTree = "<group>"; };
 		4817DC301B29AE22006523B8 /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisenc.a; path = lib/libvorbisenc.a; sourceTree = "<group>"; };
+		48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentTrackOSX.h; path = ../src/CurrentTrackOSX.h; sourceTree = "<group>"; };
+		48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentTrackOSX.m; path = ../src/CurrentTrackOSX.m; sourceTree = "<group>"; };
+		48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		48E01DDA1B4BE37C00449DFD /* libasprintf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libasprintf.a; path = lib/libasprintf.a; sourceTree = "<group>"; };
 		48E01DDB1B4BE37C00449DFD /* libgettextpo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgettextpo.a; path = lib/libgettextpo.a; sourceTree = "<group>"; };
 		48E01DDC1B4BE37C00449DFD /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = lib/libintl.a; sourceTree = "<group>"; };
@@ -159,6 +164,7 @@
 				3C69A6BC189E7EDD001CBFBA /* AudioUnit.framework in Frameworks */,
 				3C69A6BD189E7EDD001CBFBA /* Cocoa.framework in Frameworks */,
 				3C69A6BE189E7EDD001CBFBA /* CoreAudio.framework in Frameworks */,
+				48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +187,8 @@
 				3C74136E1939241400211C26 /* opus_encode.cpp */,
 				3CC6F28019083487001993B1 /* butt.cpp */,
 				3CC6F28119083487001993B1 /* butt.h */,
+				48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */,
+				48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */,
 				3C0CC7F61A49FAD60079F4B5 /* flac_encode.h */,
 				3C0CC7F71A49FAD60079F4B5 /* flac_encode.cpp */,
 				3CC6F28219083487001993B1 /* cfg.cpp */,
@@ -291,6 +299,7 @@
 		4817DC3D1B29AE30006523B8 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */,
 				48E01DE61B4BF08400449DFD /* Locale */,
 				3C69A6DC189E844E001CBFBA /* Foundation.framework */,
 				3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */,
@@ -421,6 +430,7 @@
 				3CC6F2B919083488001993B1 /* sockfuncs.cpp in Sources */,
 				3CC6F2B219083488001993B1 /* flgui.cpp in Sources */,
 				3CC6F2B819083488001993B1 /* shoutcast.cpp in Sources */,
+				48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */,
 				3CC899811926A7CE008A414B /* fl_timer_funcs.cpp in Sources */,
 				3CC6F2B719083488001993B1 /* ringbuffer.cpp in Sources */,
 				3CC6F2BC19083488001993B1 /* util.cpp in Sources */,

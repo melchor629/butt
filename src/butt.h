@@ -29,6 +29,8 @@ extern bool disconnect;     //TRUE if butt should disconnect
 extern bool try_connect;    //but will try to connect to a server while TRUE
 extern bool streaming;
 extern bool song_timeout_running; //TRUE if automatic song updating is running
+extern bool itunes_timeout_running; //TRUE if automatic song updating from iTunes is running
+extern bool spotify_timeout_running; //TRUE if automatic song updating Spotify is running
 
 extern int stream_socket;
 extern double kbytes_sent;

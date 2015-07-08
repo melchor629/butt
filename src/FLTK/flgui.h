@@ -267,6 +267,16 @@ private:
   inline void cb_button_cfg_del_icy_i(Fl_Button*, void*);
   static void cb_button_cfg_del_icy(Fl_Button*, void*);
 public:
+  Fl_Check_Button *use_itunes;
+private:
+  inline void cb_use_itunes_i(Fl_Check_Button*, void*);
+  static void cb_use_itunes(Fl_Check_Button*, void*);
+public:
+  Fl_Check_Button *use_spotify;
+private:
+  inline void cb_use_spotify_i(Fl_Check_Button*, void*);
+  static void cb_use_spotify(Fl_Check_Button*, void*);
+public:
   Fl_Input *input_rec_filename;
 private:
   inline void cb_input_rec_filename_i(Fl_Input*, void*);

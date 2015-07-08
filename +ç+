@@ -5,6 +5,8 @@ Version 0.1.16 (2015-07-07)
 * recover some widgets I deleted before
 * toggle visibility of streaming options on configure time
 * removed length argument from print_lcd
+* added support for current song on iTunes and Spotify (OS X only)
+* current song for iTunes and Spotify saves into the cfg file
 
 Version 0.1.15 (2015-06-11)
 ---------------------------

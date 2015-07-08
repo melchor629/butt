@@ -123,6 +123,9 @@ void fill_cfg_widgets(void)
         fl_g->check_song_update_active->value(0);
 
     fl_g->input_cfg_song_file->value(cfg.main.song_path);
+    
+    fl_g->use_itunes->value(cfg.main.itunes_update);
+    fl_g->use_spotify->value(cfg.main.spotify_update);
 
     //fill the record section
     fl_g->input_rec_filename->value(cfg.rec.filename);

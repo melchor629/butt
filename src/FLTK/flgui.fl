@@ -220,7 +220,7 @@ button_cfg->label("Settings@>");} open
       } {
         Fl_Group {} {
           label Principal open
-          xywh {0 20 300 450} when 6
+          xywh {0 20 300 450} when 6 hide
         } {
           Fl_Group {} {
             label {Archivo de log} open
@@ -256,7 +256,7 @@ button_cfg->label("Settings@>");} open
             }
           }
           Fl_Group server_connexion_g {
-            label {Server connexion} open selected
+            label {Server connexion} open
             xywh {15 198 260 75} box ENGRAVED_FRAME hide
             code0 {util_set_visible(server_connexion_g);}
           } {
@@ -581,46 +581,46 @@ else
         }
         Fl_Group {} {
           label Stream open
-          tooltip {Add stream info} xywh {0 19 300 450} hide
+          tooltip {Add stream info} xywh {0 19 300 450}
         } {
           Fl_Group {} {
             label {Cambiar nombre de canción con archivo}
-            xywh {15 165 265 65} box ENGRAVED_FRAME align 5
+            xywh {15 160 265 65} box ENGRAVED_FRAME align 5
           } {
             Fl_Input input_cfg_song_file {
               callback {input_cfg_song_file_cb();}
-              xywh {20 174 225 25} align 9
+              xywh {20 169 225 25} align 9
               code0 {this->input_cfg_song_file->maximum_size(500);}
             }
             Fl_Button button_songfile_browse {
               callback {button_cfg_browse_songfile_cb();}
-              image {../xpm/folder.png} xywh {250 174 25 25} box ENGRAVED_FRAME
+              image {../xpm/folder.png} xywh {250 169 25 25} box ENGRAVED_FRAME
             }
             Fl_Check_Button check_song_update_active {
               label Activar
-              callback {check_song_update_active_cb();}
-              tooltip {Activate auto update from file} xywh {18 201 152 25} down_box DOWN_BOX
+              callback {check_song_update_active_cb();} selected
+              tooltip {Activate auto update from file} xywh {18 196 152 25} down_box DOWN_BOX
             }
           }
           Fl_Group {} {
             label {Cambiar nombre de canción manualmente}
-            xywh {15 259 265 40} box ENGRAVED_FRAME align 5
+            xywh {15 245 265 40} box ENGRAVED_FRAME align 5
           } {
             Fl_Input input_cfg_song {
               callback {input_cfg_song_cb();}
-              xywh {20 267 225 25} align 5
+              xywh {20 253 225 25} align 5
               code0 {this->input_cfg_song->maximum_size(500);}
             }
             Fl_Button {} {
               label OK
               callback {button_cfg_song_go_cb();}
-              tooltip {Update Current Song} xywh {250 267 25 25} box ENGRAVED_BOX shortcut 0xff0d labelsize 12
+              tooltip {Update Current Song} xywh {250 253 25 25} box ENGRAVED_BOX shortcut 0xff0d labelsize 12
             }
           }
           Fl_Check_Button check_cfg_connect {
             label {Empezar streaming al inicio}
             callback {check_cfg_connect_cb();}
-            tooltip {Connect automatically to a server at startup} xywh {15 312 159 18} down_box DOWN_BOX
+            tooltip {Connect automatically to a server at startup} xywh {15 312 195 18} down_box DOWN_BOX
           }
           Fl_Text_Display {} {
             label {Recomendación de nombre de canción:}
@@ -632,7 +632,7 @@ else
           }
           Fl_Group {} {
             label {Ajustes de servidor}
-            xywh {15 55 265 85} box ENGRAVED_FRAME align 5
+            xywh {15 55 265 80} box ENGRAVED_FRAME align 5
           } {
             Fl_Choice choice_cfg_act_icy {
               label {Información del Streaming}
@@ -654,6 +654,18 @@ else
               callback {button_cfg_del_icy_cb();}
               tooltip {Delete stream info} xywh {220 105 55 20} box ENGRAVED_BOX
             }
+          }
+          Fl_Check_Button use_itunes {
+            label {Usar iTunes}
+            callback {check_use_itunes_cb();}
+            xywh {15 290 130 20} down_box DOWN_BOX hide
+            code0 {util_set_os_visible(use_itunes, OSX);}
+          }
+          Fl_Check_Button use_spotify {
+            label {Usar Spotify}
+            callback {check_use_spotify_cb();}
+            xywh {160 290 120 20} down_box DOWN_BOX hide
+            code0 {util_set_os_visible(use_spotify, OSX);}
           }
         }
         Fl_Group {} {

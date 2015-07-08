@@ -39,6 +39,10 @@
 #include "strfuncs.h"
 #include "fl_timer_funcs.h"
 
+#if __APPLE__ && __MACH__
+#include "CurrentTrackOSX.h"
+#endif
+
 void vu_meter_timer(void*)
 {
     if(pa_new_frames)
@@ -294,4 +298,44 @@ void songfile_timer(void*)
 
 exit:
     Fl::repeat_timeout(repeat_time, &songfile_timer);
+}
+
+void itunes_timer(void*) {
+#if __APPLE__ && __MACH__
+    const char* track = getCurrentTrackFromiTunes();
+    if(track) {
+        if(cfg.main.song == NULL || strcmp(cfg.main.song, track)) {
+            cfg.main.song = (char*) realloc(cfg.main.song, strlen(track) + 1);
+            strcpy(cfg.main.song, track);
+            button_cfg_song_go_cb();
+        }
+        free((void*) track);
+    } else {
+        cfg.main.song = (char*) realloc(cfg.main.song, 1);
+        strcpy(cfg.main.song, "");
+        button_cfg_song_go_cb();
+    }
+#endif
+    
+    Fl::repeat_timeout(5, &itunes_timer);
+}
+
+void spotify_timer(void*) {
+#if __APPLE__ && __MACH__
+    const char* track = getCurrentTrackFromSpotify();
+    if(track) {
+        if(cfg.main.song == NULL || strcmp(cfg.main.song, track)) {
+            cfg.main.song = (char*) realloc(cfg.main.song, strlen(track) + 1);
+            strcpy(cfg.main.song, track);
+            button_cfg_song_go_cb();
+        }
+        free((void*) track);
+    } else {
+        cfg.main.song = (char*) realloc(cfg.main.song, 1);
+        strcpy(cfg.main.song, "");
+        button_cfg_song_go_cb();
+    }
+#endif
+    
+    Fl::repeat_timeout(5, &spotify_timer);
 }

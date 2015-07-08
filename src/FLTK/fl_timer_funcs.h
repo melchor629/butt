@@ -23,6 +23,8 @@ void cfg_win_pos_timer(void*);
 void songfile_timer(void*);
 void split_recording_timer(void*);
 void display_rotate_timer(void*);
+void itunes_timer(void*);
+void spotify_timer(void*);
 
 #endif
 

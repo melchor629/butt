@@ -62,6 +62,8 @@ bool streaming;
 bool disconnect;
 bool try_connect;
 bool song_timeout_running;
+bool itunes_timeout_running;
+bool spotify_timeout_running;
 
 int stream_socket;
 double kbytes_sent;

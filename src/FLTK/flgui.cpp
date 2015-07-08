@@ -842,6 +842,20 @@ void flgui::cb_button_cfg_del_icy(Fl_Button* o, void* v) {
   ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_button_cfg_del_icy_i(o,v);
 }
 
+void flgui::cb_use_itunes_i(Fl_Check_Button*, void*) {
+  check_use_itunes_cb();
+}
+void flgui::cb_use_itunes(Fl_Check_Button* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->user_data()))->cb_use_itunes_i(o,v);
+}
+
+void flgui::cb_use_spotify_i(Fl_Check_Button*, void*) {
+  check_use_spotify_cb();
+}
+void flgui::cb_use_spotify(Fl_Check_Button* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->user_data()))->cb_use_spotify_i(o,v);
+}
+
 void flgui::cb_input_rec_filename_i(Fl_Input*, void*) {
   input_rec_filename_cb();
 }
@@ -1259,6 +1273,7 @@ flgui::flgui() {
       Settings->selection_color((Fl_Color)41);
       { Fl_Group* o = new Fl_Group(0, 20, 300, 450, _("Principal"));
         o->when(FL_WHEN_RELEASE_ALWAYS);
+        o->hide();
         { Fl_Group* o = new Fl_Group(15, 56, 265, 34, _("Archivo de log"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
@@ -1457,36 +1472,35 @@ flgui::flgui() {
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("Stream"));
         o->tooltip(_("Add stream info"));
-        o->hide();
-        { Fl_Group* o = new Fl_Group(15, 165, 265, 65, _("Cambiar nombre de canci\303\263n con archivo"));
+        { Fl_Group* o = new Fl_Group(15, 160, 265, 65, _("Cambiar nombre de canci\303\263n con archivo"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_cfg_song_file = new Fl_Input(20, 174, 225, 25);
+          { input_cfg_song_file = new Fl_Input(20, 169, 225, 25);
             input_cfg_song_file->callback((Fl_Callback*)cb_input_cfg_song_file);
             input_cfg_song_file->align(Fl_Align(FL_ALIGN_TOP_RIGHT));
             this->input_cfg_song_file->maximum_size(500);
           } // Fl_Input* input_cfg_song_file
-          { button_songfile_browse = new Fl_Button(250, 174, 25, 25);
+          { button_songfile_browse = new Fl_Button(250, 169, 25, 25);
             button_songfile_browse->box(FL_ENGRAVED_FRAME);
             button_songfile_browse->image(image_folder);
             button_songfile_browse->callback((Fl_Callback*)cb_button_songfile_browse);
           } // Fl_Button* button_songfile_browse
-          { check_song_update_active = new Fl_Check_Button(18, 201, 152, 25, _("Activar"));
+          { check_song_update_active = new Fl_Check_Button(18, 196, 152, 25, _("Activar"));
             check_song_update_active->tooltip(_("Activate auto update from file"));
             check_song_update_active->down_box(FL_DOWN_BOX);
             check_song_update_active->callback((Fl_Callback*)cb_check_song_update_active);
           } // Fl_Check_Button* check_song_update_active
           o->end();
         } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(15, 259, 265, 40, _("Cambiar nombre de canci\303\263n manualmente"));
+        { Fl_Group* o = new Fl_Group(15, 245, 265, 40, _("Cambiar nombre de canci\303\263n manualmente"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_cfg_song = new Fl_Input(20, 267, 225, 25);
+          { input_cfg_song = new Fl_Input(20, 253, 225, 25);
             input_cfg_song->callback((Fl_Callback*)cb_input_cfg_song);
             input_cfg_song->align(Fl_Align(FL_ALIGN_TOP_LEFT));
             this->input_cfg_song->maximum_size(500);
           } // Fl_Input* input_cfg_song
-          { Fl_Button* o = new Fl_Button(250, 267, 25, 25, _("OK"));
+          { Fl_Button* o = new Fl_Button(250, 253, 25, 25, _("OK"));
             o->tooltip(_("Update Current Song"));
             o->box(FL_ENGRAVED_BOX);
             o->shortcut(0xff0d);
@@ -1495,7 +1509,7 @@ flgui::flgui() {
           } // Fl_Button* o
           o->end();
         } // Fl_Group* o
-        { check_cfg_connect = new Fl_Check_Button(15, 312, 159, 18, _("Empezar streaming al inicio"));
+        { check_cfg_connect = new Fl_Check_Button(15, 312, 195, 18, _("Empezar streaming al inicio"));
           check_cfg_connect->tooltip(_("Connect automatically to a server at startup"));
           check_cfg_connect->down_box(FL_DOWN_BOX);
           check_cfg_connect->callback((Fl_Callback*)cb_check_cfg_connect);
@@ -1508,7 +1522,7 @@ flgui::flgui() {
           o->labelfont(13);
           o->labelcolor((Fl_Color)1);
         } // Fl_Text_Display* o
-        { Fl_Group* o = new Fl_Group(15, 55, 265, 85, _("Ajustes de servidor"));
+        { Fl_Group* o = new Fl_Group(15, 55, 265, 80, _("Ajustes de servidor"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           { choice_cfg_act_icy = new Fl_Choice(25, 83, 250, 20, _("Informaci\303\263n del Streaming"));
@@ -1532,6 +1546,18 @@ flgui::flgui() {
           } // Fl_Button* button_cfg_del_icy
           o->end();
         } // Fl_Group* o
+        { use_itunes = new Fl_Check_Button(15, 290, 130, 20, _("Usar iTunes"));
+          use_itunes->down_box(FL_DOWN_BOX);
+          use_itunes->callback((Fl_Callback*)cb_use_itunes);
+          use_itunes->hide();
+          util_set_os_visible(use_itunes, OSX);
+        } // Fl_Check_Button* use_itunes
+        { use_spotify = new Fl_Check_Button(160, 290, 120, 20, _("Usar Spotify"));
+          use_spotify->down_box(FL_DOWN_BOX);
+          use_spotify->callback((Fl_Callback*)cb_use_spotify);
+          use_spotify->hide();
+          util_set_os_visible(use_spotify, OSX);
+        } // Fl_Check_Button* use_spotify
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("Grabaci\303\263n"));

@@ -221,7 +221,7 @@ void button_connect_cb(void)
     //ogg/vorbis & ogg/opus :(
     if((!strcmp(cfg.audio.codec, "ogg")) || (!strcmp(cfg.audio.codec, "opus")))
     {
-        //fl_g->choice_cfg_bitrate->deactivate();
+        fl_g->choice_cfg_bitrate->deactivate();
         fl_g->choice_cfg_samplerate->deactivate();
         fl_g->choice_cfg_channel->deactivate();
     }
@@ -240,6 +240,16 @@ void button_connect_cb(void)
     {
         Fl::add_timeout(0.1, &songfile_timer);
         song_timeout_running = 1;
+    }
+    
+    if(cfg.main.itunes_update && !itunes_timeout_running) {
+        Fl::add_timeout(0.1, &itunes_timer);
+        itunes_timeout_running = 1;
+    }
+
+    if(cfg.main.spotify_update && !spotify_timeout_running) {
+        Fl::add_timeout(0.1, &spotify_timer);
+        spotify_timeout_running = 1;
     }
 
     snd_start_stream();
@@ -2653,4 +2663,52 @@ void window_main_close_cb(void)
     }
 
     exit(0);
+}
+
+void check_use_itunes_cb() {
+    if(fl_g->use_spotify->value()) {
+        fl_g->use_spotify->value(0);
+        fl_g->use_spotify->redraw();
+        if(spotify_timeout_running)
+            Fl::remove_timeout(&spotify_timer);
+        cfg.main.spotify_update = false;
+    }
+
+    if(fl_g->use_itunes->value()) {
+        if(connected) {
+            Fl::add_timeout(0.1, &itunes_timer);
+            itunes_timeout_running = true;
+        }
+        cfg.main.itunes_update = true;
+    } else {
+        if(itunes_timeout_running)
+            Fl::remove_timeout(&itunes_timer);
+        cfg.main.itunes_update = false;
+    }
+    
+    unsaved_changes = true;
+}
+
+void check_use_spotify_cb() {
+    if(fl_g->use_itunes->value()) {
+        fl_g->use_itunes->value(0);
+        fl_g->use_itunes->redraw();
+        if(itunes_timeout_running)
+            Fl::remove_timeout(&itunes_timer);
+        cfg.main.itunes_update = false;
+    }
+
+    if(fl_g->use_spotify->value()) {
+        if(connected) {
+            Fl::add_timeout(0.1, &spotify_timer);
+            itunes_timeout_running = true;
+        }
+        cfg.main.spotify_update = true;
+    } else {
+        if(itunes_timeout_running)
+            Fl::remove_timeout(&spotify_timer);
+        cfg.main.spotify_update = false;
+    }
+    
+    unsaved_changes = true;
 }

@@ -10,13 +10,13 @@ butt (broadcast using this tool) is an easy to use, multi OS streaming tool. It 
 
 Install
 -------
-### OS X: 
+#### OS X: 
 Download `butt-osx.zip`, extract it and copy the app to Applications.
 
-.Windows: 
+#### Windows: 
 Download `butt-win.zip`, extract it inside a folder and it's ready to use.
 
-.Debian based distros:
+#### Debian based distros:
 Butt depends on the following packages and their dependencies:  
 - `portaudio19`
 - `libvorbis`
@@ -29,7 +29,7 @@ Butt depends on the following packages and their dependencies:
 - `libiconv`
 Download `butt-linux64.zip`, extract it inside a folder and it's ready to use.
 
-.Linux/MinGW:
+#### Linux/MinGW:
 First of all you need to have the same libraries as Debain based distros installed on your system, but with dev version (headers and libraries). They are quite common and should be included in every linux distribution.
 After installing the above libraries you can install butt from source as usual:
 
@@ -124,4 +124,4 @@ Delete the exectuable and the configuration file from '/home/[username]/.buttrc'
 
 Contact
 -------
-melchor9000@gmail.com
+melchor9000@gmail.com (maintainer of this fork)

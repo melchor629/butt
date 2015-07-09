@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: butt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-07 20:49+0200\n"
-"PO-Revision-Date: 2015-07-07 21:25+0200\n"
+"PO-Revision-Date: 2015-07-09 16:01+0200\n"
 "Last-Translator: Melchor Alejo Garau Madrigal <melchor9000@gmail.com>\n"
 "Language-Team: melchor9000@gmail.com\n"
 "MIME-Version: 1.0\n"
@@ -476,12 +476,12 @@ msgstr "Server name already exist!"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:557
 msgid "Cancelar"
-msgstr ""
+msgstr "Cancel"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:557
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:651
 msgid "Si"
-msgstr ""
+msgstr "Yes"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:557
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:651
@@ -490,19 +490,19 @@ msgstr "No"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:557
 msgid "¿Parar de grabar?"
-msgstr ""
+msgstr "Stop recording?"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:625
 msgid "Conexión cancelada\n"
-msgstr ""
+msgstr "Connexion canceled\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:651
 msgid "¿Parar grabación?"
-msgstr ""
+msgstr "Stop recording?"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:681
 msgid "No se ha especificado archivo donde grabar"
-msgstr ""
+msgstr "Recording file is not specified"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:713
 msgid ""
@@ -515,7 +515,7 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:758
 #, c-format
 msgid "%s already exists!"
-msgstr ""
+msgstr "%s already exists!"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:759
 msgid "cancelar"
@@ -571,12 +571,12 @@ msgstr "[Now] %s\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1006
 msgid "Actualizar la canción actual falló"
-msgstr ""
+msgstr "Update current song failed"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1040
 #, c-format
 msgid "Audio buffer has been set to %d ms"
-msgstr ""
+msgstr "Audio buffer has been set to %d ms"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1054
 msgid "Changed resample quality to SINC_BEST_QUALITY"
@@ -641,7 +641,7 @@ msgstr "The previous values have been set\n"
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1479
 #, c-format
 msgid "Stream bitrate set to: %dk"
-msgstr "Stream bitrate set to: %dk"
+msgstr "Stream bitrate set to: %dkbps"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1512
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1527
@@ -674,7 +674,7 @@ msgstr "The previous values have been set"
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1554
 #, c-format
 msgid "Bitrate de grabacion a: %dk"
-msgstr ""
+msgstr "Recording bitrate set to: %dkbps"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1591
 msgid ""
@@ -742,15 +742,15 @@ msgstr "Stream codec set to opus"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2061
 msgid "Grabación ajustado a mp3"
-msgstr ""
+msgstr "Recording codec set to mp3"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2092
 msgid "Grabación ajustado a ogg/vorbis"
-msgstr ""
+msgstr "Recording codec set to ogg/vorbis"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2122
 msgid "Grabación ajustado a opus"
-msgstr ""
+msgstr "Recording codec set to opus"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2134
 msgid "ERROR: While initializing flac settings"
@@ -758,11 +758,11 @@ msgstr "ERROR: While initializing flac settings"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2153
 msgid "Grabación ajustado a flac"
-msgstr ""
+msgstr "Recording codec set to flac"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2171
 msgid "Grabación ajustado a wav"
-msgstr ""
+msgstr "Recording codec set to wav"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2255
 msgid "Record to..."
@@ -828,6 +828,8 @@ msgid ""
 "Enviado\n"
 "%0.2lfMB"
 msgstr ""
+"Sent\n"
+"%0.2lfMB"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:69
 #, c-format
@@ -835,6 +837,8 @@ msgid ""
 "Tiempo\n"
 "%s"
 msgstr ""
+"Time\n"
+"%s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:76
 #, c-format
@@ -842,6 +846,8 @@ msgid ""
 "Tiempo grabando\n"
 "%s"
 msgstr ""
+"Time recording\n"
+"%s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:83
 #, c-format
@@ -849,12 +855,16 @@ msgid ""
 "Tamaño grabado\n"
 "%0.2lfMB"
 msgstr ""
+"Size recorded\n"
+"%0.2lfMB"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:133
 msgid ""
 "ERROR: Conexión perdida\n"
 "Reconectando..."
 msgstr ""
+"ERROR: Lost connexion\n"
+"Reconnecting…"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:192
 msgid ""
@@ -881,7 +891,7 @@ msgstr ""
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:222
 msgid "Grabando en: "
-msgstr ""
+msgstr "Recording to: "
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:269
 #, c-format
@@ -889,6 +899,8 @@ msgid ""
 "No se ha podido abrir: %s.\n"
 "Se reintentará en 5s"
 msgstr ""
+"Cannot open: %s\n"
+"Will retry in 5s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:998
 msgid "Gain"
@@ -1387,3 +1399,11 @@ msgstr "AIM:"
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1735
 msgid "Servidor público"
 msgstr "Public server"
+
+#: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1549
+msgid "Usar iTunes"
+msgstr "Use iTunes"
+
+#: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1555
+msgid "Usar Spotify"
+msgstr "Use Spotify"

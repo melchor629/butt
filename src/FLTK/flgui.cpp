@@ -375,7 +375,7 @@ static Fl_RGB_Image image_VU_text(idata_VU_text, 157, 10, 4, 0);
 
 void flgui::cb_window_cfg_i(Fl_My_Double_Window*, void*) {
   window_cfg->hide();
-button_cfg->label("Settings@>");
+button_cfg->label(_("Ajustes@>"));
 }
 void flgui::cb_window_cfg(Fl_My_Double_Window* o, void* v) {
   ((flgui*)(o->user_data()))->cb_window_cfg_i(o,v);
@@ -1789,5 +1789,5 @@ flgui::flgui() {
   info_visible = 1;
                   
   info_output->show();
-  button_info->label("Less @8>");
+  button_info->label(_("Menos @8>"));
 }

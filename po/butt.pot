@@ -1303,3 +1303,11 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1735
 msgid "Servidor público"
 msgstr ""
+
+#: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1549
+msgid "Usar iTunes"
+msgstr ""
+
+#: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1555
+msgid "Usar Spotify"
+msgstr ""

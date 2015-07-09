@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: butt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-07 20:27+0200\n"
-"PO-Revision-Date: 2015-07-07 21:00+0200\n"
+"PO-Revision-Date: 2015-07-09 15:56+0200\n"
 "Last-Translator: Melchor Alejo Garau Madrigal <melchor9000@gmail.com>\n"
 "Language-Team: melchor9000@gmail.com\n"
 "MIME-Version: 1.0\n"
@@ -78,6 +78,8 @@ msgstr "butt %s iniciado perfectamente"
 #, c-format
 msgid "Could not write to file: %s"
 msgstr ""
+"No se ha podido escribir en el archivo:\n"
+"%s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/cfg.cpp:341
 msgid ""
@@ -172,6 +174,8 @@ msgid ""
 "\n"
 "Connect: Could not create network socket"
 msgstr ""
+"\n"
+"Conexión: No se ha podido crear el socket"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/icecast.cpp:79
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/shoutcast.cpp:85
@@ -179,12 +183,16 @@ msgid ""
 "\n"
 "Connect: Error resolving server address"
 msgstr ""
+"\n"
+"Conexión: Error al resolver la dirección del servidor"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/icecast.cpp:212
 msgid ""
 "\n"
 "connect: invalid user/password!\n"
 msgstr ""
+"\n"
+"Conexión: ¡Usuario/contraseña inválidos!\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/icecast.cpp:241
 msgid ""
@@ -258,18 +266,20 @@ msgid ""
 "error opening sound device: \n"
 "%s\n"
 msgstr ""
+"Error al abrir el dispositivo de sonido:\n"
+"%s\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/port_audio.cpp:234
 msgid "user disconnected\n"
-msgstr ""
+msgstr "Desconectado\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/port_audio.cpp:327
 msgid "recording to:"
-msgstr ""
+msgstr "Grabando en:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/port_audio.cpp:342
 msgid "recording stopped"
-msgstr ""
+msgstr "Se ha parado de grabar"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/port_audio.cpp:621
 #, c-format
@@ -286,6 +296,8 @@ msgid ""
 "\n"
 "Connect: Invalid password!\n"
 msgstr ""
+"\n"
+"Conexión: ¡Contraseña errónea!\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/shoutcast.cpp:199
 msgid ""
@@ -301,7 +313,7 @@ msgstr ""
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:100
 msgid "connecting"
-msgstr ""
+msgstr "Conectando"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:133
 msgid ""
@@ -372,6 +384,8 @@ msgid ""
 "No mountpoint specified\n"
 "Setting mountpoint to \"stream\""
 msgstr ""
+"No se ha especificado punto de montaje\n"
+"Ajustado a “stream”"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:307
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1125
@@ -379,6 +393,8 @@ msgid ""
 "No user specified\n"
 "Setting user to \"source\""
 msgstr ""
+"No se ha especificado usuario\n"
+"Ajustado a “source”"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:319
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1137
@@ -397,17 +413,17 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:331
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1149
 msgid "No address specified"
-msgstr ""
+msgstr "No se ha especificado dirección"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:336
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1154
 msgid "No password specified"
-msgstr ""
+msgstr "No se ha especificado contraseña"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:341
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1159
 msgid "No port specified"
-msgstr ""
+msgstr "No se ha especificado puerto"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:347
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1165
@@ -415,12 +431,14 @@ msgid ""
 "Invalid port number\n"
 "The port number must be between 1 and 65535"
 msgstr ""
+"Número de puerto inválido\n"
+"Tiene que ser del 1 al 65535"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:357
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1176
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1847
 msgid "Server name already exist!"
-msgstr ""
+msgstr "¡El nombre de este servidor ya existe!"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:557
 msgid "Cancelar"
@@ -461,7 +479,7 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:758
 #, c-format
 msgid "%s already exists!"
-msgstr ""
+msgstr "¡El archivo %s ya existe!"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:759
 msgid "cancelar"
@@ -469,11 +487,11 @@ msgstr "Cancelar"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:759
 msgid "overwrite"
-msgstr ""
+msgstr "Sobrescribir"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:759
 msgid "append"
-msgstr ""
+msgstr "Añadir"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:792
 #, c-format
@@ -481,6 +499,8 @@ msgid ""
 "Could not open:\n"
 "%s"
 msgstr ""
+"No se ha podido abrir:\n"
+"%s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:857
 msgid "Menos @2<"
@@ -498,15 +518,15 @@ msgstr "Añadir servidor"
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:938
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1101
 msgid "Show Password"
-msgstr ""
+msgstr "Mostrar"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:925
 msgid "Edit Server"
-msgstr ""
+msgstr "Editar servidor"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:971
 msgid "Add Server Infos"
-msgstr ""
+msgstr "Añadir información de servidores"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1000
 #, c-format
@@ -520,31 +540,31 @@ msgstr "Actualizar la canción actual falló"
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1040
 #, c-format
 msgid "Audio buffer has been set to %d ms"
-msgstr ""
+msgstr "Búfer de audio configurado en %dms"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1054
 msgid "Changed resample quality to SINC_BEST_QUALITY"
-msgstr ""
+msgstr "Calidad de muestreo cambiado a SINC_BEST_QUALITY"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1057
 msgid "Changed resample quality to SINC_MEDIUM_QUALITY"
-msgstr ""
+msgstr "Calidad de muestreo cambiado a SINC_MEDIUM_QUALITY"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1060
 msgid "Changed resample quality to SINC_FASTEST"
-msgstr ""
+msgstr "Calidad de muestreo cambiado a SiNC_BEST"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1063
 msgid "Changed resample quality to ZERO_ORDER_HOLD"
-msgstr ""
+msgstr "Calidad de muestreo cambiado a ZERO_ORDER_HOLD"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1066
 msgid "Changed resample quality to LINEAR"
-msgstr ""
+msgstr "Calidad de muestreo cambiado a LINEAR"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1095
 msgid "Hide Password"
-msgstr ""
+msgstr "Ocultar"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1130
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1277
@@ -576,12 +596,12 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1457
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1473
 msgid "The previous values have been set\n"
-msgstr ""
+msgstr "Se ha configurado con los valores anteriores\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1479
 #, c-format
 msgid "Stream bitrate set to: %dk"
-msgstr ""
+msgstr "Bitrate de la emisión: %dkbps"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1512
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1527
@@ -607,12 +627,12 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1689
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1704
 msgid "The previous values have been set"
-msgstr ""
+msgstr "Se ha configurado con los valores anteriores"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1554
 #, c-format
 msgid "Bitrate de grabacion a: %dk"
-msgstr ""
+msgstr "Bitrate de grabación: %dkbps"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1591
 msgid ""
@@ -623,19 +643,19 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1714
 #, c-format
 msgid "Samplerate set to: %dHz"
-msgstr ""
+msgstr "Velocidad de muestreo en: %dHz"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1759
 msgid "Channels set to: stereo"
-msgstr ""
+msgstr "Canales en: stereo"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1799
 msgid "Channels set to: mono"
-msgstr ""
+msgstr "Canales en: mono"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1943
 msgid "Edit Server Infos"
-msgstr ""
+msgstr "Editar información de servidores"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1981
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2040
@@ -646,7 +666,7 @@ msgstr ""
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1992
 msgid "Stream codec set to mp3"
-msgstr ""
+msgstr "Códec de la emisión en mp3"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2000
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2072
@@ -654,10 +674,12 @@ msgid ""
 "OGG Vorbis encoder doesn't support current\n"
 "Sample-/Bitrate combination"
 msgstr ""
+"El codificador de Vorbis no soporta la\n"
+"combinación de Muestre/Bitrate"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2011
 msgid "Stream codec set to ogg/vorbis"
-msgstr ""
+msgstr "Códec de emisión en ogg/vorbis"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2019
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2102
@@ -665,10 +687,12 @@ msgid ""
 "Opus encoder doesn't support current\n"
 "Sample-/Bitrate combination"
 msgstr ""
+"El codificador de opus no soporta la\n"
+"combinación de Muestreo/Bitrate"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2030
 msgid "Stream codec set to opus"
-msgstr ""
+msgstr "Códec de emisión en opus"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2061
 msgid "Grabación ajustado a mp3"
@@ -684,7 +708,7 @@ msgstr "Grabación ajustado a opus"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2134
 msgid "ERROR: While initializing flac settings"
-msgstr ""
+msgstr "ERROR: Al iniciar los ajustes de FLAC"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2153
 msgid "Grabación ajustado a flac"
@@ -696,41 +720,41 @@ msgstr "Grabación ajustado a wav"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2255
 msgid "Record to..."
-msgstr ""
+msgstr "Grabar a…"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2341
 msgid "Select Songfile"
-msgstr ""
+msgstr "Seleccionar archivo"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2440
 msgid "select background color"
-msgstr ""
+msgstr "Seleccionar color de fondo"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2464
 msgid "select text color"
-msgstr ""
+msgstr "Seleccionar color del texto"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2566
 msgid "Export to..."
-msgstr ""
+msgstr "Exportar a…"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2590
 msgid "Import..."
-msgstr ""
+msgstr "Importar…"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2607
 #, c-format
 msgid "Could not import config %s"
-msgstr ""
+msgstr "No se ha podido importar %s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2617
 #, c-format
 msgid "Config imported %s"
-msgstr ""
+msgstr "Configuración importada %s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2625
 msgid "Select logfile..."
-msgstr ""
+msgstr "Seleccionar archivo de log…"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:2647
 msgid "no"
@@ -1011,7 +1035,7 @@ msgstr "Seleccionar canal de entrada"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1352
 msgid "Muestreo"
-msgstr "Velocidad  de muestreo"
+msgstr "Vel. de muestreo"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1353
 msgid "Select input sample rate"
@@ -1350,3 +1374,11 @@ msgstr "AIM:"
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1735
 msgid "Servidor público"
 msgstr "Servidor público"
+
+#: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1549
+msgid "Usar iTunes"
+msgstr "Usar iTunes"
+
+#: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1555
+msgid "Usar Spotify"
+msgstr "Usar Spotify"

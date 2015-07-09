@@ -107,7 +107,7 @@ If the **start recording when connected** checkbox is activated butt starts the 
 To manually start the recording press the record symbol.
 To stop recording simply click on the record symbol again.
  
-You can also tell butt to split your recording into separate files every *n* minutes. Just enter a number higher than 0 into the **Split file every [..] minutes* field.
+You can also tell butt to split your recording into separate files every *n* minutes. Just enter a number higher than 0 into the **Split file every [..] minutes** field.
 Let's assume your file name is `rec_(%m_%d_%y)_%i.mp3` Then the first file is expanded to `rec_(03_28_2008)_0-1.mp3`, the second after *n* minutes to `rec_(03_28_2008)_0-2.mp3`, the third to `rec_(03_28_2008)_0-3.mp3`, you got it. If the **sync to full hour** checkbox is activated the automatic file splitting is synchronized to the full hour. That means if the time is *8:55* and file splitting is set to **15 minutes**, the second file starts at *9:00* and the third at *9:15*.
 
 

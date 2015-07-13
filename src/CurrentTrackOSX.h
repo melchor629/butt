@@ -19,3 +19,9 @@ const char* getCurrentTrackFromiTunes();
  * TITLE - ARTIST, or NULL if Spotify is closed or stopped.
  */
 const char* getCurrentTrackFromSpotify();
+
+/**
+ * Gets the current track from VOX in a string formated as:
+ * TITLE - ARTIST, or NULL if VOX is closed or stopped.
+ */
+const char* getCurrentTrackFromVOX();

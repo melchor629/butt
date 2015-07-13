@@ -39,5 +39,9 @@ void test_file_extension(void);
 void expand_string(char **str);
 void init_main_gui_and_audio(void);
 
+void init_choice_app(void*);
+typedef const char* (*currentTrackFunction)(void);
+extern currentTrackFunction getCurrentTrackFunctionFromId(int i);
+
 #endif
 

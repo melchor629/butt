@@ -81,8 +81,8 @@ typedef struct
         char *song_path;
         FILE *song_fd;
         int song_update;   //1 = song info will be read from file
-        int itunes_update;
-        int spotify_update;
+        int app_update;
+        int app_update_service;
         int num_of_srv;
         int num_of_icy;
         int bg_color, txt_color;

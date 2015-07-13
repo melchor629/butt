@@ -99,8 +99,8 @@ void lcd_rotate(void*);
 void ILM216_cb(void);
 void window_main_close_cb(void);
 
-void check_use_itunes_cb(void);
-void check_use_spotify_cb(void);
+void check_use_app_cb(void);
+void change_app_cb(void);
 
 #endif
 

@@ -9,6 +9,7 @@
 #import "CurrentTrackOSX.h"
 #import <iTunes.h>
 #import <Spotify.h>
+#import <VOX.h>
 
 const char* getCurrentTrackFromiTunes() {
     char* ret = NULL;
@@ -36,4 +37,28 @@ const char* getCurrentTrackFromSpotify() {
     }
     
     return ret;
+}
+
+const char* getCurrentTrackFromVOX() {
+    char* ret = NULL;
+    VOXApplication *vox = [SBApplication applicationWithBundleIdentifier:@"com.coppertino.Vox"];
+    if([vox isRunning]) {
+        if([vox playerState]) {
+            NSString* track = [NSString stringWithFormat:@"%@ - %@", [vox track], [vox artist]];
+            ret = (char*) malloc([track length] + 1);
+            [track getCString:ret maxLength:([track length] + 1) encoding:NSUTF8StringEncoding];
+        }
+    }
+    
+    return ret;
+}
+
+typedef const char* (*currentTrackFunction)(void);
+currentTrackFunction getCurrentTrackFunctionFromId(int i) {
+    switch(i) {
+        case 0: return &getCurrentTrackFromiTunes;
+        case 1: return &getCurrentTrackFromSpotify;
+        case 2: return getCurrentTrackFromVOX;
+        default: return NULL;
+    }
 }

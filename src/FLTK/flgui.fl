@@ -183,7 +183,7 @@ class flgui {open
       }
       Fl_Button button_cfg {
         label {Ajustes@>}
-        callback {button_cfg_cb();} selected
+        callback {button_cfg_cb();}
         tooltip {Mostrar/Ocultar venata de ajustes} xywh {352 114 68 22} box ENGRAVED_BOX shortcut 0x40066 color 51 selection_color 48 labelfont 1 labelsize 11
       }
       Fl_Box VU_Text {
@@ -213,6 +213,7 @@ button_cfg->label(_("Ajustes@>"));} open
       xywh {778 177 295 384} type Double color 48 align 80
       code0 {\#include "FL/Fl_My_Double_Window.H"}
       code1 {\#include "util.h"}
+      code2 {\#include "fl_funcs.h"}
       class Fl_My_Double_Window size_range {280 380 330 380} visible
     } {
       Fl_Tabs Settings {open
@@ -631,12 +632,12 @@ else
             xywh {115 370 50 30} box NO_BOX labelfont 13 labelcolor 1
           }
           Fl_Group {} {
-            label {Ajustes de servidor}
+            label {Ajustes de servidor} open
             xywh {15 55 265 80} box ENGRAVED_FRAME align 5
           } {
             Fl_Choice choice_cfg_act_icy {
               label {Información del Streaming}
-              callback {choice_cfg_act_icy_cb();} open
+              callback {choice_cfg_act_icy_cb();}
               xywh {25 83 250 20} down_box BORDER_BOX align 5
             } {}
             Fl_Button {} {
@@ -655,18 +656,15 @@ else
               tooltip {Delete stream info} xywh {220 105 55 20} box ENGRAVED_BOX
             }
           }
-          Fl_Check_Button use_itunes {
-            label {Usar iTunes}
-            callback {check_use_itunes_cb();}
-            xywh {15 290 130 20} down_box DOWN_BOX hide
-            code0 {util_set_os_visible(use_itunes, OSX);}
+          Fl_Check_Button use_app {
+            label Activar
+            callback {check_use_app_cb();}
+            xywh {195 290 85 20} down_box DOWN_BOX
           }
-          Fl_Check_Button use_spotify {
-            label {Usar Spotify}
-            callback {check_use_spotify_cb();}
-            xywh {160 290 120 20} down_box DOWN_BOX hide
-            code0 {util_set_os_visible(use_spotify, OSX);}
-          }
+          Fl_Choice choice_app {selected
+            xywh {25 290 165 20} down_box BORDER_BOX
+            code0 {init_choice_app(this);}
+          } {}
         }
         Fl_Group {} {
           label {Grabación} open

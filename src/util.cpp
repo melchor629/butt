@@ -95,19 +95,3 @@ void util_set_visible(Fl_Widget* w) {
     if(VISIBILITY)
         w->show();
 }
-
-void util_set_os_visible(Fl_Widget* w, OS os) {
-    if(os == OSX) {
-#if __APPLE__ && __MACH__
-        w->show();
-#endif
-    } else if(os == LINUX) {
-#if __linux__
-        w->show();
-#endif
-    } else if(os == WINDOWS) {
-#if _WIN32
-        w->show();
-#endif
-    }
-}

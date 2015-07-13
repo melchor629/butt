@@ -17,6 +17,7 @@
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Text_Display.H>
 #include "util.h"
+#include "fl_funcs.h"
 #include <FL/Fl_Tabs.H>
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Choice.H>
@@ -267,16 +268,12 @@ private:
   inline void cb_button_cfg_del_icy_i(Fl_Button*, void*);
   static void cb_button_cfg_del_icy(Fl_Button*, void*);
 public:
-  Fl_Check_Button *use_itunes;
+  Fl_Check_Button *use_app;
 private:
-  inline void cb_use_itunes_i(Fl_Check_Button*, void*);
-  static void cb_use_itunes(Fl_Check_Button*, void*);
+  inline void cb_use_app_i(Fl_Check_Button*, void*);
+  static void cb_use_app(Fl_Check_Button*, void*);
 public:
-  Fl_Check_Button *use_spotify;
-private:
-  inline void cb_use_spotify_i(Fl_Check_Button*, void*);
-  static void cb_use_spotify(Fl_Check_Button*, void*);
-public:
+  Fl_Choice *choice_app;
   Fl_Input *input_rec_filename;
 private:
   inline void cb_input_rec_filename_i(Fl_Input*, void*);

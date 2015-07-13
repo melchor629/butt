@@ -842,18 +842,11 @@ void flgui::cb_button_cfg_del_icy(Fl_Button* o, void* v) {
   ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_button_cfg_del_icy_i(o,v);
 }
 
-void flgui::cb_use_itunes_i(Fl_Check_Button*, void*) {
-  check_use_itunes_cb();
+void flgui::cb_use_app_i(Fl_Check_Button*, void*) {
+  check_use_app_cb();
 }
-void flgui::cb_use_itunes(Fl_Check_Button* o, void* v) {
-  ((flgui*)(o->parent()->parent()->parent()->user_data()))->cb_use_itunes_i(o,v);
-}
-
-void flgui::cb_use_spotify_i(Fl_Check_Button*, void*) {
-  check_use_spotify_cb();
-}
-void flgui::cb_use_spotify(Fl_Check_Button* o, void* v) {
-  ((flgui*)(o->parent()->parent()->parent()->user_data()))->cb_use_spotify_i(o,v);
+void flgui::cb_use_app(Fl_Check_Button* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->user_data()))->cb_use_app_i(o,v);
 }
 
 void flgui::cb_input_rec_filename_i(Fl_Input*, void*) {
@@ -1546,18 +1539,14 @@ flgui::flgui() {
           } // Fl_Button* button_cfg_del_icy
           o->end();
         } // Fl_Group* o
-        { use_itunes = new Fl_Check_Button(15, 290, 130, 20, _("Usar iTunes"));
-          use_itunes->down_box(FL_DOWN_BOX);
-          use_itunes->callback((Fl_Callback*)cb_use_itunes);
-          use_itunes->hide();
-          util_set_os_visible(use_itunes, OSX);
-        } // Fl_Check_Button* use_itunes
-        { use_spotify = new Fl_Check_Button(160, 290, 120, 20, _("Usar Spotify"));
-          use_spotify->down_box(FL_DOWN_BOX);
-          use_spotify->callback((Fl_Callback*)cb_use_spotify);
-          use_spotify->hide();
-          util_set_os_visible(use_spotify, OSX);
-        } // Fl_Check_Button* use_spotify
+        { use_app = new Fl_Check_Button(195, 290, 85, 20, _("Activar"));
+          use_app->down_box(FL_DOWN_BOX);
+          use_app->callback((Fl_Callback*)cb_use_app);
+        } // Fl_Check_Button* use_app
+        { choice_app = new Fl_Choice(25, 290, 165, 20);
+          choice_app->down_box(FL_BORDER_BOX);
+          init_choice_app(this);
+        } // Fl_Choice* choice_app
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("Grabaci\303\263n"));

@@ -242,14 +242,10 @@ void button_connect_cb(void)
         song_timeout_running = 1;
     }
     
-    if(cfg.main.itunes_update && !itunes_timeout_running) {
-        Fl::add_timeout(0.1, &itunes_timer);
-        itunes_timeout_running = 1;
-    }
-
-    if(cfg.main.spotify_update && !spotify_timeout_running) {
-        Fl::add_timeout(0.1, &spotify_timer);
-        spotify_timeout_running = 1;
+    if(cfg.main.app_update && !app_timeout_running) {
+        current_track_app = getCurrentTrackFunctionFromId(cfg.main.app_update_service);
+        Fl::add_timeout(0.1, &app_timer);
+        app_timeout_running = 1;
     }
 
     snd_start_stream();
@@ -2665,54 +2661,33 @@ void window_main_close_cb(void)
     exit(0);
 }
 
-void check_use_itunes_cb() {
-    if(fl_g->use_spotify->value()) {
-        fl_g->use_spotify->value(0);
-        fl_g->use_spotify->redraw();
-        if(spotify_timeout_running) {
-            Fl::remove_timeout(&spotify_timer);
-            spotify_timeout_running = false;
+void check_use_app_cb() {
+    if(fl_g->use_app->value()) {
+        int app = fl_g->choice_app->value();
+        current_track_app = getCurrentTrackFunctionFromId(app);
+        cfg.main.app_update = 1;
+        cfg.main.app_update_service = app;
+        if(!app_timeout_running) {
+            app_timeout_running = true;
+            Fl::add_timeout(0.1, &app_timer);
         }
-        cfg.main.spotify_update = false;
-    }
-
-    if(fl_g->use_itunes->value()) {
-        if(connected) {
-            itunes_timeout_running = true;
-            Fl::add_timeout(0.1, &itunes_timer);
-        }
-        cfg.main.itunes_update = true;
     } else {
-        if(itunes_timeout_running)
-            Fl::remove_timeout(&itunes_timer);
-        cfg.main.itunes_update = false;
+        cfg.main.app_update = 0;
+        if(app_timeout_running) {
+            app_timeout_running = false;
+            Fl::remove_timeout(&app_timer);
+        }
     }
     
     unsaved_changes = true;
 }
 
-void check_use_spotify_cb() {
-    if(fl_g->use_itunes->value()) {
-        fl_g->use_itunes->value(0);
-        fl_g->use_itunes->redraw();
-        if(itunes_timeout_running) {
-            Fl::remove_timeout(&itunes_timer);
-            itunes_timeout_running = false;
-        }
-        cfg.main.itunes_update = false;
+void change_app_cb() {
+    current_track_app = getCurrentTrackFunctionFromId(fl_g->choice_app->value());
+    cfg.main.app_update_service = fl_g->choice_app->value();
+    if(app_timeout_running) {
+        Fl::remove_timeout(&app_timer);
+        Fl::add_timeout(0.1, &app_timer);
     }
-
-    if(fl_g->use_spotify->value()) {
-        if(connected) {
-            spotify_timeout_running = true;
-            Fl::add_timeout(0.1, &spotify_timer);
-        }
-        cfg.main.spotify_update = true;
-    } else {
-        if(itunes_timeout_running)
-            Fl::remove_timeout(&spotify_timer);
-        cfg.main.spotify_update = false;
-    }
-    
-    unsaved_changes = true;
 }
+

@@ -43,6 +43,8 @@
 #include "CurrentTrackOSX.h"
 #endif
 
+const char* (*current_track_app)(void);
+
 void vu_meter_timer(void*)
 {
     if(pa_new_frames)
@@ -300,56 +302,29 @@ exit:
     Fl::repeat_timeout(repeat_time, &songfile_timer);
 }
 
-void itunes_timer(void*) {
-    if(!itunes_timeout_running) {
-        Fl::remove_timeout(&itunes_timer);
+void app_timer(void*) {
+    if(!app_timeout_running) {
+        Fl::remove_timeout(&app_timer);
         return;
     }
-    
-#if __APPLE__ && __MACH__
-    const char* track = getCurrentTrackFromiTunes();
-    if(track) {
-        if(cfg.main.song == NULL || strcmp(cfg.main.song, track)) {
-            cfg.main.song = (char*) realloc(cfg.main.song, strlen(track) + 1);
-            strcpy(cfg.main.song, track);
-            button_cfg_song_go_cb();
-        }
-        free((void*) track);
-    } else {
-        if(strcmp(cfg.main.song, "")) {
-            cfg.main.song = (char*) realloc(cfg.main.song, 1);
-            strcpy(cfg.main.song, "");
-            button_cfg_song_go_cb();
-        }
-    }
-#endif
-    
-    Fl::repeat_timeout(5, &itunes_timer);
-}
 
-void spotify_timer(void*) {
-    if(!spotify_timeout_running) {
-        Fl::remove_timeout(&spotify_timer);
-        return;
-    }
-    
-#if __APPLE__ && __MACH__
-    const char* track = getCurrentTrackFromSpotify();
-    if(track) {
-        if(cfg.main.song == NULL || strcmp(cfg.main.song, track)) {
-            cfg.main.song = (char*) realloc(cfg.main.song, strlen(track) + 1);
-            strcpy(cfg.main.song, track);
-            button_cfg_song_go_cb();
-        }
-        free((void*) track);
-    } else {
-        if(strcmp(cfg.main.song, "")) {
-            cfg.main.song = (char*) realloc(cfg.main.song, 1);
-            strcpy(cfg.main.song, "");
-            button_cfg_song_go_cb();
+    if(current_track_app != NULL) {
+        const char* track = current_track_app();
+        if(track) {
+            if(cfg.main.song == NULL || strcmp(cfg.main.song, track)) {
+                cfg.main.song = (char*) realloc(cfg.main.song, strlen(track) + 1);
+                strcpy(cfg.main.song, track);
+                button_cfg_song_go_cb();
+            }
+            free((void*) track);
+        } else {
+            if(cfg.main.song != NULL && strcmp(cfg.main.song, "")) {
+                cfg.main.song = (char*) realloc(cfg.main.song, 1);
+                strcpy(cfg.main.song, "");
+                button_cfg_song_go_cb();
+            }
         }
     }
-#endif
-    
-    Fl::repeat_timeout(5, &spotify_timer);
+
+    Fl::repeat_timeout(5, &app_timer);
 }

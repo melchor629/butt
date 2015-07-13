@@ -30,6 +30,5 @@ char *util_get_file_extension(char *filename);
 float util_factor_to_db(float factor);
 float util_db_to_factor(float dB);
 void util_set_visible(Fl_Widget* w);
-void util_set_os_visible(Fl_Widget* w, OS os);
 
 #endif

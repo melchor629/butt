@@ -98,9 +98,9 @@ int cfg_write_file(char *path)
 
     fprintf(cfg_fd, "song_update = %d\n", cfg.main.song_update);
     
-    fprintf(cfg_fd, "itunes_update = %d\n", cfg.main.itunes_update);
+    fprintf(cfg_fd, "app_update_service = %d\n", cfg.main.app_update_service);
     
-    fprintf(cfg_fd, "spotify_update = %d\n", cfg.main.spotify_update);
+    fprintf(cfg_fd, "app_update = %d\n", cfg.main.app_update);
 
     fprintf(cfg_fd, "gain = %f\n", cfg.main.gain);
 
@@ -495,12 +495,12 @@ int cfg_set_values(char *path)
     if(cfg.main.song_update == -1)
         cfg.main.song_update = 0; //song update from file is default set to off
     
-    cfg.main.itunes_update = cfg_get_int("main", "itunes_update");
-    cfg.main.spotify_update = cfg_get_int("main", "spotify_update");
-    if(cfg.main.itunes_update == -1)
-        cfg.main.itunes_update = 0; //Default value, off
-    if(cfg.main.spotify_update == -1)
-        cfg.main.spotify_update = 0; //Default value, off
+    cfg.main.app_update = cfg_get_int("main", "app_update");
+    cfg.main.app_update_service = cfg_get_int("main", "app_update_service");
+    if(cfg.main.app_update == -1)
+        cfg.main.app_update = 0; //Default value, off
+    if(cfg.main.app_update_service == -1)
+        cfg.main.app_update_service = 0; //Default value, first one
 
 	cfg.main.connect_at_startup = cfg_get_int("main", "connect_at_startup");
 	if(cfg.main.connect_at_startup == -1)
@@ -584,8 +584,8 @@ int cfg_create_default(void)
             "icy_ent = Default Stream\n"
             "song_path =\n"
             "song_update = 0\n"
-            "itunes_update = 0\n"
-            "spotify_update = 0\n"
+            "app_update = 0\n"
+            "app_update_service = 0\n"
             "log_file =\n"
             "gain = 1.0\n"
             "connect_at_startup = 0\n\n"

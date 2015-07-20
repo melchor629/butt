@@ -216,6 +216,8 @@ private:
   static void cb_OGG1(Fl_Menu_*, void*);
   inline void cb_OPUS1_i(Fl_Menu_*, void*);
   static void cb_OPUS1(Fl_Menu_*, void*);
+  inline void cb_HE_i(Fl_Menu_*, void*);
+  static void cb_HE(Fl_Menu_*, void*);
 public:
   Fl_Choice *choice_cfg_bitrate;
 private:

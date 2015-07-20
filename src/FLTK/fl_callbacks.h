@@ -43,6 +43,7 @@ void button_cfg_song_go_cb(void);
 void choice_cfg_codec_mp3_cb(void);
 void choice_cfg_codec_ogg_cb(void);
 void choice_cfg_codec_opus_cb(void);
+void choice_cfg_codec_aacplus_cb(void);
 void button_cfg_export_cb(void);
 void button_cfg_import_cb(void);
 void button_add_icy_save_cb(void);

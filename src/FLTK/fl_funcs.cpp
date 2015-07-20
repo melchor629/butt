@@ -98,6 +98,8 @@ void fill_cfg_widgets(void)
         fl_g->choice_cfg_codec->value(CHOICE_OGG);
     else if(!strcmp(cfg.audio.codec, "opus"))
         fl_g->choice_cfg_codec->value(CHOICE_OPUS);
+    else if(!strcmp(cfg.audio.codec, "aac+"))
+        fl_g->choice_cfg_codec->value(3);
 
 
     if(cfg.audio.channel == 1)
@@ -376,6 +378,11 @@ void init_main_gui_and_audio(void)
     flac_rec.channel = cfg.audio.channel;
     flac_rec.samplerate = cfg.audio.samplerate;
     flac_enc_reinit(&flac_rec);
+    
+    aacplus_stream.channels = cfg.audio.channel;
+    aacplus_stream.bitrate = (cfg.audio.bitrate > 64 ? 64 : cfg.audio.bitrate) * 1000;
+    aacplus_stream.samplerate = cfg.audio.samplerate;
+    aacplus_enc_reinit(&aacplus_stream);
 }
 
 void init_choice_app(void* ptr) {

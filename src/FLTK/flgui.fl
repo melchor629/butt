@@ -285,7 +285,7 @@ button_cfg->label(_("Ajustes@>"));} open
         }
         Fl_Group {} {
           label Audio open
-          xywh {0 19 300 450} hide
+          xywh {0 19 300 450}
         } {
           Fl_Group {} {
             label {Ajustes de Audio} open
@@ -480,12 +480,12 @@ else
             }
           }
           Fl_Group streaming_g {
-            label Streaming open
+            label Streaming open selected
             xywh {15 260 265 60} box ENGRAVED_FRAME align 5 hide
             code0 {util_set_visible(streaming_g);}
           } {
             Fl_Choice choice_cfg_codec {
-              label Codec
+              label Codec open
               tooltip {Select streaming codec} xywh {20 288 125 20} box ENGRAVED_BOX down_box BORDER_BOX align 5
             } {
               MenuItem {} {
@@ -502,6 +502,11 @@ else
                 label OPUS
                 callback {choice_cfg_codec_opus_cb();}
                 xywh {80 80 40 25}
+              }
+              MenuItem {} {
+                label {HE-AAC}
+                callback {choice_cfg_codec_aacplus_cb();}
+                xywh {0 0 100 20}
               }
             }
             Fl_Choice choice_cfg_bitrate {
@@ -582,7 +587,7 @@ else
         }
         Fl_Group {} {
           label Stream open
-          tooltip {Add stream info} xywh {0 19 300 450}
+          tooltip {Add stream info} xywh {0 19 300 450} hide
         } {
           Fl_Group {} {
             label {Cambiar nombre de canción con archivo}
@@ -661,7 +666,7 @@ else
             callback {check_use_app_cb();}
             xywh {195 290 85 20} down_box DOWN_BOX
           }
-          Fl_Choice choice_app {selected
+          Fl_Choice choice_app {
             xywh {25 290 165 20} down_box BORDER_BOX
             code0 {init_choice_app(this);}
           } {}

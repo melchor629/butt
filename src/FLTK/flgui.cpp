@@ -735,11 +735,19 @@ void flgui::cb_OPUS1(Fl_Menu_* o, void* v) {
   ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_OPUS1_i(o,v);
 }
 
+void flgui::cb_HE_i(Fl_Menu_*, void*) {
+  choice_cfg_codec_aacplus_cb();
+}
+void flgui::cb_HE(Fl_Menu_* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_HE_i(o,v);
+}
+
 unsigned char flgui::menu_choice_cfg_codec_i18n_done = 0;
 Fl_Menu_Item flgui::menu_choice_cfg_codec[] = {
  {"MP3", 0,  (Fl_Callback*)flgui::cb_MP31, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"OGG/VORBIS", 0,  (Fl_Callback*)flgui::cb_OGG1, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"OPUS", 0,  (Fl_Callback*)flgui::cb_OPUS1, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
+ {"HE-AAC", 0,  (Fl_Callback*)flgui::cb_HE, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0}
 };
 
@@ -1334,7 +1342,6 @@ flgui::flgui() {
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("Audio"));
-        o->hide();
         { Fl_Group* o = new Fl_Group(15, 55, 265, 100, _("Ajustes de Audio"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
@@ -1436,7 +1443,7 @@ flgui::flgui() {
             choice_cfg_codec->align(Fl_Align(FL_ALIGN_TOP_LEFT));
             if (!menu_choice_cfg_codec_i18n_done) {
               int i=0;
-              for ( ; i<3; i++)
+              for ( ; i<4; i++)
                 if (menu_choice_cfg_codec[i].label())
                   menu_choice_cfg_codec[i].label(_(menu_choice_cfg_codec[i].label()));
               menu_choice_cfg_codec_i18n_done = 1;
@@ -1465,6 +1472,7 @@ flgui::flgui() {
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("Stream"));
         o->tooltip(_("Add stream info"));
+        o->hide();
         { Fl_Group* o = new Fl_Group(15, 160, 265, 65, _("Cambiar nombre de canci\303\263n con archivo"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));

@@ -63,6 +63,12 @@ int sc_connect(void)
     char recv_buf[100];
     char send_buf[100];
     static bool error_printed = 0;
+    const char* content_type;
+    
+    if(!strcmp(cfg.audio.codec, "mp3"))
+        content_type = "audio/mpeg";
+    else if(!strcmp(cfg.audio.codec, "aac+"))
+        content_type = "audio/aacp";
 
     stream_socket = sock_connect(cfg.srv[cfg.selected_srv]->addr,
             cfg.srv[cfg.selected_srv]->port+1, CONN_TIMEOUT);
@@ -122,7 +128,7 @@ int sc_connect(void)
         send_icy_header((char*)"icy-pub", (char*)"0");
     }
 
-
+    send_icy_header((char*)"content-type", (char*)content_type);
     snprintf(send_buf, sizeof(send_buf), "%u", cfg.audio.bitrate);
     send_icy_header((char*)"icy-br", send_buf);
 

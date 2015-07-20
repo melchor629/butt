@@ -151,6 +151,10 @@ void button_connect_cb(void)
         print_info(_("Error: ShoutCast doesn't support opus"), 1);
         return;
     }
+    if(!strcmp(cfg.audio.codec, "aac+") && cfg.srv[cfg.selected_srv]->type == ICECAST) {
+        print_info(_("Error: Icecast doesn't support aac+ (he-aac)"), 1);
+        return;
+    }
 
     if(cfg.srv[cfg.selected_srv]->type == SHOUTCAST)
         snprintf(text_buf, sizeof(text_buf), _("Conectando a %s:%u (%u) ..."),
@@ -1432,6 +1436,7 @@ void choice_cfg_bitrate_cb(void)
     lame_stream.bitrate = br_list[sel_br];
     vorbis_stream.bitrate = br_list[sel_br];
     opus_stream.bitrate = br_list[sel_br]*1000;
+    aacplus_stream.bitrate = br_list[sel_br] * 1000;
 
 
     if(fl_g->choice_cfg_codec->value() == CHOICE_MP3)
@@ -1476,6 +1481,20 @@ void choice_cfg_bitrate_cb(void)
             fl_g->choice_cfg_bitrate->value(old_br);
             fl_g->choice_cfg_bitrate->redraw();
             opus_enc_reinit(&opus_stream);
+            print_info(_("The previous values have been set\n"), 1);
+            return;
+        }
+    }
+    
+    if(fl_g->choice_cfg_codec->value() == 3) {
+        rc = aacplus_enc_reinit(&aacplus_stream);
+        if(rc) {
+            print_info(_("Warning:\nThe stream Sample-/Bitrate combination is invalid"), 1);
+            cfg.audio.bitrate = br_list[old_br];
+            aacplus_stream.bitrate = br_list[old_br] * 1000;
+            fl_g->choice_cfg_bitrate->value(old_br);
+            fl_g->choice_rec_bitrate->redraw();
+            aacplus_enc_reinit(&aacplus_stream);
             print_info(_("The previous values have been set\n"), 1);
             return;
         }
@@ -1588,6 +1607,7 @@ void choice_cfg_samplerate_cb()
     lame_stream.samplerate = sr_list[sel_sr];
     vorbis_stream.samplerate = sr_list[sel_sr];
     opus_stream.samplerate = sr_list[sel_sr];
+    aacplus_stream.samplerate = sr_list[sel_sr];
 
     if(fl_g->choice_cfg_codec->value() == CHOICE_MP3)
     {
@@ -1631,6 +1651,22 @@ void choice_cfg_samplerate_cb()
             fl_g->choice_cfg_samplerate->value(old_sr);
             fl_g->choice_cfg_samplerate->redraw();
             opus_enc_reinit(&opus_stream);
+            print_info(_("The previous values have been set"), 1);
+            return;
+        }
+    }
+    
+    if(fl_g->choice_cfg_codec->value() == 3)
+    {
+        rc = aacplus_enc_reinit(&aacplus_stream);
+        if(rc != 0)
+        {
+            print_info(_("Warning:\nThe record Sample-/Bitrate combination is invalid"), 1);
+            cfg.audio.samplerate = sr_list[old_sr];
+            aacplus_stream.samplerate = sr_list[old_sr];
+            fl_g->choice_cfg_samplerate->value(old_sr);
+            fl_g->choice_cfg_samplerate->redraw();
+            aacplus_enc_reinit(&aacplus_stream);
             print_info(_("The previous values have been set"), 1);
             return;
         }
@@ -1736,6 +1772,7 @@ void choice_cfg_channel_stereo_cb(void)
     lame_stream.channel = 2;
     vorbis_stream.channel = 2;
     opus_stream.channel = 2;
+    aacplus_stream.channels = 2;
 
     if(fl_g->choice_cfg_codec->value() == CHOICE_MP3)
         lame_enc_reinit(&lame_stream);
@@ -1743,6 +1780,8 @@ void choice_cfg_channel_stereo_cb(void)
         vorbis_enc_reinit(&vorbis_stream);
     if(fl_g->choice_cfg_codec->value() == CHOICE_OPUS)
         opus_enc_reinit(&opus_stream);
+    if(fl_g->choice_cfg_codec->value() == 3)
+        aacplus_enc_reinit(&aacplus_stream);
 
 
     // Reinit recording codecs
@@ -1775,6 +1814,7 @@ void choice_cfg_channel_mono_cb(void)
     lame_stream.channel = 1;
     vorbis_stream.channel = 1;
     opus_stream.channel = 1;
+    aacplus_stream.channels = 1;
     
     if(fl_g->choice_cfg_codec->value() == CHOICE_MP3)
         lame_enc_reinit(&lame_stream);
@@ -1782,6 +1822,8 @@ void choice_cfg_channel_mono_cb(void)
         vorbis_enc_reinit(&vorbis_stream);
     if(fl_g->choice_cfg_codec->value() == CHOICE_OPUS)
         opus_enc_reinit(&opus_stream);
+    if(fl_g->choice_cfg_codec->value() == 3)
+        aacplus_enc_reinit(&aacplus_stream);
 
 
     // Reinit recording codecs
@@ -1991,6 +2033,8 @@ void choice_cfg_codec_mp3_cb(void)
             fl_g->choice_cfg_codec->value(CHOICE_OGG);
         else if (!strcmp(cfg.audio.codec, "opus"))
             fl_g->choice_cfg_codec->value(CHOICE_OPUS);
+        else if(!strcmp(cfg.audio.codec, "aac+"))
+            fl_g->choice_cfg_codec->value(3);
 
         return;
     }
@@ -2010,6 +2054,8 @@ void choice_cfg_codec_ogg_cb(void)
             fl_g->choice_cfg_codec->value(CHOICE_MP3);
         else if (!strcmp(cfg.audio.codec, "opus"))
             fl_g->choice_cfg_codec->value(CHOICE_OPUS);
+        else if(!strcmp(cfg.audio.codec, "aac+"))
+            fl_g->choice_cfg_codec->value(3);
 
         return;
     }
@@ -2029,6 +2075,8 @@ void choice_cfg_codec_opus_cb(void)
             fl_g->choice_cfg_codec->value(CHOICE_MP3);
         else if (!strcmp(cfg.audio.codec, "ogg"))
             fl_g->choice_cfg_codec->value(CHOICE_OGG);
+        else if(!strcmp(cfg.audio.codec, "aac+"))
+            fl_g->choice_cfg_codec->value(3);
         
         return;
     }
@@ -2037,6 +2085,22 @@ void choice_cfg_codec_opus_cb(void)
     strcpy(cfg.audio.codec, "opus");
 
     unsaved_changes = 1;
+}
+
+void choice_cfg_codec_aacplus_cb(void) {
+    if(aacplus_enc_reinit(&aacplus_stream) != 0) {
+        print_info(_("AAC+ (HE-AAC) doesn't support current\n"
+                      "Sample-/Bitrate combination"), 1);
+        if(!strcmp(cfg.audio.codec, "mp3"))
+            fl_g->choice_cfg_codec->value(CHOICE_MP3);
+        else if(!strcmp(cfg.audio.codec, "ogg"))
+            fl_g->choice_cfg_codec->value(CHOICE_OGG);
+        else if(!strcmp(cfg.audio.codec, "opus"))
+            fl_g->choice_cfg_codec->value(CHOICE_OPUS);
+    } else {
+        print_info(_("Stream codec set to AAC+"), 0);
+        strcpy(cfg.audio.codec, "aac+");
+    }
 }
 
 void choice_rec_codec_mp3_cb(void)

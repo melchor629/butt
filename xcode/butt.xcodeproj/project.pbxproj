@@ -37,6 +37,7 @@
 		3CC899811926A7CE008A414B /* fl_timer_funcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */; };
 		4817DC0D1B29AD0F006523B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4817DC0C1B29AD0F006523B8 /* Images.xcassets */; };
 		4817DC441B29AF80006523B8 /* butt-bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C69A672189E7D73001CBFBA /* butt-bin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		48517BDA1B5530AB00CE10CF /* aacplus_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48517BD81B5530AB00CE10CF /* aacplus_encode.cpp */; };
 		48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */; };
 		48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */; };
 		48E01DE11B4BE45900449DFD /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E01DE01B4BE45900449DFD /* libiconv.dylib */; };
@@ -144,6 +145,8 @@
 		4817DC2E1B29AE22006523B8 /* libsamplerate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsamplerate.a; path = lib/libsamplerate.a; sourceTree = "<group>"; };
 		4817DC2F1B29AE22006523B8 /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = lib/libvorbis.a; sourceTree = "<group>"; };
 		4817DC301B29AE22006523B8 /* libvorbisenc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisenc.a; path = lib/libvorbisenc.a; sourceTree = "<group>"; };
+		48517BD81B5530AB00CE10CF /* aacplus_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aacplus_encode.cpp; path = ../src/aacplus_encode.cpp; sourceTree = "<group>"; };
+		48517BD91B5530AB00CE10CF /* aacplus_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aacplus_encode.h; path = ../src/aacplus_encode.h; sourceTree = "<group>"; };
 		48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentTrackOSX.h; path = ../src/CurrentTrackOSX.h; sourceTree = "<group>"; };
 		48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentTrackOSX.m; path = ../src/CurrentTrackOSX.m; sourceTree = "<group>"; };
 		48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -183,8 +186,8 @@
 			children = (
 				4817DC3D1B29AE30006523B8 /* libs */,
 				4817DBE61B29AA3C006523B8 /* images */,
-				3C74136D1939241400211C26 /* opus_encode.h */,
-				3C74136E1939241400211C26 /* opus_encode.cpp */,
+				48517BD81B5530AB00CE10CF /* aacplus_encode.cpp */,
+				48517BD91B5530AB00CE10CF /* aacplus_encode.h */,
 				3CC6F28019083487001993B1 /* butt.cpp */,
 				3CC6F28119083487001993B1 /* butt.h */,
 				48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */,
@@ -200,6 +203,8 @@
 				3CC6F29419083487001993B1 /* lame_encode.h */,
 				3CC6F29519083487001993B1 /* Makefile.am */,
 				3CC6F29619083487001993B1 /* Makefile.in */,
+				3C74136D1939241400211C26 /* opus_encode.h */,
+				3C74136E1939241400211C26 /* opus_encode.cpp */,
 				3CC6F29719083487001993B1 /* parseconfig.cpp */,
 				3CC6F29819083487001993B1 /* parseconfig.h */,
 				3CC6F29919083487001993B1 /* port_audio.cpp */,
@@ -429,6 +434,7 @@
 				3CC6F2AD19083488001993B1 /* butt.cpp in Sources */,
 				3CC6F2B919083488001993B1 /* sockfuncs.cpp in Sources */,
 				3CC6F2B219083488001993B1 /* flgui.cpp in Sources */,
+				48517BDA1B5530AB00CE10CF /* aacplus_encode.cpp in Sources */,
 				3CC6F2B819083488001993B1 /* shoutcast.cpp in Sources */,
 				48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */,
 				3CC899811926A7CE008A414B /* fl_timer_funcs.cpp in Sources */,
@@ -587,13 +593,30 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				LIBRARY_SEARCH_PATHS = (
 					./lib,
 					"$(PROJECT_DIR)/lib",
 				);
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					./lib/libmp3lame.a,
+					./lib/libportaudio.a,
+					./lib/libfltk_gl.a,
+					./lib/libogg.a,
+					./lib/libvorbis.a,
+					./lib/libvorbisenc.a,
+					./lib/libsamplerate.a,
+					./lib/libopus.a,
+					"./lib/libFLAC-static.a",
+					./lib/libintl.a,
+					./lib/libgettextpo.a,
+					./lib/libaacplus.a,
+					./lib/libfltk_images.a,
+					./lib/libfltk.a,
+					./lib/libaacplus.a,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = ./include;
 			};
@@ -604,6 +627,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				LIBRARY_SEARCH_PATHS = (
@@ -611,7 +635,20 @@
 					"$(PROJECT_DIR)/lib",
 				);
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					./lib/libmp3lame.a,
+					./lib/libportaudio.a,
+					./lib/libfltk_gl.a,
+					./lib/libogg.a,
+					./lib/libvorbis.a,
+					./lib/libvorbisenc.a,
+					./lib/libsamplerate.a,
+					./lib/libopus.a,
+					"./lib/libFLAC-static.a",
+					./lib/libintl.a,
+					./lib/libgettextpo.a,
+					./lib/libaacplus.a,
+				);
 				"OTHER_LDFLAGS[arch=*]" = (
 					./lib/libmp3lame.a,
 					./lib/libportaudio.a,
@@ -627,6 +664,7 @@
 					./lib/libintl.a,
 					./lib/libgettextpo.a,
 					./lib/libasprintf.a,
+					./lib/libaacplus.a,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = ./include;

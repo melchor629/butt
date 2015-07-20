@@ -79,6 +79,7 @@ vorbis_enc vorbis_rec;
 opus_enc opus_stream;
 opus_enc opus_rec;
 flac_enc flac_rec;
+aacplus_enc aacplus_stream;
 
 
 int main(int argc, char *argv[])
@@ -203,6 +204,8 @@ int main(int argc, char *argv[])
 
 	if(cfg.main.connect_at_startup)
 		button_connect_cb();
+    
+    signal(SIGPIPE, SIG_IGN);
 
     snprintf(info_buf, sizeof(info_buf),
             _("butt %s iniciado perfectamente"), VERSION);

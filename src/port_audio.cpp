@@ -297,11 +297,18 @@ void *snd_stream_thread(void *data)
             if(!strcmp(cfg.audio.codec, "ogg"))
                 encode_bytes_read = vorbis_enc_encode(&vorbis_stream, (short*)audio_buf, 
                         enc_buf, rb_bytes_read/(2*cfg.audio.channel));
+            
+            if(!strcmp(cfg.audio.codec, "aac+")) {
+                encode_bytes_read = aacplus_enc_encode(&aacplus_stream, (short*) audio_buf,
+                        enc_buf, rb_bytes_read/2/cfg.audio.channel, stream_rb.size*10);
+            }
 
-            if((sent = xc_send(enc_buf, encode_bytes_read)) == -1)
-                connected = 0; 
-            else
-                kbytes_sent += encode_bytes_read/1024.0;
+            if(encode_bytes_read != 0) {
+                if((sent = xc_send(enc_buf, encode_bytes_read)) == -1)
+                    connected = 0;
+                else
+                    kbytes_sent += encode_bytes_read/1024.0;
+            }
 
         }
     }

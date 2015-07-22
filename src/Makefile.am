@@ -16,11 +16,16 @@ butt_SOURCES = butt.cpp butt.h cfg.cpp cfg.h icecast.cpp icecast.h lame_encode.c
 			   FLTK/fl_callbacks.h FLTK/fl_funcs.cpp FLTK/fl_funcs.h FLTK/flgui.cpp FLTK/flgui.h \
 			   FLTK/FL/Fl_My_Double_Window.H FLTK/FL/Fl_My_Value_Slider.H \
 			   FLTK/Fl_My_Native_File_Chooser.cxx FLTK/FL/Fl_My_Native_File_Chooser.H \
-			   FLTK/fl_timer_funcs.cpp FLTK/fl_timer_funcs.h
+			   FLTK/fl_timer_funcs.cpp FLTK/fl_timer_funcs.h \
+			   aac_encode.h aac_encode.cpp
 			   
 
 if WINDOWS
 butt_SOURCES += resource.rc
+endif
+
+if OSX
+butt_SOURCES += CurrentTrackOSX.h CurrentTrackOSX.m
 endif
 
 # used only under MinGW to compile the resource.rc file (manifest and program icon)

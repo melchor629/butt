@@ -21,7 +21,7 @@
 #include "vorbis_encode.h"
 #include "opus_encode.h"
 #include "flac_encode.h"
-#include "aacplus_encode.h"
+#include "aac_encode.h"
 
 extern bool record;
 extern bool recording;      //TRUE if butt is recording
@@ -48,6 +48,6 @@ extern vorbis_enc vorbis_rec;
 extern opus_enc opus_stream;
 extern opus_enc opus_rec;
 extern flac_enc flac_rec;
-extern aacplus_enc aacplus_stream;
+extern aac_enc aacplus_stream;
 
 #endif

@@ -382,7 +382,7 @@ void init_main_gui_and_audio(void)
     aacplus_stream.channels = cfg.audio.channel;
     aacplus_stream.bitrate = (cfg.audio.bitrate > 64 ? 64 : cfg.audio.bitrate) * 1000;
     aacplus_stream.samplerate = cfg.audio.samplerate;
-    aacplus_enc_reinit(&aacplus_stream);
+    aac_enc_reinit(&aacplus_stream);
 }
 
 void init_choice_app(void* ptr) {

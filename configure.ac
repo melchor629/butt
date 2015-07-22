@@ -12,6 +12,7 @@ AC_CONFIG_HEADERS([config.h])
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CC
+AC_PROG_OBJC
 
 LDFLAGS="$LDFLAGS -L/usr/local/lib"
 
@@ -68,6 +69,7 @@ AC_CHECK_HEADER([winsock2.h],
 		],
 	       )
 AM_CONDITIONAL(WINDOWS, test "$host_os" = "windows")
+AM_CONDITIONAL(OSX, test "$host_os" = "darwin*")
 
 AC_CHECK_PROG([FLTKCONFIG],[fltk-config], [fltk-config])
 
@@ -100,11 +102,23 @@ AC_CHECK_FUNCS([gethostbyaddr gethostbyname memset pow select socket strchr strd
 
 # Adds visibility of streaming configuration
 AC_ARG_ENABLE([stream-conf], 
-	AS_HELP_STRING([--enable-stream-conf], [Enable stream configration visibility]))
-AS_IF([test "x%enable_stream-conf" = "xyes"], [
+	AS_HELP_STRING([--disable-stream-conf], [Disable stream configration visibility, for customized clients]))
+AS_IF([test "x%disable_stream-conf" = "xyes"], [
 	AC_DEFINE([VISIBILITY], [1], [Stream conf visibility enabled])
 ], [
 	AC_DEFINE([VISIBILITY], [0], [Stream conf visibility disabled])
+])
+
+# Adds support to libfdk-aac or libaacplus
+AC_ARG_ENABLE([aac],
+	AS_HELP_STRING([--enable-aac], [Enable support to AAC using non-free libraries libfdk-aac or libaacplus]))
+AS_IF([test "x%enable_aac" = "xyes"], [
+	AC_CHECK_LIB([fdk-aac], [aacEncOpen], [], [
+		AC_CHECK_LIB([aacplus], [aacplusEncOpen],
+				[AC_MSG_WARN([AAC-LC will not be supported])], 
+				[AC_MSG_ERROR([libfdk-aac and linaacplus not found])]
+				)
+		])
 ])
 
 AC_CONFIG_FILES([Makefile

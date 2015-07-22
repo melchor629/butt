@@ -82,6 +82,7 @@ build_triplet = @build@
 host_triplet = @host@
 bin_PROGRAMS = butt$(EXEEXT)
 @WINDOWS_TRUE@am__append_1 = resource.rc
+@OSX_TRUE@am__append_2 = CurrentTrackOSX.h CurrentTrackOSX.m
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -108,9 +109,11 @@ am__butt_SOURCES_DIST = butt.cpp butt.h cfg.cpp cfg.h icecast.cpp \
 	FLTK/FL/Fl_My_Double_Window.H FLTK/FL/Fl_My_Value_Slider.H \
 	FLTK/Fl_My_Native_File_Chooser.cxx \
 	FLTK/FL/Fl_My_Native_File_Chooser.H FLTK/fl_timer_funcs.cpp \
-	FLTK/fl_timer_funcs.h resource.rc
+	FLTK/fl_timer_funcs.h aac_encode.h aac_encode.cpp resource.rc \
+	CurrentTrackOSX.h CurrentTrackOSX.m
 am__dirstamp = $(am__leading_dot)dirstamp
 @WINDOWS_TRUE@am__objects_1 = resource.$(OBJEXT)
+@OSX_TRUE@am__objects_2 = CurrentTrackOSX.$(OBJEXT)
 am_butt_OBJECTS = butt.$(OBJEXT) cfg.$(OBJEXT) icecast.$(OBJEXT) \
 	lame_encode.$(OBJEXT) parseconfig.$(OBJEXT) \
 	port_audio.$(OBJEXT) ringbuffer.$(OBJEXT) shoutcast.$(OBJEXT) \
@@ -120,7 +123,8 @@ am_butt_OBJECTS = butt.$(OBJEXT) cfg.$(OBJEXT) icecast.$(OBJEXT) \
 	flac_encode.$(OBJEXT) FLTK/Fl_ILM216.$(OBJEXT) \
 	FLTK/fl_callbacks.$(OBJEXT) FLTK/fl_funcs.$(OBJEXT) \
 	FLTK/flgui.$(OBJEXT) FLTK/Fl_My_Native_File_Chooser.$(OBJEXT) \
-	FLTK/fl_timer_funcs.$(OBJEXT) $(am__objects_1)
+	FLTK/fl_timer_funcs.$(OBJEXT) aac_encode.$(OBJEXT) \
+	$(am__objects_1) $(am__objects_2)
 butt_OBJECTS = $(am_butt_OBJECTS)
 butt_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -152,6 +156,19 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
+OBJCCOMPILE = $(OBJC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_OBJCFLAGS) $(OBJCFLAGS)
+AM_V_OBJC = $(am__v_OBJC_@AM_V@)
+am__v_OBJC_ = $(am__v_OBJC_@AM_DEFAULT_V@)
+am__v_OBJC_0 = @echo "  OBJC    " $@;
+am__v_OBJC_1 = 
+OBJCLD = $(OBJC)
+OBJCLINK = $(OBJCLD) $(AM_OBJCFLAGS) $(OBJCFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
+AM_V_OBJCLD = $(am__v_OBJCLD_@AM_V@)
+am__v_OBJCLD_ = $(am__v_OBJCLD_@AM_DEFAULT_V@)
+am__v_OBJCLD_0 = @echo "  OBJCLD  " $@;
+am__v_OBJCLD_1 = 
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 AM_V_CC = $(am__v_CC_@AM_V@)
@@ -227,6 +244,9 @@ LIBS = @LIBS@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 MKDIR_P = @MKDIR_P@
+OBJC = @OBJC@
+OBJCDEPMODE = @OBJCDEPMODE@
+OBJCFLAGS = @OBJCFLAGS@
 OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
@@ -247,6 +267,7 @@ abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
+ac_ct_OBJC = @ac_ct_OBJC@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
@@ -306,11 +327,12 @@ butt_SOURCES = butt.cpp butt.h cfg.cpp cfg.h icecast.cpp icecast.h \
 	FLTK/FL/Fl_My_Double_Window.H FLTK/FL/Fl_My_Value_Slider.H \
 	FLTK/Fl_My_Native_File_Chooser.cxx \
 	FLTK/FL/Fl_My_Native_File_Chooser.H FLTK/fl_timer_funcs.cpp \
-	FLTK/fl_timer_funcs.h $(am__append_1)
+	FLTK/fl_timer_funcs.h aac_encode.h aac_encode.cpp \
+	$(am__append_1) $(am__append_2)
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .cpp .cxx .o .obj .rc
+.SUFFIXES: .cpp .cxx .m .o .obj .rc
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -413,6 +435,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CurrentTrackOSX.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/aac_encode.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/butt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cfg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/flac_encode.Po@am__quote@
@@ -468,6 +492,22 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+.m.o:
+@am__fastdepOBJC_TRUE@	$(AM_V_OBJC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+@am__fastdepOBJC_TRUE@	$(OBJCCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepOBJC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
+@AMDEP_TRUE@@am__fastdepOBJC_FALSE@	$(AM_V_OBJC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepOBJC_FALSE@	DEPDIR=$(DEPDIR) $(OBJCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepOBJC_FALSE@	$(AM_V_OBJC@am__nodep@)$(OBJCCOMPILE) -c -o $@ $<
+
+.m.obj:
+@am__fastdepOBJC_TRUE@	$(AM_V_OBJC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+@am__fastdepOBJC_TRUE@	$(OBJCCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+@am__fastdepOBJC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
+@AMDEP_TRUE@@am__fastdepOBJC_FALSE@	$(AM_V_OBJC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepOBJC_FALSE@	DEPDIR=$(DEPDIR) $(OBJCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepOBJC_FALSE@	$(AM_V_OBJC@am__nodep@)$(OBJCCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique

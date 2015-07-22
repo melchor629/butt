@@ -299,7 +299,7 @@ void *snd_stream_thread(void *data)
                         enc_buf, rb_bytes_read/(2*cfg.audio.channel));
             
             if(!strcmp(cfg.audio.codec, "aac+")) {
-                encode_bytes_read = aacplus_enc_encode(&aacplus_stream, (short*) audio_buf,
+                encode_bytes_read = aac_enc_encode(&aacplus_stream, (short*) audio_buf,
                         enc_buf, rb_bytes_read/2/cfg.audio.channel, stream_rb.size*10);
             }
 

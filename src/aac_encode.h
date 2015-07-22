@@ -1,18 +1,26 @@
 //
-//  aacplus_encode.h
+//  aac_encode.h
 //  butt
 //
 //  Created by Melchor Garau Madrigal on 14/7/15.
 //  Copyright (c) 2015 Daniel Nöthen. All rights reserved.
 //
 
-#ifndef __butt__aacplus_encode__
-#define __butt__aacplus_encode__
+#ifndef __butt__aac_encode__
+#define __butt__aac_encode__
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <config.h>
+#include <stdint.h>
+
+#if HAVE_LIBAACPLUS
 #include <aacplus.h>
+#endif
+#if HAVE_LIBFDK_AAC
+#include <fdk-aac/aacenc_lib.h>
+#endif
 
 class buffer {
     size_t size, position;
@@ -68,9 +76,14 @@ public:
     }
 };
 
-struct aacplus_enc {
+struct aac_enc {
+#if HAVE_LIBAACPLUS
     aacplusEncConfiguration* conf;
     aacplusEncHandle encoder;
+#elif HAVE_LIBFDK_AAC
+    HANDLE_AACENCODER enc;
+    AACENC_InfoStruct info = {0};
+#endif
     int bitrate;
     int samplerate;
     int channels;
@@ -80,16 +93,16 @@ struct aacplus_enc {
     unsigned max_output_bytes;
     buffer buff;
     
-    aacplus_enc() : buff(0) {}
+    aac_enc() : buff(0) {}
 };
 
 enum {
     AACPLUS_READY, AACPLUS_BUSY
 };
 
-int aacplus_enc_init(aacplus_enc *aacplus);
-int aacplus_enc_encode(aacplus_enc *aacplus, short *pcm_buf, char* enc_buf, int samples, int channel);
-int aacplus_enc_reinit(aacplus_enc *aacplus);
-void aacplus_enc_close(aacplus_enc *aacplus);
+int aac_enc_init(aac_enc *aacplus);
+int aac_enc_encode(aac_enc *aacplus, short *pcm_buf, char* enc_buf, int samples, int channel);
+int aac_enc_reinit(aac_enc *aacplus);
+void aac_enc_close(aac_enc *aacplus);
 
-#endif /* defined(__butt__aacplus_encode__) */
+#endif /* defined(__butt__aac_encode__) */

@@ -16,6 +16,12 @@
 /* Define to 1 if you have the `FLAC' library (-lFLAC). */
 #define HAVE_LIBFLAC 1
 
+/* Define to 1 if you have the `aacplus' library (-laacplus). */
+/* #undef HAVE_LIBAACPLUS */
+
+/* Define to 1 if you have the `fdk-aac' library (-lfdk-aac). */
+#define HAVE_LIBFDK_AAC 1
+
 /* Define to 1 if you have the `mp3lame' library (-lmp3lame). */
 #define HAVE_LIBMP3LAME 1
 

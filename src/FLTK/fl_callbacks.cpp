@@ -1487,14 +1487,14 @@ void choice_cfg_bitrate_cb(void)
     }
     
     if(fl_g->choice_cfg_codec->value() == 3) {
-        rc = aacplus_enc_reinit(&aacplus_stream);
+        rc = aac_enc_reinit(&aacplus_stream);
         if(rc) {
             print_info(_("Warning:\nThe stream Sample-/Bitrate combination is invalid"), 1);
             cfg.audio.bitrate = br_list[old_br];
             aacplus_stream.bitrate = br_list[old_br] * 1000;
             fl_g->choice_cfg_bitrate->value(old_br);
             fl_g->choice_rec_bitrate->redraw();
-            aacplus_enc_reinit(&aacplus_stream);
+            aac_enc_reinit(&aacplus_stream);
             print_info(_("The previous values have been set\n"), 1);
             return;
         }
@@ -1658,7 +1658,7 @@ void choice_cfg_samplerate_cb()
     
     if(fl_g->choice_cfg_codec->value() == 3)
     {
-        rc = aacplus_enc_reinit(&aacplus_stream);
+        rc = aac_enc_reinit(&aacplus_stream);
         if(rc != 0)
         {
             print_info(_("Warning:\nThe record Sample-/Bitrate combination is invalid"), 1);
@@ -1666,7 +1666,7 @@ void choice_cfg_samplerate_cb()
             aacplus_stream.samplerate = sr_list[old_sr];
             fl_g->choice_cfg_samplerate->value(old_sr);
             fl_g->choice_cfg_samplerate->redraw();
-            aacplus_enc_reinit(&aacplus_stream);
+            aac_enc_reinit(&aacplus_stream);
             print_info(_("The previous values have been set"), 1);
             return;
         }
@@ -1781,7 +1781,7 @@ void choice_cfg_channel_stereo_cb(void)
     if(fl_g->choice_cfg_codec->value() == CHOICE_OPUS)
         opus_enc_reinit(&opus_stream);
     if(fl_g->choice_cfg_codec->value() == 3)
-        aacplus_enc_reinit(&aacplus_stream);
+        aac_enc_reinit(&aacplus_stream);
 
 
     // Reinit recording codecs
@@ -1823,7 +1823,7 @@ void choice_cfg_channel_mono_cb(void)
     if(fl_g->choice_cfg_codec->value() == CHOICE_OPUS)
         opus_enc_reinit(&opus_stream);
     if(fl_g->choice_cfg_codec->value() == 3)
-        aacplus_enc_reinit(&aacplus_stream);
+        aac_enc_reinit(&aacplus_stream);
 
 
     // Reinit recording codecs
@@ -2088,7 +2088,7 @@ void choice_cfg_codec_opus_cb(void)
 }
 
 void choice_cfg_codec_aacplus_cb(void) {
-    if(aacplus_enc_reinit(&aacplus_stream) != 0) {
+    if(aac_enc_reinit(&aacplus_stream) != 0) {
         print_info(_("AAC+ (HE-AAC) doesn't support current\n"
                       "Sample-/Bitrate combination"), 1);
         if(!strcmp(cfg.audio.codec, "mp3"))

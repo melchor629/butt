@@ -388,13 +388,6 @@ void init_main_gui_and_audio(void)
 void init_choice_app(void* ptr) {
     flgui* fl_g = (flgui*) ptr;
 #if __APPLE__ && __MACH__
-    /*Fl_Menu_Item m[] = {
-        {"iTunes", 0,  (Fl_Callback*) &change_app_cb, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
-        {"Spotify", 0,  (Fl_Callback*) &change_app_cb, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
-        {"VOX", 0,  (Fl_Callback*) &change_app_cb, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
-        {NULL, 0,  (Fl_Callback*)NULL, 0, 0, NULL, 0, 0, 0}
-    };
-    fl_g->choice_app->menu(m);*/
     fl_g->choice_app->add("iTunes", 0, (Fl_Callback*) &change_app_cb);
     fl_g->choice_app->add("Spotify", 0, (Fl_Callback*) &change_app_cb);
     fl_g->choice_app->add("VOX", 0, (Fl_Callback*) &change_app_cb);

@@ -83,6 +83,7 @@ host_triplet = @host@
 bin_PROGRAMS = butt$(EXEEXT)
 @WINDOWS_TRUE@am__append_1 = resource.rc
 @OSX_TRUE@am__append_2 = CurrentTrackOSX.h CurrentTrackOSX.m
+@OSX_FALSE@am__append_3 = currentTrack.h currentTrack.cpp
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -110,10 +111,12 @@ am__butt_SOURCES_DIST = butt.cpp butt.h cfg.cpp cfg.h icecast.cpp \
 	FLTK/Fl_My_Native_File_Chooser.cxx \
 	FLTK/FL/Fl_My_Native_File_Chooser.H FLTK/fl_timer_funcs.cpp \
 	FLTK/fl_timer_funcs.h aac_encode.h aac_encode.cpp resource.rc \
-	CurrentTrackOSX.h CurrentTrackOSX.m
+	CurrentTrackOSX.h CurrentTrackOSX.m currentTrack.h \
+	currentTrack.cpp
 am__dirstamp = $(am__leading_dot)dirstamp
 @WINDOWS_TRUE@am__objects_1 = resource.$(OBJEXT)
 @OSX_TRUE@am__objects_2 = CurrentTrackOSX.$(OBJEXT)
+@OSX_FALSE@am__objects_3 = currentTrack.$(OBJEXT)
 am_butt_OBJECTS = butt.$(OBJEXT) cfg.$(OBJEXT) icecast.$(OBJEXT) \
 	lame_encode.$(OBJEXT) parseconfig.$(OBJEXT) \
 	port_audio.$(OBJEXT) ringbuffer.$(OBJEXT) shoutcast.$(OBJEXT) \
@@ -124,7 +127,7 @@ am_butt_OBJECTS = butt.$(OBJEXT) cfg.$(OBJEXT) icecast.$(OBJEXT) \
 	FLTK/fl_callbacks.$(OBJEXT) FLTK/fl_funcs.$(OBJEXT) \
 	FLTK/flgui.$(OBJEXT) FLTK/Fl_My_Native_File_Chooser.$(OBJEXT) \
 	FLTK/fl_timer_funcs.$(OBJEXT) aac_encode.$(OBJEXT) \
-	$(am__objects_1) $(am__objects_2)
+	$(am__objects_1) $(am__objects_2) $(am__objects_3)
 butt_OBJECTS = $(am_butt_OBJECTS)
 butt_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -328,7 +331,7 @@ butt_SOURCES = butt.cpp butt.h cfg.cpp cfg.h icecast.cpp icecast.h \
 	FLTK/Fl_My_Native_File_Chooser.cxx \
 	FLTK/FL/Fl_My_Native_File_Chooser.H FLTK/fl_timer_funcs.cpp \
 	FLTK/fl_timer_funcs.h aac_encode.h aac_encode.cpp \
-	$(am__append_1) $(am__append_2)
+	$(am__append_1) $(am__append_2) $(am__append_3)
 all: all-am
 
 .SUFFIXES:
@@ -439,6 +442,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/aac_encode.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/butt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cfg.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/currentTrack.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/flac_encode.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/icecast.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lame_encode.Po@am__quote@

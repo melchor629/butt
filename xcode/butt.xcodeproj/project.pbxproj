@@ -64,6 +64,8 @@
 		488342E61B5E92DA00D07653 /* libvorbis.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B61B5E903000D07653 /* libvorbis.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		488342E71B5E92DA00D07653 /* libvorbisenc.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B71B5E903000D07653 /* libvorbisenc.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		488342E81B5E92DA00D07653 /* libintl.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342CA1B5E924E00D07653 /* libintl.8.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		48A2A8D31B95C09E0092B0C0 /* libjpeg.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 48A2A8D11B95C09E0092B0C0 /* libjpeg.8.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		48A2A8D41B95C09E0092B0C0 /* libpng16.16.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 48A2A8D21B95C09E0092B0C0 /* libpng16.16.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */; };
 		48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */; };
 		48E01DE11B4BE45900449DFD /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E01DE01B4BE45900449DFD /* libiconv.dylib */; };
@@ -97,6 +99,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				48A2A8D31B95C09E0092B0C0 /* libjpeg.8.dylib in CopyFiles */,
+				48A2A8D41B95C09E0092B0C0 /* libpng16.16.dylib in CopyFiles */,
 				488342DC1B5E92DA00D07653 /* libfdk-aac.1.dylib in CopyFiles */,
 				488342DD1B5E92DA00D07653 /* libFLAC.8.dylib in CopyFiles */,
 				488342DE1B5E92DA00D07653 /* libfltk_gl.1.3.dylib in CopyFiles */,
@@ -196,6 +200,10 @@
 		488342B61B5E903000D07653 /* libvorbis.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.0.dylib; path = /usr/local/Cellar/libvorbis/1.3.5/lib/libvorbis.0.dylib; sourceTree = "<absolute>"; };
 		488342B71B5E903000D07653 /* libvorbisenc.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisenc.2.dylib; path = /usr/local/Cellar/libvorbis/1.3.5/lib/libvorbisenc.2.dylib; sourceTree = "<absolute>"; };
 		488342CA1B5E924E00D07653 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = /usr/local/Cellar/gettext/0.19.5.1/lib/libintl.8.dylib; sourceTree = "<absolute>"; };
+		488B76A91B5FAA5600FAFCB2 /* currentTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = currentTrack.cpp; path = ../src/currentTrack.cpp; sourceTree = "<group>"; };
+		488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = currentTrack.h; path = ../src/currentTrack.h; sourceTree = "<group>"; };
+		48A2A8D11B95C09E0092B0C0 /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = /usr/local/Cellar/jpeg/8d/lib/libjpeg.8.dylib; sourceTree = "<absolute>"; };
+		48A2A8D21B95C09E0092B0C0 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = /usr/local/Cellar/libpng/1.6.18/lib/libpng16.16.dylib; sourceTree = "<absolute>"; };
 		48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentTrackOSX.h; path = ../src/CurrentTrackOSX.h; sourceTree = "<group>"; };
 		48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentTrackOSX.m; path = ../src/CurrentTrackOSX.m; sourceTree = "<group>"; };
 		48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -251,6 +259,8 @@
 				3CC6F28119083487001993B1 /* butt.h */,
 				48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */,
 				48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */,
+				488B76A91B5FAA5600FAFCB2 /* currentTrack.cpp */,
+				488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */,
 				3C0CC7F61A49FAD60079F4B5 /* flac_encode.h */,
 				3C0CC7F71A49FAD60079F4B5 /* flac_encode.cpp */,
 				3CC6F28219083487001993B1 /* cfg.cpp */,
@@ -384,6 +394,8 @@
 				488342B61B5E903000D07653 /* libvorbis.0.dylib */,
 				488342B71B5E903000D07653 /* libvorbisenc.2.dylib */,
 				488342CA1B5E924E00D07653 /* libintl.8.dylib */,
+				48A2A8D11B95C09E0092B0C0 /* libjpeg.8.dylib */,
+				48A2A8D21B95C09E0092B0C0 /* libpng16.16.dylib */,
 			);
 			name = libs;
 			sourceTree = "<group>";
@@ -653,6 +665,7 @@
 					/usr/local/include,
 					/usr/local/opt/gettext/include,
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					"/usr/local/Cellar/fdk-aac/0.1.4/lib",
@@ -689,6 +702,7 @@
 					/usr/local/include,
 					/usr/local/opt/gettext/include,
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					"/usr/local/Cellar/fdk-aac/0.1.4/lib",

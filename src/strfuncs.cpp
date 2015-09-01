@@ -23,9 +23,9 @@ int strinsrt(char **dest, char *insert, char *pos)
     char *pre;
     char *post;
     char *temp;
-    int pre_len;
-    int post_len;
-    int new_len;
+    size_t pre_len;
+    size_t post_len;
+    size_t new_len;
 
     new_len = strlen(*dest) + strlen(insert);
     pre_len = strlen(*dest) - strlen(pos);
@@ -79,8 +79,8 @@ int strrpl(char **dest, char *search, char *replace, int mode)
     char *temp;
     char *orig;
     char *result;
-    int search_len, repl_len, diff;
-    int size;
+    long search_len, repl_len, diff;
+    long size;
     int count;
 
     // do nothing if there is not at least one string of "search" in "*dest"

@@ -26,6 +26,8 @@ endif
 
 if OSX
 butt_SOURCES += CurrentTrackOSX.h CurrentTrackOSX.m
+else
+butt_SOURCES += currentTrack.h currentTrack.cpp
 endif
 
 # used only under MinGW to compile the resource.rc file (manifest and program icon)

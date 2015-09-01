@@ -31,7 +31,7 @@ char *util_base64_enc(char *data)
                       "abcdefghijklmnopqrstuvwxyz"
                       "0123456789+/";
 
-    len = strlen(data);
+    len = (int) strlen(data);
 
     b64_data = (char*)malloc(len * 4/3 + 4);
 

@@ -38,37 +38,9 @@
 		4817DC0D1B29AD0F006523B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4817DC0C1B29AD0F006523B8 /* Images.xcassets */; };
 		4817DC441B29AF80006523B8 /* butt-bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C69A672189E7D73001CBFBA /* butt-bin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		48517BDA1B5530AB00CE10CF /* aac_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48517BD81B5530AB00CE10CF /* aac_encode.cpp */; };
-		488342B81B5E903000D07653 /* libfdk-aac.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342AC1B5E903000D07653 /* libfdk-aac.1.dylib */; };
-		488342B91B5E903000D07653 /* libFLAC.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342AD1B5E903000D07653 /* libFLAC.8.dylib */; };
-		488342BA1B5E903000D07653 /* libfltk_gl.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342AE1B5E903000D07653 /* libfltk_gl.1.3.dylib */; };
-		488342BB1B5E903000D07653 /* libfltk_images.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342AF1B5E903000D07653 /* libfltk_images.1.3.dylib */; };
-		488342BC1B5E903000D07653 /* libfltk.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342B01B5E903000D07653 /* libfltk.1.3.dylib */; };
-		488342BD1B5E903000D07653 /* libmp3lame.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342B11B5E903000D07653 /* libmp3lame.0.dylib */; };
-		488342BE1B5E903000D07653 /* libogg.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342B21B5E903000D07653 /* libogg.0.dylib */; };
-		488342BF1B5E903000D07653 /* libopus.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342B31B5E903000D07653 /* libopus.0.dylib */; };
-		488342C01B5E903000D07653 /* libportaudio.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342B41B5E903000D07653 /* libportaudio.2.dylib */; };
-		488342C11B5E903000D07653 /* libsamplerate.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342B51B5E903000D07653 /* libsamplerate.0.dylib */; };
-		488342C21B5E903000D07653 /* libvorbis.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342B61B5E903000D07653 /* libvorbis.0.dylib */; };
-		488342C31B5E903000D07653 /* libvorbisenc.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342B71B5E903000D07653 /* libvorbisenc.2.dylib */; };
-		488342CB1B5E924E00D07653 /* libintl.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 488342CA1B5E924E00D07653 /* libintl.8.dylib */; };
-		488342DC1B5E92DA00D07653 /* libfdk-aac.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342AC1B5E903000D07653 /* libfdk-aac.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342DD1B5E92DA00D07653 /* libFLAC.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342AD1B5E903000D07653 /* libFLAC.8.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342DE1B5E92DA00D07653 /* libfltk_gl.1.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342AE1B5E903000D07653 /* libfltk_gl.1.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342DF1B5E92DA00D07653 /* libfltk_images.1.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342AF1B5E903000D07653 /* libfltk_images.1.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E01B5E92DA00D07653 /* libfltk.1.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B01B5E903000D07653 /* libfltk.1.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E11B5E92DA00D07653 /* libmp3lame.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B11B5E903000D07653 /* libmp3lame.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E21B5E92DA00D07653 /* libogg.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B21B5E903000D07653 /* libogg.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E31B5E92DA00D07653 /* libopus.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B31B5E903000D07653 /* libopus.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E41B5E92DA00D07653 /* libportaudio.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B41B5E903000D07653 /* libportaudio.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E51B5E92DA00D07653 /* libsamplerate.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B51B5E903000D07653 /* libsamplerate.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E61B5E92DA00D07653 /* libvorbis.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B61B5E903000D07653 /* libvorbis.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E71B5E92DA00D07653 /* libvorbisenc.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342B71B5E903000D07653 /* libvorbisenc.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		488342E81B5E92DA00D07653 /* libintl.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 488342CA1B5E924E00D07653 /* libintl.8.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		48A2A8D31B95C09E0092B0C0 /* libjpeg.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 48A2A8D11B95C09E0092B0C0 /* libjpeg.8.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		48A2A8D41B95C09E0092B0C0 /* libpng16.16.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 48A2A8D21B95C09E0092B0C0 /* libpng16.16.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		48A2A9001B95C7510092B0C0 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */; };
 		48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */; };
 		48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */; };
-		48E01DE11B4BE45900449DFD /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E01DE01B4BE45900449DFD /* libiconv.dylib */; };
 		48E01DE71B4BF08400449DFD /* Locale in Resources */ = {isa = PBXBuildFile; fileRef = 48E01DE61B4BF08400449DFD /* Locale */; };
 /* End PBXBuildFile section */
 
@@ -90,30 +62,6 @@
 			dstSubfolderSpec = 6;
 			files = (
 				4817DC441B29AF80006523B8 /* butt-bin in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		488342DB1B5E92C900D07653 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				48A2A8D31B95C09E0092B0C0 /* libjpeg.8.dylib in CopyFiles */,
-				48A2A8D41B95C09E0092B0C0 /* libpng16.16.dylib in CopyFiles */,
-				488342DC1B5E92DA00D07653 /* libfdk-aac.1.dylib in CopyFiles */,
-				488342DD1B5E92DA00D07653 /* libFLAC.8.dylib in CopyFiles */,
-				488342DE1B5E92DA00D07653 /* libfltk_gl.1.3.dylib in CopyFiles */,
-				488342DF1B5E92DA00D07653 /* libfltk_images.1.3.dylib in CopyFiles */,
-				488342E01B5E92DA00D07653 /* libfltk.1.3.dylib in CopyFiles */,
-				488342E11B5E92DA00D07653 /* libmp3lame.0.dylib in CopyFiles */,
-				488342E21B5E92DA00D07653 /* libogg.0.dylib in CopyFiles */,
-				488342E31B5E92DA00D07653 /* libopus.0.dylib in CopyFiles */,
-				488342E41B5E92DA00D07653 /* libportaudio.2.dylib in CopyFiles */,
-				488342E51B5E92DA00D07653 /* libsamplerate.0.dylib in CopyFiles */,
-				488342E61B5E92DA00D07653 /* libvorbis.0.dylib in CopyFiles */,
-				488342E71B5E92DA00D07653 /* libvorbisenc.2.dylib in CopyFiles */,
-				488342E81B5E92DA00D07653 /* libintl.8.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,27 +135,12 @@
 		4817DC0C1B29AD0F006523B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		48517BD81B5530AB00CE10CF /* aac_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = aac_encode.cpp; path = ../src/aac_encode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		48517BD91B5530AB00CE10CF /* aac_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = aac_encode.h; path = ../src/aac_encode.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		488342AC1B5E903000D07653 /* libfdk-aac.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libfdk-aac.1.dylib"; path = "/usr/local/Cellar/fdk-aac/0.1.4/lib/libfdk-aac.1.dylib"; sourceTree = "<absolute>"; };
-		488342AD1B5E903000D07653 /* libFLAC.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libFLAC.8.dylib; path = /usr/local/Cellar/flac/1.3.1/lib/libFLAC.8.dylib; sourceTree = "<absolute>"; };
-		488342AE1B5E903000D07653 /* libfltk_gl.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfltk_gl.1.3.dylib; path = /usr/local/Cellar/fltk/1.3.3/lib/libfltk_gl.1.3.dylib; sourceTree = "<absolute>"; };
-		488342AF1B5E903000D07653 /* libfltk_images.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfltk_images.1.3.dylib; path = /usr/local/Cellar/fltk/1.3.3/lib/libfltk_images.1.3.dylib; sourceTree = "<absolute>"; };
-		488342B01B5E903000D07653 /* libfltk.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfltk.1.3.dylib; path = /usr/local/Cellar/fltk/1.3.3/lib/libfltk.1.3.dylib; sourceTree = "<absolute>"; };
-		488342B11B5E903000D07653 /* libmp3lame.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmp3lame.0.dylib; path = /usr/local/Cellar/lame/3.99.5/lib/libmp3lame.0.dylib; sourceTree = "<absolute>"; };
-		488342B21B5E903000D07653 /* libogg.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.0.dylib; path = /usr/local/Cellar/libogg/1.3.2/lib/libogg.0.dylib; sourceTree = "<absolute>"; };
-		488342B31B5E903000D07653 /* libopus.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopus.0.dylib; path = /usr/local/Cellar/opus/1.1/lib/libopus.0.dylib; sourceTree = "<absolute>"; };
-		488342B41B5E903000D07653 /* libportaudio.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libportaudio.2.dylib; path = /usr/local/Cellar/portaudio/19.20140130/lib/libportaudio.2.dylib; sourceTree = "<absolute>"; };
-		488342B51B5E903000D07653 /* libsamplerate.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsamplerate.0.dylib; path = /usr/local/Cellar/libsamplerate/0.1.8/lib/libsamplerate.0.dylib; sourceTree = "<absolute>"; };
-		488342B61B5E903000D07653 /* libvorbis.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.0.dylib; path = /usr/local/Cellar/libvorbis/1.3.5/lib/libvorbis.0.dylib; sourceTree = "<absolute>"; };
-		488342B71B5E903000D07653 /* libvorbisenc.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisenc.2.dylib; path = /usr/local/Cellar/libvorbis/1.3.5/lib/libvorbisenc.2.dylib; sourceTree = "<absolute>"; };
-		488342CA1B5E924E00D07653 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = /usr/local/Cellar/gettext/0.19.5.1/lib/libintl.8.dylib; sourceTree = "<absolute>"; };
 		488B76A91B5FAA5600FAFCB2 /* currentTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = currentTrack.cpp; path = ../src/currentTrack.cpp; sourceTree = "<group>"; };
 		488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = currentTrack.h; path = ../src/currentTrack.h; sourceTree = "<group>"; };
-		48A2A8D11B95C09E0092B0C0 /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = /usr/local/Cellar/jpeg/8d/lib/libjpeg.8.dylib; sourceTree = "<absolute>"; };
-		48A2A8D21B95C09E0092B0C0 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = /usr/local/Cellar/libpng/1.6.18/lib/libpng16.16.dylib; sourceTree = "<absolute>"; };
+		48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentTrackOSX.h; path = ../src/CurrentTrackOSX.h; sourceTree = "<group>"; };
 		48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentTrackOSX.m; path = ../src/CurrentTrackOSX.m; sourceTree = "<group>"; };
 		48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
-		48E01DE01B4BE45900449DFD /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		48E01DE61B4BF08400449DFD /* Locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Locale; path = ../po/Locale; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,20 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				488342CB1B5E924E00D07653 /* libintl.8.dylib in Frameworks */,
-				488342B81B5E903000D07653 /* libfdk-aac.1.dylib in Frameworks */,
-				488342B91B5E903000D07653 /* libFLAC.8.dylib in Frameworks */,
-				488342BA1B5E903000D07653 /* libfltk_gl.1.3.dylib in Frameworks */,
-				488342BB1B5E903000D07653 /* libfltk_images.1.3.dylib in Frameworks */,
-				488342BC1B5E903000D07653 /* libfltk.1.3.dylib in Frameworks */,
-				488342BD1B5E903000D07653 /* libmp3lame.0.dylib in Frameworks */,
-				488342BE1B5E903000D07653 /* libogg.0.dylib in Frameworks */,
-				488342BF1B5E903000D07653 /* libopus.0.dylib in Frameworks */,
-				488342C01B5E903000D07653 /* libportaudio.2.dylib in Frameworks */,
-				488342C11B5E903000D07653 /* libsamplerate.0.dylib in Frameworks */,
-				488342C21B5E903000D07653 /* libvorbis.0.dylib in Frameworks */,
-				488342C31B5E903000D07653 /* libvorbisenc.2.dylib in Frameworks */,
-				48E01DE11B4BE45900449DFD /* libiconv.dylib in Frameworks */,
+				48A2A9001B95C7510092B0C0 /* libiconv.dylib in Frameworks */,
 				3C69A6BB189E7EDD001CBFBA /* AudioToolbox.framework in Frameworks */,
 				3C69A6BC189E7EDD001CBFBA /* AudioUnit.framework in Frameworks */,
 				3C69A6BD189E7EDD001CBFBA /* Cocoa.framework in Frameworks */,
@@ -251,6 +171,7 @@
 		3C69A669189E7D72001CBFBA = {
 			isa = PBXGroup;
 			children = (
+				48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */,
 				4817DC3D1B29AE30006523B8 /* libs */,
 				4817DBE61B29AA3C006523B8 /* images */,
 				48517BD81B5530AB00CE10CF /* aac_encode.cpp */,
@@ -380,22 +301,6 @@
 				3C69A6B9189E7EDD001CBFBA /* Cocoa.framework */,
 				3C69A6BA189E7EDD001CBFBA /* CoreAudio.framework */,
 				48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */,
-				48E01DE01B4BE45900449DFD /* libiconv.dylib */,
-				488342AC1B5E903000D07653 /* libfdk-aac.1.dylib */,
-				488342AD1B5E903000D07653 /* libFLAC.8.dylib */,
-				488342AE1B5E903000D07653 /* libfltk_gl.1.3.dylib */,
-				488342AF1B5E903000D07653 /* libfltk_images.1.3.dylib */,
-				488342B01B5E903000D07653 /* libfltk.1.3.dylib */,
-				488342B11B5E903000D07653 /* libmp3lame.0.dylib */,
-				488342B21B5E903000D07653 /* libogg.0.dylib */,
-				488342B31B5E903000D07653 /* libopus.0.dylib */,
-				488342B41B5E903000D07653 /* libportaudio.2.dylib */,
-				488342B51B5E903000D07653 /* libsamplerate.0.dylib */,
-				488342B61B5E903000D07653 /* libvorbis.0.dylib */,
-				488342B71B5E903000D07653 /* libvorbisenc.2.dylib */,
-				488342CA1B5E924E00D07653 /* libintl.8.dylib */,
-				48A2A8D11B95C09E0092B0C0 /* libjpeg.8.dylib */,
-				48A2A8D21B95C09E0092B0C0 /* libpng16.16.dylib */,
 			);
 			name = libs;
 			sourceTree = "<group>";
@@ -427,7 +332,6 @@
 				4817DC001B29AD0F006523B8 /* Frameworks */,
 				4817DC011B29AD0F006523B8 /* Resources */,
 				4817DC431B29AF77006523B8 /* CopyFiles */,
-				488342DB1B5E92C900D07653 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -678,9 +582,27 @@
 					/usr/local/Cellar/libsamplerate/0.1.8/lib,
 					/usr/local/Cellar/libvorbis/1.3.5/lib,
 					/usr/local/Cellar/gettext/0.19.5.1/lib,
+					/usr/local/Cellar/jpeg/8d/lib,
+					/usr/local/Cellar/libpng/1.6.18/lib,
 				);
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					/usr/local/opt/gettext/lib/libintl.a,
+					"/usr/local/lib/libfdk-aac.a",
+					/usr/local/lib/libFLAC.a,
+					/usr/local/lib/libfltk_gl.a,
+					/usr/local/lib/libfltk_images.a,
+					/usr/local/lib/libfltk.a,
+					/usr/local/lib/libmp3lame.a,
+					/usr/local/lib/libogg.a,
+					/usr/local/lib/libopus.a,
+					/usr/local/lib/libportaudio.a,
+					/usr/local/lib/libsamplerate.a,
+					/usr/local/lib/libvorbis.a,
+					/usr/local/lib/libvorbisenc.a,
+					/usr/local/lib/libpng16.a,
+					/usr/local/lib/libjpeg.a,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = ./include;
 			};
@@ -715,9 +637,27 @@
 					/usr/local/Cellar/libsamplerate/0.1.8/lib,
 					/usr/local/Cellar/libvorbis/1.3.5/lib,
 					/usr/local/Cellar/gettext/0.19.5.1/lib,
+					/usr/local/Cellar/jpeg/8d/lib,
+					/usr/local/Cellar/libpng/1.6.18/lib,
 				);
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					/usr/local/opt/gettext/lib/libintl.a,
+					"/usr/local/lib/libfdk-aac.a",
+					/usr/local/lib/libFLAC.a,
+					/usr/local/lib/libfltk_gl.a,
+					/usr/local/lib/libfltk_images.a,
+					/usr/local/lib/libfltk.a,
+					/usr/local/lib/libmp3lame.a,
+					/usr/local/lib/libogg.a,
+					/usr/local/lib/libopus.a,
+					/usr/local/lib/libportaudio.a,
+					/usr/local/lib/libsamplerate.a,
+					/usr/local/lib/libvorbis.a,
+					/usr/local/lib/libvorbisenc.a,
+					/usr/local/lib/libpng16.a,
+					/usr/local/lib/libjpeg.a,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = ./include;
 			};
@@ -730,7 +670,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -774,7 +713,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

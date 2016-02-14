@@ -164,7 +164,7 @@ int opus_enc_init(opus_enc *opus)
 	opus->header_data = (unsigned char *)calloc (1, 1024);	
 	opus->tags = (unsigned char *)calloc (1, 1024);
 	opus->buffer = (unsigned char *)calloc (1, 4 * 4096);
-    srand(time(NULL));
+    srand((int) time(NULL));
     ogg_stream_init(&opus->os, rand());
 	opus->header->gain = 0;
 	opus->header->channels = opus->channel;
@@ -184,8 +184,7 @@ int opus_enc_init(opus_enc *opus)
 	opus_encoder_ctl (opus->encoder, OPUS_GET_LOOKAHEAD (&opus->header->preskip));
 	opus->header_size = opus_header_to_packet (opus->header, opus->header_data, 100);
 
-	opus->tags_size = 
-	8 + 4 + strlen (opus_get_version_string ()) + 4 + 4 + strlen ("ENCODER=") + strlen (VERSION);
+	opus->tags_size = (int) (8 + 4 + strlen(opus_get_version_string ()) + 4 + 4 + strlen("ENCODER=") + strlen (VERSION));
 	
 	memcpy (opus->tags, "OpusTags", 8);
 	

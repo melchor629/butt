@@ -627,7 +627,7 @@ int cfg_create_default(void)
             "[Recaserver]\n"
             "address = 91.121.156.27\n"
             "port = 8000\n"
-            "password = Anakin007\n"
+            "password = SomeThing\n"
             "type = 1\n"
             "mount = stream\n"
             "usr = source\n\n");

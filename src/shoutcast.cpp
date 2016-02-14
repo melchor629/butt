@@ -43,7 +43,7 @@
 void send_icy_header(char *key, char *val)
 {
     char *icy_line;
-    int len;
+    size_t len;
 
     if((val == NULL) || (strlen(val) == 0))
         return;
@@ -59,7 +59,7 @@ void send_icy_header(char *key, char *val)
 
 int sc_connect(void)
 {
-    int ret;
+    size_t ret;
     char recv_buf[100];
     char send_buf[100];
     static bool error_printed = 0;
@@ -102,7 +102,7 @@ int sc_connect(void)
         }
 
         sc_disconnect();
-        return ret;
+        return (int) ret;
     }
 
     error_printed = 0;

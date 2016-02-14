@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: butt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-07 20:49+0200\n"
-"PO-Revision-Date: 2015-07-09 16:01+0200\n"
+"PO-Revision-Date: 2016-02-14 12:40+0100\n"
 "Last-Translator: Melchor Alejo Garau Madrigal <melchor9000@gmail.com>\n"
 "Language-Team: melchor9000@gmail.com\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en\n"
@@ -25,7 +25,7 @@ msgstr "Starting"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/butt.cpp:149
 msgid "No se ha encontrado el directorio del usuario"
-msgstr ""
+msgstr "Cannot find user’s directory"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/butt.cpp:163
 #, c-format
@@ -43,7 +43,7 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/butt.cpp:174
 #, c-format
 msgid "No se ha podido encontrar la configuración %s"
-msgstr ""
+msgstr "Cannot find configuration %s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/butt.cpp:179
 #, c-format
@@ -51,6 +51,8 @@ msgid ""
 "No se ha podidio crear el archivo de configuración %s\n"
 "butt se va ha cerrar ahora"
 msgstr ""
+"Cannot create config file %s\n"
+"butt is going to close now"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/butt.cpp:182
 #, c-format
@@ -58,6 +60,8 @@ msgid ""
 "butt ha creado el archivo de configuración inicial en\n"
 "%s\n"
 msgstr ""
+"butt has created initial config file on\n"
+"%s\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/butt.cpp:198
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:79
@@ -377,12 +381,12 @@ msgstr "Error: ShoutCast doesn't support opus"
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:156
 #, c-format
 msgid "Conectando a %s:%u (%u) ..."
-msgstr ""
+msgstr "Connecting to %s:%u (%u) …"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:161
 #, c-format
 msgid "Conectando a %s:%u ..."
-msgstr ""
+msgstr "Connecting to %s:%u …"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:195
 #, c-format
@@ -393,6 +397,11 @@ msgid ""
 "Bitrate:\t%dkbps\n"
 "Samplerate:\t%dHz\n"
 msgstr ""
+"Settings:\n"
+"Type:\t\t%s\n"
+"Codec:\t\t%s\n"
+"Bitrate:\t%dkbps\n"
+"Samplerate:\t%dHz\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:207
 #, c-format
@@ -400,15 +409,17 @@ msgid ""
 "%sPunto de montaje:\t%s\n"
 "Usuario:\t\t%s\n"
 msgstr ""
+"%sMount point:\t%s\n"
+"User:\t\t%s\n"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:263
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1213
 msgid "Ajustes@>"
-msgstr ""
+msgstr "Settings@>"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:285
 msgid "Ajustes@<"
-msgstr ""
+msgstr "Settings@<"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:302
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_callbacks.cpp:1120
@@ -871,16 +882,20 @@ msgid ""
 "No se ha podido detectar una extensión de archivo\n"
 "Se ha desactivado la división del archivo"
 msgstr ""
+"Could not detect extension’s file\n"
+"File partition has been deactivated"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:207
 msgid "Siguiente archivo "
-msgstr ""
+msgstr "Next file"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:209
 msgid ""
 " ya existe\n"
 "butt se mantendrá en el actual"
 msgstr ""
+" exists\n"
+"butt will maintain the actual"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:217
 #, c-format
@@ -888,6 +903,8 @@ msgid ""
 "No se ha podido abrir:\n"
 "%s"
 msgstr ""
+"Could not open:\n"
+"%s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/fl_timer_funcs.cpp:222
 msgid "Grabando en: "

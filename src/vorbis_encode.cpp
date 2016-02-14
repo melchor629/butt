@@ -54,7 +54,7 @@ void vorbis_enc_write_header(vorbis_enc *vorbis)
     ogg_packet header_comm;
     ogg_packet header_code;
 
-    srand(time(NULL));
+    srand((int) time(NULL));
     ogg_stream_init(&(vorbis->os), rand());
 
     vorbis_analysis_headerout(&(vorbis->vd), &(vorbis->vc),

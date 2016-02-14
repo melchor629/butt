@@ -174,49 +174,25 @@
 				48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */,
 				4817DC3D1B29AE30006523B8 /* libs */,
 				4817DBE61B29AA3C006523B8 /* images */,
-				48517BD81B5530AB00CE10CF /* aac_encode.cpp */,
-				48517BD91B5530AB00CE10CF /* aac_encode.h */,
+				48E777651C70A31400EAF9F6 /* Encoders */,
+				48E777661C70A35700EAF9F6 /* Utilities */,
+				3CC6F28419083487001993B1 /* FLTK */,
 				3CC6F28019083487001993B1 /* butt.cpp */,
 				3CC6F28119083487001993B1 /* butt.h */,
 				48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */,
 				48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */,
 				488B76A91B5FAA5600FAFCB2 /* currentTrack.cpp */,
 				488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */,
-				3C0CC7F61A49FAD60079F4B5 /* flac_encode.h */,
-				3C0CC7F71A49FAD60079F4B5 /* flac_encode.cpp */,
-				3CC6F28219083487001993B1 /* cfg.cpp */,
-				3CC6F28319083487001993B1 /* cfg.h */,
-				3CC6F28419083487001993B1 /* FLTK */,
 				3CC6F29119083487001993B1 /* icecast.cpp */,
 				3CC6F29219083487001993B1 /* icecast.h */,
-				3CC6F29319083487001993B1 /* lame_encode.cpp */,
-				3CC6F29419083487001993B1 /* lame_encode.h */,
 				3CC6F29519083487001993B1 /* Makefile.am */,
 				3CC6F29619083487001993B1 /* Makefile.in */,
-				3C74136D1939241400211C26 /* opus_encode.h */,
-				3C74136E1939241400211C26 /* opus_encode.cpp */,
-				3CC6F29719083487001993B1 /* parseconfig.cpp */,
-				3CC6F29819083487001993B1 /* parseconfig.h */,
 				3CC6F29919083487001993B1 /* port_audio.cpp */,
 				3CC6F29A19083487001993B1 /* port_audio.h */,
-				3CC6F29B19083487001993B1 /* ringbuffer.cpp */,
-				3CC6F29C19083487001993B1 /* ringbuffer.h */,
 				3CC6F29D19083487001993B1 /* shoutcast.cpp */,
 				3CC6F29E19083487001993B1 /* shoutcast.h */,
-				3CC6F29F19083487001993B1 /* sockfuncs.cpp */,
-				3CC6F2A019083487001993B1 /* sockfuncs.h */,
-				3CC6F2A119083487001993B1 /* strfuncs.cpp */,
-				3CC6F2A219083487001993B1 /* strfuncs.h */,
-				3CC6F2A319083487001993B1 /* timer.cpp */,
-				3CC6F2A419083487001993B1 /* timer.h */,
-				3CC6F2A519083487001993B1 /* util.cpp */,
-				3CC6F2A619083487001993B1 /* util.h */,
-				3CC6F2A719083488001993B1 /* vorbis_encode.cpp */,
-				3CC6F2A819083488001993B1 /* vorbis_encode.h */,
 				3CC6F2A919083488001993B1 /* vu_meter.cpp */,
 				3CC6F2AA19083488001993B1 /* vu_meter.h */,
-				3CC6F2AB19083488001993B1 /* wav_header.cpp */,
-				3CC6F2AC19083488001993B1 /* wav_header.h */,
 				4817DC041B29AD0F006523B8 /* BUTT */,
 				3C69A673189E7D73001CBFBA /* Products */,
 			);
@@ -303,6 +279,46 @@
 				48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */,
 			);
 			name = libs;
+			sourceTree = "<group>";
+		};
+		48E777651C70A31400EAF9F6 /* Encoders */ = {
+			isa = PBXGroup;
+			children = (
+				48517BD81B5530AB00CE10CF /* aac_encode.cpp */,
+				48517BD91B5530AB00CE10CF /* aac_encode.h */,
+				3C0CC7F61A49FAD60079F4B5 /* flac_encode.h */,
+				3C0CC7F71A49FAD60079F4B5 /* flac_encode.cpp */,
+				3CC6F29319083487001993B1 /* lame_encode.cpp */,
+				3CC6F29419083487001993B1 /* lame_encode.h */,
+				3C74136D1939241400211C26 /* opus_encode.h */,
+				3C74136E1939241400211C26 /* opus_encode.cpp */,
+				3CC6F2A719083488001993B1 /* vorbis_encode.cpp */,
+				3CC6F2A819083488001993B1 /* vorbis_encode.h */,
+				3CC6F2AB19083488001993B1 /* wav_header.cpp */,
+				3CC6F2AC19083488001993B1 /* wav_header.h */,
+			);
+			name = Encoders;
+			sourceTree = "<group>";
+		};
+		48E777661C70A35700EAF9F6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3CC6F28219083487001993B1 /* cfg.cpp */,
+				3CC6F28319083487001993B1 /* cfg.h */,
+				3CC6F29719083487001993B1 /* parseconfig.cpp */,
+				3CC6F29819083487001993B1 /* parseconfig.h */,
+				3CC6F29B19083487001993B1 /* ringbuffer.cpp */,
+				3CC6F29C19083487001993B1 /* ringbuffer.h */,
+				3CC6F29F19083487001993B1 /* sockfuncs.cpp */,
+				3CC6F2A019083487001993B1 /* sockfuncs.h */,
+				3CC6F2A119083487001993B1 /* strfuncs.cpp */,
+				3CC6F2A219083487001993B1 /* strfuncs.h */,
+				3CC6F2A319083487001993B1 /* timer.cpp */,
+				3CC6F2A419083487001993B1 /* timer.h */,
+				3CC6F2A519083487001993B1 /* util.cpp */,
+				3CC6F2A619083487001993B1 /* util.h */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -572,20 +588,21 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
-					"/usr/local/Cellar/fdk-aac/0.1.4/lib",
+					"/usr/local/opt/fdk-aac/lib",
 					/usr/local/Cellar/flac/1.3.1/lib,
-					/usr/local/Cellar/fltk/1.3.3/lib,
+					/usr/local/opt/fltk/lib,
 					/usr/local/Cellar/lame/3.99.5/lib,
 					/usr/local/Cellar/libogg/1.3.2/lib,
-					/usr/local/Cellar/opus/1.1/lib,
+					/usr/local/opt/opus/lib,
 					/usr/local/Cellar/portaudio/19.20140130/lib,
 					/usr/local/Cellar/libsamplerate/0.1.8/lib,
 					/usr/local/Cellar/libvorbis/1.3.5/lib,
-					/usr/local/Cellar/gettext/0.19.5.1/lib,
+					/usr/local/opt/gettext/lib,
 					/usr/local/Cellar/jpeg/8d/lib,
-					/usr/local/Cellar/libpng/1.6.18/lib,
+					/usr/local/opt/libpng/lib,
 				);
 				MACH_O_TYPE = mh_execute;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					/usr/local/opt/gettext/lib/libintl.a,
 					"/usr/local/lib/libfdk-aac.a",
@@ -627,20 +644,21 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
-					"/usr/local/Cellar/fdk-aac/0.1.4/lib",
+					"/usr/local/opt/fdk-aac/lib",
 					/usr/local/Cellar/flac/1.3.1/lib,
-					/usr/local/Cellar/fltk/1.3.3/lib,
+					/usr/local/opt/fltk/lib,
 					/usr/local/Cellar/lame/3.99.5/lib,
 					/usr/local/Cellar/libogg/1.3.2/lib,
-					/usr/local/Cellar/opus/1.1/lib,
+					/usr/local/opt/opus/lib,
 					/usr/local/Cellar/portaudio/19.20140130/lib,
 					/usr/local/Cellar/libsamplerate/0.1.8/lib,
 					/usr/local/Cellar/libvorbis/1.3.5/lib,
-					/usr/local/Cellar/gettext/0.19.5.1/lib,
+					/usr/local/opt/gettext/lib,
 					/usr/local/Cellar/jpeg/8d/lib,
-					/usr/local/Cellar/libpng/1.6.18/lib,
+					/usr/local/opt/libpng/lib,
 				);
 				MACH_O_TYPE = mh_execute;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					/usr/local/opt/gettext/lib/libintl.a,
 					"/usr/local/lib/libfdk-aac.a",

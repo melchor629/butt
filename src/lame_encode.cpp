@@ -33,6 +33,7 @@ int lame_enc_init(lame_enc *lame)
     lame_set_in_samplerate(lame->gfp, lame->samplerate);
     lame_set_out_samplerate(lame->gfp, lame->samplerate);
     lame_set_brate(lame->gfp, lame->bitrate);
+    lame_set_quality(lame->gfp, 2);
 
     if((rc = lame_init_params(lame->gfp)) < 0)
     {

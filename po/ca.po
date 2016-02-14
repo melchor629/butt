@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: butt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-07-07 20:48+0200\n"
-"PO-Revision-Date: 2015-07-07 21:32+0200\n"
+"PO-Revision-Date: 2016-02-14 12:54+0100\n"
 "Last-Translator: Melchor Alejo Garau Madrigal <melchor9000@gmail.com>\n"
 "Language-Team: melchor9000@gmail.com\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: ca\n"
@@ -1059,27 +1059,27 @@ msgstr ""
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1488
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1489
 msgid "Update Current Song"
-msgstr ""
+msgstr "Actualitzar cançó actual"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1497
 msgid "Empezar streaming al inicio"
-msgstr ""
+msgstr "Començar streaming al inici"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1498
 msgid "Connect automatically to a server at startup"
-msgstr ""
+msgstr "Conectar automáticament al obrir"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1502
 msgid "Recomendación de nombre de canción:"
-msgstr ""
+msgstr "Recomendació de nom de cançó:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1505
 msgid "TITULO – ARTISTA"
-msgstr ""
+msgstr "TITLE – ARTISTA"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1510
 msgid "Ajustes de servidor"
@@ -1088,190 +1088,190 @@ msgstr ""
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1513
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1704
 msgid "Información del Streaming"
-msgstr ""
+msgstr "Informació del Streaming"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1518
 msgid "Añadir"
-msgstr ""
+msgstr "Afegir"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1522
 msgid "Editar"
-msgstr ""
+msgstr "Editar"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1523
 msgid "Edit stream info"
-msgstr ""
+msgstr "Editar info"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1527
 msgid "Eliminar"
-msgstr ""
+msgstr "Eliminar"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1528
 msgid "Delete stream info"
-msgstr ""
+msgstr "Eliminar informació"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1538
 msgid "Nombre de archivo de la grabación"
-msgstr ""
+msgstr "Nom de l’archiu de grabació"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1539
 msgid "Record Filename"
-msgstr ""
+msgstr "Nom de l’archiu"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1544
 msgid "Directorio de grabación"
-msgstr ""
+msgstr "Directori de grabació"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1554
 msgid "División del archivo"
-msgstr ""
+msgstr "Divisió de l’archiu"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1557
 msgid "Cada"
-msgstr ""
+msgstr "Cada"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1560
 msgid "minutos"
-msgstr ""
+msgstr "minuts"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1562
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1563
 msgid "Sincronizar con cada hora"
-msgstr ""
+msgstr "Sincronitzar amb cada hora"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1569
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1570
 msgid "Empezar a grabar cuando te conectes"
-msgstr ""
+msgstr "Començar a grabar quan et connectis"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1574
 msgid "%Y año"
-msgstr ""
+msgstr "%Y any"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1577
 #, c-format
 msgid "%m mes"
-msgstr ""
+msgstr "%m mes"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1580
 #, c-format
 msgid "%d día"
-msgstr ""
+msgstr "%d dia"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1583
 msgid "%H hora"
-msgstr ""
+msgstr "%H hora"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1586
 msgid "%M minuto"
-msgstr ""
+msgstr "%M minut"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1589
 #, c-format
 msgid "%S segundo"
-msgstr ""
+msgstr "%S segon"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1592
 #, c-format
 msgid "%i nº archivo"
-msgstr ""
+msgstr "%i nº archiu"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1595
 msgid "Tokens especiales del archivo"
-msgstr ""
+msgstr "Tokens especials de l’archiu"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1601
 msgid "GUI"
-msgstr ""
+msgstr "GUI"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1603
 msgid "Colores de la interfaz"
-msgstr ""
+msgstr "Colors de la interfície"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1606
 msgid "Color del texto"
-msgstr ""
+msgstr "Color del text"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1612
 msgid "Color de fondo"
-msgstr ""
+msgstr "Color de fons"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1620
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1621
 msgid "Pegar esta ventana a la principal"
-msgstr ""
+msgstr "Aferrar aquesta finestra a la principal"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1625
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1626
 msgid "Ventana siempre encima"
-msgstr ""
+msgstr "Finestra sempre al damunt"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1630
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1631
 msgid "Cambiar modo del LCD cada 5s"
-msgstr ""
+msgstr "Cambiar mode del LCD cada 5s"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1642
 msgid "Añadir servidor"
-msgstr ""
+msgstr "Afegir servidor"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1644
 msgid "Nombre:"
-msgstr ""
+msgstr "Nom:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1648
 msgid "Dirección:"
-msgstr ""
+msgstr "Direcció:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1652
 msgid "Puerto:"
-msgstr ""
+msgstr "Port:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1656
 msgid "Contraseña:"
-msgstr ""
+msgstr "Contrasenya:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1661
 msgid "IceCast mountpoint:"
-msgstr ""
+msgstr "Punt de muntatje:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1665
 msgid "IceCast user:"
-msgstr ""
+msgstr "Usuari IceCast:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1669
 msgid "Tipo:"
-msgstr ""
+msgstr "Tipus:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1672
 msgid "ShoutCast"
-msgstr ""
+msgstr "ShoutCast"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1677
 msgid "IceCast"
-msgstr ""
+msgstr "IceCast"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1684
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1738
 msgid "&Cancelar"
-msgstr ""
+msgstr "&Cancelar"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1688
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1742
 msgid "&ADD"
-msgstr ""
+msgstr "&Afegir"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1696
 msgid "Mostrar contra…"
-msgstr ""
+msgstr "Mostra contra…"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1697
 msgid "show/hide password"
-msgstr ""
+msgstr "mostrar/ocultar contrasenya"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1706
 msgid "Nombre del streaming:"
-msgstr ""
+msgstr "Nom del streaming:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1707
 msgid "The name of your new ICY-entrie"
@@ -1279,31 +1279,31 @@ msgstr ""
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1711
 msgid "Descripción:"
-msgstr ""
+msgstr "Descripció:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1715
 msgid "Género:"
-msgstr ""
+msgstr "Genere:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1719
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1723
 msgid "ICQ:"
-msgstr ""
+msgstr "ICQ:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1727
 msgid "IRC:"
-msgstr ""
+msgstr "IRC:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1731
 msgid "AIM:"
-msgstr ""
+msgstr "AIM:"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1735
 msgid "Servidor público"
-msgstr ""
+msgstr "Servidor públic"
 
 #: /Users/melchor9000/Documents/Programacion/C/butt/src/FLTK/flgui.cpp:1549
 msgid "Usar iTunes"

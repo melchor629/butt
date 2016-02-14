@@ -58,7 +58,7 @@ int sock_connect(const char *addr, short port, int timout_ms)
     host_ptr = gethostbyname(addr);
     if(host_ptr == NULL)
     {
-        host_ptr = gethostbyaddr(addr, strlen(addr), AF_INET);
+        host_ptr = gethostbyaddr(addr, (unsigned) strlen(addr), AF_INET);
         if(host_ptr == NULL)
         {
             sock_close(&sock);
@@ -112,9 +112,9 @@ int sock_setbufsize(int *s, int send_size, int recv_size)
     return 0;
 }
 
-int sock_send(int *s, const char *buf, int len, int timout_ms)
+int sock_send(int *s, const char *buf, size_t len, int timout_ms)
 {
-    int rc;
+    ssize_t rc;
     int sent = 0;
     int error;
 
@@ -151,9 +151,9 @@ int sock_send(int *s, const char *buf, int len, int timout_ms)
     return sent;
 }
 
-int sock_recv(int *s, char *buf, int len, int timout_ms)
+ssize_t sock_recv(int *s, char *buf, int len, int timout_ms)
 {
-    int rc;
+    ssize_t rc;
 
     if(sock_select(s, timout_ms, READ) <= 0)
         return SOCK_TIMEOUT;

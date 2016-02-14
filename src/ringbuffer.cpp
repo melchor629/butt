@@ -38,7 +38,7 @@ int rb_init(struct ringbuf *rb, unsigned int len)
 
 int rb_filled(struct ringbuf *rb)
 {
-	int filled;
+	long filled;
 	char *end_ptr;
 
     if(rb->w_ptr == rb->r_ptr && rb->full)
@@ -54,12 +54,12 @@ int rb_filled(struct ringbuf *rb)
 		filled += rb->w_ptr - rb->buf;
 	}
 
-	return filled;
+	return (int) filled;
 }
 
 int rb_space(struct ringbuf *rb)
 {
-	int space;
+	long space;
 	char *end_ptr;
 
 	if(rb->r_ptr == rb->w_ptr && rb->full)
@@ -75,7 +75,7 @@ int rb_space(struct ringbuf *rb)
 		space += rb->r_ptr - rb->buf;
 	}
 
-	return space;
+	return (int) space;
 }
 
 unsigned int rb_read(struct ringbuf *rb, char *dest)

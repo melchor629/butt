@@ -20,10 +20,10 @@
 
 int wav_write_header(FILE *fd, short ch, int srate, short bps)
 {
-    long int cur_size;
+    int cur_size;
     wav_hdr hdr;
 
-    cur_size = ftell(fd);
+    cur_size = (int) ftell(fd);
 
     hdr.wav.riff_size = cur_size >= 44 ? cur_size-8 : 0;
     memcpy(&hdr.wav.riff_id, "RIFF", 4);

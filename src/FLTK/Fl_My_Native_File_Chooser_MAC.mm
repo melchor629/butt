@@ -346,7 +346,7 @@ int Fl_My_Native_File_Chooser::get_saveas_basename(void) {
   char *q = strdup( [[[(NSSavePanel*)_panel URL] path] UTF8String] );
   if ( !(_options & SAVEAS_CONFIRM) ) {
     const char *d = [[[[(NSSavePanel*)_panel URL] path] stringByDeletingLastPathComponent] UTF8String];
-    int l = strlen(d) + 1;
+    size_t l = strlen(d) + 1;
     if (strcmp(d, "/") == 0) l = 1;
     int lu = strlen(UNLIKELYPREFIX);
     // Remove UNLIKELYPREFIX between directory and filename parts
@@ -544,10 +544,10 @@ int Fl_My_Native_File_Chooser::runmodal()
   if (fl_mac_os_version >= 100600) {
     if (dir) [(NSSavePanel*)_panel performSelector:@selector(setDirectoryURL:) withObject:[NSURL fileURLWithPath:dir]];
     if (fname) [(NSSavePanel*)_panel performSelector:@selector(setNameFieldStringValue:) withObject:fname];
-    retval = [(NSSavePanel*)_panel runModal];
+    retval = (int) [(NSSavePanel*)_panel runModal];
   }
   else {
-    retval = [(id)_panel runModalForDirectory:dir file:fname];
+    retval = (int) [(id)_panel runModalForDirectory:dir file:fname];
   }
   [dir release];
   [preset release];
@@ -640,13 +640,13 @@ int Fl_My_Native_File_Chooser::post() {
   }
   int retval = runmodal();
   if (_filt_total) {
-    _filt_value = [popup indexOfSelectedItem];
+    _filt_value = (int) [popup indexOfSelectedItem];
   }
   if ( retval == NSOKButton ) {
     if (is_open_panel) {
       clear_pathnames();
       NSArray *array = [(NSOpenPanel*)_panel URLs];
-      _tpathnames = [array count];
+      _tpathnames = (int) [array count];
       _pathnames = new char*[_tpathnames];
       for(int i = 0; i < _tpathnames; i++) {
 	_pathnames[i] = strnew([[(NSURL*)[array objectAtIndex:i] path] UTF8String]);

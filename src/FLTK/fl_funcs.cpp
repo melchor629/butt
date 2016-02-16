@@ -181,6 +181,15 @@ void fill_cfg_widgets(void)
         fl_g->window_cfg->stay_on_top(1);
     }
     fl_g->check_gui_lcd_auto->value(cfg.gui.lcd_auto);
+
+
+    //fill the DSP section
+    fl_g->activateCompressorCheckButton->value(cfg.dsp.compressor);
+    fl_g->compressorQuantitySlider->value(1.0f - cfg.dsp.compQuantity);
+
+    extern char slider_compressor_label[];
+    snprintf(slider_compressor_label, 100, "%s (%.0f%%)", _("Cantidad de compresión"), (1.0f - cfg.dsp.compQuantity) * 100);
+    fl_g->compressorQuantitySlider->label(slider_compressor_label);
 }
 
 //Updates the samplerate drop down menu for the audio

@@ -899,6 +899,20 @@ void flgui::cb_check_cfg_rec(Fl_Check_Button* o, void* v) {
   ((flgui*)(o->parent()->parent()->parent()->user_data()))->cb_check_cfg_rec_i(o,v);
 }
 
+void flgui::cb_activateCompressorCheckButton_i(Fl_Check_Button*, void*) {
+  check_button_activate_compressor_cb();
+}
+void flgui::cb_activateCompressorCheckButton(Fl_Check_Button* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_activateCompressorCheckButton_i(o,v);
+}
+
+void flgui::cb_compressorQuantitySlider_i(Fl_Slider*, void*) {
+  slider_compressor_cb();
+}
+void flgui::cb_compressorQuantitySlider(Fl_Slider* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_compressorQuantitySlider_i(o,v);
+}
+
 void flgui::cb_button_gui_text_color_i(Fl_Button*, void*) {
   button_gui_text_color_cb();
 }
@@ -1259,7 +1273,7 @@ flgui::flgui() {
     window_main->size_range(430, 155, 430);
     window_main->end();
   } // Fl_My_Double_Window* window_main
-  { window_cfg = new Fl_My_Double_Window(295, 384, _("butt settings"));
+  { window_cfg = new Fl_My_Double_Window(333, 380, _("butt settings"));
     window_cfg->box(FL_FLAT_BOX);
     window_cfg->color((Fl_Color)48);
     window_cfg->selection_color(FL_BACKGROUND_COLOR);
@@ -1270,18 +1284,18 @@ flgui::flgui() {
     window_cfg->callback((Fl_Callback*)cb_window_cfg, (void*)(this));
     window_cfg->align(Fl_Align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE));
     window_cfg->when(FL_WHEN_RELEASE);
-    { Settings = new Fl_Tabs(-1, 0, 301, 480);
+    { Settings = new Fl_Tabs(-1, 0, 336, 480);
       Settings->selection_color((Fl_Color)41);
-      { Fl_Group* o = new Fl_Group(0, 20, 300, 450, _("Principal"));
+      { Fl_Group* o = new Fl_Group(0, 20, 325, 450, _("Principal"));
         o->when(FL_WHEN_RELEASE_ALWAYS);
-        { Fl_Group* o = new Fl_Group(15, 56, 265, 34, _("Archivo de log"));
+        { Fl_Group* o = new Fl_Group(15, 56, 300, 34, _("Archivo de log"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_log_filename = new Fl_Input(20, 61, 225, 25);
+          { input_log_filename = new Fl_Input(20, 61, 255, 25);
             input_log_filename->callback((Fl_Callback*)cb_input_log_filename);
             input_log_filename->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           } // Fl_Input* input_log_filename
-          { Fl_Button* o = new Fl_Button(249, 61, 25, 25);
+          { Fl_Button* o = new Fl_Button(280, 61, 25, 25);
             o->tooltip(_("Select log file"));
             o->box(FL_ENGRAVED_BOX);
             o->image(image_folder);
@@ -1289,7 +1303,7 @@ flgui::flgui() {
           } // Fl_Button* o
           o->end();
         } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(15, 120, 265, 50, _("Configuraci\303\263n"));
+        { Fl_Group* o = new Fl_Group(15, 120, 300, 50, _("Configuraci\303\263n"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           { Fl_Button* o = new Fl_Button(20, 130, 70, 28, _("Importar..."));
@@ -1298,7 +1312,7 @@ flgui::flgui() {
             o->callback((Fl_Callback*)cb_Importar);
             o->hide();
           } // Fl_Button* o
-          { Fl_Button* o = new Fl_Button(100, 130, 95, 28, _("&Guardar"));
+          { Fl_Button* o = new Fl_Button(125, 130, 95, 28, _("&Guardar"));
             o->tooltip(_("Save settings"));
             o->box(FL_ENGRAVED_BOX);
             o->callback((Fl_Callback*)cb_Guardar);
@@ -1311,26 +1325,26 @@ flgui::flgui() {
           } // Fl_Button* o
           o->end();
         } // Fl_Group* o
-        { server_connexion_g = new Fl_Group(15, 198, 260, 75, _("Server connexion"));
+        { server_connexion_g = new Fl_Group(15, 198, 300, 75, _("Server connexion"));
           server_connexion_g->box(FL_ENGRAVED_FRAME);
           server_connexion_g->hide();
-          { choice_cfg_act_srv = new Fl_Choice(20, 219, 250, 20, _("Server"));
+          { choice_cfg_act_srv = new Fl_Choice(20, 219, 290, 20, _("Server"));
             choice_cfg_act_srv->tooltip(_("Server to connect"));
             choice_cfg_act_srv->down_box(FL_BORDER_BOX);
             choice_cfg_act_srv->callback((Fl_Callback*)cb_choice_cfg_act_srv);
             choice_cfg_act_srv->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           } // Fl_Choice* choice_cfg_act_srv
-          { Fl_Button* o = new Fl_Button(20, 241, 70, 24, _("ADD"));
+          { Fl_Button* o = new Fl_Button(20, 241, 75, 24, _("ADD"));
             o->tooltip(_("Add server"));
             o->box(FL_ENGRAVED_BOX);
             o->callback((Fl_Callback*)cb_ADD);
           } // Fl_Button* o
-          { button_cfg_edit_srv = new Fl_Button(110, 241, 70, 24, _("EDIT"));
+          { button_cfg_edit_srv = new Fl_Button(140, 241, 75, 24, _("EDIT"));
             button_cfg_edit_srv->tooltip(_("Edit selected server"));
             button_cfg_edit_srv->box(FL_ENGRAVED_BOX);
             button_cfg_edit_srv->callback((Fl_Callback*)cb_button_cfg_edit_srv);
           } // Fl_Button* button_cfg_edit_srv
-          { button_cfg_del_srv = new Fl_Button(200, 241, 70, 24, _("DEL"));
+          { button_cfg_del_srv = new Fl_Button(230, 241, 75, 24, _("DEL"));
             button_cfg_del_srv->tooltip(_("Delete selected server"));
             button_cfg_del_srv->box(FL_ENGRAVED_BOX);
             button_cfg_del_srv->callback((Fl_Callback*)cb_button_cfg_del_srv);
@@ -1340,18 +1354,18 @@ flgui::flgui() {
         } // Fl_Group* server_connexion_g
         o->end();
       } // Fl_Group* o
-      { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("Audio"));
+      { Fl_Group* o = new Fl_Group(0, 19, 335, 450, _("Audio"));
         o->hide();
-        { Fl_Group* o = new Fl_Group(15, 55, 265, 100, _("Ajustes de Audio"));
+        { Fl_Group* o = new Fl_Group(15, 55, 305, 100, _("Ajustes de Audio"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { choice_cfg_dev = new Fl_Choice(23, 84, 250, 20, _("Dispositivo de audio"));
+          { choice_cfg_dev = new Fl_Choice(23, 84, 287, 20, _("Dispositivo de audio"));
             choice_cfg_dev->tooltip(_("select your sound card device"));
             choice_cfg_dev->down_box(FL_FLAT_BOX);
             choice_cfg_dev->callback((Fl_Callback*)cb_choice_cfg_dev);
             choice_cfg_dev->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           } // Fl_Choice* choice_cfg_dev
-          { choice_cfg_channel = new Fl_Choice(23, 124, 114, 20, _("Canales"));
+          { choice_cfg_channel = new Fl_Choice(23, 124, 142, 20, _("Canales"));
             choice_cfg_channel->tooltip(_("Select input channel"));
             choice_cfg_channel->box(FL_ENGRAVED_BOX);
             choice_cfg_channel->down_box(FL_BORDER_BOX);
@@ -1365,7 +1379,7 @@ flgui::flgui() {
             }
             choice_cfg_channel->menu(menu_choice_cfg_channel);
           } // Fl_Choice* choice_cfg_channel
-          { choice_cfg_samplerate = new Fl_Choice(158, 124, 115, 20, _("Muestreo"));
+          { choice_cfg_samplerate = new Fl_Choice(175, 124, 135, 20, _("Muestreo"));
             choice_cfg_samplerate->tooltip(_("Select input sample rate"));
             choice_cfg_samplerate->down_box(FL_BORDER_BOX);
             choice_cfg_samplerate->callback((Fl_Callback*)cb_choice_cfg_samplerate);
@@ -1373,10 +1387,10 @@ flgui::flgui() {
           } // Fl_Choice* choice_cfg_samplerate
           o->end();
         } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(15, 175, 265, 60, _("Grabaci\303\263n"));
+        { Fl_Group* o = new Fl_Group(15, 175, 305, 60, _("Grabaci\303\263n"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { choice_rec_codec = new Fl_Choice(20, 204, 125, 20, _("Codec"));
+          { choice_rec_codec = new Fl_Choice(20, 204, 145, 20, _("Codec"));
             choice_rec_codec->tooltip(_("Select recording codec"));
             choice_rec_codec->box(FL_ENGRAVED_BOX);
             choice_rec_codec->down_box(FL_BORDER_BOX);
@@ -1390,7 +1404,7 @@ flgui::flgui() {
             }
             choice_rec_codec->menu(menu_choice_rec_codec);
           } // Fl_Choice* choice_rec_codec
-          { choice_rec_bitrate = new Fl_Choice(160, 204, 115, 20, _("Bitrate"));
+          { choice_rec_bitrate = new Fl_Choice(175, 204, 135, 20, _("Bitrate"));
             choice_rec_bitrate->tooltip(_("Select recording bitrate"));
             choice_rec_bitrate->down_box(FL_BORDER_BOX);
             choice_rec_bitrate->callback((Fl_Callback*)cb_choice_rec_bitrate);
@@ -1410,7 +1424,7 @@ flgui::flgui() {
           button_advanced->box(FL_ENGRAVED_BOX);
           button_advanced->callback((Fl_Callback*)cb_button_advanced);
         } // Fl_Button* button_advanced
-        { input_cfg_buffer = new Fl_Value_Input(15, 355, 90, 20, _("Buffer (ms)"));
+        { input_cfg_buffer = new Fl_Value_Input(15, 355, 120, 20, _("Buffer (ms)"));
           input_cfg_buffer->maximum(0);
           input_cfg_buffer->value(50);
           input_cfg_buffer->callback((Fl_Callback*)cb_input_cfg_buffer);
@@ -1418,7 +1432,7 @@ flgui::flgui() {
           input_cfg_buffer->when(FL_WHEN_ENTER_KEY);
           input_cfg_buffer->hide();
         } // Fl_Value_Input* input_cfg_buffer
-        { choice_cfg_resample_mode = new Fl_Choice(125, 355, 155, 20, _("Calidad de remuestreo"));
+        { choice_cfg_resample_mode = new Fl_Choice(145, 355, 175, 20, _("Calidad de remuestreo"));
           choice_cfg_resample_mode->down_box(FL_BORDER_BOX);
           choice_cfg_resample_mode->callback((Fl_Callback*)cb_choice_cfg_resample_mode);
           choice_cfg_resample_mode->align(Fl_Align(FL_ALIGN_TOP_LEFT));
@@ -1432,11 +1446,11 @@ flgui::flgui() {
           }
           choice_cfg_resample_mode->menu(menu_choice_cfg_resample_mode);
         } // Fl_Choice* choice_cfg_resample_mode
-        { streaming_g = new Fl_Group(15, 260, 265, 60, _("Streaming"));
+        { streaming_g = new Fl_Group(15, 260, 305, 60, _("Streaming"));
           streaming_g->box(FL_ENGRAVED_FRAME);
           streaming_g->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           streaming_g->hide();
-          { choice_cfg_codec = new Fl_Choice(20, 288, 125, 20, _("Codec"));
+          { choice_cfg_codec = new Fl_Choice(20, 288, 150, 20, _("Codec"));
             choice_cfg_codec->tooltip(_("Select streaming codec"));
             choice_cfg_codec->box(FL_ENGRAVED_BOX);
             choice_cfg_codec->down_box(FL_BORDER_BOX);
@@ -1450,7 +1464,7 @@ flgui::flgui() {
             }
             choice_cfg_codec->menu(menu_choice_cfg_codec);
           } // Fl_Choice* choice_cfg_codec
-          { choice_cfg_bitrate = new Fl_Choice(160, 288, 115, 20, _("Bitrate"));
+          { choice_cfg_bitrate = new Fl_Choice(175, 288, 135, 20, _("Bitrate"));
             choice_cfg_bitrate->tooltip(_("Select streaming bitrate"));
             choice_cfg_bitrate->box(FL_ENGRAVED_BOX);
             choice_cfg_bitrate->down_box(FL_BORDER_BOX);
@@ -1470,18 +1484,18 @@ flgui::flgui() {
         } // Fl_Group* streaming_g
         o->end();
       } // Fl_Group* o
-      { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("Stream"));
+      { Fl_Group* o = new Fl_Group(5, 19, 320, 450, _("Stream"));
         o->tooltip(_("Add stream info"));
         o->hide();
-        { Fl_Group* o = new Fl_Group(15, 160, 265, 65, _("Cambiar nombre de canci\303\263n con archivo"));
+        { Fl_Group* o = new Fl_Group(15, 160, 300, 65, _("Cambiar nombre de canci\303\263n con archivo"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_cfg_song_file = new Fl_Input(20, 169, 225, 25);
+          { input_cfg_song_file = new Fl_Input(20, 169, 255, 25);
             input_cfg_song_file->callback((Fl_Callback*)cb_input_cfg_song_file);
             input_cfg_song_file->align(Fl_Align(FL_ALIGN_TOP_RIGHT));
             this->input_cfg_song_file->maximum_size(500);
           } // Fl_Input* input_cfg_song_file
-          { button_songfile_browse = new Fl_Button(250, 169, 25, 25);
+          { button_songfile_browse = new Fl_Button(280, 169, 25, 25);
             button_songfile_browse->box(FL_ENGRAVED_FRAME);
             button_songfile_browse->image(image_folder);
             button_songfile_browse->callback((Fl_Callback*)cb_button_songfile_browse);
@@ -1493,15 +1507,15 @@ flgui::flgui() {
           } // Fl_Check_Button* check_song_update_active
           o->end();
         } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(15, 245, 265, 40, _("Cambiar nombre de canci\303\263n manualmente"));
+        { Fl_Group* o = new Fl_Group(15, 245, 300, 40, _("Cambiar nombre de canci\303\263n manualmente"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_cfg_song = new Fl_Input(20, 253, 225, 25);
+          { input_cfg_song = new Fl_Input(20, 253, 255, 25);
             input_cfg_song->callback((Fl_Callback*)cb_input_cfg_song);
             input_cfg_song->align(Fl_Align(FL_ALIGN_TOP_LEFT));
             this->input_cfg_song->maximum_size(500);
           } // Fl_Input* input_cfg_song
-          { Fl_Button* o = new Fl_Button(250, 253, 25, 25, _("OK"));
+          { Fl_Button* o = new Fl_Button(280, 253, 25, 25, _("OK"));
             o->tooltip(_("Update Current Song"));
             o->box(FL_ENGRAVED_BOX);
             o->shortcut(0xff0d);
@@ -1510,12 +1524,12 @@ flgui::flgui() {
           } // Fl_Button* o
           o->end();
         } // Fl_Group* o
-        { check_cfg_connect = new Fl_Check_Button(15, 312, 195, 18, _("Empezar streaming al inicio"));
+        { check_cfg_connect = new Fl_Check_Button(20, 312, 295, 16, _("Empezar streaming al inicio"));
           check_cfg_connect->tooltip(_("Connect automatically to a server at startup"));
           check_cfg_connect->down_box(FL_DOWN_BOX);
           check_cfg_connect->callback((Fl_Callback*)cb_check_cfg_connect);
         } // Fl_Check_Button* check_cfg_connect
-        { Fl_Text_Display* o = new Fl_Text_Display(15, 350, 265, 25, _("Recomendaci\303\263n de nombre de canci\303\263n:"));
+        { Fl_Text_Display* o = new Fl_Text_Display(15, 350, 300, 25, _("Recomendaci\303\263n de nombre de canci\303\263n:"));
           o->box(FL_NO_BOX);
         } // Fl_Text_Display* o
         { Fl_Text_Display* o = new Fl_Text_Display(115, 370, 50, 30, _("TITULO \342\200\223 ARTISTA"));
@@ -1523,74 +1537,74 @@ flgui::flgui() {
           o->labelfont(13);
           o->labelcolor((Fl_Color)1);
         } // Fl_Text_Display* o
-        { Fl_Group* o = new Fl_Group(15, 55, 265, 80, _("Ajustes de servidor"));
+        { Fl_Group* o = new Fl_Group(15, 55, 300, 80, _("Ajustes de servidor"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { choice_cfg_act_icy = new Fl_Choice(25, 83, 250, 20, _("Informaci\303\263n del Streaming"));
+          { choice_cfg_act_icy = new Fl_Choice(25, 83, 280, 20, _("Informaci\303\263n del Streaming"));
             choice_cfg_act_icy->down_box(FL_BORDER_BOX);
             choice_cfg_act_icy->callback((Fl_Callback*)cb_choice_cfg_act_icy);
             choice_cfg_act_icy->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           } // Fl_Choice* choice_cfg_act_icy
-          { Fl_Button* o = new Fl_Button(25, 105, 50, 20, _("A\303\261""adir"));
+          { Fl_Button* o = new Fl_Button(25, 105, 55, 20, _("A\303\261""adir"));
             o->box(FL_ENGRAVED_BOX);
             o->callback((Fl_Callback*)cb_A);
           } // Fl_Button* o
-          { button_cfg_edit_icy = new Fl_Button(127, 105, 43, 20, _("Editar"));
+          { button_cfg_edit_icy = new Fl_Button(145, 105, 48, 20, _("Editar"));
             button_cfg_edit_icy->tooltip(_("Edit stream info"));
             button_cfg_edit_icy->box(FL_ENGRAVED_BOX);
             button_cfg_edit_icy->callback((Fl_Callback*)cb_button_cfg_edit_icy);
           } // Fl_Button* button_cfg_edit_icy
-          { button_cfg_del_icy = new Fl_Button(220, 105, 55, 20, _("Eliminar"));
+          { button_cfg_del_icy = new Fl_Button(240, 105, 65, 20, _("Eliminar"));
             button_cfg_del_icy->tooltip(_("Delete stream info"));
             button_cfg_del_icy->box(FL_ENGRAVED_BOX);
             button_cfg_del_icy->callback((Fl_Callback*)cb_button_cfg_del_icy);
           } // Fl_Button* button_cfg_del_icy
           o->end();
         } // Fl_Group* o
-        { use_app = new Fl_Check_Button(195, 290, 85, 20, _("Activar"));
+        { use_app = new Fl_Check_Button(230, 290, 85, 20, _("Activar"));
           use_app->down_box(FL_DOWN_BOX);
           use_app->callback((Fl_Callback*)cb_use_app);
         } // Fl_Check_Button* use_app
-        { choice_app = new Fl_Choice(25, 290, 165, 20);
+        { choice_app = new Fl_Choice(15, 290, 210, 20);
           choice_app->down_box(FL_BORDER_BOX);
           init_choice_app(this);
         } // Fl_Choice* choice_app
         o->end();
       } // Fl_Group* o
-      { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("Grabaci\303\263n"));
+      { Fl_Group* o = new Fl_Group(5, 19, 325, 450, _("Grabaci\303\263n"));
         o->hide();
-        { input_rec_filename = new Fl_Input(15, 55, 265, 25, _("Nombre de archivo de la grabaci\303\263n"));
+        { input_rec_filename = new Fl_Input(15, 55, 300, 25, _("Nombre de archivo de la grabaci\303\263n"));
           input_rec_filename->tooltip(_("Record Filename"));
           input_rec_filename->callback((Fl_Callback*)cb_input_rec_filename);
           input_rec_filename->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           this->input_rec_filename->maximum_size(500);
         } // Fl_Input* input_rec_filename
-        { input_rec_folder = new Fl_Input(15, 190, 235, 25, _("Directorio de grabaci\303\263n"));
+        { input_rec_folder = new Fl_Input(15, 190, 265, 25, _("Directorio de grabaci\303\263n"));
           input_rec_folder->callback((Fl_Callback*)cb_input_rec_folder);
           input_rec_folder->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           this->input_rec_folder->maximum_size(500);
         } // Fl_Input* input_rec_folder
-        { button_rec_browse = new Fl_Button(255, 190, 25, 25);
+        { button_rec_browse = new Fl_Button(290, 190, 25, 25);
           button_rec_browse->box(FL_ENGRAVED_BOX);
           button_rec_browse->image(image_folder);
           button_rec_browse->callback((Fl_Callback*)cb_button_rec_browse);
         } // Fl_Button* button_rec_browse
-        { Fl_Group* o = new Fl_Group(15, 248, 265, 57, _("Divisi\303\263n del archivo"));
+        { Fl_Group* o = new Fl_Group(15, 248, 300, 57, _("Divisi\303\263n del archivo"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-          { input_rec_split_time = new Fl_Value_Input(60, 255, 40, 19, _("Cada"));
+          { input_rec_split_time = new Fl_Value_Input(60, 255, 50, 19, _("Cada"));
             input_rec_split_time->callback((Fl_Callback*)cb_input_rec_split_time);
           } // Fl_Value_Input* input_rec_split_time
-          { text_rec_split_time = new Fl_Box(105, 256, 50, 16, _("minutos"));
+          { text_rec_split_time = new Fl_Box(105, 256, 65, 16, _("minutos"));
           } // Fl_Box* text_rec_split_time
-          { check_sync_to_full_hour = new Fl_Check_Button(20, 280, 124, 15, _("Sincronizar con cada hora"));
+          { check_sync_to_full_hour = new Fl_Check_Button(20, 280, 290, 15, _("Sincronizar con cada hora"));
             check_sync_to_full_hour->tooltip(_("Sincronizar con cada hora"));
             check_sync_to_full_hour->down_box(FL_DOWN_BOX);
             check_sync_to_full_hour->callback((Fl_Callback*)cb_check_sync_to_full_hour);
           } // Fl_Check_Button* check_sync_to_full_hour
           o->end();
         } // Fl_Group* o
-        { check_cfg_rec = new Fl_Check_Button(15, 330, 265, 15, _("Empezar a grabar cuando te conectes"));
+        { check_cfg_rec = new Fl_Check_Button(15, 330, 290, 15, _("Empezar a grabar cuando te conectes"));
           check_cfg_rec->tooltip(_("Empezar a grabar cuando te conectes"));
           check_cfg_rec->down_box(FL_DOWN_BOX);
           check_cfg_rec->callback((Fl_Callback*)cb_check_cfg_rec);
@@ -1622,9 +1636,28 @@ flgui::flgui() {
         } // Fl_Text_Display* o
         o->end();
       } // Fl_Group* o
-      { Fl_Group* o = new Fl_Group(0, 19, 300, 450, _("GUI"));
+      { Fl_Group* o = new Fl_Group(0, 25, 335, 455, _("DSP"));
         o->hide();
-        { Fl_Group* o = new Fl_Group(15, 50, 265, 80, _("Colores de la interfaz"));
+        { Fl_Group* o = new Fl_Group(10, 45, 305, 70, _("Compresor"));
+          o->box(FL_ENGRAVED_FRAME);
+          { activateCompressorCheckButton = new Fl_Check_Button(15, 50, 290, 25, _("Activar compresor"));
+            activateCompressorCheckButton->down_box(FL_DOWN_BOX);
+            activateCompressorCheckButton->callback((Fl_Callback*)cb_activateCompressorCheckButton);
+          } // Fl_Check_Button* activateCompressorCheckButton
+          { compressorQuantitySlider = new Fl_Slider(20, 75, 285, 15, _("Cantidad de compresi\303\263n"));
+            compressorQuantitySlider->type(5);
+            compressorQuantitySlider->box(FL_NO_BOX);
+            compressorQuantitySlider->step(0.025);
+            compressorQuantitySlider->value(0.7);
+            compressorQuantitySlider->callback((Fl_Callback*)cb_compressorQuantitySlider);
+          } // Fl_Slider* compressorQuantitySlider
+          o->end();
+        } // Fl_Group* o
+        o->end();
+      } // Fl_Group* o
+      { Fl_Group* o = new Fl_Group(5, 19, 325, 450, _("GUI"));
+        o->hide();
+        { Fl_Group* o = new Fl_Group(15, 50, 300, 80, _("Colores de la interfaz"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
           { button_gui_text_color = new Fl_Button(23, 60, 25, 25, _("Color del texto"));
@@ -1641,17 +1674,17 @@ flgui::flgui() {
           } // Fl_Button* button_gui_bg_color
           o->end();
         } // Fl_Group* o
-        { check_gui_attach = new Fl_Check_Button(15, 153, 245, 22, _("Pegar esta ventana a la principal"));
+        { check_gui_attach = new Fl_Check_Button(15, 153, 300, 22, _("Pegar esta ventana a la principal"));
           check_gui_attach->tooltip(_("Pegar esta ventana a la principal"));
           check_gui_attach->down_box(FL_DOWN_BOX);
           check_gui_attach->callback((Fl_Callback*)cb_check_gui_attach);
         } // Fl_Check_Button* check_gui_attach
-        { check_gui_ontop = new Fl_Check_Button(15, 178, 175, 20, _("Ventana siempre encima"));
+        { check_gui_ontop = new Fl_Check_Button(15, 178, 290, 20, _("Ventana siempre encima"));
           check_gui_ontop->tooltip(_("Ventana siempre encima"));
           check_gui_ontop->down_box(FL_DOWN_BOX);
           check_gui_ontop->callback((Fl_Callback*)cb_check_gui_ontop);
         } // Fl_Check_Button* check_gui_ontop
-        { check_gui_lcd_auto = new Fl_Check_Button(15, 198, 230, 27, _("Cambiar modo del LCD cada 5s"));
+        { check_gui_lcd_auto = new Fl_Check_Button(15, 198, 290, 24, _("Cambiar modo del LCD cada 5s"));
           check_gui_lcd_auto->tooltip(_("Cambiar modo del LCD cada 5s"));
           check_gui_lcd_auto->down_box(FL_DOWN_BOX);
           check_gui_lcd_auto->callback((Fl_Callback*)cb_check_gui_lcd_auto);
@@ -1660,7 +1693,7 @@ flgui::flgui() {
       } // Fl_Group* o
       Settings->end();
     } // Fl_Tabs* Settings
-    window_cfg->size_range(280, 380, 330, 380);
+    window_cfg->size_range(333, 380, 333, 380);
     window_cfg->end();
   } // Fl_My_Double_Window* window_cfg
   { window_add_srv = new Fl_Double_Window(305, 380, _("A\303\261""adir servidor"));

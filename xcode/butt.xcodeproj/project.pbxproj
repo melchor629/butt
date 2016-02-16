@@ -38,6 +38,7 @@
 		4817DC0D1B29AD0F006523B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4817DC0C1B29AD0F006523B8 /* Images.xcassets */; };
 		4817DC441B29AF80006523B8 /* butt-bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C69A672189E7D73001CBFBA /* butt-bin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		48517BDA1B5530AB00CE10CF /* aac_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48517BD81B5530AB00CE10CF /* aac_encode.cpp */; };
+		4882F5A91C738B60007B57A9 /* dsp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4882F5A71C738B60007B57A9 /* dsp.cpp */; };
 		48A2A9001B95C7510092B0C0 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */; };
 		48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */; };
 		48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */; };
@@ -135,6 +136,8 @@
 		4817DC0C1B29AD0F006523B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		48517BD81B5530AB00CE10CF /* aac_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = aac_encode.cpp; path = ../src/aac_encode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		48517BD91B5530AB00CE10CF /* aac_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = aac_encode.h; path = ../src/aac_encode.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		4882F5A71C738B60007B57A9 /* dsp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dsp.cpp; path = ../src/dsp.cpp; sourceTree = "<group>"; };
+		4882F5A81C738B60007B57A9 /* dsp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = dsp.hpp; path = ../src/dsp.hpp; sourceTree = "<group>"; };
 		488B76A91B5FAA5600FAFCB2 /* currentTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = currentTrack.cpp; path = ../src/currentTrack.cpp; sourceTree = "<group>"; };
 		488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = currentTrack.h; path = ../src/currentTrack.h; sourceTree = "<group>"; };
 		48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -317,6 +320,8 @@
 				3CC6F2A419083487001993B1 /* timer.h */,
 				3CC6F2A519083487001993B1 /* util.cpp */,
 				3CC6F2A619083487001993B1 /* util.h */,
+				4882F5A71C738B60007B57A9 /* dsp.cpp */,
+				4882F5A81C738B60007B57A9 /* dsp.hpp */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4882F5A91C738B60007B57A9 /* dsp.cpp in Sources */,
 				3C74136F1939241400211C26 /* opus_encode.cpp in Sources */,
 				3CC6F2AE19083488001993B1 /* cfg.cpp in Sources */,
 				3CC6F2B019083488001993B1 /* fl_funcs.cpp in Sources */,

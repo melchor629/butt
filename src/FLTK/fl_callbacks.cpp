@@ -2755,3 +2755,16 @@ void change_app_cb() {
     }
 }
 
+char slider_compressor_label[100];
+void slider_compressor_cb(void) {
+    cfg.dsp.compQuantity = (1.0f - fl_g->compressorQuantitySlider->value());
+    snprintf(slider_compressor_label, 100, "%s (%.0f%%)", _("Cantidad de compresión"), (1.0f - cfg.dsp.compQuantity) * 100);
+    fl_g->compressorQuantitySlider->label(slider_compressor_label);
+    unsaved_changes = true;
+}
+
+void check_button_activate_compressor_cb(void) {
+    cfg.dsp.compressor = fl_g->activateCompressorCheckButton->value();
+    unsaved_changes = true;
+}
+

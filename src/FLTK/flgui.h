@@ -23,6 +23,7 @@
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Value_Input.H>
 #include <FL/Fl_Check_Button.H>
+#include <FL/Fl_Slider.H>
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Int_Input.H>
 #include <FL/Fl_Round_Button.H>
@@ -306,6 +307,16 @@ public:
 private:
   inline void cb_check_cfg_rec_i(Fl_Check_Button*, void*);
   static void cb_check_cfg_rec(Fl_Check_Button*, void*);
+public:
+  Fl_Check_Button *activateCompressorCheckButton;
+private:
+  inline void cb_activateCompressorCheckButton_i(Fl_Check_Button*, void*);
+  static void cb_activateCompressorCheckButton(Fl_Check_Button*, void*);
+public:
+  Fl_Slider *compressorQuantitySlider;
+private:
+  inline void cb_compressorQuantitySlider_i(Fl_Slider*, void*);
+  static void cb_compressorQuantitySlider(Fl_Slider*, void*);
 public:
   Fl_Button *button_gui_text_color;
 private:

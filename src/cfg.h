@@ -124,6 +124,11 @@ typedef struct
 
     }rec;
 
+    struct {
+        bool compressor;
+        double compQuantity;
+    } dsp;
+
     struct
     {
         int attach;

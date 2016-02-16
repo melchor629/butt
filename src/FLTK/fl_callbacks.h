@@ -103,5 +103,8 @@ void window_main_close_cb(void);
 void check_use_app_cb(void);
 void change_app_cb(void);
 
+void slider_compressor_cb(void);
+void check_button_activate_compressor_cb(void);
+
 #endif
 

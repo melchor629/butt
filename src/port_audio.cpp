@@ -47,6 +47,7 @@
 #include "flgui.h"
 #include "fl_funcs.h"
 #include "util.h"
+#include "dsp.hpp"
 
 
 int pa_frames = 2048;
@@ -81,6 +82,7 @@ PaStream *stream;
 
 static char* stream_buf = NULL;
 static char* record_buf = NULL;
+static DSPEffects* dsp = NULL;
 
 int snd_init(void)
 {
@@ -209,6 +211,7 @@ int snd_open_stream(void)
 
     stream_buf = new char[16 * pa_frames*2 * sizeof(short)];
     record_buf = new char[16 * pa_frames*2 * sizeof(short)];
+    dsp = new DSPEffects(pa_frames, cfg.audio.channel);
     
     Pa_StartStream(stream);
     return 0;
@@ -491,24 +494,16 @@ int snd_callback(const void *input,
                  PaStreamCallbackFlags statusFlags,
                  void *userData)
 {
-    int i;
     int samplerate_out;
     bool convert_stream = false;
     bool convert_record = false;
-    
-    //char stream_buf[16 * pa_frames*2 * sizeof(short)];
-    //char record_buf[16 * pa_frames*2 * sizeof(short)];
 
 
     memcpy(pa_pcm_buf, input, frameCount*cfg.audio.channel*sizeof(short));
     samplerate_out = cfg.audio.samplerate;
 
-    if (cfg.main.gain != 1)
-    {
-        for(i = 0; i < framepacket_size; i++)
-        {
-            pa_pcm_buf[i] *= cfg.main.gain;
-        }
+    if(dsp->hasToProcessSamples()) {
+        dsp->processSamples(pa_pcm_buf);
     }
 	
 	if (streaming)
@@ -759,6 +754,7 @@ void snd_close(void)
 
     delete[] stream_buf;
     delete[] record_buf;
+    delete dsp;
 }
 
 

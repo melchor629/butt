@@ -35,6 +35,21 @@ config_t cfg;
 char *cfg_path;
 bool unsaved_changes;
 
+int cfg_get_int_or_default(const char* section, const char* key, int def) {
+    int value = cfg_get_int(section, key);
+    return value == -1 ? def : value;
+}
+
+float cfg_get_float_or_default(const char* section, const char* key, float def) {
+    float value = cfg_get_float(section, key);
+    return value == -1 ? def : value;
+}
+
+const char* cfg_get_str_or_default(const char* section, const char* key, const char* def) {
+    char* value = cfg_get_str(section, key);
+    return value == NULL ? def : value;
+}
+
 int cfg_write_file(char *path)
 {
     int i;
@@ -146,6 +161,14 @@ int cfg_write_file(char *path)
             cfg.rec.filename,
             cfg.rec.folder
            );
+
+    fprintf(cfg_fd,
+            "[dsp]\n"
+            "compressor = %d\n"
+            "compQuantity = %f\n\n",
+            cfg.dsp.compressor ? 1 : 0,
+            cfg.dsp.compQuantity
+            );
 
     fprintf(cfg_fd,
             "[gui]\n"
@@ -515,6 +538,11 @@ int cfg_set_values(char *path)
         cfg.main.gain = util_db_to_factor(-24);
 
 
+    //DSP
+    cfg.dsp.compressor = cfg_get_int_or_default("dsp", "compressor", 0);
+    cfg.dsp.compQuantity = cfg_get_float_or_default("dsp", "compQuantity", 0.3);
+
+
     //read GUI stuff 
     cfg.gui.attach = cfg_get_int("gui", "attach");
     if(cfg.gui.attach == -1)
@@ -614,6 +642,11 @@ int cfg_create_default(void)
             "filename = rec_%%Y%%m%%d-%%H%%M%%S_%%i.flac\n"
             "folder = %s\n\n", def_rec_folder
            );
+
+    fprintf(cfg_fd,
+            "[dsp]\n"
+            "compressor = 0\n"
+            "compQuantity = 0.7\n\n");
 
     fprintf(cfg_fd, 
             "[gui]\n"

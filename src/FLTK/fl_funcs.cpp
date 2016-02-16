@@ -145,10 +145,12 @@ void fill_cfg_widgets(void)
         fl_g->choice_rec_codec->value(CHOICE_FLAC);
         fl_g->choice_rec_bitrate->deactivate();
     }
-    else //wav
+    else if(!strcmp(cfg.rec.codec, "wav"))
     {
         fl_g->choice_rec_codec->value(CHOICE_WAV);
         fl_g->choice_rec_bitrate->deactivate();
+    } else { //aac-aac+
+        fl_g->choice_rec_codec->value(CHOICE_WAV + 1);
     }
 
     for(i = 0; bitrate[i] != 0; i++)
@@ -387,11 +389,16 @@ void init_main_gui_and_audio(void)
     flac_rec.channel = cfg.audio.channel;
     flac_rec.samplerate = cfg.audio.samplerate;
     flac_enc_reinit(&flac_rec);
-    
+
     aacplus_stream.channels = cfg.audio.channel;
-    aacplus_stream.bitrate = (cfg.audio.bitrate > 64 ? 64 : cfg.audio.bitrate) * 1000;
+    aacplus_stream.bitrate = cfg.audio.bitrate * 1000;//(cfg.audio.bitrate > 64 ? 64 : cfg.audio.bitrate) * 1000;
     aacplus_stream.samplerate = cfg.audio.samplerate;
     aac_enc_reinit(&aacplus_stream);
+
+    aacplus_rec.channels = cfg.audio.channel;
+    aacplus_rec.bitrate = cfg.rec.bitrate * 1000;
+    aacplus_rec.samplerate = cfg.audio.samplerate;
+    aac_enc_reinit(&aacplus_rec);
 }
 
 void init_choice_app(void* ptr) {

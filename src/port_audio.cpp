@@ -472,6 +472,11 @@ void* snd_rec_thread(void *data)
                 wav_write_header(cfg.rec.fd, cfg.audio.channel, cfg.audio.samplerate, 16);
                 kbytes_written += fwrite(audio_buf, sizeof(char), rb_bytes_read, cfg.rec.fd)/1024.0;
             }
+
+            if(!strcmp(cfg.rec.codec, "aac")) {
+                enc_bytes_read = aac_enc_encode(&aacplus_rec, (short*) audio_buf, enc_buf, rb_bytes_read / (2*cfg.audio.channel), cfg.audio.channel);
+                kbytes_written += fwrite(enc_buf, 1, enc_bytes_read, cfg.rec.fd) / 1024.0;
+            }
         }
     }
 

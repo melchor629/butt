@@ -181,6 +181,8 @@ private:
   static void cb_FLAC(Fl_Menu_*, void*);
   inline void cb_WAV_i(Fl_Menu_*, void*);
   static void cb_WAV(Fl_Menu_*, void*);
+  inline void cb_AAC_i(Fl_Menu_*, void*);
+  static void cb_AAC(Fl_Menu_*, void*);
 public:
   Fl_Choice *choice_rec_bitrate;
 private:
@@ -217,8 +219,8 @@ private:
   static void cb_OGG1(Fl_Menu_*, void*);
   inline void cb_OPUS1_i(Fl_Menu_*, void*);
   static void cb_OPUS1(Fl_Menu_*, void*);
-  inline void cb_AAC_i(Fl_Menu_*, void*);
-  static void cb_AAC(Fl_Menu_*, void*);
+  inline void cb_AAC1_i(Fl_Menu_*, void*);
+  static void cb_AAC1(Fl_Menu_*, void*);
 public:
   Fl_Choice *choice_cfg_bitrate;
 private:

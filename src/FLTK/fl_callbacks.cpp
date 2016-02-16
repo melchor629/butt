@@ -1007,7 +1007,8 @@ void button_cfg_song_go_cb(void)
     if(xc_update_song() == 0)
     {
         snprintf(text_buf, sizeof(text_buf),
-                _("[Ahora] %s\n"),
+                "[%s] %s\n",
+                 _("Ahora"),
                 cfg.main.song);
 
         print_info(text_buf, 0);
@@ -1058,22 +1059,28 @@ void choice_cfg_resample_mode_cb(void)
 {
     cfg.audio.resample_mode = fl_g->choice_cfg_resample_mode->value();
     snd_reinit();
+    char str[50];
     switch(cfg.audio.resample_mode)
     {
         case SRC_SINC_BEST_QUALITY:
-            print_info(_("Changed resample quality to SINC_BEST_QUALITY"), 0);
+            snprintf(str, 50, "%s SINC_BEST_QUALITY", _("Changed resample quality to"));
+            print_info(str, 0);
             break;
         case SRC_SINC_MEDIUM_QUALITY:
-            print_info(_("Changed resample quality to SINC_MEDIUM_QUALITY"), 0);
+            snprintf(str, 50, "%s SINC_MEDIUM_QUALITY", _("Changed resample quality to"));
+            print_info(str, 0);
             break;
         case SRC_SINC_FASTEST:
-            print_info(_("Changed resample quality to SINC_FASTEST"), 0);
+            snprintf(str, 50, "%s SINC_FASTEST", _("Changed resample quality to"));
+            print_info(str, 0);
             break;
         case SRC_ZERO_ORDER_HOLD:
-            print_info(_("Changed resample quality to ZERO_ORDER_HOLD"), 0);
+            snprintf(str, 50, "%s ZERO_ORDER_HOLD", _("Changed resample quality to"));
+            print_info(str, 0);
             break;
         case SRC_LINEAR:
-            print_info(_("Changed resample quality to LINEAR"), 0);
+            snprintf(str, 50, "%s LINEAR", _("Changed resample quality to"));
+            print_info(str, 0);
             break;
         default:
             break;
@@ -1527,6 +1534,7 @@ void choice_rec_bitrate_cb(void)
     lame_rec.bitrate = br_list[sel_br];
     vorbis_rec.bitrate = br_list[sel_br];
     opus_rec.bitrate = br_list[sel_br]*1000;
+    aacplus_rec.bitrate = br_list[sel_br] * 1000;
 
 
     if(fl_g->choice_rec_codec->value() == CHOICE_MP3)
@@ -1571,6 +1579,20 @@ void choice_rec_bitrate_cb(void)
             fl_g->choice_rec_bitrate->value(old_br);
             fl_g->choice_rec_bitrate->redraw();
             opus_enc_reinit(&opus_rec);
+            print_info(_("The previous values have been set"), 1);
+            return;
+        }
+    }
+
+    if(fl_g->choice_rec_codec->value() == CHOICE_WAV + 1) {
+        rc = aac_enc_reinit(&aacplus_rec);
+        if(rc != 0) {
+            print_info(_("Warning:\nThe record Sample-/Bitrate combination is invalid"), 1);
+            cfg.rec.bitrate = br_list[old_br];
+            aacplus_rec.bitrate = br_list[old_br]*1000;
+            fl_g->choice_rec_bitrate->value(old_br);
+            fl_g->choice_rec_bitrate->redraw();
+            aac_enc_reinit(&aacplus_rec);
             print_info(_("The previous values have been set"), 1);
             return;
         }
@@ -1678,6 +1700,7 @@ void choice_cfg_samplerate_cb()
     vorbis_rec.samplerate = sr_list[sel_sr];
     opus_rec.samplerate = sr_list[sel_sr];
     flac_rec.samplerate = sr_list[sel_sr];
+    aacplus_rec.samplerate = sr_list[sel_sr];
 
     if(fl_g->choice_rec_codec->value() == CHOICE_MP3)
     {
@@ -1748,6 +1771,20 @@ void choice_cfg_samplerate_cb()
         }
     }
 
+    if(fl_g->choice_rec_codec->value() == 4) {
+        rc = aac_enc_reinit(&aacplus_rec);
+        if(rc != 0) {
+            print_info(_("Warning:\nThe record Sample-/Bitrate combination is invalid"), 1);
+            cfg.audio.samplerate = sr_list[old_sr];
+            aacplus_rec.samplerate = sr_list[old_sr];
+            fl_g->choice_cfg_samplerate->value(old_sr);
+            fl_g->choice_cfg_samplerate->redraw();
+            aac_enc_reinit(&aacplus_rec);
+            print_info(_("The previous values have been set"), 1);
+            return;
+        }
+    }
+
     
     //The buffer size is dependand on the samplerate
     input_cfg_buffer_cb(0);
@@ -1789,6 +1826,7 @@ void choice_cfg_channel_stereo_cb(void)
     vorbis_rec.channel = 2;
     opus_rec.channel = 2;
     flac_rec.channel = 2;
+    aacplus_rec.channels = 2;
 
     if(fl_g->choice_rec_codec->value() == CHOICE_MP3)
         lame_enc_reinit(&lame_rec);
@@ -1798,6 +1836,8 @@ void choice_cfg_channel_stereo_cb(void)
         opus_enc_reinit(&opus_rec);
     if(fl_g->choice_rec_codec->value() == CHOICE_FLAC)
         flac_enc_reinit(&flac_rec);
+    if(fl_g->choice_rec_codec->value() == CHOICE_WAV + 1)
+        aac_enc_reinit(&aacplus_rec);
 
     snd_reinit();
     
@@ -1831,6 +1871,7 @@ void choice_cfg_channel_mono_cb(void)
     vorbis_rec.channel = 1;
     opus_rec.channel = 1;
     flac_rec.channel = 1;
+    aacplus_rec.channels = 1;
 
     if(fl_g->choice_rec_codec->value() == CHOICE_MP3)
         lame_enc_reinit(&lame_rec);
@@ -1840,6 +1881,8 @@ void choice_cfg_channel_mono_cb(void)
         opus_enc_reinit(&opus_rec);
     if(fl_g->choice_rec_codec->value() == CHOICE_FLAC)
         flac_enc_reinit(&flac_rec);
+    if(fl_g->choice_rec_codec->value() == CHOICE_WAV + 1)
+        aac_enc_reinit(&aacplus_rec);
     
     //Reinit PortAudio
     snd_reinit();
@@ -2100,6 +2143,7 @@ void choice_cfg_codec_aacplus_cb(void) {
     } else {
         print_info(_("Stream codec set to AAC+"), 0);
         strcpy(cfg.audio.codec, "aac+");
+        unsaved_changes = 1;
     }
 }
 
@@ -2119,6 +2163,8 @@ void choice_rec_codec_mp3_cb(void)
             fl_g->choice_rec_codec->value(CHOICE_OPUS);
         else if(!strcmp(cfg.rec.codec, "flac"))
             fl_g->choice_rec_codec->value(CHOICE_FLAC);
+        else if(!strcmp(cfg.rec.codec, "aac+"))
+            fl_g->choice_rec_codec->value(CHOICE_WAV + 1);
 
         return;
     }
@@ -2150,6 +2196,8 @@ void choice_rec_codec_ogg_cb(void)
             fl_g->choice_rec_codec->value(CHOICE_OPUS);
         else if(!strcmp(cfg.rec.codec, "flac"))
             fl_g->choice_rec_codec->value(CHOICE_FLAC);
+        else if(!strcmp(cfg.rec.codec, "aac"))
+            fl_g->choice_rec_codec->value(CHOICE_WAV + 1);
 
         return;
     }
@@ -2180,6 +2228,8 @@ void choice_rec_codec_opus_cb(void)
             fl_g->choice_rec_codec->value(CHOICE_OGG);
         else if(!strcmp(cfg.rec.codec, "flac"))
             fl_g->choice_rec_codec->value(CHOICE_FLAC);
+        else if(!strcmp(cfg.rec.codec, "aac"))
+            fl_g->choice_rec_codec->value(CHOICE_WAV + 1);
 
         return;
     }
@@ -2211,6 +2261,8 @@ void choice_rec_codec_flac_cb(void)
             fl_g->choice_rec_codec->value(CHOICE_OPUS);
         else if(!strcmp(cfg.rec.codec, "wav"))
             fl_g->choice_rec_codec->value(CHOICE_WAV);
+        else if(!strcmp(cfg.rec.codec, "aac"))
+            fl_g->choice_rec_codec->value(CHOICE_WAV + 1);
 
         return;
     }
@@ -2242,6 +2294,27 @@ void choice_rec_codec_wav_cb(void)
 
 
     unsaved_changes = 1;
+}
+
+void choice_rec_codec_aacplus_cb(void) {
+    fl_g->choice_rec_bitrate->activate();
+    if(aac_enc_reinit(&aacplus_rec) != 0) {
+        print_info(_("AAC+ (HE-AAC) doesn't support current\n"
+                     "Sample-/Bitrate combination"), 1);
+        if(!strcmp(cfg.rec.codec, "mp3"))
+            fl_g->choice_rec_codec->value(CHOICE_MP3);
+        else if(!strcmp(cfg.rec.codec, "ogg"))
+            fl_g->choice_rec_codec->value(CHOICE_OGG);
+        else if(!strcmp(cfg.rec.codec, "opus"))
+            fl_g->choice_rec_codec->value(CHOICE_OPUS);
+        else if(!strcmp(cfg.rec.codec, "wav"))
+            fl_g->choice_rec_codec->value(CHOICE_WAV);
+    } else {
+        print_info(_("Grabación ajustado a AAC+"), 0);
+        strcpy(cfg.rec.codec, "aac");
+        test_file_extension();
+        unsaved_changes = 1;
+    }
 }
 
 

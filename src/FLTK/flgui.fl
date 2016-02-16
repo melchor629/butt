@@ -284,8 +284,8 @@ button_cfg->label(_("Ajustes@>"));} open
           }
         }
         Fl_Group {} {
-          label Audio
-          xywh {0 19 335 450} hide
+          label Audio open
+          xywh {0 19 335 450}
         } {
           Fl_Group {} {
             label {Ajustes de Audio}
@@ -318,11 +318,11 @@ button_cfg->label(_("Ajustes@>"));} open
             } {}
           }
           Fl_Group {} {
-            label {Grabación}
+            label {Grabación} open
             xywh {15 175 305 60} box ENGRAVED_FRAME align 5
           } {
             Fl_Choice choice_rec_codec {
-              label Codec
+              label Codec open
               tooltip {Select recording codec} xywh {20 204 145 20} box ENGRAVED_BOX down_box BORDER_BOX align 5
             } {
               MenuItem {} {
@@ -349,6 +349,11 @@ button_cfg->label(_("Ajustes@>"));} open
                 label WAV
                 callback {choice_rec_codec_wav_cb();}
                 xywh {5 5 31 20}
+              }
+              MenuItem {} {
+                label {AAC/AAC+}
+                callback {choice_rec_codec_aac_cb();}
+                xywh {0 0 100 20}
               }
             }
             Fl_Choice choice_rec_bitrate {
@@ -480,12 +485,12 @@ else
             }
           }
           Fl_Group streaming_g {
-            label Streaming
+            label Streaming open
             xywh {15 260 305 60} box ENGRAVED_FRAME align 5 hide
             code0 {util_set_visible(streaming_g);}
           } {
             Fl_Choice choice_cfg_codec {
-              label Codec
+              label Codec open
               tooltip {Select streaming codec} xywh {20 288 150 20} box ENGRAVED_BOX down_box BORDER_BOX align 5
             } {
               MenuItem {} {
@@ -504,8 +509,8 @@ else
                 xywh {80 80 40 25}
               }
               MenuItem {} {
-                label AAC
-                callback {choice_cfg_codec_aacplus_cb();}
+                label {AAC/AAC+}
+                callback {choice_cfg_codec_aacplus_cb();} selected
                 xywh {0 0 100 20}
               }
             }
@@ -749,8 +754,8 @@ else
           }
         }
         Fl_Group {} {
-          label DSP open selected
-          xywh {0 25 335 455}
+          label DSP open
+          xywh {0 25 335 455} hide
         } {
           Fl_Group {} {
             label Compresor open

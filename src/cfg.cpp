@@ -646,7 +646,7 @@ int cfg_create_default(void)
     fprintf(cfg_fd,
             "[dsp]\n"
             "compressor = 0\n"
-            "compQuantity = 0.7\n\n");
+            "compQuantity = 0.3\n\n");
 
     fprintf(cfg_fd, 
             "[gui]\n"

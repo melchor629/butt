@@ -80,6 +80,7 @@ opus_enc opus_stream;
 opus_enc opus_rec;
 flac_enc flac_rec;
 aac_enc aacplus_stream;
+aac_enc aacplus_rec;
 
 
 int main(int argc, char *argv[])

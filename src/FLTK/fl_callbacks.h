@@ -73,6 +73,7 @@ void choice_rec_codec_ogg_cb(void);
 void choice_rec_codec_wav_cb(void);
 void choice_rec_codec_opus_cb(void);
 void choice_rec_codec_flac_cb(void);
+void choice_rec_codec_aacplus_cb(void);
 void button_cfg_edit_srv_cb(void);
 void button_cfg_edit_icy_cb(void);
 void check_song_update_active_cb(void);

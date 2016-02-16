@@ -627,6 +627,13 @@ void flgui::cb_WAV(Fl_Menu_* o, void* v) {
   ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_WAV_i(o,v);
 }
 
+void flgui::cb_AAC_i(Fl_Menu_*, void*) {
+  choice_rec_codec_aacplus_cb();
+}
+void flgui::cb_AAC(Fl_Menu_* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_AAC_i(o,v);
+}
+
 unsigned char flgui::menu_choice_rec_codec_i18n_done = 0;
 Fl_Menu_Item flgui::menu_choice_rec_codec[] = {
  {"MP3", 0,  (Fl_Callback*)flgui::cb_MP3, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
@@ -634,6 +641,7 @@ Fl_Menu_Item flgui::menu_choice_rec_codec[] = {
  {"OPUS", 0,  (Fl_Callback*)flgui::cb_OPUS, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"FLAC", 0,  (Fl_Callback*)flgui::cb_FLAC, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"WAV", 0,  (Fl_Callback*)flgui::cb_WAV, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
+ {"AAC/AAC+", 0,  (Fl_Callback*)flgui::cb_AAC, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0}
 };
 
@@ -735,11 +743,11 @@ void flgui::cb_OPUS1(Fl_Menu_* o, void* v) {
   ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_OPUS1_i(o,v);
 }
 
-void flgui::cb_AAC_i(Fl_Menu_*, void*) {
+void flgui::cb_AAC1_i(Fl_Menu_*, void*) {
   choice_cfg_codec_aacplus_cb();
 }
-void flgui::cb_AAC(Fl_Menu_* o, void* v) {
-  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_AAC_i(o,v);
+void flgui::cb_AAC1(Fl_Menu_* o, void* v) {
+  ((flgui*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_AAC1_i(o,v);
 }
 
 unsigned char flgui::menu_choice_cfg_codec_i18n_done = 0;
@@ -747,7 +755,7 @@ Fl_Menu_Item flgui::menu_choice_cfg_codec[] = {
  {"MP3", 0,  (Fl_Callback*)flgui::cb_MP31, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"OGG/VORBIS", 0,  (Fl_Callback*)flgui::cb_OGG1, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"OPUS", 0,  (Fl_Callback*)flgui::cb_OPUS1, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
- {"AAC", 0,  (Fl_Callback*)flgui::cb_AAC, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
+ {"AAC/AAC+", 0,  (Fl_Callback*)flgui::cb_AAC1, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0}
 };
 
@@ -1288,6 +1296,7 @@ flgui::flgui() {
       Settings->selection_color((Fl_Color)41);
       { Fl_Group* o = new Fl_Group(0, 20, 325, 450, _("Principal"));
         o->when(FL_WHEN_RELEASE_ALWAYS);
+        o->hide();
         { Fl_Group* o = new Fl_Group(15, 56, 300, 34, _("Archivo de log"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
@@ -1355,7 +1364,6 @@ flgui::flgui() {
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 335, 450, _("Audio"));
-        o->hide();
         { Fl_Group* o = new Fl_Group(15, 55, 305, 100, _("Ajustes de Audio"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
@@ -1397,7 +1405,7 @@ flgui::flgui() {
             choice_rec_codec->align(Fl_Align(FL_ALIGN_TOP_LEFT));
             if (!menu_choice_rec_codec_i18n_done) {
               int i=0;
-              for ( ; i<5; i++)
+              for ( ; i<6; i++)
                 if (menu_choice_rec_codec[i].label())
                   menu_choice_rec_codec[i].label(_(menu_choice_rec_codec[i].label()));
               menu_choice_rec_codec_i18n_done = 1;

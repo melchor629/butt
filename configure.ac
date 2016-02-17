@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([butt], [0.2.16], [melchor9000@gmail.com])
+AC_INIT([butt], [0.2.17], [melchor9000@gmail.com])
 AM_INIT_AUTOMAKE([subdir-objects foreign])
 AC_CANONICAL_HOST
 
@@ -62,7 +62,7 @@ case $host_os in
 esac
 
 
-AC_CHECK_HEADER([winsock2.h], 
+AC_CHECK_HEADER([winsock2.h],
 		[
 		LIBS="$LIBS -lws2_32"
 		host_os="windows"
@@ -74,7 +74,7 @@ AM_CONDITIONAL(OSX, test "$host_os" = "darwin*")
 AC_CHECK_PROG([FLTKCONFIG],[fltk-config], [fltk-config])
 
 if test "$FLTKCONFIG" = "fltk-config"; then
-    AC_CHECK_LIB([fltk], [main], 
+    AC_CHECK_LIB([fltk], [main],
 		    [
 		    LIBS="$LIBS `fltk-config --ldflags --use-images`"
 		    CXXFLAGS="$CXXFLAGS `fltk-config --cxxflags`"
@@ -101,7 +101,7 @@ AC_FUNC_REALLOC
 AC_CHECK_FUNCS([gethostbyaddr gethostbyname memset pow select socket strchr strdup strpbrk strrchr strstr])
 
 # Adds visibility of streaming configuration
-AC_ARG_ENABLE([stream-conf], 
+AC_ARG_ENABLE([stream-conf],
 	AS_HELP_STRING([--disable-stream-conf], [Disable stream configration visibility, for customized clients]))
 AS_IF([test "x%disable_stream-conf" = "xyes"], [
 	AC_DEFINE([VISIBILITY], [1], [Stream conf visibility enabled])
@@ -115,7 +115,7 @@ AC_ARG_ENABLE([aac],
 AS_IF([test "x%enable_aac" = "xyes"], [
 	AC_CHECK_LIB([fdk-aac], [aacEncOpen], [], [
 		AC_CHECK_LIB([aacplus], [aacplusEncOpen],
-				[AC_MSG_WARN([AAC-LC will not be supported])], 
+				[AC_MSG_WARN([AAC-LC will not be supported])],
 				[AC_MSG_ERROR([libfdk-aac and linaacplus not found])]
 				)
 		])

@@ -5,7 +5,7 @@ AM_CPPFLAGS = -I.@am__isrc@/FLTK
 #
 # # this lists the binaries to produce, the (non-PHONY, binary) targets in
 # # the previous manual Makefile
-bin_PROGRAMS = butt 
+bin_PROGRAMS = butt
 butt_SOURCES = butt.cpp butt.h cfg.cpp cfg.h icecast.cpp icecast.h lame_encode.cpp \
 			   lame_encode.h parseconfig.cpp parseconfig.h port_audio.cpp \
 			   port_audio.h ringbuffer.cpp ringbuffer.h shoutcast.cpp shoutcast.h \
@@ -17,8 +17,8 @@ butt_SOURCES = butt.cpp butt.h cfg.cpp cfg.h icecast.cpp icecast.h lame_encode.c
 			   FLTK/FL/Fl_My_Double_Window.H FLTK/FL/Fl_My_Value_Slider.H \
 			   FLTK/Fl_My_Native_File_Chooser.cxx FLTK/FL/Fl_My_Native_File_Chooser.H \
 			   FLTK/fl_timer_funcs.cpp FLTK/fl_timer_funcs.h \
-			   aac_encode.h aac_encode.cpp
-			   
+			   aac_encode.h aac_encode.cpp dsp.cpp dsp.hpp
+
 
 if WINDOWS
 butt_SOURCES += resource.rc

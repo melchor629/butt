@@ -1,3 +1,12 @@
+Version 0.1.17 (2016-02-17)
+---------------------------
+* added support to encode using AAC/HE-AAC/HE-AACv2 to ShoutCast and recording
+* added VOX to current song for OS X
+* better support for getting current song
+* added DSP module for input audio
+* added Audio Compressor to DSP
+* more translations for three langs
+
 Version 0.1.16 (2015-07-07)
 ---------------------------
 * added i18n using gettext
@@ -15,11 +24,11 @@ Version 0.1.15 (2015-06-11)
 
 Version 0.1.14 (2014-12-27)
 ---------------------------
-* added FLAC support for recording 
+* added FLAC support for recording
 * added Opus support (thanks to oneman)
 * added logfile support (thanks to mikko)
 * added support for more variables in the filename (%H %M %S) (thanks to mikko)
-* automatic file splitting can be synced to full hour now (thanks to mikko) 
+* automatic file splitting can be synced to full hour now (thanks to mikko)
 * LCD info can automatically rotate every 5 seconds now (thanks to mikko)
 * added ability to change audio buffer size
 * uncluttered LCD (thanks to mikko)
@@ -44,17 +53,17 @@ Version 0.1.13 (2014-05-02)
 * added feature for importing and exporting configuration files
 * compiles with Xcode 5 on OS X Mavericks
 * compiles with traditional GNU autoconf/automake environment on linux and mingw
-* improved robustness against faulty config files 
+* improved robustness against faulty config files
 * improved compatibility to ShoutCast v2 servers
 * improved look&feel
 * fixed samplerate issues
-* fixed mono playback/recording 
+* fixed mono playback/recording
 * changed data volume information vom kBytes to MBytes
 * changed default recording path to users home folder
 * sends audio information (bitrate etc.) to Icecast server - Thanks to Dominik Durner
-* reimplemented VU-Meter with peak hold 
+* reimplemented VU-Meter with peak hold
 * comes with as an ubuntu package
-* windows: can be installed as user without admin rights 
+* windows: can be installed as user without admin rights
 * windows: uninstallation process also removes the configuration file
 * instead of canceling the automatic song update in case the given file is not
 readable, butt now tries to reread the file every 5 seconds
@@ -63,7 +72,7 @@ Version 0.1.12 (2010-04-10)
 ---------------------------
 * butt is now able to connect automatically after startup
 * shortened time between connect attempts (fixes Shouted.FM connection problems)
-* improved wrong password detection for shoutcast	
+* improved wrong password detection for shoutcast
 
 Version 0.1.11-2 (2008-12-14)
 ---------------------------
@@ -80,7 +89,7 @@ Version 0.1.11 (2008-10-26)
 * removed buffer overrun messages
 * recording can be now stopped with the stop-button
 * replaced pcm recording by wav recording
-* recording as ogg is now possible 
+* recording as ogg is now possible
 * added "stay on top" checkbox
 * fixed possible crash when changing mp3 settings while streaming
 
@@ -177,7 +186,7 @@ Version 0.1.3 (2007-10-08)
 having an server/ICY-entry
 * bugfix: butt crashed if you change the bitrate without having an ICY-entry
 * bugfix: there was some uncommented code in the [DEL]-server callback-routine
-which shouldn't be uncommented 
+which shouldn't be uncommented
 * facelift: if you delete all server/ICY-entries, the input fields in the server/ICY
 still showed the values of the last server/ICY-entry
 
@@ -194,6 +203,6 @@ Version 0.1.2 (2007-10-07)
 
 Version 0.1.1 (2007-09-16)
 ---------------------------
-* added recording feature 
+* added recording feature
 * fixed seg fault on startup when compiled with gcc-4.1.2
 * fixed seg fault when encoding with high bitrates

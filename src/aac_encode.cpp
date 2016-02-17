@@ -12,6 +12,51 @@
 #include <cstring>
 #include <stdlib.h>
 #include <stdio.h>
+#include "DynamicLibraryLoad.hpp"
+
+#if !defined(HAVE_LIBAACPLUS) && !defined(HAVE_LIBFDK_AAC)
+static DynamicLibrary* fdk_lib = NULL;
+
+typedef AACENC_ERROR (*Open)(
+                        HANDLE_AACENCODER        *phAacEncoder,
+                        const UINT                encModules,
+                        const UINT                maxChannels
+                        );
+
+typedef AACENC_ERROR (*Close)(
+                         HANDLE_AACENCODER        *phAacEncoder
+                         );
+
+typedef AACENC_ERROR (*Encode)(
+                          const HANDLE_AACENCODER   hAacEncoder,
+                          const AACENC_BufDesc     *inBufDesc,
+                          const AACENC_BufDesc     *outBufDesc,
+                          const AACENC_InArgs      *inargs,
+                          AACENC_OutArgs           *outargs
+                          );
+
+typedef AACENC_ERROR (*SetParam)(
+                                 const HANDLE_AACENCODER   hAacEncoder,
+                                 const AACENC_PARAM        param,
+                                 const UINT                value
+                                 );
+
+typedef AACENC_ERROR (*Info)(
+                                const HANDLE_AACENCODER   hAacEncoder,
+                                AACENC_InfoStruct        *pInfo
+                                );
+
+#define aacEncOpen _aacEncOpen
+#define aacEncClose _aacEncClose
+#define aacEncEncode _aacEncEncode
+#define aacEncoder_SetParam _aacEncoder_SetParam
+#define aacEncInfo _aacEncInfo
+static Open aacEncOpen;
+static Close aacEncClose;
+static Encode aacEncEncode;
+static SetParam aacEncoder_SetParam;
+static Info aacEncInfo;
+#endif
 
 int fdk_select_profile(aac_enc *aacplus) {
     const int HE_AACv2 = 29, HE_AAC = 5, AAC_LC = 2;
@@ -79,7 +124,26 @@ int aac_enc_init(aac_enc *aacplus) {
     aacplus->state = AACPLUS_READY;
     return ret;
     
-#elif HAVE_LIBFDK_AAC
+#else
+#ifndef HAVE_LIBFDK_AAC
+    if(fdk_lib == NULL) {
+        try {
+            fdk_lib = new DynamicLibrary("libfdk-aac");
+            aacEncOpen = fdk_lib->getFunctionPointer<Open>("aacEncOpen");
+            aacEncClose = fdk_lib->getFunctionPointer<Close>("aacEncClose");
+            aacEncEncode = fdk_lib->getFunctionPointer<Encode>("aacEncEncode");
+            aacEncoder_SetParam = fdk_lib->getFunctionPointer<SetParam>("aacEncoder_SetParam");
+            aacEncInfo = fdk_lib->getFunctionPointer<Info>("aacEncInfo");
+        } catch (DynamicLibraryException &e) {
+            char info_buf[100];
+            snprintf(info_buf, sizeof(info_buf), "%s", _("Could not find libfdk installed. AAC support disabled"));
+            print_info(info_buf, 1);
+            fprintf(stderr, "%s\n", e.what());
+            fdk_lib = NULL;
+            return 1;
+        }
+    }
+#endif
     
     if(aacEncOpen(&aacplus->enc, 0, aacplus->channels) != AACENC_OK) return 1;
     if(aacEncoder_SetParam(aacplus->enc, AACENC_AOT, fdk_select_profile(aacplus)) != AACENC_OK) return 1;
@@ -98,13 +162,6 @@ int aac_enc_init(aac_enc *aacplus) {
     printf("SAMPLES: %d\n", aacplus->info.frameLength);
     
     return 0;
-    
-#else
-    
-    char info_buf[100];
-    snprintf(info_buf, sizeof(info_buf), "%s", _("No se ha compilado con libaacplus"));
-    print_info(info_buf, 1);
-    return 1;
 #endif
 }
 
@@ -141,7 +198,8 @@ int aac_enc_encode(aac_enc *aacplus, short *pcm_buf, char* enc_buf, int samples,
     aacplus->state = AACPLUS_READY;
     return bytes;
     
-#elif HAVE_LIBFDK_AAC
+#else
+
     AACENC_BufDesc in_buf = {0}, out_buf = {0};
     AACENC_InArgs in_args = {0};
     AACENC_OutArgs out_args = {0};
@@ -190,10 +248,6 @@ int aac_enc_encode(aac_enc *aacplus, short *pcm_buf, char* enc_buf, int samples,
     
     aacplus->state = AACPLUS_READY;
     return bytes;
-    
-#else
-    
-    return -1;
 #endif
 }
 
@@ -215,7 +269,9 @@ void aac_enc_close(aac_enc *aacplus) {
     aacplus->buff.destroy();
     aacplus->conf = NULL;
     aacplus->encoder = NULL;
-#elif HAVE_LIBFDK_AAC
+
+#else
+
     while(aacplus->state == AACPLUS_BUSY);
     
     if(aacplus->enc != NULL)
@@ -225,3 +281,10 @@ void aac_enc_close(aac_enc *aacplus) {
     aacplus->buff.destroy();
 #endif
 }
+
+#if !defined(HAVE_LIBAACPLUS) && !defined(HAVE_LIBFDK_AAC)
+void __attribute__((destructor)) aac_library_dealloc() {
+    if(fdk_lib != NULL)
+        delete fdk_lib;
+}
+#endif

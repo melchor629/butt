@@ -37,9 +37,9 @@
 		3CC899811926A7CE008A414B /* fl_timer_funcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8997F1926A7CE008A414B /* fl_timer_funcs.cpp */; };
 		4817DC0D1B29AD0F006523B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4817DC0C1B29AD0F006523B8 /* Images.xcassets */; };
 		4817DC441B29AF80006523B8 /* butt-bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3C69A672189E7D73001CBFBA /* butt-bin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		482F1C821C74E0A0006700A2 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 482F1C811C74E0A0006700A2 /* libiconv.tbd */; };
 		48517BDA1B5530AB00CE10CF /* aac_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48517BD81B5530AB00CE10CF /* aac_encode.cpp */; };
 		4882F5A91C738B60007B57A9 /* dsp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4882F5A71C738B60007B57A9 /* dsp.cpp */; };
-		48A2A9001B95C7510092B0C0 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */; };
 		48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */; };
 		48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */; };
 		48E01DE71B4BF08400449DFD /* Locale in Resources */ = {isa = PBXBuildFile; fileRef = 48E01DE61B4BF08400449DFD /* Locale */; };
@@ -100,8 +100,6 @@
 		3CC6F29219083487001993B1 /* icecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = icecast.h; path = ../src/icecast.h; sourceTree = "<group>"; };
 		3CC6F29319083487001993B1 /* lame_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lame_encode.cpp; path = ../src/lame_encode.cpp; sourceTree = "<group>"; };
 		3CC6F29419083487001993B1 /* lame_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lame_encode.h; path = ../src/lame_encode.h; sourceTree = "<group>"; };
-		3CC6F29519083487001993B1 /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.am; path = ../src/Makefile.am; sourceTree = "<group>"; };
-		3CC6F29619083487001993B1 /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.in; path = ../src/Makefile.in; sourceTree = "<group>"; };
 		3CC6F29719083487001993B1 /* parseconfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = parseconfig.cpp; path = ../src/parseconfig.cpp; sourceTree = "<group>"; };
 		3CC6F29819083487001993B1 /* parseconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parseconfig.h; path = ../src/parseconfig.h; sourceTree = "<group>"; };
 		3CC6F29919083487001993B1 /* port_audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = port_audio.cpp; path = ../src/port_audio.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
@@ -134,13 +132,15 @@
 		4817DC031B29AD0F006523B8 /* butt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = butt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4817DC061B29AD0F006523B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4817DC0C1B29AD0F006523B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		482F1C7F1C74C928006700A2 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = include/config.h; sourceTree = "<group>"; };
+		482F1C801C74CC3D006700A2 /* DynamicLibraryLoad.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = DynamicLibraryLoad.hpp; path = ../src/DynamicLibraryLoad.hpp; sourceTree = "<group>"; };
+		482F1C811C74E0A0006700A2 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		48517BD81B5530AB00CE10CF /* aac_encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = aac_encode.cpp; path = ../src/aac_encode.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		48517BD91B5530AB00CE10CF /* aac_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = aac_encode.h; path = ../src/aac_encode.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4882F5A71C738B60007B57A9 /* dsp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dsp.cpp; path = ../src/dsp.cpp; sourceTree = "<group>"; };
 		4882F5A81C738B60007B57A9 /* dsp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = dsp.hpp; path = ../src/dsp.hpp; sourceTree = "<group>"; };
 		488B76A91B5FAA5600FAFCB2 /* currentTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = currentTrack.cpp; path = ../src/currentTrack.cpp; sourceTree = "<group>"; };
 		488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = currentTrack.h; path = ../src/currentTrack.h; sourceTree = "<group>"; };
-		48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentTrackOSX.h; path = ../src/CurrentTrackOSX.h; sourceTree = "<group>"; };
 		48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentTrackOSX.m; path = ../src/CurrentTrackOSX.m; sourceTree = "<group>"; };
 		48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -152,7 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48A2A9001B95C7510092B0C0 /* libiconv.dylib in Frameworks */,
+				482F1C821C74E0A0006700A2 /* libiconv.tbd in Frameworks */,
 				3C69A6BB189E7EDD001CBFBA /* AudioToolbox.framework in Frameworks */,
 				3C69A6BC189E7EDD001CBFBA /* AudioUnit.framework in Frameworks */,
 				3C69A6BD189E7EDD001CBFBA /* Cocoa.framework in Frameworks */,
@@ -174,7 +174,7 @@
 		3C69A669189E7D72001CBFBA = {
 			isa = PBXGroup;
 			children = (
-				48A2A8FF1B95C7510092B0C0 /* libiconv.dylib */,
+				482F1C7F1C74C928006700A2 /* config.h */,
 				4817DC3D1B29AE30006523B8 /* libs */,
 				4817DBE61B29AA3C006523B8 /* images */,
 				48E777651C70A31400EAF9F6 /* Encoders */,
@@ -188,8 +188,6 @@
 				488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */,
 				3CC6F29119083487001993B1 /* icecast.cpp */,
 				3CC6F29219083487001993B1 /* icecast.h */,
-				3CC6F29519083487001993B1 /* Makefile.am */,
-				3CC6F29619083487001993B1 /* Makefile.in */,
 				3CC6F29919083487001993B1 /* port_audio.cpp */,
 				3CC6F29A19083487001993B1 /* port_audio.h */,
 				3CC6F29D19083487001993B1 /* shoutcast.cpp */,
@@ -273,6 +271,7 @@
 		4817DC3D1B29AE30006523B8 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				482F1C811C74E0A0006700A2 /* libiconv.tbd */,
 				48E01DE61B4BF08400449DFD /* Locale */,
 				3C69A6DC189E844E001CBFBA /* Foundation.framework */,
 				3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */,
@@ -322,6 +321,7 @@
 				3CC6F2A619083487001993B1 /* util.h */,
 				4882F5A71C738B60007B57A9 /* dsp.cpp */,
 				4882F5A81C738B60007B57A9 /* dsp.hpp */,
+				482F1C801C74CC3D006700A2 /* DynamicLibraryLoad.hpp */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -611,7 +611,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					/usr/local/opt/gettext/lib/libintl.a,
-					"/usr/local/lib/libfdk-aac.a",
 					/usr/local/lib/libFLAC.a,
 					/usr/local/lib/libfltk_gl.a,
 					/usr/local/lib/libfltk_images.a,
@@ -625,6 +624,7 @@
 					/usr/local/lib/libvorbisenc.a,
 					/usr/local/lib/libpng16.a,
 					/usr/local/lib/libjpeg.a,
+					"/usr/local/lib/libfdk-aac.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = ./include;
@@ -667,7 +667,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					/usr/local/opt/gettext/lib/libintl.a,
-					"/usr/local/lib/libfdk-aac.a",
 					/usr/local/lib/libFLAC.a,
 					/usr/local/lib/libfltk_gl.a,
 					/usr/local/lib/libfltk_images.a,
@@ -681,6 +680,7 @@
 					/usr/local/lib/libvorbisenc.a,
 					/usr/local/lib/libpng16.a,
 					/usr/local/lib/libjpeg.a,
+					"/usr/local/lib/libfdk-aac.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = ./include;

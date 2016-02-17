@@ -17,8 +17,7 @@
 
 #if HAVE_LIBAACPLUS
 #include <aacplus.h>
-#endif
-#if HAVE_LIBFDK_AAC
+#else
 #include <fdk-aac/aacenc_lib.h>
 #endif
 
@@ -80,10 +79,11 @@ struct aac_enc {
 #if HAVE_LIBAACPLUS
     aacplusEncConfiguration* conf;
     aacplusEncHandle encoder;
-#elif HAVE_LIBFDK_AAC
+#else
     HANDLE_AACENCODER enc;
     AACENC_InfoStruct info = {0};
 #endif
+
     int bitrate;
     int samplerate;
     int channels;

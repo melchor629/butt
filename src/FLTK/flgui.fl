@@ -220,8 +220,8 @@ button_cfg->label(_("Ajustes@>"));} open
         xywh {-1 0 336 480} selection_color 41
       } {
         Fl_Group {} {
-          label Principal
-          xywh {0 20 325 450} when 6 hide
+          label Principal selected
+          xywh {0 20 325 450} when 6
         } {
           Fl_Group {} {
             label {Archivo de log}
@@ -285,7 +285,7 @@ button_cfg->label(_("Ajustes@>"));} open
         }
         Fl_Group {} {
           label Audio open
-          xywh {0 19 335 450}
+          xywh {0 19 335 450} hide
         } {
           Fl_Group {} {
             label {Ajustes de Audio}
@@ -352,7 +352,7 @@ button_cfg->label(_("Ajustes@>"));} open
               }
               MenuItem {} {
                 label {AAC/AAC+}
-                callback {choice_rec_codec_aac_cb();}
+                callback {choice_rec_codec_aacplus_cb();}
                 xywh {0 0 100 20}
               }
             }
@@ -510,7 +510,7 @@ else
               }
               MenuItem {} {
                 label {AAC/AAC+}
-                callback {choice_cfg_codec_aacplus_cb();} selected
+                callback {choice_cfg_codec_aacplus_cb();}
                 xywh {0 0 100 20}
               }
             }
@@ -812,7 +812,7 @@ else
     }
     Fl_Window window_add_srv {
       label {Añadir servidor}
-      xywh {1113 178 305 380} type Double modal visible
+      xywh {1113 178 305 380} type Double align 80 modal visible
     } {
       Fl_Input input_add_srv_name {
         label {Nombre:}
@@ -861,7 +861,7 @@ else
       Fl_Button {} {
         label {&Cancelar}
         callback {button_add_srv_cancel_cb();}
-        xywh {10 340 74 25} box ENGRAVED_BOX
+        xywh {10 340 78 25} box ENGRAVED_BOX
       }
       Fl_Button button_add_srv_add {
         label {&ADD}
@@ -871,7 +871,7 @@ else
       Fl_Button button_add_srv_save {
         label {&Guardar}
         callback {button_add_srv_save_cb();}
-        xywh {224 340 74 25} box ENGRAVED_BOX
+        xywh {220 340 78 25} box ENGRAVED_BOX
       }
       Fl_Button button_cfg_show_pw {
         label {Mostrar contra…}
@@ -881,26 +881,26 @@ else
     }
     Fl_Window window_add_icy {
       label {Información del Streaming} open
-      xywh {1440 45 305 380} type Double modal visible
+      xywh {1534 13 305 380} type Double align 80 modal visible
     } {
       Fl_Input input_add_icy_name {
         label {Nombre del streaming:}
-        tooltip {The name of your new ICY-entrie} xywh {65 35 170 25} align 1
+        tooltip {The name of your new ICY-entrie} xywh {10 35 285 25} align 1
         code0 {this->input_add_icy_name->maximum_size(100);}
       }
       Fl_Input input_add_icy_desc {
         label {Descripción:}
-        xywh {10 145 170 25} align 5
+        xywh {10 80 285 45} type Multiline align 5
         code0 {this->input_add_icy_desc->maximum_size(100);}
       }
       Fl_Input input_add_icy_genre {
         label {Género:}
-        xywh {185 145 110 25} align 5
+        xywh {10 190 170 25} align 5
         code0 {this->input_add_icy_genre->maximum_size(100);}
       }
       Fl_Input input_add_icy_url {
         label {URL:}
-        xywh {10 190 170 25} align 5
+        xywh {10 145 285 25} align 5
         code0 {this->input_add_icy_url->maximum_size(100);}
       }
       Fl_Input input_add_icy_icq {
@@ -920,12 +920,12 @@ else
       }
       Fl_Check_Button check_add_icy_pub {
         label {Servidor público}
-        xywh {10 270 166 20} down_box DOWN_BOX
+        xywh {10 270 175 20} down_box DOWN_BOX
       }
       Fl_Button {} {
         label {&Cancelar}
         callback {button_add_icy_cancel_cb();}
-        xywh {10 340 74 25} box ENGRAVED_BOX
+        xywh {10 340 78 25} box ENGRAVED_BOX
       }
       Fl_Button button_add_icy_add {
         label {&ADD}
@@ -935,7 +935,7 @@ else
       Fl_Button button_add_icy_save {
         label {&Guardar}
         callback {button_add_icy_save_cb();}
-        xywh {224 340 74 25} box ENGRAVED_BOX
+        xywh {220 340 78 25} box ENGRAVED_BOX
       }
     }
     code {Fl::scheme("standard");

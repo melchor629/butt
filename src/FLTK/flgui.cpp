@@ -1296,7 +1296,6 @@ flgui::flgui() {
       Settings->selection_color((Fl_Color)41);
       { Fl_Group* o = new Fl_Group(0, 20, 325, 450, _("Principal"));
         o->when(FL_WHEN_RELEASE_ALWAYS);
-        o->hide();
         { Fl_Group* o = new Fl_Group(15, 56, 300, 34, _("Archivo de log"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
@@ -1364,6 +1363,7 @@ flgui::flgui() {
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 19, 335, 450, _("Audio"));
+        o->hide();
         { Fl_Group* o = new Fl_Group(15, 55, 305, 100, _("Ajustes de Audio"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
@@ -1706,6 +1706,7 @@ flgui::flgui() {
   } // Fl_My_Double_Window* window_cfg
   { window_add_srv = new Fl_Double_Window(305, 380, _("A\303\261""adir servidor"));
     window_add_srv->user_data((void*)(this));
+    window_add_srv->align(Fl_Align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE));
     { input_add_srv_name = new Fl_Input(60, 30, 170, 25, _("Nombre:"));
       input_add_srv_name->align(Fl_Align(FL_ALIGN_TOP));
       this->input_add_srv_name->maximum_size(100);
@@ -1746,7 +1747,7 @@ flgui::flgui() {
       } // Fl_Round_Button* radio_add_srv_icecast
       o->end();
     } // Fl_Group* o
-    { Fl_Button* o = new Fl_Button(10, 340, 74, 25, _("&Cancelar"));
+    { Fl_Button* o = new Fl_Button(10, 340, 78, 25, _("&Cancelar"));
       o->box(FL_ENGRAVED_BOX);
       o->callback((Fl_Callback*)cb_Cancelar);
     } // Fl_Button* o
@@ -1754,7 +1755,7 @@ flgui::flgui() {
       button_add_srv_add->box(FL_ENGRAVED_BOX);
       button_add_srv_add->callback((Fl_Callback*)cb_button_add_srv_add);
     } // Fl_Button* button_add_srv_add
-    { button_add_srv_save = new Fl_Button(224, 340, 74, 25, _("&Guardar"));
+    { button_add_srv_save = new Fl_Button(220, 340, 78, 25, _("&Guardar"));
       button_add_srv_save->box(FL_ENGRAVED_BOX);
       button_add_srv_save->callback((Fl_Callback*)cb_button_add_srv_save);
     } // Fl_Button* button_add_srv_save
@@ -1768,20 +1769,22 @@ flgui::flgui() {
   } // Fl_Double_Window* window_add_srv
   { window_add_icy = new Fl_Double_Window(305, 380, _("Informaci\303\263n del Streaming"));
     window_add_icy->user_data((void*)(this));
-    { input_add_icy_name = new Fl_Input(65, 35, 170, 25, _("Nombre del streaming:"));
+    window_add_icy->align(Fl_Align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE));
+    { input_add_icy_name = new Fl_Input(10, 35, 285, 25, _("Nombre del streaming:"));
       input_add_icy_name->tooltip(_("The name of your new ICY-entrie"));
       input_add_icy_name->align(Fl_Align(FL_ALIGN_TOP));
       this->input_add_icy_name->maximum_size(100);
     } // Fl_Input* input_add_icy_name
-    { input_add_icy_desc = new Fl_Input(10, 145, 170, 25, _("Descripci\303\263n:"));
+    { input_add_icy_desc = new Fl_Input(10, 80, 285, 45, _("Descripci\303\263n:"));
+      input_add_icy_desc->type(4);
       input_add_icy_desc->align(Fl_Align(FL_ALIGN_TOP_LEFT));
       this->input_add_icy_desc->maximum_size(100);
     } // Fl_Input* input_add_icy_desc
-    { input_add_icy_genre = new Fl_Input(185, 145, 110, 25, _("G\303\251nero:"));
+    { input_add_icy_genre = new Fl_Input(10, 190, 170, 25, _("G\303\251nero:"));
       input_add_icy_genre->align(Fl_Align(FL_ALIGN_TOP_LEFT));
       this->input_add_icy_genre->maximum_size(100);
     } // Fl_Input* input_add_icy_genre
-    { input_add_icy_url = new Fl_Input(10, 190, 170, 25, _("URL:"));
+    { input_add_icy_url = new Fl_Input(10, 145, 285, 25, _("URL:"));
       input_add_icy_url->align(Fl_Align(FL_ALIGN_TOP_LEFT));
       this->input_add_icy_url->maximum_size(100);
     } // Fl_Input* input_add_icy_url
@@ -1797,10 +1800,10 @@ flgui::flgui() {
       input_add_icy_aim->align(Fl_Align(FL_ALIGN_TOP_LEFT));
       this->input_add_icy_aim->maximum_size(100);
     } // Fl_Input* input_add_icy_aim
-    { check_add_icy_pub = new Fl_Check_Button(10, 270, 166, 20, _("Servidor p\303\272""blico"));
+    { check_add_icy_pub = new Fl_Check_Button(10, 270, 175, 20, _("Servidor p\303\272""blico"));
       check_add_icy_pub->down_box(FL_DOWN_BOX);
     } // Fl_Check_Button* check_add_icy_pub
-    { Fl_Button* o = new Fl_Button(10, 340, 74, 25, _("&Cancelar"));
+    { Fl_Button* o = new Fl_Button(10, 340, 78, 25, _("&Cancelar"));
       o->box(FL_ENGRAVED_BOX);
       o->callback((Fl_Callback*)cb_Cancelar1);
     } // Fl_Button* o
@@ -1808,7 +1811,7 @@ flgui::flgui() {
       button_add_icy_add->box(FL_ENGRAVED_BOX);
       button_add_icy_add->callback((Fl_Callback*)cb_button_add_icy_add);
     } // Fl_Button* button_add_icy_add
-    { button_add_icy_save = new Fl_Button(224, 340, 74, 25, _("&Guardar"));
+    { button_add_icy_save = new Fl_Button(220, 340, 78, 25, _("&Guardar"));
       button_add_icy_save->box(FL_ENGRAVED_BOX);
       button_add_icy_save->callback((Fl_Callback*)cb_button_add_icy_save);
     } // Fl_Button* button_add_icy_save

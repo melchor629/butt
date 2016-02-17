@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
     }
     else if(p == NULL)
     {
-        ALERT(gettext("No se ha encontrado el directorio del usuario"));
+        ALERT(_("No se ha encontrado el directorio del usuario"));
         return 1;
     }
     else

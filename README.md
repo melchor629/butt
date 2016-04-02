@@ -1,7 +1,9 @@
-butt (0.1.16) Manual
+butt (0.1.17) Manual
 ====================
 Author: Daniel Nöthen
 :email: butt at danielnoethen dot de
+
+This repo is modified by: @melchor629
 
 About
 -----

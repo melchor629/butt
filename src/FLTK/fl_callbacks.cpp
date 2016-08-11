@@ -620,6 +620,11 @@ void button_disconnect_cb(void)
         Fl::remove_timeout(&songfile_timer);
         song_timeout_running = 0;
     }
+    
+    if(app_timeout_running) {
+        Fl::remove_timeout(&app_timer);
+        app_timeout_running = false;
+    }
 
     if(connected)
     {
@@ -2826,6 +2831,7 @@ void change_app_cb() {
         Fl::remove_timeout(&app_timer);
         Fl::add_timeout(0.1, &app_timer);
     }
+    unsaved_changes = true;
 }
 
 char slider_compressor_label[100];

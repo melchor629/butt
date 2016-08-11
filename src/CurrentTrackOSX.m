@@ -58,7 +58,7 @@ currentTrackFunction getCurrentTrackFunctionFromId(int i) {
     switch(i) {
         case 0: return &getCurrentTrackFromiTunes;
         case 1: return &getCurrentTrackFromSpotify;
-        case 2: return getCurrentTrackFromVOX;
+        case 2: return &getCurrentTrackFromVOX;
         default: return NULL;
     }
 }

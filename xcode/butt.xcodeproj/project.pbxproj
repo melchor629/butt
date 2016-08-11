@@ -180,18 +180,15 @@
 				48E777651C70A31400EAF9F6 /* Encoders */,
 				48E777661C70A35700EAF9F6 /* Utilities */,
 				3CC6F28419083487001993B1 /* FLTK */,
+				480DC3E91D2A8CD1001EC37D /* Streaming Clients */,
 				3CC6F28019083487001993B1 /* butt.cpp */,
 				3CC6F28119083487001993B1 /* butt.h */,
 				48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */,
 				48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */,
 				488B76A91B5FAA5600FAFCB2 /* currentTrack.cpp */,
 				488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */,
-				3CC6F29119083487001993B1 /* icecast.cpp */,
-				3CC6F29219083487001993B1 /* icecast.h */,
 				3CC6F29919083487001993B1 /* port_audio.cpp */,
 				3CC6F29A19083487001993B1 /* port_audio.h */,
-				3CC6F29D19083487001993B1 /* shoutcast.cpp */,
-				3CC6F29E19083487001993B1 /* shoutcast.h */,
 				3CC6F2A919083488001993B1 /* vu_meter.cpp */,
 				3CC6F2AA19083488001993B1 /* vu_meter.h */,
 				4817DC041B29AD0F006523B8 /* BUTT */,
@@ -238,6 +235,17 @@
 				3CC6F28619083487001993B1 /* Fl_My_Double_Window.H */,
 			);
 			path = FL;
+			sourceTree = "<group>";
+		};
+		480DC3E91D2A8CD1001EC37D /* Streaming Clients */ = {
+			isa = PBXGroup;
+			children = (
+				3CC6F29119083487001993B1 /* icecast.cpp */,
+				3CC6F29219083487001993B1 /* icecast.h */,
+				3CC6F29D19083487001993B1 /* shoutcast.cpp */,
+				3CC6F29E19083487001993B1 /* shoutcast.h */,
+			);
+			name = "Streaming Clients";
 			sourceTree = "<group>";
 		};
 		4817DBE61B29AA3C006523B8 /* images */ = {

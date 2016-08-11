@@ -58,6 +58,9 @@ case $host_os in
 		AC_CHECK_LIB([gettextpo], [setlocale], [],
 			[AC_MSG_ERROR([**** Could not find gettextpo     ****])]
 			)
+        AC_CHECK_LIB([dl], [dlopen], [],
+		        [AC_MSG_ERROR([**** Could not find libdl     ****])]
+	            )
 		;;
 esac
 
@@ -68,8 +71,34 @@ AC_CHECK_HEADER([winsock2.h],
 		host_os="windows"
 		],
 	       )
-AM_CONDITIONAL(WINDOWS, test "$host_os" = "windows")
-AM_CONDITIONAL(OSX, test "$host_os" = "darwin*")
+
+build_linux=no
+build_windows=no
+build_mac=no
+
+# Detect the target system
+case "${host_os}" in
+    linux*)
+        build_linux=yes
+        AC_MSG_WARN([Linux])
+        ;;
+    cygwin*|mingw*|windows)
+        build_windows=yes
+        AC_MSG_WARN([Windows])
+        ;;
+    darwin*)
+        build_mac=yes
+        AC_MSG_WARN([macOS])
+        ;;
+    *)
+        AC_MSG_ERROR(["OS $host_os is not supported"])
+        ;;
+esac
+
+# Pass the conditionals to automake
+AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
+AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
+AM_CONDITIONAL([OSX], [test "$build_mac" = "yes"])
 
 AC_CHECK_PROG([FLTKCONFIG],[fltk-config], [fltk-config])
 
@@ -101,18 +130,18 @@ AC_FUNC_REALLOC
 AC_CHECK_FUNCS([gethostbyaddr gethostbyname memset pow select socket strchr strdup strpbrk strrchr strstr])
 
 # Adds visibility of streaming configuration
-AC_ARG_ENABLE([stream-conf],
+AC_ARG_ENABLE([stream_conf],
 	AS_HELP_STRING([--disable-stream-conf], [Disable stream configration visibility, for customized clients]))
-AS_IF([test "x%disable_stream-conf" = "xyes"], [
-	AC_DEFINE([VISIBILITY], [1], [Stream conf visibility enabled])
-], [
+AS_IF([test "x$enable_stream_conf" = "xno"], [
 	AC_DEFINE([VISIBILITY], [0], [Stream conf visibility disabled])
+], [
+	AC_DEFINE([VISIBILITY], [1], [Stream conf visibility enabled])
 ])
 
 # Adds support to libfdk-aac or libaacplus
 AC_ARG_ENABLE([aac],
 	AS_HELP_STRING([--enable-aac], [Enable support to AAC using non-free libraries libfdk-aac or libaacplus]))
-AS_IF([test "x%enable_aac" = "xyes"], [
+AS_IF([test "x$enable_aac" = "xyes"], [
 	AC_CHECK_LIB([fdk-aac], [aacEncOpen], [], [
 		AC_CHECK_LIB([aacplus], [aacplusEncOpen],
 				[AC_MSG_WARN([AAC-LC will not be supported])],

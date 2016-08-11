@@ -26,7 +26,11 @@ endif
 
 if OSX
 butt_SOURCES += CurrentTrackOSX.h CurrentTrackOSX.m
-else
+endif
+if LINUX
+butt_SOURCES += currentTrack.h currentTrackLinux.cpp
+endif
+if WINDOWS
 butt_SOURCES += currentTrack.h currentTrack.cpp
 endif
 

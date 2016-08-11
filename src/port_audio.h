@@ -21,8 +21,6 @@
 
 #include <portaudio.h>
 
-#include "lame_encode.h"
-
 typedef struct
 {
     char *name;

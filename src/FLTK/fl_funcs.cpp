@@ -407,5 +407,8 @@ void init_choice_app(void* ptr) {
     fl_g->choice_app->add("iTunes", 0, (Fl_Callback*) &change_app_cb);
     fl_g->choice_app->add("Spotify", 0, (Fl_Callback*) &change_app_cb);
     fl_g->choice_app->add("VOX", 0, (Fl_Callback*) &change_app_cb);
+#elif __linux__
+    fl_g->choice_app->add("Rhythmbox", 0, (Fl_Callback*) &change_app_cb);
+    fl_g->choice_app->add("Banshee", 0, (Fl_Callback*) &change_app_cb);
 #endif
 }

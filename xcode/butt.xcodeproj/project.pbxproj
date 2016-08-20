@@ -94,8 +94,8 @@
 		3CC6F28A19083487001993B1 /* fl_funcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fl_funcs.h; sourceTree = "<group>"; };
 		3CC6F28B19083487001993B1 /* Fl_ILM216.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fl_ILM216.cpp; sourceTree = "<group>"; };
 		3CC6F28C19083487001993B1 /* Fl_ILM216.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fl_ILM216.h; sourceTree = "<group>"; };
-		3CC6F28D19083487001993B1 /* flgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = flgui.cpp; sourceTree = "<group>"; };
-		3CC6F28E19083487001993B1 /* flgui.fl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flgui.fl; sourceTree = "<group>"; };
+		3CC6F28D19083487001993B1 /* flgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = flgui.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		3CC6F28E19083487001993B1 /* flgui.fl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = flgui.fl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		3CC6F28F19083487001993B1 /* flgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flgui.h; sourceTree = "<group>"; };
 		3CC6F29119083487001993B1 /* icecast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = icecast.cpp; path = ../src/icecast.cpp; sourceTree = "<group>"; };
 		3CC6F29219083487001993B1 /* icecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = icecast.h; path = ../src/icecast.h; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		3CC6F29A19083487001993B1 /* port_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = port_audio.h; path = ../src/port_audio.h; sourceTree = "<group>"; };
 		3CC6F29B19083487001993B1 /* ringbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ringbuffer.cpp; path = ../src/ringbuffer.cpp; sourceTree = "<group>"; };
 		3CC6F29C19083487001993B1 /* ringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ringbuffer.h; path = ../src/ringbuffer.h; sourceTree = "<group>"; };
-		3CC6F29D19083487001993B1 /* shoutcast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shoutcast.cpp; path = ../src/shoutcast.cpp; sourceTree = "<group>"; };
+		3CC6F29D19083487001993B1 /* shoutcast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = shoutcast.cpp; path = ../src/shoutcast.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		3CC6F29E19083487001993B1 /* shoutcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shoutcast.h; path = ../src/shoutcast.h; sourceTree = "<group>"; };
 		3CC6F29F19083487001993B1 /* sockfuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sockfuncs.cpp; path = ../src/sockfuncs.cpp; sourceTree = "<group>"; };
 		3CC6F2A019083487001993B1 /* sockfuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sockfuncs.h; path = ../src/sockfuncs.h; sourceTree = "<group>"; };

@@ -98,8 +98,8 @@ void fill_cfg_widgets(void)
         fl_g->choice_cfg_codec->value(CHOICE_OGG);
     else if(!strcmp(cfg.audio.codec, "opus"))
         fl_g->choice_cfg_codec->value(CHOICE_OPUS);
-    else if(!strcmp(cfg.audio.codec, "aac+"))
-        fl_g->choice_cfg_codec->value(3);
+    else if(!strcmp(cfg.audio.codec, "aac"))
+        fl_g->choice_cfg_codec->value(CHOICE_AAC);
 
 
     if(cfg.audio.channel == 1)
@@ -149,8 +149,8 @@ void fill_cfg_widgets(void)
     {
         fl_g->choice_rec_codec->value(CHOICE_WAV);
         fl_g->choice_rec_bitrate->deactivate();
-    } else { //aac-aac+
-        fl_g->choice_rec_codec->value(CHOICE_WAV + 1);
+    } else {
+        fl_g->choice_rec_codec->value(CHOICE_AAC);
     }
 
     for(i = 0; bitrate[i] != 0; i++)
@@ -196,7 +196,7 @@ void fill_cfg_widgets(void)
     slider_equalizer5_cb(-cfg.dsp.gain5); fl_g->equalizerSlider5->value(-cfg.dsp.gain5);
 
     extern char slider_compressor_label[];
-    snprintf(slider_compressor_label, 100, "%s (%.0f%%)", _("Cantidad de compresión"), (1.0f - cfg.dsp.compQuantity) * 100);
+    snprintf(slider_compressor_label, 100, "%s %.0f%%", _("Compression of"), (1.0f - cfg.dsp.compQuantity) * 100);
     fl_g->compressorQuantitySlider->label(slider_compressor_label);
     unsaved_changes = false;
 }
@@ -337,7 +337,7 @@ void test_file_extension(void)
 
     current_ext = util_get_file_extension(cfg.rec.filename);
 
-    // Append extension i
+    // Append extension
     if(current_ext == NULL)
     {
         cfg.rec.filename = (char*)realloc(cfg.rec.filename, strlen(cfg.rec.filename)+strlen(cfg.rec.codec)+2);
@@ -397,15 +397,15 @@ void init_main_gui_and_audio(void)
     flac_rec.samplerate = cfg.audio.samplerate;
     flac_enc_reinit(&flac_rec);
 
-    aacplus_stream.channels = cfg.audio.channel;
-    aacplus_stream.bitrate = cfg.audio.bitrate * 1000;//(cfg.audio.bitrate > 64 ? 64 : cfg.audio.bitrate) * 1000;
-    aacplus_stream.samplerate = cfg.audio.samplerate;
-    aac_enc_reinit(&aacplus_stream);
+    aac_stream.channels = cfg.audio.channel;
+    aac_stream.bitrate = cfg.audio.bitrate * 1000;
+    aac_stream.samplerate = cfg.audio.samplerate;
+    aac_enc_reinit(&aac_stream);
 
-    aacplus_rec.channels = cfg.audio.channel;
-    aacplus_rec.bitrate = cfg.rec.bitrate * 1000;
-    aacplus_rec.samplerate = cfg.audio.samplerate;
-    aac_enc_reinit(&aacplus_rec);
+    aac_rec.channels = cfg.audio.channel;
+    aac_rec.bitrate = cfg.rec.bitrate * 1000;
+    aac_rec.samplerate = cfg.audio.samplerate;
+    aac_enc_reinit(&aac_rec);
 }
 
 void init_choice_app(void* ptr) {

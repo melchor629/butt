@@ -67,7 +67,7 @@ int cfg_write_file(char *path)
         return 1;
     }
 
-    fprintf(cfg_fd, "This is a configuration file for butt (broadcast using this tool)\n\n");
+    fprintf(cfg_fd, "#This is a configuration file for butt (broadcast using this tool)\n\n");
     fprintf(cfg_fd, "[main]\n");
 
     fprintf(cfg_fd, "bg_color = %d\n", cfg.main.bg_color);
@@ -619,7 +619,7 @@ int cfg_create_default(void)
 #endif
 
 
-    fprintf(cfg_fd, "This is a configuration file for butt (broadcast using this tool)\n\n");
+    fprintf(cfg_fd, "#This is a configuration file for butt (broadcast using this tool)\n\n");
     fprintf(cfg_fd, 
             "[main]\n"
             "server = Recaserver\n"

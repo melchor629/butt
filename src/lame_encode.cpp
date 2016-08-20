@@ -37,7 +37,6 @@ int lame_enc_init(lame_enc *lame)
 
     if((rc = lame_init_params(lame->gfp)) < 0)
     {
-        printf("bitrate: %d\n", lame->bitrate);
         snprintf(info_buf, sizeof(info_buf),
                 _("unable to init lame params %d"), rc);
 
@@ -62,7 +61,7 @@ int lame_enc_reinit(lame_enc *lame)
 void lame_enc_close(lame_enc *lame)
 {
     while(lame->state == LAME_BUSY)
-       ;
+        ;
 
     if (lame->gfp != NULL)
         lame_close(lame->gfp);
@@ -78,6 +77,7 @@ int lame_enc_encode(lame_enc *lame, short *pcm_buf, char *enc_buf, int samples, 
         return 0;
 
     lame->state = LAME_BUSY;
+
 
     if(lame->channel == 2) // stereo
         rc = lame_encode_buffer_interleaved(lame->gfp, pcm_buf, samples, (unsigned char*)enc_buf, size);

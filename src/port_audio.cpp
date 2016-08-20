@@ -254,16 +254,12 @@ void *snd_stream_thread(void *data)
 
     int (*xc_send)(char *buf, int buf_len) = NULL;
 
-    // Read always chunks of 960 frames from the audio ringbuffer to be
-    // compatible with OPUS
-    bytes_to_read = 960 * sizeof(short)*cfg.audio.channel;
-
 
     if(cfg.srv[cfg.selected_srv]->type == SHOUTCAST)
         xc_send = &sc_send;
     else //Icecast
         xc_send = &ic_send;
-
+    
     while(connected)
     {
 
@@ -273,14 +269,21 @@ void *snd_stream_thread(void *data)
 
         if(!strcmp(cfg.audio.codec, "opus"))
         {
+            
+            // Read always chunks of 960 frames from the audio ringbuffer to be
+            // compatible with OPUS
+            bytes_to_read = 960 * sizeof(short)*cfg.audio.channel;
+
             while ((rb_filled(&stream_rb)) >= bytes_to_read)
             {
+                // Read always chunks of 960 frames from the audio ringbuffer to be
+                bytes_to_read = 960 * sizeof(short)*cfg.audio.channel;
                 rb_read_len(&stream_rb, audio_buf, bytes_to_read);
 
                 encode_bytes_read = opus_enc_encode(&opus_stream, (short*)audio_buf,
                         enc_buf, bytes_to_read/(2*cfg.audio.channel));
 
-                if((sent = xc_send(enc_buf, bytes_to_read)) == -1)
+                if((sent = xc_send(enc_buf, encode_bytes_read)) == -1)
                 {
                     connected = 0;
                 }
@@ -306,8 +309,8 @@ void *snd_stream_thread(void *data)
                 encode_bytes_read = vorbis_enc_encode(&vorbis_stream, (short*)audio_buf, 
                         enc_buf, rb_bytes_read/(2*cfg.audio.channel));
             
-            if(!strcmp(cfg.audio.codec, "aac+")) {
-                encode_bytes_read = aac_enc_encode(&aacplus_stream, (short*) audio_buf,
+            if(!strcmp(cfg.audio.codec, "aac")) {
+                encode_bytes_read = aac_enc_encode(&aac_stream, (short*) audio_buf,
                         enc_buf, rb_bytes_read/2/cfg.audio.channel, stream_rb.size*10);
             }
 
@@ -370,8 +373,7 @@ void* snd_rec_thread(void *data)
     
     char *enc_buf = (char*)malloc(rec_rb.size * sizeof(char)*10);
     char *audio_buf = (char*)malloc(rec_rb.size * sizeof(char)*10);
-    
-    bytes_to_read = 960 * sizeof(short)*cfg.audio.channel;
+
     ogg_header_written = 0;
     opus_header_written = 0;
 
@@ -381,7 +383,7 @@ void* snd_rec_thread(void *data)
 
         if(next_file == 1)
         {
-            if(!strcmp(cfg.rec.codec, "flac"))
+            if(!strcmp(cfg.rec.codec, "flac")) // The flac encoder closes the file
                 flac_enc_close(&flac_rec);
             else
                 fclose(cfg.rec.fd);
@@ -411,6 +413,7 @@ void* snd_rec_thread(void *data)
         // ringbuffer at once 
         if(!strcmp(cfg.rec.codec, "opus"))
         {
+            bytes_to_read = 960 * sizeof(short)*cfg.audio.channel;
             while ((rb_filled(&rec_rb)) >= bytes_to_read)
             {
                 rb_read_len(&rec_rb, audio_buf, bytes_to_read);
@@ -474,13 +477,13 @@ void* snd_rec_thread(void *data)
             }
 
             if(!strcmp(cfg.rec.codec, "aac")) {
-                enc_bytes_read = aac_enc_encode(&aacplus_rec, (short*) audio_buf, enc_buf, rb_bytes_read / (2*cfg.audio.channel), cfg.audio.channel);
+                enc_bytes_read = aac_enc_encode(&aac_rec, (short*) audio_buf, enc_buf, rb_bytes_read / (2*cfg.audio.channel), cfg.audio.channel);
                 kbytes_written += fwrite(enc_buf, 1, enc_bytes_read, cfg.rec.fd) / 1024.0;
             }
         }
     }
 
-    if(!strcmp(cfg.rec.codec, "flac"))
+    if(!strcmp(cfg.rec.codec, "flac")) // The flac encoder closes the file
         flac_enc_close(&flac_rec);
     else
         fclose(cfg.rec.fd);

@@ -65,28 +65,28 @@ void display_info_timer(void*)
 
     if(display_info == SENT_DATA)
     {
-        sprintf(lcd_text_buf, _("Enviado\n%0.2lfMB"),
+        sprintf(lcd_text_buf, _("Sent\n%0.2lfMB"),
                 kbytes_sent / 1024);
         print_lcd(lcd_text_buf, 0, 1);
     }
 
     if(display_info == STREAM_TIME && timer_is_elapsed(&stream_timer))
     {
-        sprintf(lcd_text_buf, _("Tiempo\n%s"),
+        sprintf(lcd_text_buf, _("Time\n%s"),
                 timer_get_time_str(&stream_timer));
         print_lcd(lcd_text_buf, 0, 1);
     }
 
     if(display_info == REC_TIME && timer_is_elapsed(&rec_timer))
     {
-        sprintf(lcd_text_buf, _("Tiempo grabando\n%s"),
+        sprintf(lcd_text_buf, _("Time recording\n%s"),
                 timer_get_time_str(&rec_timer));
         print_lcd(lcd_text_buf, 0, 1);
     }
 
     if(display_info == REC_DATA)
     {
-        sprintf(lcd_text_buf, _("Tamaño grabado\n%0.2lfMB"),
+        sprintf(lcd_text_buf, _("Size recorded\n%0.2lfMB"),
                 kbytes_written / 1024);
         print_lcd(lcd_text_buf, 0, 1);
     }
@@ -136,7 +136,7 @@ void is_connected_timer(void*)
 {
     if(!connected)
     {
-        print_info(_("ERROR: Conexión perdida\nReconectando..."), 1);
+        print_info(_("ERROR: Connexion lost\nReconnecting..."), 1);
         if(cfg.srv[cfg.selected_srv]->type == SHOUTCAST)
             sc_disconnect();
         else
@@ -170,19 +170,26 @@ void cfg_win_pos_timer(void*)
     Fl::repeat_timeout(0.1, &cfg_win_pos_timer);
 }
 
-void split_recording_timer(void *initial_call)
+void split_recording_timer(void *mode)
 {
-    int zero = 0;
+    int i;
+    int button_clicked = 0;
+    static int with_repeat = 0;
     char *insert_pos;
     char *path;
     char *ext;
-    char file_num_str[10];
-    static int file_num;
+    char file_num_str[12];
+    char *path_for_index_loop;
     struct tm *local_time;
     const time_t t = time(NULL);
 
-    if(*((int*)initial_call) == 1)
-        file_num = 2;
+    if(recording == 0)
+        return;
+
+    if(*((int*)mode) == 1)
+        with_repeat = 1;
+    else
+        button_clicked = 1;
 
     // Values < 0 are not allowed
     if(fl_g->input_rec_split_time->value() < 0)
@@ -191,56 +198,76 @@ void split_recording_timer(void *initial_call)
         return;
     }
 
-    path = strdup(cfg.rec.path);
+    path = strdup(cfg.rec.path_fmt);
+    expand_string(&path);
     ext = util_get_file_extension(cfg.rec.filename);
     if(ext == NULL)
     {
-        print_info(_("No se ha podido detectar una extensión de archivo\n"
-                "Se ha desactivado la división del archivo"), 0);
+        print_info(_("Cannot detect file extension\n"
+                "Splitting file is deactivated"), 0);
         free(path);
         return;
     }
 
 
-    snprintf(file_num_str, sizeof(file_num_str), "-%d", file_num);
-
-    insert_pos = strrstr(path, ext);
-    strinsrt(&path, file_num_str, insert_pos-1);
-
-
+    path_for_index_loop = strdup(path);
+    
+    //check if the file already exists
     if((next_fd = fl_fopen(path, "rb")) != NULL)
     {
-        print_info(_("Siguiente archivo "), 0);
-        print_info(path, 0);
-        print_info(_(" ya existe\nbutt se mantendrá en el actual"), 0);
         fclose(next_fd);
-        free(path);
-        return;
+        
+        //increment the index until we find a filename that doesn't exist yet
+        for(i = 1; /*inf*/; i++) // index_loop
+        {
+            
+            free(path);
+            path = strdup(path_for_index_loop);
+            
+            //find begin of the file extension
+            insert_pos = strrstr(path, ext);
+            
+            //Put index between end of file name end beginning of extension
+            snprintf(file_num_str, sizeof(file_num_str), "-%d", i);
+            strinsrt(&path, file_num_str, insert_pos-1);
+            
+            if((next_fd = fl_fopen(path, "rb")) == NULL)
+                break; // found valid file name
+
+            if(i == 0x7FFFFFFF) // 2^31-1
+            {
+                free(path);
+                free(path_for_index_loop);
+                print_info(_("Could not find a valid filename for next file"
+                             "\nbutt keeps recording to current file"), 0);
+                return;
+            }
+        }
     }
 
     if((next_fd = fl_fopen(path, "wb")) == NULL)
     {
-        fl_alert(_("No se ha podido abrir:\n%s"), path);
+        fl_alert(_("Could not open:\n%s"), path);
         free(path);
         return;
     }
 
-    print_info(_("Grabando en: "), 0);
+    print_info(_("Recording to: "), 0);
     print_info(path, 0);
-
-    file_num++;
-
 
     next_file = 1;
     free(path);
 
-    local_time = localtime(&t);
+    if(with_repeat == 1 && button_clicked == 0)
+    {
+        local_time = localtime(&t);
 
-    // Make sure that the 60 minutes boundary is not violated in case sync_to_hour == 1
-    if((cfg.rec.sync_to_hour == 1) && ((local_time->tm_min + cfg.rec.split_time) > 60))
-        Fl::repeat_timeout(60*(60 - local_time->tm_min), &split_recording_timer, &zero);
-    else
-        Fl::repeat_timeout(60*cfg.rec.split_time, &split_recording_timer, &zero);
+        // Make sure that the 60 minutes boundary is not violated in case sync_to_hour == 1
+        if((cfg.rec.sync_to_hour == 1) && ((local_time->tm_min + cfg.rec.split_time) > 60))
+            Fl::repeat_timeout(60*(60 - local_time->tm_min), &split_recording_timer, &with_repeat);
+        else
+            Fl::repeat_timeout(60*cfg.rec.split_time, &split_recording_timer, &with_repeat);
+    }
 
 }
 
@@ -272,7 +299,7 @@ void songfile_timer(void*)
 
    if((cfg.main.song_fd = fl_fopen(cfg.main.song_path, "rb")) == NULL)
    {
-	   snprintf(msg, sizeof(msg), _("No se ha podido abrir: %s.\nSe reintentará en 5s"),
+	   snprintf(msg, sizeof(msg), _("Could not open: %s.\nWill try in 5s"),
 					   cfg.main.song_path); 
 
        print_info(msg, 1);
@@ -286,7 +313,9 @@ void songfile_timer(void*)
    {
        len = strlen(song);
        //remove newline character
-       if(song[len-1] == '\n' || song[len-1] == '\r')
+       if(song[len-2] == '\r') // Windows
+           song[len-2] = '\0';
+       else if(song[len-1] == '\n') // OSX, Linux
            song[len-1] = '\0';
 
        if(cfg.main.song == NULL || strcmp(cfg.main.song, song)) {

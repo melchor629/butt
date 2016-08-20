@@ -38,7 +38,6 @@
 #include "sockfuncs.h"
 #include "flgui.h"
 #include "fl_funcs.h"
-#include "util.h"
 
 void send_icy_header(char *key, char *val)
 {
@@ -63,16 +62,10 @@ int sc_connect(void)
     char recv_buf[100];
     char send_buf[100];
     static bool error_printed = 0;
-    const char* content_type;
     
-    if(!strcmp(cfg.audio.codec, "mp3"))
-        content_type = "audio/mpeg";
-    else if(!strcmp(cfg.audio.codec, "aac+"))
-        content_type = "audio/aacp";
-
     stream_socket = sock_connect(cfg.srv[cfg.selected_srv]->addr,
-            cfg.srv[cfg.selected_srv]->port+1, CONN_TIMEOUT);
-
+                                 cfg.srv[cfg.selected_srv]->port+1, CONN_TIMEOUT);
+    
     if(stream_socket < 0)
     {
         switch(stream_socket)
@@ -111,8 +104,15 @@ int sc_connect(void)
             strlen(cfg.srv[cfg.selected_srv]->pwd), SEND_TIMEOUT);
     sock_send(&stream_socket, "\n", 1, SEND_TIMEOUT);
 
+    // Make butt compatible to proxies/load balancers. Thanks to boyska
+    if(cfg.srv[cfg.selected_srv]->port == 80)
+        snprintf(send_buf, sizeof(send_buf), "Host: %s\r\n", cfg.srv[cfg.selected_srv]->addr);
+    else
+        snprintf(send_buf, sizeof(send_buf), "Host: %s:%d\r\n", cfg.srv[cfg.selected_srv]->addr, cfg.srv[cfg.selected_srv]->port);
+    sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
 
-   if(cfg.main.num_of_icy > 0)
+
+    if(cfg.main.num_of_icy > 0)
     {
         send_icy_header((char*)"icy-name", cfg.icy[cfg.selected_icy]->name);
         send_icy_header((char*)"icy-genre", cfg.icy[cfg.selected_icy]->genre);
@@ -128,20 +128,24 @@ int sc_connect(void)
         send_icy_header((char*)"icy-pub", (char*)"0");
     }
 
-    send_icy_header((char*)"content-type", (char*)content_type);
+    
     snprintf(send_buf, sizeof(send_buf), "%u", cfg.audio.bitrate);
     send_icy_header((char*)"icy-br", send_buf);
 
-    sock_send(&stream_socket, "\n\n", 2, SEND_TIMEOUT);
-
-    /*
+    
+    
     sock_send(&stream_socket, "content-type:", 13, SEND_TIMEOUT);
 
     if(!strcmp(cfg.audio.codec, "mp3"))
-    {
         strcpy(send_buf, "audio/mpeg");
-        sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
-    }*/
+    else if(!strcmp(cfg.audio.codec, "aac"))
+        strcpy(send_buf,  "audio/aac");
+    else
+        strcpy(send_buf,  "audio/ogg");
+    
+    sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
+    
+    sock_send(&stream_socket, "\r\n\r\n", 4, SEND_TIMEOUT);
 
 
     if((ret = sock_recv(&stream_socket, recv_buf, sizeof(recv_buf)-1, RECV_TIMEOUT)) == 0)
@@ -195,7 +199,7 @@ int sc_update_song(void)
     char *song_buf;
 
     web_socket = sock_connect(cfg.srv[cfg.selected_srv]->addr,
-            cfg.srv[cfg.selected_srv]->port, CONN_TIMEOUT);
+                              cfg.srv[cfg.selected_srv]->port, CONN_TIMEOUT);
 
     if(web_socket < 0)
     {
@@ -224,14 +228,25 @@ int sc_update_song(void)
 
     strrpl(&song_buf, (char*)" ", (char*)"%20", MODE_ALL);
     strrpl(&song_buf, (char*)"&", (char*)"%26", MODE_ALL);
-
-    snprintf(send_buf, 500, "GET /admin.cgi?pass=%s&mode=updinfo&song=%s&url= HTTP/1.0\n"
-                      "User-Agent: ShoutcastDSP (Mozilla Compatible)\n\n",
-                      cfg.srv[cfg.selected_srv]->pwd,
-                      song_buf
-                     );
-
+    
+    snprintf(send_buf, 500, "GET /admin.cgi?pass=%s&mode=updinfo&song=%s&url= HTTP/1.0\r\n"
+             "User-Agent: ShoutcastDSP (Mozilla Compatible)\r\n",
+             cfg.srv[cfg.selected_srv]->pwd,
+             song_buf
+             );
+    
     sock_send(&web_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
+    
+    
+    if(cfg.srv[cfg.selected_srv]->port == 80)
+        snprintf(send_buf, sizeof(send_buf), "Host: %s\r\n\r\n", cfg.srv[cfg.selected_srv]->addr);
+    else
+        snprintf(send_buf, sizeof(send_buf), "Host: %s:%d\r\n\r\n", cfg.srv[cfg.selected_srv]->addr, cfg.srv[cfg.selected_srv]->port);
+    
+    sock_send(&web_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
+    
+    
+    
     sock_close(&web_socket);
     free(song_buf);
 

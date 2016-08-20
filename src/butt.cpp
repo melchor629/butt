@@ -79,8 +79,8 @@ vorbis_enc vorbis_rec;
 opus_enc opus_stream;
 opus_enc opus_rec;
 flac_enc flac_rec;
-aac_enc aacplus_stream;
-aac_enc aacplus_rec;
+aac_enc aac_stream;
+aac_enc aac_rec;
 
 
 int main(int argc, char *argv[])
@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 
 
     snprintf(info_buf, sizeof(info_buf), "%s %s\nWritten by Daniel Nöthen\n"
-    	"PayPal: bipak@gmx.net\nModifications by Melchor Garau Madrigal", _("Iniciando"), PACKAGE_STRING);
+    	"PayPal: bipak@gmx.net\nModifications by Melchor Garau Madrigal", _("Starting"), PACKAGE_STRING);
     print_info(info_buf, 0);
 
 #ifdef _WIN32
@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
     }
     else if(p == NULL)
     {
-        ALERT(_("No se ha encontrado el directorio del usuario"));
+        ALERT(_("Could not found user's home directory"));
         return 1;
     }
     else
@@ -164,8 +164,10 @@ int main(int argc, char *argv[])
     lame_stream.gfp = NULL;
     lame_rec.gfp = NULL;
     flac_rec.encoder = NULL;
+    aac_stream.enc = NULL;
+    aac_rec.enc = NULL;
 
-    snprintf(info_buf, sizeof(info_buf), _("Leyendo configuración de %s"), cfg_path);
+    snprintf(info_buf, sizeof(info_buf), _("Reading configuration from %s"), cfg_path);
     print_info(info_buf, 0);
 
     if(snd_init() != 0)
@@ -176,15 +178,15 @@ int main(int argc, char *argv[])
 
     if(cfg_set_values(NULL) != 0)        //read config file and initialize config struct
     {
-        snprintf(info_buf, sizeof(info_buf), _("No se ha podido encontrar la configuración %s"), cfg_path);
+        snprintf(info_buf, sizeof(info_buf), _("Could not find configuration %s"), cfg_path);
         print_info(info_buf, 1);
 
         if(cfg_create_default())
         {
-            fl_alert(_("No se ha podidio crear el archivo de configuración %s\nbutt se va ha cerrar ahora"), cfg_path);
+            fl_alert(_("Couldn't create setting file %s\nbutt will close now"), cfg_path);
             return 1;
         }
-        sprintf(info_buf, _("butt ha creado el archivo de configuración inicial en\n%s\n"),
+        sprintf(info_buf, _("butt created initial configuration on\n%s\n"),
                 cfg_path );
 
         print_info(info_buf, 0);
@@ -200,7 +202,7 @@ int main(int argc, char *argv[])
     Fl::add_timeout(0.01, &vu_meter_timer);
     Fl::add_timeout(5, &display_rotate_timer);
 
-    strcpy(lcd_buf, _("En espera"));
+    strcpy(lcd_buf, _("Waiting"));
     PRINT_LCD(lcd_buf, 0, 1);
 
 	if(cfg.main.connect_at_startup)
@@ -209,7 +211,7 @@ int main(int argc, char *argv[])
     signal(SIGPIPE, SIG_IGN);
 
     snprintf(info_buf, sizeof(info_buf),
-            _("butt %s iniciado perfectamente"), VERSION);
+            _("butt %s started correctly"), VERSION);
     print_info(info_buf, 0);
 
     GUI_LOOP();

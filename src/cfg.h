@@ -34,8 +34,9 @@ enum {
     CHOICE_MP3 = 0,
     CHOICE_OGG = 1,
     CHOICE_OPUS = 2,
-    CHOICE_FLAC = 3,
-    CHOICE_WAV = 4
+    CHOICE_AAC = 3,
+    CHOICE_FLAC = 4,
+    CHOICE_WAV = 5
 };
 
 extern const char CONFIG_FILE[];
@@ -117,6 +118,7 @@ typedef struct
         char *filename;
         char *folder;
         char *path;
+        char *path_fmt;
         FILE *fd;
         int start_rec;
         int split_time;

@@ -123,12 +123,12 @@ private:
   static void cb_input_log_filename(Fl_Input*, void*);
   inline void cb__i(Fl_Button*, void*);
   static void cb_(Fl_Button*, void*);
-  inline void cb_Importar_i(Fl_Button*, void*);
-  static void cb_Importar(Fl_Button*, void*);
-  inline void cb_Guardar_i(Fl_Button*, void*);
-  static void cb_Guardar(Fl_Button*, void*);
-  inline void cb_Exportar_i(Fl_Button*, void*);
-  static void cb_Exportar(Fl_Button*, void*);
+  inline void cb_Import_i(Fl_Button*, void*);
+  static void cb_Import(Fl_Button*, void*);
+  inline void cb_Save_i(Fl_Button*, void*);
+  static void cb_Save(Fl_Button*, void*);
+  inline void cb_Export_i(Fl_Button*, void*);
+  static void cb_Export(Fl_Button*, void*);
 public:
   Fl_Group *server_connexion_g;
   Fl_Choice *choice_cfg_act_srv;
@@ -177,12 +177,12 @@ private:
   static void cb_OGG(Fl_Menu_*, void*);
   inline void cb_OPUS_i(Fl_Menu_*, void*);
   static void cb_OPUS(Fl_Menu_*, void*);
+  inline void cb_AAC_i(Fl_Menu_*, void*);
+  static void cb_AAC(Fl_Menu_*, void*);
   inline void cb_FLAC_i(Fl_Menu_*, void*);
   static void cb_FLAC(Fl_Menu_*, void*);
   inline void cb_WAV_i(Fl_Menu_*, void*);
   static void cb_WAV(Fl_Menu_*, void*);
-  inline void cb_AAC_i(Fl_Menu_*, void*);
-  static void cb_AAC(Fl_Menu_*, void*);
 public:
   Fl_Choice *choice_rec_bitrate;
 private:
@@ -260,8 +260,8 @@ public:
 private:
   inline void cb_choice_cfg_act_icy_i(Fl_Choice*, void*);
   static void cb_choice_cfg_act_icy(Fl_Choice*, void*);
-  inline void cb_A_i(Fl_Button*, void*);
-  static void cb_A(Fl_Button*, void*);
+  inline void cb_Add_i(Fl_Button*, void*);
+  static void cb_Add(Fl_Button*, void*);
 public:
   Fl_Button *button_cfg_edit_icy;
 private:
@@ -309,6 +309,8 @@ public:
 private:
   inline void cb_check_cfg_rec_i(Fl_Check_Button*, void*);
   static void cb_check_cfg_rec(Fl_Check_Button*, void*);
+  inline void cb_Split_i(Fl_Button*, void*);
+  static void cb_Split(Fl_Button*, void*);
 public:
   Fl_Check_Button *activateCompressorCheckButton;
 private:
@@ -356,8 +358,8 @@ public:
   Fl_Text_Display *equalizerGain4;
   Fl_Text_Display *equalizerGain5;
 private:
-  inline void cb_Reestabecer_i(Fl_Button*, void*);
-  static void cb_Reestabecer(Fl_Button*, void*);
+  inline void cb_Restart_i(Fl_Button*, void*);
+  static void cb_Restart(Fl_Button*, void*);
 public:
   Fl_Button *button_gui_text_color;
 private:
@@ -400,8 +402,8 @@ public:
 private:
   inline void cb_radio_add_srv_icecast_i(Fl_Round_Button*, void*);
   static void cb_radio_add_srv_icecast(Fl_Round_Button*, void*);
-  inline void cb_Cancelar_i(Fl_Button*, void*);
-  static void cb_Cancelar(Fl_Button*, void*);
+  inline void cb_Cancel_i(Fl_Button*, void*);
+  static void cb_Cancel(Fl_Button*, void*);
 public:
   Fl_Button *button_add_srv_add;
 private:
@@ -428,8 +430,8 @@ public:
   Fl_Input *input_add_icy_aim;
   Fl_Check_Button *check_add_icy_pub;
 private:
-  inline void cb_Cancelar1_i(Fl_Button*, void*);
-  static void cb_Cancelar1(Fl_Button*, void*);
+  inline void cb_Cancel1_i(Fl_Button*, void*);
+  static void cb_Cancel1(Fl_Button*, void*);
 public:
   Fl_Button *button_add_icy_add;
 private:

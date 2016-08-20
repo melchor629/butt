@@ -48,7 +48,7 @@ extern vorbis_enc vorbis_rec;
 extern opus_enc opus_stream;
 extern opus_enc opus_rec;
 extern flac_enc flac_rec;
-extern aac_enc aacplus_stream;
-extern aac_enc aacplus_rec;
+extern aac_enc aac_stream;
+extern aac_enc aac_rec;
 
 #endif

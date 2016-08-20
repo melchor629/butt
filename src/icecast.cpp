@@ -48,18 +48,20 @@ int ic_connect(void)
     int ret;
     int retval;
     int tries = 2;
+    int opus_supported = 0;
     char auth[150];
     char b64_auth[200];
     char recv_buf[250];
     char send_buf[250];
+    char msg[100];
     char *http_retval;
     static bool error_printed = 0;
 
-    for(int i = 0; i < tries; i++)
+    for(int try_cnt = 0; try_cnt < tries; try_cnt++)
     {
 
         stream_socket = sock_connect(cfg.srv[cfg.selected_srv]->addr,
-                cfg.srv[cfg.selected_srv]->port, CONN_TIMEOUT);
+                                     cfg.srv[cfg.selected_srv]->port, CONN_TIMEOUT);
 
         if(stream_socket < 0)
         {
@@ -95,25 +97,27 @@ int ic_connect(void)
 
 
 
-        if (i == 0)
+        if (try_cnt == 0)
         {
             // Try PUT method first. Supported since icecast 2.4.0
             if(cfg.srv[cfg.selected_srv]->mount[0] != '/')
-                snprintf(send_buf, sizeof(send_buf), "PUT /%s HTTP/1.1\r\n", 
-                        cfg.srv[cfg.selected_srv]->mount);
+                snprintf(send_buf, sizeof(send_buf), "PUT /%s HTTP/1.1\r\n",
+                         cfg.srv[cfg.selected_srv]->mount);
             else
                 snprintf(send_buf, sizeof(send_buf), "PUT %s HTTP/1.1\r\n",
-                        cfg.srv[cfg.selected_srv]->mount);
+                         cfg.srv[cfg.selected_srv]->mount);
+            
+            opus_supported = 1;
         }
         else
         {
 
             if(cfg.srv[cfg.selected_srv]->mount[0] != '/')
-                snprintf(send_buf, sizeof(send_buf), "SOURCE /%s HTTP/1.0\r\n", 
-                        cfg.srv[cfg.selected_srv]->mount);
+                snprintf(send_buf, sizeof(send_buf), "SOURCE /%s HTTP/1.0\r\n",
+                         cfg.srv[cfg.selected_srv]->mount);
             else
                 snprintf(send_buf, sizeof(send_buf), "SOURCE %s HTTP/1.0\r\n",
-                        cfg.srv[cfg.selected_srv]->mount);
+                         cfg.srv[cfg.selected_srv]->mount);
         }
 
         sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
@@ -123,13 +127,24 @@ int ic_connect(void)
         snprintf(send_buf, sizeof(send_buf), "Authorization: Basic %s\r\n", b64_auth);
         sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
 
+        // Make butt compatible to proxies/load balancers. Thanks to boyska
+        if(cfg.srv[cfg.selected_srv]->port == 80)
+            snprintf(send_buf, sizeof(send_buf), "Host: %s\r\n", cfg.srv[cfg.selected_srv]->addr);
+        else
+            snprintf(send_buf, sizeof(send_buf), "Host: %s:%d\r\n", cfg.srv[cfg.selected_srv]->addr, cfg.srv[cfg.selected_srv]->port);
+        sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
+        
         snprintf(send_buf, sizeof(send_buf), "User-Agent: %s\r\n", PACKAGE_STRING);
         sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
 
         if(!strcmp(cfg.audio.codec, "mp3"))
             strcpy(send_buf,  "Content-Type: audio/mpeg\r\n");
+        else if(!strcmp(cfg.audio.codec, "aac"))
+            strcpy(send_buf,  "Content-Type: audio/aac\r\n");
         else
             strcpy(send_buf,  "Content-Type: audio/ogg\r\n");
+        
+        
         sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
 
 
@@ -159,26 +174,25 @@ int ic_connect(void)
         }
 
 
-        // Send audio settings 
-        snprintf(send_buf, sizeof(send_buf), 
-                "ice-audio-info: "
-                "ice-bitrate=%d;"
-                "ice-channels=%d;"
-                "ice-samplerate=%d"
-                "\r\n",
-                cfg.audio.bitrate,
-                cfg.audio.channel,
-                strcmp(cfg.audio.codec, "opus") == 0 ? 48000 : cfg.audio.samplerate);
-
+        // Send audio settings
+        snprintf(send_buf, sizeof(send_buf),
+                 "ice-audio-info: "
+                 "ice-bitrate=%d;"
+                 "ice-channels=%d;"
+                 "ice-samplerate=%d"
+                 "\r\n",
+                 cfg.audio.bitrate,
+                 cfg.audio.channel,
+                 strcmp(cfg.audio.codec, "opus") == 0 ? 48000 : cfg.audio.samplerate);
+        
         sock_send(&stream_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
 
         sock_send(&stream_socket, "\r\n", 2, SEND_TIMEOUT);
 
         if(sock_recv(&stream_socket, recv_buf, sizeof(recv_buf)-1, RECV_TIMEOUT) == 0)
         {
-
-            printf("i: %d\n", i);
-            if (i == 0)
+            
+            if (try_cnt == 0)
             {
                 ic_disconnect();
                 continue; //try SOURCE method if PUT method did not work
@@ -214,14 +228,26 @@ int ic_connect(void)
                     return 2;
                     break;
                 case 403:   //mountpoint already in use
-                    usleep(100000); 
+                    usleep(100000);
                     ic_disconnect();
                     return 1;
                     break;
-                default:
-                    usleep(100000); 
+                case 404:
+                    if (try_cnt == 0)
+                    {
+                        ic_disconnect();// This brings compatibility to airtime server. Because they don't understand the PUT method they answer with an 404
+                        opus_supported = 1; // Airtimes supports Opus
+                        continue;       // Let's try the SOURCE method then...
+                    }
+                    print_info("\nconnect: server answered with 404!\n", 1);
                     ic_disconnect();
-                    return 1;
+                    return 2;
+                    break;
+                default:
+                    snprintf(msg, sizeof(msg), "\nconnect: server answered with %d!\n", retval);
+                    print_info(msg, 1);
+                    ic_disconnect();
+                    return 2;
             }
         }
 
@@ -232,18 +258,18 @@ int ic_connect(void)
         // the server
         if(!strcmp(cfg.audio.codec, "opus"))
         {
-            if (i == 0) //If the PUT method worked the server has at least version 2.4.0, thus opus is supported
+            if (opus_supported == 1) // The server has at least version 2.4.0 (PUT method worked) or it is an airtime server, thus opus is supported.
             {
                 break;
             }
             else
             {
-                print_info(_("\nERROR: Opus is not supported by your\nIcecast server (>=1.4.0 required)!\n"), 1);
+                print_info("\nERROR: Opus is not supported by your\nIcecast server (>=1.4.0 required)!\n", 1);
                 ic_disconnect();
                 return 2;
             }
         }
-            
+
         
         break;
     }
@@ -277,7 +303,7 @@ int ic_update_song(void)
     char *mount;
 
     web_socket = sock_connect(cfg.srv[cfg.selected_srv]->addr,
-            cfg.srv[cfg.selected_srv]->port, CONN_TIMEOUT);
+                              cfg.srv[cfg.selected_srv]->port, CONN_TIMEOUT);
 
     if(web_socket < 0)
     {
@@ -316,12 +342,27 @@ int ic_update_song(void)
 
     snprintf(auth, sizeof(auth), "%s:%s", cfg.srv[cfg.selected_srv]->usr, cfg.srv[cfg.selected_srv]->pwd);
 
+
+    if(cfg.srv[cfg.selected_srv]->port == 80)
+        snprintf(send_buf, sizeof(send_buf), "Host: %s\r\n", cfg.srv[cfg.selected_srv]->addr);
+    else
+        snprintf(send_buf, sizeof(send_buf), "Host: %s:%d\r\n", cfg.srv[cfg.selected_srv]->addr, cfg.srv[cfg.selected_srv]->port);
+    
+    
     snprintf(send_buf, sizeof(send_buf), "GET /admin/metadata?mode=updinfo&mount=%s&song=%s "
-                                         "HTTP/1.0\r\nUser-Agent: %s\r\n"
-                                         "Authorization: Basic %s\r\n\r\n",
-                                         mount, song_buf, PACKAGE_STRING, util_base64_enc(auth));
-
-
+             "HTTP/1.0\r\n"
+             "User-Agent: %s\r\n"
+             "Authorization: Basic %s\r\n",
+             mount, song_buf, PACKAGE_STRING, util_base64_enc(auth));
+    
+    sock_send(&web_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
+    
+    
+    if(cfg.srv[cfg.selected_srv]->port == 80)
+        snprintf(send_buf, sizeof(send_buf), "Host: %s\r\n\r\n", cfg.srv[cfg.selected_srv]->addr);
+    else
+        snprintf(send_buf, sizeof(send_buf), "Host: %s:%d\r\n\r\n", cfg.srv[cfg.selected_srv]->addr, cfg.srv[cfg.selected_srv]->port);
+    
     sock_send(&web_socket, send_buf, strlen(send_buf), SEND_TIMEOUT);
 
     sock_close(&web_socket);

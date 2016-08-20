@@ -209,7 +209,7 @@ class flgui {open
     Fl_Window window_cfg {
       label {butt settings}
       callback {window_cfg->hide();
-button_cfg->label(_("Ajustes@>"));} open
+button_cfg->label(_("Settings@>"));} open
       xywh {778 177 333 380} type Double color 48 align 80
       code0 {\#include "FL/Fl_My_Double_Window.H"}
       code1 {\#include "util.h"}
@@ -220,8 +220,8 @@ button_cfg->label(_("Ajustes@>"));} open
         xywh {-1 0 336 480} selection_color 41
       } {
         Fl_Group {} {
-          label Main
-          xywh {0 20 325 450} when 6 hide
+          label Main selected
+          xywh {0 20 325 450} when 6
         } {
           Fl_Group {} {
             label {Log file} open
@@ -440,7 +440,7 @@ if (!show_advanced)
  	this->choice_cfg_resample_mode->show();
 	//window_cfg->size(window_cfg->w(), 450);
 	show_advanced = 1;
-	fl_g->button_advanced->label("Menos...");
+	fl_g->button_advanced->label("Less...");
 }
 else
 {
@@ -448,7 +448,7 @@ else
  	this->choice_cfg_resample_mode->hide();
 	//window_cfg->size(window_cfg->w(), 380);
 	show_advanced = 0;
-	fl_g->button_advanced->label("Más...");
+	fl_g->button_advanced->label("More...");
 
 }}
             tooltip {Show/Hide advanced settings} xywh {15 320 95 20} box ENGRAVED_BOX
@@ -591,7 +591,7 @@ else
           }
         }
         Fl_Group {} {
-          label Stream open
+          label Stream
           tooltip {Add stream info} xywh {5 19 320 450} hide
         } {
           Fl_Group {} {
@@ -709,13 +709,13 @@ else
             Fl_Check_Button check_sync_to_full_hour {
               label {Synchronize with every hour}
               callback {check_sync_to_full_hour_cb();}
-              tooltip {Sincronizar con cada hora} xywh {20 280 290 15} down_box DOWN_BOX
+              tooltip {Synchronize with every hour} xywh {20 280 290 15} down_box DOWN_BOX
             }
           }
           Fl_Check_Button check_cfg_rec {
             label {Start recording when connected}
             callback {check_cfg_rec_cb();}
-            tooltip {Empezar a grabar cuando te conectes} xywh {15 315 290 15} down_box DOWN_BOX
+            tooltip {Start recording when connected} xywh {15 315 290 15} down_box DOWN_BOX
           }
           Fl_Text_Display {} {
             label {%Y year}
@@ -756,8 +756,8 @@ else
           }
         }
         Fl_Group {} {
-          label DSP open
-          xywh {0 25 335 455}
+          label DSP
+          xywh {0 25 335 455} hide
         } {
           Fl_Group {} {
             label Compressor open
@@ -770,7 +770,7 @@ else
             }
             Fl_Slider compressorQuantitySlider {
               label {Compression of}
-              callback {slider_compressor_cb();} selected
+              callback {slider_compressor_cb();}
               xywh {20 75 285 15} type {Horz Knob} box NO_BOX step 0.025 value 0.7
             }
           }
@@ -850,7 +850,7 @@ slider_equalizer5_cb(0);}
           }
         }
         Fl_Group {} {
-          label GUI
+          label GUI open
           xywh {5 19 325 450} hide
         } {
           Fl_Group {} {
@@ -871,17 +871,17 @@ slider_equalizer5_cb(0);}
           Fl_Check_Button check_gui_attach {
             label {Stick this window to the main}
             callback {check_gui_attach_cb();}
-            tooltip {Pegar esta ventana a la principal} xywh {15 153 300 22} down_box DOWN_BOX
+            tooltip {Stick this window to the main} xywh {15 153 300 22} down_box DOWN_BOX
           }
           Fl_Check_Button check_gui_ontop {
             label {Window always on top}
             callback {check_gui_ontop_cb();}
-            tooltip {Ventana siempre encima} xywh {15 178 290 20} down_box DOWN_BOX
+            tooltip {Window always on top} xywh {15 178 290 20} down_box DOWN_BOX
           }
           Fl_Check_Button check_gui_lcd_auto {
             label {Change LCD mode every 5s}
             callback {check_gui_lcd_auto_cb()}
-            tooltip {Cambiar modo del LCD cada 5s} xywh {15 198 290 24} down_box DOWN_BOX
+            tooltip {Change LCD mode every 5s} xywh {15 198 290 24} down_box DOWN_BOX
           }
         }
       }
@@ -956,7 +956,7 @@ slider_equalizer5_cb(0);}
       }
     }
     Fl_Window window_add_icy {
-      label {Streaming information} open
+      label {Streaming information}
       xywh {1421 178 305 380} type Double align 80 modal visible
     } {
       Fl_Input input_add_icy_name {
@@ -1026,7 +1026,7 @@ window_cfg->size(window_cfg->w(), 380);
 info_visible = 1;
                 
 info_output->show();
-button_info->label(_("Menos @8>"));} {}
+button_info->label(_("Less @8>"));} {}
   }
   Function {~flgui()} {open
   } {}

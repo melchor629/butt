@@ -33,9 +33,9 @@
 #endif
 
 #if !defined(__APPLE__)
-#define LOCALEDIR "./Locale"
+#define LOCALEDIR "./locale"
 #else
-#define LOCALEDIR "./butt.app/Contents/Resources/Locale"
+#define LOCALEDIR "./butt.app/Contents/Resources/locale"
 #endif
 
 #include "config.h"

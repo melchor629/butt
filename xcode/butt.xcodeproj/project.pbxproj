@@ -43,7 +43,7 @@
 		48D1F72C1D68820300C22578 /* Biquad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48D1F72B1D68820300C22578 /* Biquad.cpp */; };
 		48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */; };
 		48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */; };
-		48E01DE71B4BF08400449DFD /* Locale in Resources */ = {isa = PBXBuildFile; fileRef = 48E01DE61B4BF08400449DFD /* Locale */; };
+		48E01DE71B4BF08400449DFD /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 48E01DE61B4BF08400449DFD /* locale */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,7 +147,7 @@
 		48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentTrackOSX.h; path = ../src/CurrentTrackOSX.h; sourceTree = "<group>"; };
 		48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentTrackOSX.m; path = ../src/CurrentTrackOSX.m; sourceTree = "<group>"; };
 		48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
-		48E01DE61B4BF08400449DFD /* Locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Locale; path = ../po/Locale; sourceTree = "<group>"; };
+		48E01DE61B4BF08400449DFD /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = ../po/locale; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,7 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				482F1C811C74E0A0006700A2 /* libiconv.tbd */,
-				48E01DE61B4BF08400449DFD /* Locale */,
+				48E01DE61B4BF08400449DFD /* locale */,
 				3C69A6DC189E844E001CBFBA /* Foundation.framework */,
 				3C69A6B7189E7EDD001CBFBA /* AudioToolbox.framework */,
 				3C69A6B8189E7EDD001CBFBA /* AudioUnit.framework */,
@@ -424,7 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4817DC0D1B29AD0F006523B8 /* Images.xcassets in Resources */,
-				48E01DE71B4BF08400449DFD /* Locale in Resources */,
+				48E01DE71B4BF08400449DFD /* locale in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

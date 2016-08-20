@@ -375,7 +375,7 @@ static Fl_RGB_Image image_VU_text(idata_VU_text, 157, 10, 4, 0);
 
 void flgui::cb_window_cfg_i(Fl_My_Double_Window*, void*) {
   window_cfg->hide();
-button_cfg->label(_("Ajustes@>"));
+button_cfg->label(_("Settings@>"));
 }
 void flgui::cb_window_cfg(Fl_My_Double_Window* o, void* v) {
   ((flgui*)(o->user_data()))->cb_window_cfg_i(o,v);
@@ -682,7 +682,7 @@ if (!show_advanced)
  	this->choice_cfg_resample_mode->show();
 	//window_cfg->size(window_cfg->w(), 450);
 	show_advanced = 1;
-	fl_g->button_advanced->label("Menos...");
+	fl_g->button_advanced->label("Less...");
 }
 else
 {
@@ -690,7 +690,7 @@ else
  	this->choice_cfg_resample_mode->hide();
 	//window_cfg->size(window_cfg->w(), 380);
 	show_advanced = 0;
-	fl_g->button_advanced->label("Más...");
+	fl_g->button_advanced->label("More...");
 
 };
 }
@@ -1361,7 +1361,6 @@ flgui::flgui() {
       Settings->selection_color((Fl_Color)41);
       { Fl_Group* o = new Fl_Group(0, 20, 325, 450, _("Main"));
         o->when(FL_WHEN_RELEASE_ALWAYS);
-        o->hide();
         { Fl_Group* o = new Fl_Group(15, 56, 300, 34, _("Log file"));
           o->box(FL_ENGRAVED_FRAME);
           o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
@@ -1670,14 +1669,14 @@ flgui::flgui() {
           { text_rec_split_time = new Fl_Box(105, 256, 65, 16, _("minutes"));
           } // Fl_Box* text_rec_split_time
           { check_sync_to_full_hour = new Fl_Check_Button(20, 280, 290, 15, _("Synchronize with every hour"));
-            check_sync_to_full_hour->tooltip(_("Sincronizar con cada hora"));
+            check_sync_to_full_hour->tooltip(_("Synchronize with every hour"));
             check_sync_to_full_hour->down_box(FL_DOWN_BOX);
             check_sync_to_full_hour->callback((Fl_Callback*)cb_check_sync_to_full_hour);
           } // Fl_Check_Button* check_sync_to_full_hour
           o->end();
         } // Fl_Group* o
         { check_cfg_rec = new Fl_Check_Button(15, 315, 290, 15, _("Start recording when connected"));
-          check_cfg_rec->tooltip(_("Empezar a grabar cuando te conectes"));
+          check_cfg_rec->tooltip(_("Start recording when connected"));
           check_cfg_rec->down_box(FL_DOWN_BOX);
           check_cfg_rec->callback((Fl_Callback*)cb_check_cfg_rec);
         } // Fl_Check_Button* check_cfg_rec
@@ -1712,6 +1711,7 @@ flgui::flgui() {
         o->end();
       } // Fl_Group* o
       { Fl_Group* o = new Fl_Group(0, 25, 335, 455, _("DSP"));
+        o->hide();
         { Fl_Group* o = new Fl_Group(10, 45, 305, 70, _("Compressor"));
           o->box(FL_ENGRAVED_FRAME);
           { activateCompressorCheckButton = new Fl_Check_Button(15, 50, 290, 25, _("Activate compressor"));
@@ -1861,17 +1861,17 @@ flgui::flgui() {
           o->end();
         } // Fl_Group* o
         { check_gui_attach = new Fl_Check_Button(15, 153, 300, 22, _("Stick this window to the main"));
-          check_gui_attach->tooltip(_("Pegar esta ventana a la principal"));
+          check_gui_attach->tooltip(_("Stick this window to the main"));
           check_gui_attach->down_box(FL_DOWN_BOX);
           check_gui_attach->callback((Fl_Callback*)cb_check_gui_attach);
         } // Fl_Check_Button* check_gui_attach
         { check_gui_ontop = new Fl_Check_Button(15, 178, 290, 20, _("Window always on top"));
-          check_gui_ontop->tooltip(_("Ventana siempre encima"));
+          check_gui_ontop->tooltip(_("Window always on top"));
           check_gui_ontop->down_box(FL_DOWN_BOX);
           check_gui_ontop->callback((Fl_Callback*)cb_check_gui_ontop);
         } // Fl_Check_Button* check_gui_ontop
         { check_gui_lcd_auto = new Fl_Check_Button(15, 198, 290, 24, _("Change LCD mode every 5s"));
-          check_gui_lcd_auto->tooltip(_("Cambiar modo del LCD cada 5s"));
+          check_gui_lcd_auto->tooltip(_("Change LCD mode every 5s"));
           check_gui_lcd_auto->down_box(FL_DOWN_BOX);
           check_gui_lcd_auto->callback((Fl_Callback*)cb_check_gui_lcd_auto);
         } // Fl_Check_Button* check_gui_lcd_auto
@@ -2008,5 +2008,5 @@ flgui::flgui() {
   info_visible = 1;
                   
   info_output->show();
-  button_info->label(_("Menos @8>"));
+  button_info->label(_("Less @8>"));
 }

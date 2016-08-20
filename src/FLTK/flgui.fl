@@ -1,9 +1,9 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0304
-i18n_type 1
-i18n_include <libintl.h>
-i18n_function _
-header_name {.h}
+version 1.0303 
+i18n_type 1 
+i18n_include <libintl.h> 
+i18n_function _ 
+header_name {.h} 
 code_name {.cpp}
 class flgui {open
 } {
@@ -772,6 +772,80 @@ else
               xywh {20 75 285 15} type {Horz Knob} box NO_BOX step 0.025 value 0.7
             }
           }
+          Fl_Group {} {
+            label Equalizador open
+            xywh {10 135 305 175} box ENGRAVED_FRAME
+          } {
+            Fl_Check_Button activateEqualizerCheckButton {
+              label {Activar equalizador}
+              callback {check_button_activate_equalizer_cb();}
+              xywh {15 140 295 25} down_box DOWN_BOX
+            }
+            Fl_Slider equalizerSlider1 {
+              label 100Hz
+              callback {slider_equalizer1_cb(o->value());}
+              xywh {35 175 15 115} type {Vert Knob} box NO_BOX labelsize 11 minimum -15 maximum 15 step 0.1
+              class Fl_My_Value_Slider
+            }
+            Fl_Slider equalizerSlider2 {
+              label 350Hz
+              callback {slider_equalizer2_cb(o->value());}
+              xywh {75 175 15 115} type {Vert Knob} box NO_BOX labelsize 11 minimum -15 maximum 15 step 0.1
+              class Fl_My_Value_Slider
+            }
+            Fl_Slider equalizerSlider3 {
+              label 1KHz
+              callback {slider_equalizer3_cb(o->value());}
+              xywh {115 175 15 115} type {Vert Knob} box NO_BOX labelsize 11 minimum -15 maximum 15 step 0.1
+              class Fl_My_Value_Slider
+            }
+            Fl_Slider equalizerSlider4 {
+              label {3.5KHz}
+              callback {slider_equalizer4_cb(o->value());}
+              xywh {155 175 15 115} type {Vert Knob} box NO_BOX labelsize 11 minimum -15 maximum 15 step 0.1
+              class Fl_My_Value_Slider
+            }
+            Fl_Slider equalizerSlider5 {
+              label 10KHz
+              callback {slider_equalizer5_cb(o->value());}
+              xywh {195 175 15 115} type {Vert Knob} box NO_BOX labelsize 11 minimum -15 maximum 15 step 0.1
+              class Fl_My_Value_Slider
+            }
+            Fl_Text_Display equalizerGain1 {
+              label {+0.0dB}
+              xywh {25 175 35 10} box NO_BOX labelsize 11
+            }
+            Fl_Text_Display equalizerGain2 {
+              label {+0.0dB}
+              xywh {65 175 35 10} box NO_BOX labelsize 11
+            }
+            Fl_Text_Display equalizerGain3 {
+              label {+0.0dB}
+              xywh {105 175 35 10} box NO_BOX labelsize 11
+            }
+            Fl_Text_Display equalizerGain4 {
+              label {+0.0dB}
+              xywh {144 175 35 10} box NO_BOX labelsize 11
+            }
+            Fl_Text_Display equalizerGain5 {
+              label {+0.0dB}
+              xywh {184 175 35 10} box NO_BOX labelsize 11
+            }
+            Fl_Button {} {
+              label Reestabecer
+              callback {fl_g->equalizerSlider1->value(0);
+fl_g->equalizerSlider2->value(0);
+fl_g->equalizerSlider3->value(0);
+fl_g->equalizerSlider4->value(0);
+fl_g->equalizerSlider5->value(0);
+slider_equalizer1_cb(0);
+slider_equalizer2_cb(0);
+slider_equalizer3_cb(0);
+slider_equalizer4_cb(0);
+slider_equalizer5_cb(0);}
+              xywh {230 140 75 25} labelsize 12
+            }
+          }
         }
         Fl_Group {} {
           label GUI
@@ -881,7 +955,7 @@ else
     }
     Fl_Window window_add_icy {
       label {Información del Streaming} open
-      xywh {1534 13 305 380} type Double align 80 modal visible
+      xywh {1421 178 305 380} type Double align 80 modal visible
     } {
       Fl_Input input_add_icy_name {
         label {Nombre del streaming:}
@@ -954,4 +1028,4 @@ button_info->label(_("Menos @8>"));} {}
   }
   Function {~flgui()} {open
   } {}
-}
+} 

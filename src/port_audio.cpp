@@ -211,7 +211,7 @@ int snd_open_stream(void)
 
     stream_buf = new char[16 * pa_frames*2 * sizeof(short)];
     record_buf = new char[16 * pa_frames*2 * sizeof(short)];
-    dsp = new DSPEffects(pa_frames, cfg.audio.channel);
+    dsp = new DSPEffects(pa_frames, cfg.audio.channel, samplerate);
     
     Pa_StartStream(stream);
     return 0;

@@ -93,6 +93,13 @@ void button_gui_text_color_cb(void);
 
 void slider_gain_cb(void);
 
+void check_button_activate_equalizer_cb(void);
+void slider_equalizer1_cb(double);
+void slider_equalizer2_cb(double);
+void slider_equalizer3_cb(double);
+void slider_equalizer4_cb(double);
+void slider_equalizer5_cb(double);
+
 void check_cfg_rec_cb(void);
 void check_cfg_rec_hourly_cb(void);
 void check_cfg_connect_cb(void);

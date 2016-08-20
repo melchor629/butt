@@ -127,6 +127,8 @@ typedef struct
     struct {
         bool compressor;
         double compQuantity;
+        bool equalizer;
+        double gain1, gain2, gain3, gain4, gain5;
     } dsp;
 
     struct

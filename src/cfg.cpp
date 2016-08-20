@@ -165,9 +165,21 @@ int cfg_write_file(char *path)
     fprintf(cfg_fd,
             "[dsp]\n"
             "compressor = %d\n"
-            "compQuantity = %f\n\n",
+            "compQuantity = %f\n"
+            "equalizer = %d\n"
+            "gain1 = %f\n"
+            "gain2 = %f\n"
+            "gain3 = %f\n"
+            "gain4 = %f\n"
+            "gain5 = %f\n\n",
             cfg.dsp.compressor ? 1 : 0,
-            cfg.dsp.compQuantity
+            cfg.dsp.compQuantity,
+            cfg.dsp.equalizer,
+            cfg.dsp.gain1,
+            cfg.dsp.gain2,
+            cfg.dsp.gain3,
+            cfg.dsp.gain4,
+            cfg.dsp.gain5
             );
 
     fprintf(cfg_fd,
@@ -541,6 +553,12 @@ int cfg_set_values(char *path)
     //DSP
     cfg.dsp.compressor = cfg_get_int_or_default("dsp", "compressor", 0);
     cfg.dsp.compQuantity = cfg_get_float_or_default("dsp", "compQuantity", 0.3);
+    cfg.dsp.equalizer = cfg_get_int_or_default("dsp", "equalizer", 0);
+    cfg.dsp.gain1 = cfg_get_float_or_default("dsp", "gain1", 0.0);
+    cfg.dsp.gain2 = cfg_get_float_or_default("dsp", "gain2", 0.0);
+    cfg.dsp.gain3 = cfg_get_float_or_default("dsp", "gain3", 0.0);
+    cfg.dsp.gain4 = cfg_get_float_or_default("dsp", "gain4", 0.0);
+    cfg.dsp.gain5 = cfg_get_float_or_default("dsp", "gain5", 0.0);
 
 
     //read GUI stuff 
@@ -646,7 +664,13 @@ int cfg_create_default(void)
     fprintf(cfg_fd,
             "[dsp]\n"
             "compressor = 0\n"
-            "compQuantity = 0.3\n\n");
+            "compQuantity = 0.3\n"
+            "equalizer = 0\n"
+            "gain1 = 0.0\n"
+            "gain2 = 0.0\n"
+            "gain3 = 0.0\n"
+            "gain4 = 0.0\n"
+            "gain5 = 0.0\n");
 
     fprintf(cfg_fd, 
             "[gui]\n"
@@ -657,10 +681,10 @@ int cfg_create_default(void)
 
     //Servidor e Información de él por defecto
     fprintf(cfg_fd,
-            "[Recaserver]\n"
-            "address = 91.121.156.27\n"
+            "[Some server]\n"
+            "address = 127.0.0.1\n"
             "port = 8000\n"
-            "password = SomeThing\n"
+            "password = SomePassw0rd\n"
             "type = 1\n"
             "mount = stream\n"
             "usr = source\n\n");

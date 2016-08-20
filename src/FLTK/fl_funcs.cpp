@@ -188,10 +188,17 @@ void fill_cfg_widgets(void)
     //fill the DSP section
     fl_g->activateCompressorCheckButton->value(cfg.dsp.compressor);
     fl_g->compressorQuantitySlider->value(1.0f - cfg.dsp.compQuantity);
+    fl_g->activateEqualizerCheckButton->value(cfg.dsp.equalizer);
+    slider_equalizer1_cb(-cfg.dsp.gain1); fl_g->equalizerSlider1->value(-cfg.dsp.gain1);
+    slider_equalizer2_cb(-cfg.dsp.gain2); fl_g->equalizerSlider2->value(-cfg.dsp.gain2);
+    slider_equalizer3_cb(-cfg.dsp.gain3); fl_g->equalizerSlider3->value(-cfg.dsp.gain3);
+    slider_equalizer4_cb(-cfg.dsp.gain4); fl_g->equalizerSlider4->value(-cfg.dsp.gain4);
+    slider_equalizer5_cb(-cfg.dsp.gain5); fl_g->equalizerSlider5->value(-cfg.dsp.gain5);
 
     extern char slider_compressor_label[];
     snprintf(slider_compressor_label, 100, "%s (%.0f%%)", _("Cantidad de compresión"), (1.0f - cfg.dsp.compQuantity) * 100);
     fl_g->compressorQuantitySlider->label(slider_compressor_label);
+    unsaved_changes = false;
 }
 
 //Updates the samplerate drop down menu for the audio

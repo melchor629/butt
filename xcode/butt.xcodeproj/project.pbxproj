@@ -40,6 +40,7 @@
 		482F1C821C74E0A0006700A2 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 482F1C811C74E0A0006700A2 /* libiconv.tbd */; };
 		48517BDA1B5530AB00CE10CF /* aac_encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48517BD81B5530AB00CE10CF /* aac_encode.cpp */; };
 		4882F5A91C738B60007B57A9 /* dsp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4882F5A71C738B60007B57A9 /* dsp.cpp */; };
+		48D1F72C1D68820300C22578 /* Biquad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48D1F72B1D68820300C22578 /* Biquad.cpp */; };
 		48D7A3B51B4D219A00BE7F8F /* CurrentTrackOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */; };
 		48D7A3B71B4D25FB00BE7F8F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */; };
 		48E01DE71B4BF08400449DFD /* Locale in Resources */ = {isa = PBXBuildFile; fileRef = 48E01DE61B4BF08400449DFD /* Locale */; };
@@ -141,6 +142,8 @@
 		4882F5A81C738B60007B57A9 /* dsp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = dsp.hpp; path = ../src/dsp.hpp; sourceTree = "<group>"; };
 		488B76A91B5FAA5600FAFCB2 /* currentTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = currentTrack.cpp; path = ../src/currentTrack.cpp; sourceTree = "<group>"; };
 		488B76AA1B5FAA5600FAFCB2 /* currentTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = currentTrack.h; path = ../src/currentTrack.h; sourceTree = "<group>"; };
+		48D1F72B1D68820300C22578 /* Biquad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Biquad.cpp; sourceTree = "<group>"; };
+		48D1F72D1D68820B00C22578 /* Biquad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Biquad.h; sourceTree = "<group>"; };
 		48D7A3B31B4D219A00BE7F8F /* CurrentTrackOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentTrackOSX.h; path = ../src/CurrentTrackOSX.h; sourceTree = "<group>"; };
 		48D7A3B41B4D219A00BE7F8F /* CurrentTrackOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentTrackOSX.m; path = ../src/CurrentTrackOSX.m; sourceTree = "<group>"; };
 		48D7A3B61B4D25FB00BE7F8F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -179,6 +182,7 @@
 				4817DBE61B29AA3C006523B8 /* images */,
 				48E777651C70A31400EAF9F6 /* Encoders */,
 				48E777661C70A35700EAF9F6 /* Utilities */,
+				48D1F72A1D6881EC00C22578 /* DSP */,
 				3CC6F28419083487001993B1 /* FLTK */,
 				480DC3E91D2A8CD1001EC37D /* Streaming Clients */,
 				3CC6F28019083487001993B1 /* butt.cpp */,
@@ -291,6 +295,17 @@
 			name = libs;
 			sourceTree = "<group>";
 		};
+		48D1F72A1D6881EC00C22578 /* DSP */ = {
+			isa = PBXGroup;
+			children = (
+				4882F5A71C738B60007B57A9 /* dsp.cpp */,
+				4882F5A81C738B60007B57A9 /* dsp.hpp */,
+				48D1F72B1D68820300C22578 /* Biquad.cpp */,
+				48D1F72D1D68820B00C22578 /* Biquad.h */,
+			);
+			name = DSP;
+			sourceTree = "<group>";
+		};
 		48E777651C70A31400EAF9F6 /* Encoders */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,8 +342,6 @@
 				3CC6F2A419083487001993B1 /* timer.h */,
 				3CC6F2A519083487001993B1 /* util.cpp */,
 				3CC6F2A619083487001993B1 /* util.h */,
-				4882F5A71C738B60007B57A9 /* dsp.cpp */,
-				4882F5A81C738B60007B57A9 /* dsp.hpp */,
 				482F1C801C74CC3D006700A2 /* DynamicLibraryLoad.hpp */,
 			);
 			name = Utilities;
@@ -439,6 +452,7 @@
 				3C0CC7F81A49FAD60079F4B5 /* flac_encode.cpp in Sources */,
 				3CC6F2BF19083488001993B1 /* wav_header.cpp in Sources */,
 				3CC6F2B419083488001993B1 /* lame_encode.cpp in Sources */,
+				48D1F72C1D68820300C22578 /* Biquad.cpp in Sources */,
 				3CC6F2B519083488001993B1 /* parseconfig.cpp in Sources */,
 				3CA2FA031912A9B8004CBD2C /* Fl_My_Native_File_Chooser.cxx in Sources */,
 				3CC6F2BA19083488001993B1 /* strfuncs.cpp in Sources */,

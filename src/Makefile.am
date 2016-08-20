@@ -17,7 +17,7 @@ butt_SOURCES = butt.cpp butt.h cfg.cpp cfg.h icecast.cpp icecast.h lame_encode.c
 			   FLTK/FL/Fl_My_Double_Window.H FLTK/FL/Fl_My_Value_Slider.H \
 			   FLTK/Fl_My_Native_File_Chooser.cxx FLTK/FL/Fl_My_Native_File_Chooser.H \
 			   FLTK/fl_timer_funcs.cpp FLTK/fl_timer_funcs.h \
-			   aac_encode.h aac_encode.cpp dsp.cpp dsp.hpp
+			   aac_encode.h aac_encode.cpp dsp.cpp dsp.hpp Biquad.cpp Biquad.h
 
 
 if WINDOWS

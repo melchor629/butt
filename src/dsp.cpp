@@ -9,26 +9,47 @@
 #include "dsp.hpp"
 #include <samplerate.h>
 #include <cmath>
+#include "Biquad.h"
 #include "cfg.h"
 
 static float logdrc(float x, float t);
 
-DSPEffects::DSPEffects(uint32_t frames, uint8_t channels) {
+DSPEffects::DSPEffects(uint32_t frames, uint8_t channels, uint32_t sampleRate) : samplerate(sampleRate) {
     dsp_size = frames * channels;
     dsp_buff = new float[dsp_size];
+    band1 = new Biquad(bq_type_peak, 100.0 / double(samplerate), 1.9, cfg.dsp.gain1);
+    band2 = new Biquad(bq_type_peak, 350.0 / double(samplerate), 2, cfg.dsp.gain2);
+    band3 = new Biquad(bq_type_peak, 1000.0 / double(samplerate), 2, cfg.dsp.gain3);
+    band4 = new Biquad(bq_type_peak, 3500.0 / double(samplerate), 2, cfg.dsp.gain4);
+    band5 = new Biquad(bq_type_peak, 10000.0 / double(samplerate), 2, cfg.dsp.gain5);
 }
 
 bool DSPEffects::hasToProcessSamples() {
-    return cfg.main.gain != 1 || cfg.dsp.compressor;
+    return cfg.main.gain != 1 || cfg.dsp.compressor || cfg.dsp.equalizer;
 }
 
 void DSPEffects::processSamples(short *samples) {
     if(dsp_buff == NULL) return;
+    
+    if(cfg.dsp.equalizer) {
+        band1->setPeakGain(cfg.dsp.gain1);
+        band2->setPeakGain(cfg.dsp.gain2);
+        band3->setPeakGain(cfg.dsp.gain3);
+        band4->setPeakGain(cfg.dsp.gain4);
+        band5->setPeakGain(cfg.dsp.gain5);
+    }
 
     src_short_to_float_array(samples, dsp_buff, dsp_size);
     for(uint32_t sample = 0; sample < dsp_size; sample++) {
         if(cfg.main.gain != 1)
             dsp_buff[sample] *= cfg.main.gain;
+        if(cfg.dsp.equalizer) {
+            float s = band5->process(dsp_buff[sample]);
+            s = band4->process(s);
+            s = band3->process(s);
+            s = band2->process(s);
+            dsp_buff[sample] = band1->process(s);
+        }
         if(cfg.dsp.compressor)
             dsp_buff[sample] = logdrc(dsp_buff[sample], cfg.dsp.compQuantity);
     }
@@ -37,7 +58,11 @@ void DSPEffects::processSamples(short *samples) {
 
 DSPEffects::~DSPEffects() {
     delete[] dsp_buff;
-    dsp_buff = NULL;
+    delete band1;
+    delete band2;
+    delete band3;
+    delete band4;
+    delete band5;
 }
 
 //Logaritmic Dynamic Range Compresor from

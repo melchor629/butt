@@ -2847,3 +2847,47 @@ void check_button_activate_compressor_cb(void) {
     unsaved_changes = true;
 }
 
+void check_button_activate_equalizer_cb(void) {
+    cfg.dsp.equalizer = fl_g->activateEqualizerCheckButton->value();
+    unsaved_changes = true;
+}
+
+void slider_equalizer1_cb(double v) {
+    static char str[10];
+    unsaved_changes = true;
+    cfg.dsp.gain1 = -v;
+    snprintf(str, 10, "%+.1fdB", -v);
+    fl_g->equalizerGain1->label(str);
+}
+
+void slider_equalizer2_cb(double v) {
+    static char str[10];
+    unsaved_changes = true;
+    cfg.dsp.gain2 = -v;
+    snprintf(str, 10, "%+.1fdB", -v);
+    fl_g->equalizerGain2->label(str);
+}
+
+void slider_equalizer3_cb(double v) {
+    static char str[10];
+    unsaved_changes = true;
+    cfg.dsp.gain3 = -v;
+    snprintf(str, 10, "%+.1fdB", -v);
+    fl_g->equalizerGain3->label(str);
+}
+
+void slider_equalizer4_cb(double v) {
+    static char str[10];
+    unsaved_changes = true;
+    cfg.dsp.gain4 = -v;
+    snprintf(str, 10, "%+.1fdB", -v);
+    fl_g->equalizerGain4->label(str);
+}
+
+void slider_equalizer5_cb(double v) {
+    static char str[10];
+    unsaved_changes = true;
+    cfg.dsp.gain5 = -v;
+    snprintf(str, 10, "%+.1fdB", -v);
+    fl_g->equalizerGain5->label(str);
+}

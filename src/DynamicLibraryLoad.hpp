@@ -93,7 +93,7 @@ public:
         char str[50];
         void* func;
 #ifdef WIN32
-        func = GetProcAddress(lib, function);
+        func = (void*) GetProcAddress(lib, function);
         if(func == NULL) {
             snprintf(str, 50, "Could not load function \"%s\": %d", function, GetLastError());
             throw DynamicLibraryException(std::string(str));
@@ -106,9 +106,7 @@ public:
         }
 #endif
 
-        union {void* ptr; void (*func)(); } d;
-        d.ptr = func;
-        return (T) d.func;
+        return reinterpret_cast<T>(func);
     }
 
 };

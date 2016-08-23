@@ -207,8 +207,6 @@ int main(int argc, char *argv[])
 
 	if(cfg.main.connect_at_startup)
 		button_connect_cb();
-    
-    signal(SIGPIPE, SIG_IGN);
 
     snprintf(info_buf, sizeof(info_buf),
             _("butt %s started correctly"), VERSION);

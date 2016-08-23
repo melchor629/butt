@@ -20,7 +20,6 @@
 #ifdef _WIN32
  #include <winsock2.h>
  #define usleep(us) Sleep(us/1000)
- #define close(s) closesocket(s)
 #else
  #include <sys/types.h>
  #include <sys/socket.h>

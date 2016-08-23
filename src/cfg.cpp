@@ -622,11 +622,11 @@ int cfg_create_default(void)
     fprintf(cfg_fd, "#This is a configuration file for butt (broadcast using this tool)\n\n");
     fprintf(cfg_fd, 
             "[main]\n"
-            "server = Recaserver\n"
+            "server = Some server\n"
             "icy = Default Stream\n"
             "num_of_srv = 1\n"
             "num_of_icy = 1\n"
-            "srv_ent = Recaserver\n"
+            "srv_ent = Some server\n"
             "icy_ent = Default Stream\n"
             "song_path =\n"
             "song_update = 0\n"

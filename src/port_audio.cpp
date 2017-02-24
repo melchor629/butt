@@ -529,7 +529,7 @@ int snd_callback(const void *input,
             srconv_stream.input_frames = frameCount;
             srconv_stream.output_frames = frameCount*cfg.audio.channel * (srconv_stream.src_ratio+1) * sizeof(float);
 
-            src_short_to_float_array((short*)pa_pcm_buf, srconv_stream.data_in, (int) frameCount*cfg.audio.channel);
+            src_short_to_float_array((short*)pa_pcm_buf, (float*) srconv_stream.data_in, (int) frameCount*cfg.audio.channel);
 
             //The actual resample process
             src_process(srconv_state_stream, &srconv_stream);
@@ -560,7 +560,7 @@ int snd_callback(const void *input,
             srconv_record.input_frames = frameCount;
             srconv_record.output_frames = frameCount*cfg.audio.channel * (srconv_record.src_ratio+1) * sizeof(float);
 
-            src_short_to_float_array((short*)pa_pcm_buf, srconv_record.data_in, (int) frameCount*cfg.audio.channel);
+            src_short_to_float_array((short*)pa_pcm_buf, (float*) srconv_record.data_in, (int) frameCount*cfg.audio.channel);
 
             //The actual resample process
             src_process(srconv_state_record, &srconv_record);
@@ -751,10 +751,10 @@ void snd_close(void)
     Pa_CloseStream(stream);
     Pa_Terminate();
 
-    free(srconv_stream.data_in);
+    free((void*) srconv_stream.data_in);
     free(srconv_stream.data_out);
 
-    free(srconv_record.data_in);
+    free((void*) srconv_record.data_in);
     free(srconv_record.data_out);
 
     free(pa_pcm_buf);

@@ -138,15 +138,12 @@ AS_IF([test "x$enable_stream_conf" = "xno"], [
 	AC_DEFINE([VISIBILITY], [1], [Stream conf visibility enabled])
 ])
 
-# Adds support to libfdk-aac or libaacplus
+# Adds support to libfdk-aac
 AC_ARG_ENABLE([aac],
-	AS_HELP_STRING([--enable-aac], [Enable support to AAC using non-free libraries libfdk-aac or libaacplus]))
+	AS_HELP_STRING([--enable-aac], [Enable linking against AAC using the non-free library libfdk-aac]))
 AS_IF([test "x$enable_aac" = "xyes"], [
 	AC_CHECK_LIB([fdk-aac], [aacEncOpen], [], [
-		AC_CHECK_LIB([aacplus], [aacplusEncOpen],
-				[AC_MSG_WARN([AAC-LC will not be supported])],
-				[AC_MSG_ERROR([libfdk-aac and linaacplus not found])]
-				)
+		    AC_MSG_ERROR([libfdk-aac not found])
 		])
 ])
 

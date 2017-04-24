@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include "DynamicLibraryLoad.hpp"
 
-#if !defined(HAVE_LIBAACPLUS) && !defined(HAVE_LIBFDK_AAC)
+#if !defined(HAVE_LIBFDK_AAC)
 static DynamicLibrary* fdk_lib = NULL;
 
 typedef AACENC_ERROR (*Open)(
@@ -97,34 +97,10 @@ int fdk_select_profile(aac_enc *aacplus) {
         }
     }
     
-    printf("AAC MODE: %s\n", mode == HE_AACv2 ? "HE-AACv2" : mode == HE_AAC ? "HE-AAC" : "AAC-LC");
-    
     return mode;
 }
 
 int aac_enc_init(aac_enc *aacplus) {
-#if HAVE_LIBAACPLUS
-    unsigned long s, b;
-    aacplus->encoder = aacplusEncOpen(aacplus->samplerate, aacplus->channels, &s, &b);
-    aacplus->input_samples = (unsigned) s;
-    aacplus->max_output_bytes = (unsigned) b;
-    aacplus->conf = aacplusEncGetCurrentConfiguration(aacplus->encoder);
-    aacplus->conf->bitRate = aacplus->bitrate;
-    aacplus->conf->bandWidth = 0;
-    aacplus->conf->outputFormat = 1; //ADTS
-    aacplus->conf->nChannelsOut = aacplus->channels;
-    aacplus->conf->inputFormat = AACPLUS_INPUT_16BIT;
-    
-    int ret = 0;
-    if(!aacplusEncSetConfiguration(aacplus->encoder, aacplus->conf)) {
-        ret = 1;
-    }
-
-    aacplus->buff = buffer(aacplus->input_samples); // Los samples en este codificador no son samples
-    aacplus->state = AACPLUS_READY;
-    return ret;
-    
-#else
 #ifndef HAVE_LIBFDK_AAC
     if(fdk_lib == NULL) {
         try {
@@ -159,47 +135,11 @@ int aac_enc_init(aac_enc *aacplus) {
     
     aacplus->buff = buffer(aacplus->channels * aacplus->info.frameLength);
     aacplus->input_samples = aacplus->info.frameLength;
-    printf("SAMPLES: %d\n", aacplus->info.frameLength);
     
     return 0;
-#endif
 }
 
 int aac_enc_encode(aac_enc *aacplus, short *pcm_buf, char* enc_buf, int samples, int size) {
-#if HAVE_LIBAACPLUS
-    if(size == 0 || aacplus->encoder == NULL)
-        return 0;
-    int bytes = 0;
-    size_t size_pcm_buf = samples * aacplus->channels * 2;
-    size = aacplus->max_output_bytes;
-    uint8_t* audio = (uint8_t*) pcm_buf;
-    aacplus->state = AACPLUS_BUSY;
-    
-    if(samples * aacplus->channels < aacplus->input_samples) {
-        size_t bytes_copied = aacplus->buff.append(pcm_buf, size_pcm_buf);
-        if(bytes_copied < size_pcm_buf) {
-            bytes = aacplusEncEncode(aacplus->encoder, aacplus->buff.get<int>(), aacplus->input_samples, (uint8_t*) enc_buf, size);
-            enc_buf[1] |= 1 << 3;
-            bytes_copied += aacplus->buff.insert(0, &audio[bytes_copied], size_pcm_buf - bytes_copied);
-            if(size_pcm_buf != bytes_copied)
-                printf("SOBRAN BYTES POR AQUI Y NO DEBERÍA %lu\n", size_pcm_buf - bytes_copied);
-        }
-    } else {
-        size_t bytes_copied = 0;
-        while(bytes_copied != size_pcm_buf) {
-            bytes_copied += aacplus->buff.append(pcm_buf, size_pcm_buf);
-            int old_bytes = bytes;
-            bytes += aacplusEncEncode(aacplus->encoder, aacplus->buff.get<int>(), aacplus->input_samples, (uint8_t*) &enc_buf[bytes], size);
-            enc_buf[old_bytes+1] |= 1 << 3;
-            bytes_copied += aacplus->buff.insert(0, &audio[bytes_copied], size_pcm_buf - bytes_copied);
-        }
-    }
-    
-    aacplus->state = AACPLUS_READY;
-    return bytes;
-    
-#else
-
     AACENC_BufDesc in_buf = {0}, out_buf = {0};
     AACENC_InArgs in_args = {0};
     AACENC_OutArgs out_args = {0};
@@ -248,7 +188,6 @@ int aac_enc_encode(aac_enc *aacplus, short *pcm_buf, char* enc_buf, int samples,
     
     aacplus->state = AACPLUS_READY;
     return bytes;
-#endif
 }
 
 int aac_enc_reinit(aac_enc *aacplus) {
@@ -260,18 +199,6 @@ int aac_enc_reinit(aac_enc *aacplus) {
 }
 
 void aac_enc_close(aac_enc *aacplus) {
-#if HAVE_LIBAACPLUS
-    while(aacplus->state == AACPLUS_BUSY);
-    
-    if(aacplus->encoder != NULL)
-        aacplusEncClose(aacplus->encoder);
-    
-    aacplus->buff.destroy();
-    aacplus->conf = NULL;
-    aacplus->encoder = NULL;
-
-#else
-
     while(aacplus->state == AACPLUS_BUSY);
     
     if(aacplus->enc != NULL)
@@ -279,10 +206,9 @@ void aac_enc_close(aac_enc *aacplus) {
     
     memset(&aacplus->info, 0, sizeof(aacplus->info));
     aacplus->buff.destroy();
-#endif
 }
 
-#if !defined(HAVE_LIBAACPLUS) && !defined(HAVE_LIBFDK_AAC)
+#if !defined(HAVE_LIBFDK_AAC)
 void __attribute__((destructor)) aac_library_dealloc() {
     if(fdk_lib != NULL)
         delete fdk_lib;

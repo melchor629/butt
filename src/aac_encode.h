@@ -15,11 +15,7 @@
 #include <config.h>
 #include <stdint.h>
 
-#if HAVE_LIBAACPLUS
-#include <aacplus.h>
-#else
 #include <fdk-aac/aacenc_lib.h>
-#endif
 
 class buffer {
     size_t size, position;
@@ -31,20 +27,17 @@ public:
             buff = (uint8_t*) calloc(size, sizeof(short));
         this->size = size * sizeof(short);
         position = 0;
-        //printf("[BUFF] Tamaño: %lu\n", this->size);
     }
     
     size_t append(void* ptr, size_t size) {
         if(position + size < this->size) {
             memcpy(&buff[position], ptr, size);
             position += size;
-            //printf("[BUFF] Añadiendo %luB, usado %luB\n", size, position);
             return size;
         } else {
             size_t sobrante = this->size - position;
             memcpy(&buff[position], ptr, this->size - position);
             position = this->size;
-            //printf("[BUFF] Añadiendo %luB, usado %luB (todo), sobrantes %luB\n", size, position, size-sobrante);
             return sobrante;
         }
     }
@@ -53,12 +46,10 @@ public:
         if(pos + siz < size) {
             memcpy(&buff[pos], ptr, siz);
             position = pos + siz;
-            //printf("[BUFF] Insertando %luB en la posicion %lu, usado %lu\n", siz, pos, position);
             return siz;
         } else {
             memcpy(&buff[pos], ptr, size - pos);
             position = size;
-            //printf("[BUFF] Insertando %luB en la posicion %lu, usado %lu (todo), sin copiar %luB\n", siz, pos, position, size-pos);
             return size - pos;
         }
     }
@@ -76,13 +67,8 @@ public:
 };
 
 struct aac_enc {
-#if HAVE_LIBAACPLUS
-    aacplusEncConfiguration* conf;
-    aacplusEncHandle encoder;
-#else
     HANDLE_AACENCODER enc;
     AACENC_InfoStruct info = {0};
-#endif
 
     int bitrate;
     int samplerate;

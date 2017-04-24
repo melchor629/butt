@@ -199,7 +199,7 @@ void button_connect_cb(void)
 
     if(cfg.srv[cfg.selected_srv]->type == ICECAST)
         sprintf(text_buf, _("Mounting point:\t%s\n"
-                "User:\t\t%s\n"), text_buf,
+                "User:\t\t%s\n"),
                 cfg.srv[cfg.selected_srv]->mount,
                 cfg.srv[cfg.selected_srv]->usr);
 

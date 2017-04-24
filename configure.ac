@@ -147,6 +147,19 @@ AS_IF([test "x$enable_aac" = "xyes"], [
 		])
 ])
 
+#Add dbus library for Linux
+if test "$build_linux"; then
+	PKG_CHECK_MODULES([DBUS], [dbus-1], [
+		AC_DEFINE([HAVE_DBUS], [1], [Use dbus to get current tracks])
+		LIBS="$LIBS $DBUS_LIBS"
+		CFLAGS="$LIBS $DBUS_CFLAGS"
+		CXXFLAGS="$CXXFLAGS $DBUS_CFLAGS"
+	], [
+		AC_DEFINE([HAVE_DBUS], [0], [Use dbus to get current tracks])
+		AC_MSG_WARN([Support for dbus is disabled])
+	])
+fi
+
 AC_CONFIG_FILES([Makefile
                  src/Makefile])
 AC_OUTPUT

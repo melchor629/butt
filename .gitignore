@@ -41,3 +41,14 @@ configure
 depcomp
 install-sh
 missing
+*.log
+config.h
+.deps/
+
+*~
+config.h
+config.status
+src/Makefile
+src/butt
+stamp-h1
+

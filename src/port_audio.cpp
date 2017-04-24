@@ -762,7 +762,9 @@ void snd_close(void)
 
     delete[] stream_buf;
     delete[] record_buf;
+    stream_buf = record_buf = nullptr;
     delete dsp;
+    dsp = nullptr;
 }
 
 

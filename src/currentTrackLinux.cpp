@@ -153,19 +153,20 @@ static char* get_mpris(const char* target) {
     };
 
     dbus_init();
-    dbus_call_method(&opt, 2, "org.mpris.MediaPlayer2.Player", "PlaybackStatus");
-    if(playbackStatusValue != NULL && strcmp(playbackStatusValue, "Stopped")) {
-        char* values[2] = { NULL, NULL };
-        opt.arg_iter = metadata;
-        opt.data = values;
-        dbus_call_method(&opt, 2, "org.mpris.MediaPlayer2.Player", "Metadata");
-        returnString = (char*) malloc(strlen(values[1]) + 3 + strlen(values[0]) + 1);
-        strcat(returnString, values[1]);
-        strcat(returnString, " - ");
-        strcat(returnString, values[0]);
+    if(dbus_bus_name_has_owner(conn, target, &err)) {
+        dbus_call_method(&opt, 2, "org.mpris.MediaPlayer2.Player", "PlaybackStatus");
+        if(playbackStatusValue != NULL && strcmp(playbackStatusValue, "Stopped")) {
+            char* values[2] = { NULL, NULL };
+            opt.arg_iter = metadata;
+            opt.data = values;
+            dbus_call_method(&opt, 2, "org.mpris.MediaPlayer2.Player", "Metadata");
+            returnString = (char*) malloc(strlen(values[1]) + 3 + strlen(values[0]) + 1);
+            strcat(returnString, values[1]);
+            strcat(returnString, " - ");
+            strcat(returnString, values[0]);
+        }
+        free(playbackStatusValue);
     }
-
-    free(playbackStatusValue);
     return returnString;
 }
 
